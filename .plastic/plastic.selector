@@ -1,0 +1,4 @@
+repository "NHSGA_Vendetta@certifiednovigradian@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
