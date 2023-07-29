@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpAttackSwingSpeed;
     [SerializeField] private Vector2 jumpAttackThrustSpeed;
 
+    [Header("Parry")]
+    [SerializeField] private float parryDuration;
+
     private float direction;
     #region Timers
     private float stepLeftTimer;
@@ -71,30 +74,11 @@ public class PlayerController : MonoBehaviour
     #endregion
     #endregion
 
-    // Start is called before the first frame update
-    [Header("Old stuff")]
-    [SerializeField] private float dashDistance;
-    [SerializeField] private float thrustSpeed;
-    [SerializeField] private float jumpSpeed;
-    private Vector2 initPosition;
-    bool isDashing = false;
-    bool isJumping = false;
-    bool canDash = true;
-    bool canSwing = true;
-    bool isSwinging = false;
-    bool canJump = true;
-    private float swordDistance;
-    [HideInInspector] public const int moveState = 1;
-    [HideInInspector] public const int attackState = 2;
-    [HideInInspector] public const int dashState = 3;
 
     [SerializeField] private float lungeSpeed;
     bool canMove = true;
     void Start()
     {
-        //initPosition = sword.transform.position;
-        //swordDistance = Vector3.Distance(transform.position, initPosition);
-
         #region Initialize Variables
         kb = Keyboard.current;
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -112,8 +96,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //checkState();
-        //checkMovement();
 
         //Debug.Log(state);
 
@@ -263,6 +245,10 @@ public class PlayerController : MonoBehaviour
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
+        else if (kb.iKey.wasPressedThisFrame)
+        {
+            state = PlayerState.parry;
+        }
     }
     #endregion
 
@@ -361,6 +347,10 @@ public class PlayerController : MonoBehaviour
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
+        else if (kb.iKey.wasPressedThisFrame)
+        {
+            state = PlayerState.parry;
+        }
         else if (kb.spaceKey.isPressed)
         {
             state = PlayerState.jump;
@@ -414,6 +404,10 @@ public class PlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+        }
+        else if (kb.iKey.wasPressedThisFrame)
+        {
+            state = PlayerState.parry;
         }
         else if (kb.spaceKey.isPressed)
         {
@@ -616,7 +610,13 @@ public class PlayerController : MonoBehaviour
 
     private void ParryTransitions()
     {
+        StartCoroutine(Parry());
+    }
 
+    private IEnumerator Parry()
+    {
+        yield return new WaitForSeconds(parryDuration);
+        state = PlayerState.idle;
     }
     #endregion
 
@@ -663,106 +663,4 @@ public class PlayerController : MonoBehaviour
         sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
         swordPivot.localEulerAngles = Vector3.zero;
     }
-    public void checkMovement()
-    {
-        if (kb.aKey.isPressed)
-        {
-            rb.position += Vector2.left * Time.deltaTime * stepSpeed;
-            direction = -1;
-            if (!isFacingLeft)
-            {
-                Flip();
-            }
-        }
-        if (kb.dKey.isPressed)
-        {
-            rb.position += Vector2.right * Time.deltaTime * stepSpeed;
-            direction = 1;
-            if (isFacingLeft)
-            {
-                Flip();
-            }
-        }
-        if (kb.shiftKey.wasPressedThisFrame && !isDashing && canDash)
-        {
-            StartCoroutine(Dash());
-        }
-        if (kb.oKey.wasPressedThisFrame && canSwing && !isSwinging)
-        {
-            StartCoroutine(Swing());
-        }
-        if (!isSwinging && !kb.oKey.wasPressedThisFrame)
-        {
-            sword.GetComponent<Rigidbody2D>().position = new Vector2(gameObject.transform.position.x + swordDistance * direction, gameObject.transform.position.y + 1);
-        }
-        if (kb.spaceKey.wasPressedThisFrame)
-        {
-
-        }
-        if (kb.pKey.wasPressedThisFrame && canSwing && !isSwinging && canJump)
-        {
-            StartCoroutine(HeavySwing());
-        }
-        if (kb.spaceKey.wasPressedThisFrame && !isJumping && canJump)
-        {
-            rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            canJump = false;
-            isJumping = true;
-        }
-    }
-    public IEnumerator Dash()
-    {
-        isDashing = true;
-        canDash = false;
-        if (direction == 1)
-        {
-            rb.velocity = new Vector2(transform.localScale.x * dashDistance, 0);
-        }
-        if (direction == -1)
-        {
-            rb.velocity = new Vector2(transform.localScale.x * -dashDistance, 0);
-        }
-        yield return new WaitForSeconds(0.5f);
-        isDashing = false;
-        yield return new WaitForSeconds(0.5f);
-        canDash = true;
-    }
-    public IEnumerator Swing()
-    {
-        sword.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.right * thrustSpeed, ForceMode2D.Impulse);
-        isSwinging = true;
-        canSwing = false;
-        yield return new WaitForSeconds(0.1f);
-        sword.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        sword.GetComponent<Rigidbody2D>().position = new Vector2(gameObject.transform.position.x + swordDistance * direction, gameObject.transform.position.y + 1);
-        isSwinging = false;
-        yield return new WaitForSeconds(0.3f);
-        canSwing = true;
-    }
-
-    public IEnumerator HeavySwing()
-    {
-        rb.velocity = new Vector2(0, 0);
-        canMove = false;
-        canJump = false;
-        canDash = false;
-        rb.velocity = new Vector2(-3 * direction, 0);
-        yield return new WaitForSeconds(0.5f);
-        sword.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.right * lungeSpeed * .75f, ForceMode2D.Impulse);
-        rb.AddForce(gameObject.transform.right * lungeSpeed, ForceMode2D.Impulse);
-        isSwinging = true;
-        canSwing = false;
-        yield return new WaitForSeconds(.48f);
-        sword.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        rb.velocity = new Vector2(0, 0);
-        yield return new WaitForSeconds(.5f);
-        sword.GetComponent<Rigidbody2D>().position = new Vector2(gameObject.transform.position.x + swordDistance * direction, gameObject.transform.position.y + 1);
-        isSwinging = false;
-        canSwing = true;
-        canMove = true;
-        canJump = true;
-        canDash = true;
-    }
-
-    
 }

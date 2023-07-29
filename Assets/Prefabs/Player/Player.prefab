@@ -90,10 +90,10 @@ MonoBehaviour:
   canShift: 0
   jumpForce: 10
   jumpHorizontalSpeed: 1
-  lightAttackWindupDuration: 0.17
+  lightAttackWindupDuration: 0.2
   lightAttackWindupSpeed: 10
-  lightAttackDuration: 0.125
-  lightAttackThrustSpeed: 40
+  lightAttackDuration: 0.15
+  lightAttackThrustSpeed: 36
   heavyLungeMinimumWindupTime: 0.5
   heavyLungeMaximumWindupTime: 2
   heavyLungeWindupSpeed: 1
@@ -104,6 +104,7 @@ MonoBehaviour:
   jumpAttackDuration: 0.2
   jumpAttackSwingSpeed: 1
   jumpAttackThrustSpeed: {x: 4, y: -10}
+  parryDuration: 0.1
   dashDistance: 8
   thrustSpeed: 12
   jumpSpeed: 10

@@ -360,6 +360,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: parryDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: lightAttackDuration
       value: 0.15
       objectReference: {fileID: 0}
