@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - player
+  - enemy sword
+  - ground
+  - sword
   - enemy
-  - Ground
   layers:
   - Default
   - TransparentFX
@@ -40,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2727197191
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2839617773
     locked: 0
