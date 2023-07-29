@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool isFacingLeft;
 
     private Rigidbody2D rb;
-
+    public GameObject sword;
+    private Rigidbody2D swordRb;
+    private Transform swordPivot;
 
     [Header("Movement")]
     [SerializeField] private float stepSpeed;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpHorizontalSpeed;
 
     [Header("Light Attack")]
-    public GameObject sword;
+    
     [SerializeField] private float lightAttackWindupDuration;
     [SerializeField] private float lightAttackWindupSpeed;
     [SerializeField] private float lightAttackDuration;
@@ -53,9 +55,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float heavyLungeWindupThrustScale;
     private float heavyLungeWindupTime;
     private float heavyLungeThrustTime;
+    [SerializeField] private float heavyLungeLowerSwordScale;
     [SerializeField] private float heavyLungeThrustSpeed;
     [SerializeField] private float heavyLungeStunDuration;
-    //[SerializeField] private float stepDistance;
+
+    [Header("Jump Attack")]
+    [SerializeField] private float jumpAttackDuration;
+    [SerializeField] private float jumpAttackSwingSpeed;
+    [SerializeField] private Vector2 jumpAttackThrustSpeed;
 
     private float direction;
     #region Timers
@@ -91,6 +98,8 @@ public class PlayerController : MonoBehaviour
         #region Initialize Variables
         kb = Keyboard.current;
         rb = gameObject.GetComponent<Rigidbody2D>();
+        swordRb = sword.GetComponent<Rigidbody2D>();
+        swordPivot = sword.transform.parent;
 
         isFacingLeft = false;
 
@@ -244,14 +253,14 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.jump;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        else if (kb.oKey.isPressed)
+        else if (kb.oKey.wasPressedThisFrame)
         {
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.isPressed)
+        else if (kb.pKey.wasPressedThisFrame)
         {
             heavyLungeWindupTime = 0f;
-            sword.GetComponent<Rigidbody2D>().isKinematic = false;
+            swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
     }
@@ -342,14 +351,14 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleLeftTransitions()
     {
-        if (kb.oKey.isPressed)
+        if (kb.oKey.wasPressedThisFrame)
         {
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.isPressed)
+        else if (kb.pKey.wasPressedThisFrame)
         {
             heavyLungeWindupTime = 0f;
-            sword.GetComponent<Rigidbody2D>().isKinematic = false;
+            swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
         else if (kb.spaceKey.isPressed)
@@ -396,14 +405,14 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleRightTransitions()
     {
-        if (kb.oKey.isPressed)
+        if (kb.oKey.wasPressedThisFrame)
         {
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.isPressed)
+        else if (kb.pKey.wasPressedThisFrame)
         {
             heavyLungeWindupTime = 0f;
-            sword.GetComponent<Rigidbody2D>().isKinematic = false;
+            swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
         else if (kb.spaceKey.isPressed)
@@ -465,24 +474,41 @@ public class PlayerController : MonoBehaviour
 
     private void JumpTransitions()
     {
-
+        if (kb.oKey.wasPressedThisFrame)
+        {
+            state = PlayerState.jumpAttack;
+            swordRb.isKinematic = false;
+        }
     }
 
     private void JumpAttackActions()
     {
-
+        swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
+        swordRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
     }
 
     private void JumpAttackTransitions()
     {
+        StartCoroutine(JumpAttack());
+    }
 
+    private IEnumerator JumpAttack()
+    {
+        yield return new WaitForSeconds(jumpAttackDuration);
+        if (state != PlayerState.idle)
+        {
+            ResetSwordPosition();
+            swordRb.isKinematic = true;
+            state = PlayerState.jump;
+        }
+        
     }
     #endregion
 
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
-        sword.GetComponent<Rigidbody2D>().position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed;
+        swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed;
     }
 
     private void LightAtackWindupTransitions()
@@ -492,7 +518,7 @@ public class PlayerController : MonoBehaviour
 
     private void LightAttackActions()
     {
-        sword.GetComponent<Rigidbody2D>().position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed;
+        swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed;
     }
 
     private void LightAttackTransitions()
@@ -502,7 +528,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator LightAttackWindup()
     {
-        sword.GetComponent<Rigidbody2D>().isKinematic = false;
+        swordRb.isKinematic = false;
         yield return new WaitForSeconds(lightAttackWindupDuration);
         state = PlayerState.lightAttack;
     }
@@ -510,7 +536,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator LightAttack()
     {
         yield return new WaitForSeconds(lightAttackDuration);
-        sword.GetComponent<Rigidbody2D>().isKinematic = true;
+        swordRb.isKinematic = true;
         ResetSwordPosition();
         state = PlayerState.idle;
     }
@@ -523,7 +549,7 @@ public class PlayerController : MonoBehaviour
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
             heavyLungeWindupTime += Time.deltaTime;
-            sword.GetComponent<Rigidbody2D>().position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
+            swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
         }
     }
 
@@ -535,6 +561,7 @@ public class PlayerController : MonoBehaviour
             if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
             {
                 state = PlayerState.heavyLunge;
+                swordRb.position += Vector2.down*heavyLungeLowerSwordScale;
                 heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 heavyLungeThrustSpeed+= heavyLungeWindupTime * heavyLungeWindupThrustScale;
             }
@@ -548,7 +575,7 @@ public class PlayerController : MonoBehaviour
 
     private void HeavyLungeActions()
     {
-        sword.GetComponent<Rigidbody2D>().position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+        swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
     }
 
     private void HeavyLungeTransitions()
@@ -561,7 +588,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(heavyLungeThrustTime);
         state = PlayerState.heavyLungeStun;
         ResetSwordPosition();
-        sword.GetComponent<Rigidbody2D>().isKinematic = true;
+        swordRb.isKinematic = true;
     }
 
     private void HeavyLungeStunActions()
@@ -611,6 +638,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             state = PlayerState.idle;
+            ResetSwordPosition();
+            swordRb.isKinematic = true;
         }
     }
     #endregion
@@ -631,9 +660,9 @@ public class PlayerController : MonoBehaviour
     private void ResetSwordPosition()
     {
         sword.transform.position = new Vector3(transform.position.x + 2f, transform.position.y + 1f, transform.position.z);
+        sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
+        swordPivot.localEulerAngles = Vector3.zero;
     }
-
-
     public void checkMovement()
     {
         if (kb.aKey.isPressed)

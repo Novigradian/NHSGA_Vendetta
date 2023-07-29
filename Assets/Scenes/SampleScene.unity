@@ -360,28 +360,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: heavyLungeThrustSpeed
-      value: 20
+      propertyPath: lightAttackDuration
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: heavyLungeWindupSpeed
-      value: 1
+      propertyPath: lightAttackThrustSpeed
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: heavyLungeStunDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: heavyLungeMaximumWindupTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: heavyLungeMinimumWindupTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: heavyLungeWindupThrustScale
-      value: 0.3
+      propertyPath: lightAttackWindupDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
