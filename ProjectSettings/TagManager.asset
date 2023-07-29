@@ -9,6 +9,10 @@ TagManager:
   - ground
   - sword
   - enemy
+  - Ground
+  - Enemy
+  - PlayerSword
+  - EnemySword
   layers:
   - Default
   - TransparentFX
