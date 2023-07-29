@@ -210,7 +210,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -236,7 +236,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -416,6 +416,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 68108894, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: stepSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 68108894, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: stepCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 68108894, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: stepDuration
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7745198420125200865, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
       value: 2
