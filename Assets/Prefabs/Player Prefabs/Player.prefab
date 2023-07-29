@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1296976084}
   m_Layer: 0
-  m_Name: SwordPivot
+  m_Name: PlayerSwordPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,9 +105,6 @@ MonoBehaviour:
   jumpAttackSwingSpeed: 1
   jumpAttackThrustSpeed: {x: 4, y: -10}
   parryDuration: 0.1
-  dashDistance: 8
-  thrustSpeed: 12
-  jumpSpeed: 10
   lungeSpeed: 10
 --- !u!61 &1051260131
 BoxCollider2D:
@@ -234,7 +231,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7673852163725699833, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_Name
-      value: Sword
+      value: PlayerSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673852163725699833, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSword
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_RootOrder

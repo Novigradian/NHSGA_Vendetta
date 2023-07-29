@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - enemy
   - Ground
+  - Enemy
+  - PlayerSword
+  - EnemySword
   layers:
   - Default
   - TransparentFX

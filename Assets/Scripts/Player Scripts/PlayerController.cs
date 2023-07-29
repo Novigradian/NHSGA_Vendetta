@@ -641,6 +641,13 @@ public class PlayerController : MonoBehaviour
             ResetSwordPosition();
             swordRb.isKinematic = true;
         }
+        if (collision.gameObject.tag == "EnemySword")
+        {
+            if (state==PlayerState.idle || state == PlayerState.shuffleLeft)
+            {
+
+            }
+        }
     }
     #endregion
     void Flip()
