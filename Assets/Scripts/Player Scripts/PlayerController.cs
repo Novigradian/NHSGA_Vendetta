@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
         lightAttackWindup, lightAttack,
         heavyLungeWindup, heavyLunge, heavyLungeStun,
         parry,
-        getHit,
+        getHit
     }
 
     [SerializeField] PlayerState state;
@@ -29,6 +29,29 @@ public class PlayerController : MonoBehaviour
     public GameObject sword;
     private Rigidbody2D swordRb;
     private Transform swordPivot;
+    private Collider2D swordCollider;
+
+    [Header("Health")]
+    public PlayerHealthBar playerHealthBar;
+    [SerializeField] private float maxPlayerHealth;
+    private float playerHealth;
+
+    [Header("Stamina")]
+    public PlayerStaminaBar playerStaminaBar;
+    [SerializeField] private float maxPlayerStamina;
+    [SerializeField] private float playerStaminaRecoverySpeed;
+    private float playerStamina;
+    private Coroutine recoverStamina;
+    private bool isOutOfStamina;
+    [SerializeField] private float playerStaminaRecoveryDelay;
+
+    [Header("Stamina Cost")]
+    [SerializeField] private float playerStepStaminaCost;
+    [SerializeField] private float playerJumpStaminaCost;
+    [SerializeField] private float playerJumpAttackStaminaCost;
+    [SerializeField] private float playerLightAttackStaminaCost;
+    [SerializeField] private float playerHeavyLungeBaseStaminaCost;
+    [SerializeField] private float playerHeavyLungeExtraStaminaCostScale;
 
     [Header("Movement")]
     [SerializeField] private float stepSpeed;
@@ -73,16 +96,21 @@ public class PlayerController : MonoBehaviour
     private float stepRightTimer;
     #endregion
     #endregion
-
-
-    [SerializeField] private float lungeSpeed;
-    bool canMove = true;
     void Start()
     {
         #region Initialize Variables
         kb = Keyboard.current;
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        playerHealth = maxPlayerHealth;
+        playerStamina = maxPlayerStamina;
+        playerHealthBar.SetMaxHealth(maxPlayerHealth);
+        playerStaminaBar.SetMaxStamina(maxPlayerStamina);
+        isOutOfStamina = false;
+
         swordRb = sword.GetComponent<Rigidbody2D>();
+        swordCollider = sword.GetComponent<BoxCollider2D>();
+        swordCollider.enabled = false;
         swordPivot = sword.transform.parent;
 
         isFacingLeft = false;
@@ -176,7 +204,8 @@ public class PlayerController : MonoBehaviour
                 GetHitActions();
                 GetHitTransitions();
                 break;
-                #endregion
+            #endregion
+
         }
     }
 
@@ -190,9 +219,10 @@ public class PlayerController : MonoBehaviour
     {
         if (kb.aKey.isPressed) //Go Left
         {
-            if (kb.sKey.isPressed && canShift)
+            if (kb.sKey.isPressed && canShift &&!isOutOfStamina)
             {
                 state = PlayerState.stepLeft;
+                UseStamina(playerStepStaminaCost);
                 //rb.AddForce(Vector2.left * stepDistance);
 
                 stepLeftTimer = 0f;
@@ -211,9 +241,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (kb.dKey.isPressed) //Go Right
         {
-            if (kb.sKey.isPressed && canShift)
+            if (kb.sKey.isPressed && canShift && !isOutOfStamina)
             {
                 state = PlayerState.stepRight;
+                UseStamina(playerStepStaminaCost);
                 //rb.AddForce(Vector2.right * stepDistance);
 
                 stepRightTimer = 0f;
@@ -230,22 +261,23 @@ public class PlayerController : MonoBehaviour
             }
             */
         }
-        else if (kb.spaceKey.isPressed)
+        else if (kb.spaceKey.isPressed && !isOutOfStamina)
         {
             state = PlayerState.jump;
+            UseStamina(playerJumpStaminaCost);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        else if (kb.oKey.wasPressedThisFrame)
+        else if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.wasPressedThisFrame)
+        else if (kb.pKey.wasPressedThisFrame && !isOutOfStamina)
         {
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
-        else if (kb.iKey.wasPressedThisFrame)
+        else if (kb.iKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.parry;
         }
@@ -337,23 +369,24 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleLeftTransitions()
     {
-        if (kb.oKey.wasPressedThisFrame)
+        if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.wasPressedThisFrame)
+        else if (kb.pKey.wasPressedThisFrame && !isOutOfStamina)
         {
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
-        else if (kb.iKey.wasPressedThisFrame)
+        else if (kb.iKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.parry;
         }
-        else if (kb.spaceKey.isPressed)
+        else if (kb.spaceKey.isPressed && !isOutOfStamina)
         {
             state = PlayerState.jump;
+            UseStamina(playerJumpStaminaCost);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
         else if (kb.aKey.wasReleasedThisFrame)
@@ -362,9 +395,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (kb.dKey.isPressed)
         {
-            if (kb.sKey.isPressed && canShift)
+            if (kb.sKey.isPressed && canShift && !isOutOfStamina)
             {
                 state = PlayerState.stepRight;
+                UseStamina(playerStepStaminaCost);
 
                 stepRightTimer = 0f;
             }
@@ -380,9 +414,10 @@ public class PlayerController : MonoBehaviour
             }
             */
         }
-        else if (kb.sKey.isPressed && canShift)
+        else if (kb.sKey.isPressed && canShift && !isOutOfStamina)
         {
             state = PlayerState.stepLeft;
+            UseStamina(playerStepStaminaCost);
 
             stepLeftTimer = 0f;
         }
@@ -395,23 +430,24 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleRightTransitions()
     {
-        if (kb.oKey.wasPressedThisFrame)
+        if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.wasPressedThisFrame)
+        else if (kb.pKey.wasPressedThisFrame && !isOutOfStamina)
         {
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
-        else if (kb.iKey.wasPressedThisFrame)
+        else if (kb.iKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.parry;
         }
-        else if (kb.spaceKey.isPressed)
+        else if (kb.spaceKey.isPressed && !isOutOfStamina)
         {
             state = PlayerState.jump;
+            UseStamina(playerJumpStaminaCost);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
         else if (kb.dKey.wasReleasedThisFrame)
@@ -420,9 +456,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (kb.aKey.isPressed)
         {
-            if (kb.sKey.isPressed && canShift)
+            if (kb.sKey.isPressed && canShift && !isOutOfStamina)
             {
                 state = PlayerState.stepLeft;
+                UseStamina(playerStepStaminaCost);
 
                 stepLeftTimer = 0f;
             }
@@ -438,9 +475,10 @@ public class PlayerController : MonoBehaviour
             }
             */
         }
-        else if (kb.sKey.isPressed && canShift)
+        else if (kb.sKey.isPressed && canShift && !isOutOfStamina)
         {
             state = PlayerState.stepRight;
+            UseStamina(playerStepStaminaCost);
 
             stepRightTimer = 0f;
         }
@@ -468,10 +506,12 @@ public class PlayerController : MonoBehaviour
 
     private void JumpTransitions()
     {
-        if (kb.oKey.wasPressedThisFrame)
+        if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.jumpAttack;
+            UseStamina(playerJumpAttackStaminaCost);
             swordRb.isKinematic = false;
+            swordCollider.enabled = true;
         }
     }
 
@@ -489,11 +529,12 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpAttack()
     {
         yield return new WaitForSeconds(jumpAttackDuration);
-        if (state != PlayerState.idle)
+        if (state != PlayerState.idle && state==PlayerState.jumpAttack)
         {
             ResetSwordPosition();
             swordRb.isKinematic = true;
             state = PlayerState.jump;
+            swordCollider.enabled = false;
         }
         
     }
@@ -524,15 +565,25 @@ public class PlayerController : MonoBehaviour
     {
         swordRb.isKinematic = false;
         yield return new WaitForSeconds(lightAttackWindupDuration);
-        state = PlayerState.lightAttack;
+        if (state == PlayerState.lightAttackWindup)
+        {
+            UseStamina(playerLightAttackStaminaCost);
+            Debug.Log("used stamina, stamina remaining" + playerStamina);
+            state = PlayerState.lightAttack;
+            swordCollider.enabled = true;
+        }
     }
 
     private IEnumerator LightAttack()
     {
         yield return new WaitForSeconds(lightAttackDuration);
-        swordRb.isKinematic = true;
-        ResetSwordPosition();
-        state = PlayerState.idle;
+        if (state == PlayerState.lightAttack)
+        {
+            swordRb.isKinematic = true;
+            swordCollider.enabled = false;
+            ResetSwordPosition();
+            state = PlayerState.idle;
+        }
     }
 
     #endregion
@@ -554,7 +605,9 @@ public class PlayerController : MonoBehaviour
         {
             if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
             {
+                swordCollider.enabled = true;
                 state = PlayerState.heavyLunge;
+                UseStamina(playerHeavyLungeBaseStaminaCost+heavyLungeWindupTime*playerHeavyLungeExtraStaminaCostScale);
                 swordRb.position += Vector2.down*heavyLungeLowerSwordScale;
                 heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 heavyLungeThrustSpeed+= heavyLungeWindupTime * heavyLungeWindupThrustScale;
@@ -580,9 +633,13 @@ public class PlayerController : MonoBehaviour
     private IEnumerator HeavyLunge()
     {
         yield return new WaitForSeconds(heavyLungeThrustTime);
-        state = PlayerState.heavyLungeStun;
-        ResetSwordPosition();
-        swordRb.isKinematic = true;
+        if (state == PlayerState.heavyLunge)
+        {
+            state = PlayerState.heavyLungeStun;
+            ResetSwordPosition();
+            swordRb.isKinematic = true;
+            swordCollider.enabled = false;
+        }
     }
 
     private void HeavyLungeStunActions()
@@ -598,7 +655,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator HeavyLungeStun()
     {
         yield return new WaitForSeconds(heavyLungeStunDuration);
-        state = PlayerState.idle;
+        if (state == PlayerState.heavyLungeStun)
+        {
+            state = PlayerState.idle;
+        }
     }
     #endregion
 
@@ -616,7 +676,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Parry()
     {
         yield return new WaitForSeconds(parryDuration);
-        state = PlayerState.idle;
+        if (state == PlayerState.parry)
+        {
+            state = PlayerState.idle;
+        }
     }
     #endregion
 
@@ -632,6 +695,44 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Stamina
+    private void UseStamina(float cost)
+    {
+        playerStamina -= cost;
+        playerStaminaBar.SetStamina(playerStamina);
+
+        if (recoverStamina != null)
+        {
+            StopCoroutine(recoverStamina);
+        }
+
+        recoverStamina = StartCoroutine(RecoverStamina());
+
+        if (playerStamina <= 0f)
+        {
+            playerStamina = 0f;
+            isOutOfStamina = true;
+        }
+    }
+    private IEnumerator RecoverStamina()
+    {
+        yield return new WaitForSeconds(playerStaminaRecoveryDelay);
+        isOutOfStamina = false;
+        while (playerStamina < maxPlayerStamina)
+        {
+            playerStamina += playerStaminaRecoverySpeed;
+            playerStaminaBar.SetStamina(playerStamina);
+            yield return new WaitForSeconds(0.025f);
+        }
+        playerStamina = maxPlayerStamina;
+        playerStaminaBar.SetStamina(maxPlayerStamina);
+        recoverStamina = null;
+    }
+    #endregion
+
+    #region Health
+    #endregion
+
     #region Collisions
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -641,15 +742,47 @@ public class PlayerController : MonoBehaviour
             ResetSwordPosition();
             swordRb.isKinematic = true;
         }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "EnemySword")
         {
-            if (state==PlayerState.idle || state == PlayerState.shuffleLeft)
+            //Hit by any attack
+            if (state == PlayerState.idle || state == PlayerState.shuffleRight || state == PlayerState.stepLeft || state == PlayerState.stepRight || state == PlayerState.lightAttackWindup || state == PlayerState.heavyLungeWindup || state == PlayerState.heavyLungeStun || state == PlayerState.jump || state == PlayerState.lightAttack)
+            {
+
+            }
+            //Block
+            else if (state==PlayerState.shuffleLeft)
+            {
+
+            }
+            //Hit by anything except heavy lunge
+            else if (state == PlayerState.jumpAttack)
+            {
+
+            }
+            //Parry, if light attack gain riposte
+            else if (state == PlayerState.parry)
+            {
+
+            }
+            //Hit by jump flick
+            else if (state == PlayerState.heavyLunge)
+            {
+
+            }
+            //just take damage
+            else if (state == PlayerState.getHit)
             {
 
             }
         }
     }
     #endregion
+
     void Flip()
     {
         isFacingLeft = !isFacingLeft;

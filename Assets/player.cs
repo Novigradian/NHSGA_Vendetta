@@ -29,7 +29,7 @@ public class player : MonoBehaviour
     public int maxStamina;
     public int recoverySpeed;
     public PlayerHealthBar healthBar;
-    public StaminaBar staminaBar;
+    public PlayerStaminaBar staminaBar;
     public GameObject sword;
     private Vector2 initPosition;
     private float timer;

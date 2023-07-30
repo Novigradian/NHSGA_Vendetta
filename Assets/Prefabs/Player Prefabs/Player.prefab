@@ -83,6 +83,18 @@ MonoBehaviour:
   state: 0
   isFacingLeft: 0
   sword: {fileID: 1735666212459705732}
+  playerHealthBar: {fileID: 0}
+  maxPlayerHealth: 100
+  playerStaminaBar: {fileID: 0}
+  maxPlayerStamina: 36
+  playerStaminaRecoverySpeed: 0.15
+  playerStaminaRecoveryDelay: 0.85
+  playerStepStaminaCost: 8
+  playerJumpStaminaCost: 4
+  playerJumpAttackStaminaCost: 10
+  playerLightAttackStaminaCost: 7
+  playerHeavyLungeBaseStaminaCost: 9
+  playerHeavyLungeExtraStaminaCostScale: 6
   stepSpeed: 7
   stepDuration: 0.35
   stepCooldown: 0.5
@@ -105,7 +117,6 @@ MonoBehaviour:
   jumpAttackSwingSpeed: 1
   jumpAttackThrustSpeed: {x: 4, y: -10}
   parryDuration: 0.1
-  lungeSpeed: 10
 --- !u!61 &1051260131
 BoxCollider2D:
   m_ObjectHideFlags: 0
