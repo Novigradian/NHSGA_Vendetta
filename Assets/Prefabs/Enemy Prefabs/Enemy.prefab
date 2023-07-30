@@ -127,6 +127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff0fc44861226145ab66a9484cfd8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
+  enemyHealthBar: {fileID: 0}
+  maxEnemyHealth: 150
+  enemyLightAttackDamage: 15
+  enemyHeavyLungeBaseDamage: 20
+  enemyHeavyLungeExtraDamageScale: 25
+  enemyHeavyLungeDamage: 0
+  enemyJumpAttackDamage: 15
+  player: {fileID: 0}
+  getHitStunDuration: 0.25
+  blockDuration: 0.25
+  blockDamageNegationScale: 0.7
 --- !u!1001 &3700987901009323085
 PrefabInstance:
   m_ObjectHideFlags: 0

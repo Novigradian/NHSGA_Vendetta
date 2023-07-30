@@ -10,7 +10,7 @@ public class enemy : MonoBehaviour
     [HideInInspector] public int currentHealth;
     [HideInInspector] public int playerAttackValue;
     public player player;
-    public BossHealthBar bossHealthBar;
+    public EnemyHealthBar bossHealthBar;
     public PlayerHealthBar playerHealthBar;
     private Vector2 initPosition;
     public GameObject sword;

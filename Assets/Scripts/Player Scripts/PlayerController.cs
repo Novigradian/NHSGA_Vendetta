@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
         lightAttackWindup, lightAttack,
         heavyLungeWindup, heavyLunge, heavyLungeStun,
         parry,
+        block,
         getHit
     }
 
-    [SerializeField] PlayerState state;
+    public PlayerState state;
     #endregion
 
     #region Player Variables and Components
@@ -36,6 +37,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxPlayerHealth;
     private float playerHealth;
 
+    [Header("Player Damage")]
+    public float playerLightAttackDamage;
+    private float playerLightAttackBaseDamage;
+    public float playerHeavyLungeBaseDamage;
+    public float playerHeavyLungeExtraDamageScale;
+    [HideInInspector] public float playerHeavyLungeDamage;
+    public float playerJumpAttackDamage;
+
+    [Header("Rally")]
+    [SerializeField] private float rallyScale;
+    [SerializeField] private float rallyDuration;
+    private bool isRallyOn;
+
     [Header("Stamina")]
     public PlayerStaminaBar playerStaminaBar;
     [SerializeField] private float maxPlayerStamina;
@@ -52,6 +66,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerLightAttackStaminaCost;
     [SerializeField] private float playerHeavyLungeBaseStaminaCost;
     [SerializeField] private float playerHeavyLungeExtraStaminaCostScale;
+
+    [Header("Enemy")]
+    public GameObject enemy;
+    private EnemyController enemyController;
+
+    [Header("Get Hit")]
+    [SerializeField] private float getHitStunDuration;
+
+    [Header("Block")]
+    [SerializeField] private float blockDuration;
+    [SerializeField] private float blockDamageNegationScale;
+    [SerializeField] private float blockStaminaDrainScale;
 
     [Header("Movement")]
     [SerializeField] private float stepSpeed;
@@ -89,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Parry")]
     [SerializeField] private float parryDuration;
+    [SerializeField] private float riposteDamageBonus;
 
     private float direction;
     #region Timers
@@ -107,6 +134,12 @@ public class PlayerController : MonoBehaviour
         playerHealthBar.SetMaxHealth(maxPlayerHealth);
         playerStaminaBar.SetMaxStamina(maxPlayerStamina);
         isOutOfStamina = false;
+        isRallyOn = false;
+
+        playerLightAttackBaseDamage = playerLightAttackDamage;
+        playerHeavyLungeDamage = playerHeavyLungeBaseDamage;
+
+        enemyController = enemy.GetComponent<EnemyController>();
 
         swordRb = sword.GetComponent<Rigidbody2D>();
         swordCollider = sword.GetComponent<BoxCollider2D>();
@@ -206,6 +239,12 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
+            #region Block Actions and Transitions
+            case PlayerState.block:
+                BlockActions();
+                BlockTransitions();
+                break;
+                #endregion
         }
     }
 
@@ -583,6 +622,7 @@ public class PlayerController : MonoBehaviour
             swordCollider.enabled = false;
             ResetSwordPosition();
             state = PlayerState.idle;
+            playerLightAttackDamage = playerLightAttackBaseDamage;
         }
     }
 
@@ -608,6 +648,7 @@ public class PlayerController : MonoBehaviour
                 swordCollider.enabled = true;
                 state = PlayerState.heavyLunge;
                 UseStamina(playerHeavyLungeBaseStaminaCost+heavyLungeWindupTime*playerHeavyLungeExtraStaminaCostScale);
+                playerHeavyLungeDamage = playerHeavyLungeBaseDamage + heavyLungeWindupTime * playerHeavyLungeExtraDamageScale;
                 swordRb.position += Vector2.down*heavyLungeLowerSwordScale;
                 heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 heavyLungeThrustSpeed+= heavyLungeWindupTime * heavyLungeWindupThrustScale;
@@ -636,6 +677,7 @@ public class PlayerController : MonoBehaviour
         if (state == PlayerState.heavyLunge)
         {
             state = PlayerState.heavyLungeStun;
+            heavyLungeThrustSpeed -= heavyLungeWindupTime * heavyLungeWindupThrustScale;
             ResetSwordPosition();
             swordRb.isKinematic = true;
             swordCollider.enabled = false;
@@ -691,7 +733,60 @@ public class PlayerController : MonoBehaviour
 
     private void GetHitTransitions()
     {
+        StartCoroutine(GetHit());
+    }
 
+    private IEnumerator GetHit()
+    {
+        yield return new WaitForSeconds(getHitStunDuration);
+        if (state == PlayerState.getHit)
+        {
+            state = PlayerState.idle;
+        }
+    }
+
+    private void TakeHitDamage(float damage)
+    {
+        playerHealth -= damage;
+        playerHealthBar.SetHealth(playerHealth);
+        state = PlayerState.getHit;
+        ActivateRally();
+    }
+    #endregion
+
+    #region Block Functions
+    private void BlockActions()
+    {
+
+    }
+
+    private void BlockTransitions()
+    {
+        //StartCoroutine(Block());
+    }
+
+    private IEnumerator ResetBlock()
+    {
+        yield return new WaitForSeconds(blockDuration);
+        if (state == PlayerState.block)
+        {
+            state = PlayerState.idle;
+        }
+    }
+
+    private void ActivateBlock()
+    {
+        state = PlayerState.block;
+        StopCoroutine(ResetBlock());
+        StartCoroutine(ResetBlock());
+    }
+
+    private void TakeBlockDamage(float baseDamage)
+    {
+        ActivateBlock();
+        playerHealth -= baseDamage * blockDamageNegationScale;
+        playerHealthBar.SetHealth(playerHealth);
+        UseStamina(baseDamage * blockStaminaDrainScale);
     }
     #endregion
 
@@ -731,9 +826,23 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Health
+    private IEnumerator ResetRally()
+    {
+        yield return new WaitForSeconds(rallyDuration);
+        isRallyOn = false;
+    }
+
+    private void ActivateRally()
+    {
+        isRallyOn = true;
+        StopCoroutine(ResetRally());
+        StartCoroutine(ResetRally());
+    }
     #endregion
 
     #region Collisions
+
+    #region Ground Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -744,43 +853,123 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    #endregion
 
+    #region Enemy Sword Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "EnemySword")
         {
-            //Hit by any attack
+            EnemyController.EnemyState enemyState = enemyController.state;
+
+            #region Player is Idle/Moving/Jumping/Windup/Stun
             if (state == PlayerState.idle || state == PlayerState.shuffleRight || state == PlayerState.stepLeft || state == PlayerState.stepRight || state == PlayerState.lightAttackWindup || state == PlayerState.heavyLungeWindup || state == PlayerState.heavyLungeStun || state == PlayerState.jump || state == PlayerState.lightAttack)
             {
-
+                //state = PlayerState.getHit;
+                //ActivateRally();
+                if (enemyState == EnemyController.EnemyState.lightAttack)
+                {
+                    TakeHitDamage(enemyController.enemyLightAttackDamage);
+                }
+                else if(enemyState == EnemyController.EnemyState.heavyLunge)
+                {
+                    TakeHitDamage(enemyController.enemyHeavyLungeDamage);
+                }
+                else if (enemyState == EnemyController.EnemyState.jumpAttack)
+                {
+                    TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                }
             }
-            //Block
+            #endregion
+
+            #region Player is Blocking
             else if (state==PlayerState.shuffleLeft)
             {
-
+                if (enemyState == EnemyController.EnemyState.lightAttack)
+                {
+                    TakeBlockDamage(enemyController.enemyLightAttackDamage);
+                }
+                else if(enemyState == EnemyController.EnemyState.jumpAttack)
+                {
+                    TakeBlockDamage(enemyController.enemyJumpAttackDamage);
+                }
+                else if (enemyState == EnemyController.EnemyState.heavyLunge)
+                {
+                    TakeHitDamage(enemyController.enemyHeavyLungeDamage);
+                }
             }
-            //Hit by anything except heavy lunge
+            #endregion
+
+            #region Player is Jump Attacking
             else if (state == PlayerState.jumpAttack)
             {
-
+                if(enemyState == EnemyController.EnemyState.lightAttack)
+                {
+                    TakeHitDamage(enemyController.enemyLightAttackDamage);
+                }
+                else if (enemyState == EnemyController.EnemyState.jumpAttack)
+                {
+                    TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                }
             }
-            //Parry, if light attack gain riposte
+            #endregion
+
+            #region Player is Parrying
             else if (state == PlayerState.parry)
             {
-
+                if (enemyState == EnemyController.EnemyState.lightAttack)
+                {
+                    if (playerLightAttackDamage == playerLightAttackBaseDamage)
+                    {
+                        playerLightAttackDamage += riposteDamageBonus;
+                    }
+                }
+                else if(enemyState == EnemyController.EnemyState.jumpAttack)
+                {
+                    TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                }
+                else if (enemyState == EnemyController.EnemyState.heavyLunge)
+                {
+                    TakeHitDamage(enemyController.enemyHeavyLungeDamage);
+                }
             }
-            //Hit by jump flick
+            #endregion
+
+            #region Player is Heavy Lunging
             else if (state == PlayerState.heavyLunge)
             {
-
+                if (enemyState == EnemyController.EnemyState.jumpAttack)
+                {
+                    TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                }
             }
-            //just take damage
+            #endregion
+
+            #region Player is already in Get Hit
+            
             else if (state == PlayerState.getHit)
             {
-
+                if (enemyState == EnemyController.EnemyState.lightAttack)
+                {
+                    playerHealth -= enemyController.enemyLightAttackDamage;
+                    playerHealthBar.SetHealth(playerHealth);
+                }
+                else if (enemyState == EnemyController.EnemyState.jumpAttack)
+                {
+                    playerHealth -= enemyController.enemyJumpAttackDamage;
+                    playerHealthBar.SetHealth(playerHealth);
+                }
+                else if (enemyState == EnemyController.EnemyState.heavyLunge)
+                {
+                    playerHealth -= enemyController.enemyHeavyLungeDamage;
+                    playerHealthBar.SetHealth(playerHealth);
+                }
             }
+            
+            #endregion
         }
     }
+    #endregion
     #endregion
 
     void Flip()
