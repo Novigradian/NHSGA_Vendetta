@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D swordCollider;
 
     public GameManager gameManager;
+    public DialogueManager dialogueManager;
     private float minimumPlayerEnemyDistance;
 
     [Header("Health")]
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
     [Header("Rally")]
     [SerializeField] private float rallyScale;
     [SerializeField] private float rallyDuration;
-    private bool isRallyOn;
+    public bool isRallyOn;
 
     [Header("Stamina")]
     public PlayerStaminaBar playerStaminaBar;
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float stepCooldown;
     [SerializeField] private float shuffleSpeed;
     [SerializeField] private bool canShift;
-    private bool canMoveTowardsEnemy;
+    [SerializeField] private bool canMoveTowardsEnemy;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce;
@@ -170,105 +171,109 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(state);
         CheckCanMoveTowardsEnemy();
 
-        switch (state)
+        string gameState = gameManager.gameState;
+        if (gameState == "Fight")
         {
-            #region Idle Actions and Transitions
-            case PlayerState.idle:
-                IdleActions();
-                IdleTransitions();
-                break;
-            #endregion
-
-            #region Movement Actions and Transitions
-            case PlayerState.stepLeft:
-                StepLeftActions();
-                StepLeftTransitions();
-                break;
-            case PlayerState.stepRight:
-                StepRightActions();
-                StepRightTransitions();
-                break;
-            case PlayerState.shuffleLeft:
-                ShuffleLeftActions();
-                ShuffleLeftTransitions();
-                break;
-            case PlayerState.shuffleRight:
-                ShuffleRightActions();
-                ShuffleRightTransitions();
-                break;
-            #endregion
-
-            #region Jump Actions and Transitions
-            case PlayerState.jump:
-                JumpActions();
-                JumpTransitions();
-                break;
-            case PlayerState.jumpAttack:
-                JumpAttackActions();
-                JumpAttackTransitions();
-                break;
-            #endregion
-
-            #region Light Attack Actions and Transitions
-            case PlayerState.lightAttackWindup:
-                LightAttackWindupActions();
-                LightAtackWindupTransitions();
-                break;
-            case PlayerState.lightAttack:
-                LightAttackActions();
-                LightAttackTransitions();
-                break;
-            #endregion
-
-            #region Heavy Attack Actions and Transitions
-            case PlayerState.heavyLungeWindup:
-                HeavyLungeWindupActions();
-                HeavyLungeWindupTransitions();
-                break;
-            case PlayerState.heavyLunge:
-                HeavyLungeActions();
-                HeavyLungeTransitions();
-                break;
-            case PlayerState.heavyLungeStun:
-                HeavyLungeStunActions();
-                HeavyLungeStunTransitions();
-                break;
-            #endregion
-
-            #region Cancel Actions and Transitions
-            case PlayerState.cancel:
-                CancelActions();
-                CancelTransitions();
-                break;
-            #endregion
-
-            #region Parry Actions and Transitions
-            case PlayerState.parry:
-                ParryActions();
-                ParryTransitions();
-                break;
-            #endregion
-
-            #region Get Hit Actions and Transitions
-            case PlayerState.getHit:
-                GetHitActions();
-                GetHitTransitions();
-                break;
-            #endregion
-
-            #region Block Actions and Transitions
-            case PlayerState.block:
-                BlockActions();
-                BlockTransitions();
-                break;
-            #endregion
-
-            #region Dead Actions and Transitions
-            case PlayerState.dead:
-                DeadActions();
-                DeadTransitions();
-                break;
+            switch (state)
+            {
+                #region Idle Actions and Transitions
+                case PlayerState.idle:
+                    IdleActions();
+                    IdleTransitions();
+                    break;
                 #endregion
+
+                #region Movement Actions and Transitions
+                case PlayerState.stepLeft:
+                    StepLeftActions();
+                    StepLeftTransitions();
+                    break;
+                case PlayerState.stepRight:
+                    StepRightActions();
+                    StepRightTransitions();
+                    break;
+                case PlayerState.shuffleLeft:
+                    ShuffleLeftActions();
+                    ShuffleLeftTransitions();
+                    break;
+                case PlayerState.shuffleRight:
+                    ShuffleRightActions();
+                    ShuffleRightTransitions();
+                    break;
+                #endregion
+
+                #region Jump Actions and Transitions
+                case PlayerState.jump:
+                    JumpActions();
+                    JumpTransitions();
+                    break;
+                case PlayerState.jumpAttack:
+                    JumpAttackActions();
+                    JumpAttackTransitions();
+                    break;
+                #endregion
+
+                #region Light Attack Actions and Transitions
+                case PlayerState.lightAttackWindup:
+                    LightAttackWindupActions();
+                    LightAtackWindupTransitions();
+                    break;
+                case PlayerState.lightAttack:
+                    LightAttackActions();
+                    LightAttackTransitions();
+                    break;
+                #endregion
+
+                #region Heavy Attack Actions and Transitions
+                case PlayerState.heavyLungeWindup:
+                    HeavyLungeWindupActions();
+                    HeavyLungeWindupTransitions();
+                    break;
+                case PlayerState.heavyLunge:
+                    HeavyLungeActions();
+                    HeavyLungeTransitions();
+                    break;
+                case PlayerState.heavyLungeStun:
+                    HeavyLungeStunActions();
+                    HeavyLungeStunTransitions();
+                    break;
+                #endregion
+
+                #region Cancel Actions and Transitions
+                case PlayerState.cancel:
+                    CancelActions();
+                    CancelTransitions();
+                    break;
+                #endregion
+
+                #region Parry Actions and Transitions
+                case PlayerState.parry:
+                    ParryActions();
+                    ParryTransitions();
+                    break;
+                #endregion
+
+                #region Get Hit Actions and Transitions
+                case PlayerState.getHit:
+                    GetHitActions();
+                    GetHitTransitions();
+                    break;
+                #endregion
+
+                #region Block Actions and Transitions
+                case PlayerState.block:
+                    BlockActions();
+                    BlockTransitions();
+                    break;
+                #endregion
+
+                #region Dead Actions and Transitions
+                case PlayerState.dead:
+                    DeadActions();
+                    DeadTransitions();
+                    break;
+                    #endregion
+            }
         }
     }
 
@@ -671,7 +676,10 @@ public class PlayerController : MonoBehaviour
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
             heavyLungeWindupTime += Time.deltaTime;
-            swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
+            if (canMoveTowardsEnemy)
+            {
+                swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
+            }
         }
     }
 
@@ -859,7 +867,10 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth = 0f;
             state = PlayerState.dead;
-            Time.timeScale = 0;
+            enemyController.state = EnemyController.EnemyState.idle;
+            //Time.timeScale = 0;
+            dialogueManager.enemyDialogue.SetActive(true);
+            gameManager.gameState = "EnemyWinDialogue";
         }
     }
     #endregion
@@ -899,7 +910,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Health
+    #region Rally
     private IEnumerator ResetRally()
     {
         yield return new WaitForSeconds(rallyDuration);
@@ -911,6 +922,12 @@ public class PlayerController : MonoBehaviour
         isRallyOn = true;
         StopCoroutine(ResetRally());
         StartCoroutine(ResetRally());
+    }
+
+    public void AddRallyHealth(float baseHealth)
+    {
+        playerHealth += baseHealth * rallyScale;
+        playerHealthBar.SetHealth(playerHealth);
     }
     #endregion
 
@@ -1060,7 +1077,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    private void ResetSwordPosition()
+    public void ResetSwordPosition()
     {
         swordPivot.localEulerAngles = Vector3.zero;
         swordPivot.position = transform.position+new Vector3(0f, 0.4f, 0f);

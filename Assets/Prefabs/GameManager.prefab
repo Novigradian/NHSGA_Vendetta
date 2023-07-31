@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3472306370896711299}
   - component: {fileID: 3472306370896711298}
+  - component: {fileID: 3472306370635930197}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,4 +45,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumPlayerEnemyDistance: 1.25
+  minimumPlayerEnemyDistance: 2
+  gameState: 
+--- !u!114 &3472306370635930197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472306370896711324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b5fa39aa9731348bc86b20ebb15575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preFightDialogueSpeakerList:
+  - Enemy
+  - Enemy
+  - Enemy
+  - Enemy
+  - Player
+  - Player
+  - Enemy
+  preFightDialogueList:
+  - 'Lucius Lioni! I remember you clearly. '
+  - "In the days of yore, I beheld your triumph in that bygone tourney, yet \u2018tis
+    decades past."
+  - The sands of time have left their mark upon you, Lucius...
+  - '...and to my eyes, your once-touted renown is worth naught more than the lowly
+    filth beneath my soles! '
+  - You are blighted with the arrogance of youth, and the foolishness of inexperience!
+  - 'Tread cautiously around an old man in a profession where men oft meet an early
+    grave. '
+  - Enough of this prattle, soon you shall hear only the clash of my steel upon your
+    flesh! En garde!
+  playerDialogue: {fileID: 0}
+  playerDialogueText: {fileID: 0}
+  enemyDialogue: {fileID: 0}
+  enemyDialogueText: {fileID: 0}
+  gameManager: {fileID: 3472306370896711298}

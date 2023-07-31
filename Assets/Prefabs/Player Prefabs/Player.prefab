@@ -93,6 +93,7 @@ MonoBehaviour:
   playerJumpAttackDamage: 30
   rallyScale: 0.33
   rallyDuration: 2
+  isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 36
   playerStaminaRecoverySpeed: 0.15

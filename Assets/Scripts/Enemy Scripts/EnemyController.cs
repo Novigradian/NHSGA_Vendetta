@@ -23,6 +23,9 @@ public class EnemyController : MonoBehaviour
     #endregion
 
     #region Enemy Variables and Components
+    public GameManager gameManager;
+    public DialogueManager dialogueManager;
+
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
     [SerializeField] private float maxEnemyHealth;
@@ -326,8 +329,14 @@ public class EnemyController : MonoBehaviour
     {
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
-        Debug.Log("enemy damaged, remaining health: " + enemyHealth);
+        //Debug.Log("enemy damaged, remaining health: " + enemyHealth);
         state = EnemyState.getHit;
+
+        if (playerController.isRallyOn)
+        {
+            playerController.AddRallyHealth(damage);
+        }
+
         CheckDead();
     }
     #endregion
@@ -385,7 +394,12 @@ public class EnemyController : MonoBehaviour
         {
             enemyHealth = 0f;
             state = EnemyState.dead;
-            Time.timeScale = 0;
+            playerController.state = PlayerController.PlayerState.idle;
+            playerController.ResetSwordPosition();
+            player.transform.position = new Vector3(transform.position.x, -2f, transform.position.z);
+            //Time.timeScale = 0;
+            dialogueManager.playerDialogue.SetActive(true);
+            gameManager.gameState = "PlayerWinDialogue";
         }
     }
     #endregion
