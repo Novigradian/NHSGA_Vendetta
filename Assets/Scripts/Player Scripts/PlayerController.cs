@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour
         jump, jumpAttack,
         lightAttackWindup, lightAttack,
         heavyLungeWindup, heavyLunge, heavyLungeStun,
+        cancel,
         parry,
         block,
-        getHit
+        getHit,
+        dead
     }
 
     public PlayerState state;
@@ -31,6 +33,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D swordRb;
     private Transform swordPivot;
     private Collider2D swordCollider;
+
+    public GameManager gameManager;
+    private float minimumPlayerEnemyDistance;
 
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
@@ -85,6 +90,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float stepCooldown;
     [SerializeField] private float shuffleSpeed;
     [SerializeField] private bool canShift;
+    private bool canMoveTowardsEnemy;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce;
@@ -129,6 +135,8 @@ public class PlayerController : MonoBehaviour
         kb = Keyboard.current;
         rb = gameObject.GetComponent<Rigidbody2D>();
 
+        minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
+
         playerHealth = maxPlayerHealth;
         playerStamina = maxPlayerStamina;
         playerHealthBar.SetMaxHealth(maxPlayerHealth);
@@ -149,6 +157,7 @@ public class PlayerController : MonoBehaviour
         isFacingLeft = false;
 
         canShift = true;
+        canMoveTowardsEnemy = true;
 
         direction = 1f;
         #endregion
@@ -159,6 +168,7 @@ public class PlayerController : MonoBehaviour
     {
 
         //Debug.Log(state);
+        CheckCanMoveTowardsEnemy();
 
         switch (state)
         {
@@ -225,6 +235,13 @@ public class PlayerController : MonoBehaviour
                 break;
             #endregion
 
+            #region Cancel Actions and Transitions
+            case PlayerState.cancel:
+                CancelActions();
+                CancelTransitions();
+                break;
+            #endregion
+
             #region Parry Actions and Transitions
             case PlayerState.parry:
                 ParryActions();
@@ -243,6 +260,13 @@ public class PlayerController : MonoBehaviour
             case PlayerState.block:
                 BlockActions();
                 BlockTransitions();
+                break;
+            #endregion
+
+            #region Dead Actions and Transitions
+            case PlayerState.dead:
+                DeadActions();
+                DeadTransitions();
                 break;
                 #endregion
         }
@@ -364,7 +388,10 @@ public class PlayerController : MonoBehaviour
 
     private void StepRightActions()
     {
-        rb.position += Vector2.right * Time.deltaTime * stepSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * Time.deltaTime * stepSpeed;
+        }
     }
 
     private void StepRightTransitions()
@@ -464,7 +491,10 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleRightActions()
     {
-        rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
+        }
     }
 
     private void ShuffleRightTransitions()
@@ -533,7 +563,7 @@ public class PlayerController : MonoBehaviour
     #region Jump Functions
     private void JumpActions()
     {
-        if (kb.dKey.isPressed)
+        if (kb.dKey.isPressed && canMoveTowardsEnemy)
         {
             rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
         }
@@ -548,6 +578,7 @@ public class PlayerController : MonoBehaviour
         if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
         {
             state = PlayerState.jumpAttack;
+            swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
             UseStamina(playerJumpAttackStaminaCost);
             swordRb.isKinematic = false;
             swordCollider.enabled = true;
@@ -588,6 +619,12 @@ public class PlayerController : MonoBehaviour
     private void LightAtackWindupTransitions()
     {
         StartCoroutine(LightAttackWindup());
+        if (kb.wKey.wasPressedThisFrame)
+        {
+            swordRb.isKinematic = true;
+            ResetSwordPosition();
+            state = PlayerState.idle;
+        }
     }
 
     private void LightAttackActions()
@@ -663,6 +700,7 @@ public class PlayerController : MonoBehaviour
 
     private void HeavyLungeActions()
     {
+        rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
         swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
     }
 
@@ -701,6 +739,18 @@ public class PlayerController : MonoBehaviour
         {
             state = PlayerState.idle;
         }
+    }
+    #endregion
+
+    #region Cancel Functions
+    private void CancelActions()
+    {
+
+    }
+
+    private void CancelTransitions()
+    {
+
     }
     #endregion
 
@@ -751,6 +801,7 @@ public class PlayerController : MonoBehaviour
         playerHealthBar.SetHealth(playerHealth);
         state = PlayerState.getHit;
         ActivateRally();
+        CheckDead();
     }
     #endregion
 
@@ -787,6 +838,29 @@ public class PlayerController : MonoBehaviour
         playerHealth -= baseDamage * blockDamageNegationScale;
         playerHealthBar.SetHealth(playerHealth);
         UseStamina(baseDamage * blockStaminaDrainScale);
+        CheckDead();
+    }
+    #endregion
+
+    #region Dead Functions
+    private void DeadActions()
+    {
+
+    }
+
+    private void DeadTransitions()
+    {
+
+    }
+
+    private void CheckDead()
+    {
+        if (playerHealth <= 0f)
+        {
+            playerHealth = 0f;
+            state = PlayerState.dead;
+            Time.timeScale = 0;
+        }
     }
     #endregion
 
@@ -988,8 +1062,21 @@ public class PlayerController : MonoBehaviour
 
     private void ResetSwordPosition()
     {
-        sword.transform.position = new Vector3(transform.position.x + 2f, transform.position.y + 1f, transform.position.z);
-        sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
         swordPivot.localEulerAngles = Vector3.zero;
+        swordPivot.position = transform.position+new Vector3(0f, 0.4f, 0f);
+        sword.transform.position = new Vector3(swordPivot.position.x + 2f, swordPivot.position.y + 0.6f, transform.position.z);
+        sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
+    }
+
+    private void CheckCanMoveTowardsEnemy()
+    {
+        if (Mathf.Abs(transform.position.x - enemy.transform.position.x)<=minimumPlayerEnemyDistance)
+        {
+            canMoveTowardsEnemy = false;
+        }
+        else
+        {
+            canMoveTowardsEnemy = true;
+        }
     }
 }

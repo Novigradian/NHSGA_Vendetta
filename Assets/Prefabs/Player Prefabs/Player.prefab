@@ -83,6 +83,7 @@ MonoBehaviour:
   state: 0
   isFacingLeft: 0
   sword: {fileID: 1735666212459705732}
+  gameManager: {fileID: 0}
   playerHealthBar: {fileID: 0}
   maxPlayerHealth: 100
   playerLightAttackDamage: 15
@@ -125,9 +126,9 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 20
   heavyLungeStunDuration: 0.7
-  jumpAttackDuration: 0.2
-  jumpAttackSwingSpeed: 1
-  jumpAttackThrustSpeed: {x: 4, y: -10}
+  jumpAttackDuration: 0.15
+  jumpAttackSwingSpeed: 1.5
+  jumpAttackThrustSpeed: {x: 12, y: -20}
   parryDuration: 0.1
   riposteDamageBonus: 25
 --- !u!61 &1051260131

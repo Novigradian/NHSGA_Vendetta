@@ -15,7 +15,8 @@ public class EnemyController : MonoBehaviour
         heavyLungeWindup, heavyLunge, heavyLungeStun,
         parry,
         getHit,
-        block
+        block,
+        dead
     }
 
     public EnemyState state;
@@ -145,6 +146,13 @@ public class EnemyController : MonoBehaviour
             case EnemyState.block:
                 BlockActions();
                 BlockTransitions();
+                break;
+            #endregion
+
+            #region Dead Actions and Transitions
+            case EnemyState.dead:
+                DeadActions();
+                DeadTransitions();
                 break;
                 #endregion
         }
@@ -320,6 +328,7 @@ public class EnemyController : MonoBehaviour
         enemyHealthBar.SetHealth(enemyHealth);
         Debug.Log("enemy damaged, remaining health: " + enemyHealth);
         state = EnemyState.getHit;
+        CheckDead();
     }
     #endregion
 
@@ -355,6 +364,29 @@ public class EnemyController : MonoBehaviour
         ActivateBlock();
         enemyHealth -= baseDamage * blockDamageNegationScale;
         enemyHealthBar.SetHealth(enemyHealth);
+        CheckDead();
+    }
+    #endregion
+
+    #region Dead Functions
+    private void DeadActions()
+    {
+
+    }
+
+    private void DeadTransitions()
+    {
+
+    }
+
+    private void CheckDead()
+    {
+        if (enemyHealth <= 0f)
+        {
+            enemyHealth = 0f;
+            state = EnemyState.dead;
+            Time.timeScale = 0;
+        }
     }
     #endregion
 
