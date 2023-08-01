@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e100c40c6e7e845f186389ebaa8f4cf0
+guid: 609f674cc3d92416f8d4b88c484b2a8f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,148 +105,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_0
+      name: player_light_attack_SPRITESHEEET_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 381f0e1be646f44dbb7fe697f4079361
-      internalID: -74326407
+      spriteID: 39f041a0be3ca4070a249a47e071dd43
+      internalID: 948168018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_1
+      name: player_light_attack_SPRITESHEEET_1
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 1469
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4b98daa324ed46d6adaba404f87cd1c
-      internalID: 584295423
+      spriteID: c51ba0403197942cc9d1905731063603
+      internalID: -1739271568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_2
+      name: player_light_attack_SPRITESHEEET_2
       rect:
         serializedVersion: 2
-        x: 3840
+        x: 2938
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51a3f0590574c4489909e259e8e36b8d
-      internalID: 937294410
+      spriteID: 1b6429d0b1c384e8b8859dfa778e3add
+      internalID: 1733378454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_3
+      name: player_light_attack_SPRITESHEEET_3
       rect:
         serializedVersion: 2
-        x: 5760
+        x: 4407
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bc202b62b9344eca85073583f6b6aed
-      internalID: 469340859
+      spriteID: ef87d895a36f347ad84a85be8065b7f8
+      internalID: -1426400347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_4
+      name: player_light_attack_SPRITESHEEET_4
       rect:
         serializedVersion: 2
-        x: 7680
+        x: 5876
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77fce5ccdefea4e83b1e61dc32c8eef7
-      internalID: 1655707226
+      spriteID: 497cd7c5f511849359d60d0dc3cecdc8
+      internalID: 1533846718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_5
+      name: player_light_attack_SPRITESHEEET_5
       rect:
         serializedVersion: 2
-        x: 9600
+        x: 7345
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 677e2fa45760f48188659e35ff04d88a
-      internalID: 326856228
+      spriteID: f8544fc79814f43ad940444206e97db5
+      internalID: 1892597299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LIGHT_ATTACK_SPRITESHEET_6
+      name: player_light_attack_SPRITESHEEET_6
       rect:
         serializedVersion: 2
-        x: 11520
+        x: 8814
         y: 0
-        width: 1920
-        height: 1080
+        width: 1469.5714
+        height: 898
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6f43e08907c44f269df95f3d41719da
-      internalID: 877140364
+      spriteID: d10a58e0768aa40a1a303c59ed518dab
+      internalID: 1909526821
       vertices: []
       indices: 
       edges: []
@@ -262,13 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LIGHT_ATTACK_SPRITESHEET_0: -74326407
-      LIGHT_ATTACK_SPRITESHEET_1: 584295423
-      LIGHT_ATTACK_SPRITESHEET_2: 937294410
-      LIGHT_ATTACK_SPRITESHEET_3: 469340859
-      LIGHT_ATTACK_SPRITESHEET_4: 1655707226
-      LIGHT_ATTACK_SPRITESHEET_5: 326856228
-      LIGHT_ATTACK_SPRITESHEET_6: 877140364
+      player_light_attack_SPRITESHEEET_0: 948168018
+      player_light_attack_SPRITESHEEET_1: -1739271568
+      player_light_attack_SPRITESHEEET_2: 1733378454
+      player_light_attack_SPRITESHEEET_3: -1426400347
+      player_light_attack_SPRITESHEEET_4: 1533846718
+      player_light_attack_SPRITESHEEET_5: 1892597299
+      player_light_attack_SPRITESHEEET_6: 1909526821
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

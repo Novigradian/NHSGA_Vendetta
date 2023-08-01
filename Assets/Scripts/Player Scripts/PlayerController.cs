@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public DialogueManager dialogueManager;
     private float minimumPlayerEnemyDistance;
+    public Transform controllerTransform;
 
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
@@ -161,7 +162,8 @@ public class PlayerController : MonoBehaviour
         swordPivot = sword.transform.parent;
         swordPivotRb = swordPivot.GetComponent<Rigidbody2D>();
 
-        animator = GetComponent<Animator>();
+        controllerTransform = this.gameObject.transform.GetChild(2);
+        animator = controllerTransform.GetComponent<Animator>();
 
         isFacingLeft = false;
 
