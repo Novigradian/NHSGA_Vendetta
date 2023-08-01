@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumPlayerEnemyDistance: 2
   gameState: 
+  dialogueVolume: {fileID: 0}
 --- !u!114 &3472306370635930197
 MonoBehaviour:
   m_ObjectHideFlags: 0

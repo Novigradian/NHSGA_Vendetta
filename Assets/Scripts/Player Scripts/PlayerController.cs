@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public GameObject sword;
     private Rigidbody2D swordRb;
     private Transform swordPivot;
+    private Rigidbody2D swordPivotRb;
     private Collider2D swordCollider;
 
     public GameManager gameManager;
@@ -158,6 +159,7 @@ public class PlayerController : MonoBehaviour
         swordCollider = sword.GetComponent<BoxCollider2D>();
         swordCollider.enabled = false;
         swordPivot = sword.transform.parent;
+        swordPivotRb = swordPivot.GetComponent<Rigidbody2D>();
 
         isFacingLeft = false;
 
@@ -608,6 +610,7 @@ public class PlayerController : MonoBehaviour
             swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
             UseStamina(playerJumpAttackStaminaCost);
             swordRb.isKinematic = false;
+            swordPivotRb.isKinematic = false;
             swordCollider.enabled = true;
         }
     }
@@ -615,7 +618,7 @@ public class PlayerController : MonoBehaviour
     private void JumpAttackActions()
     {
         swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
-        swordRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+        swordPivotRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
 
         if (canMoveTowardsEnemy)
         {
@@ -639,6 +642,7 @@ public class PlayerController : MonoBehaviour
         {
             ResetSwordPosition();
             swordRb.isKinematic = true;
+            swordPivotRb.isKinematic = true;
             state = PlayerState.jump;
             swordCollider.enabled = false;
         }
