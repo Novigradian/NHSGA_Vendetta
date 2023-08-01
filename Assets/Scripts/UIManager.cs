@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour
         fightText.text = "En Garde!";
         
         gameManager.gameState = "Fight";
+        gameManager.fightVolume.SetActive(true);
 
         yield return new WaitForSeconds(fightTextUIShowDuration * 0.25f);
         fightTextUI.SetActive(false);

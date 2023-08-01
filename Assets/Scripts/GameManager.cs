@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public string gameState;
 
     public GameObject dialogueVolume;
+    public GameObject fightVolume;
     #endregion
 
     void Awake()
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         #endregion
 
         dialogueVolume.SetActive(true);
+        fightVolume.SetActive(false);
     }
 
     // Update is called once per frame

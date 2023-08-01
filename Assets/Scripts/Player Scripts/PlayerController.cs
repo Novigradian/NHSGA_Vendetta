@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float blockDuration;
     [SerializeField] private float blockDamageNegationScale;
     [SerializeField] private float blockStaminaDrainScale;
+    [SerializeField] private float blockPushBack;
 
     [Header("Movement")]
     [SerializeField] private float stepSpeed;
@@ -866,7 +867,7 @@ public class PlayerController : MonoBehaviour
     #region Block Functions
     private void BlockActions()
     {
-
+        rb.velocity += Vector2.right * direction * blockPushBack;
     }
 
     private void BlockTransitions()
@@ -921,6 +922,7 @@ public class PlayerController : MonoBehaviour
             //Time.timeScale = 0;
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
+            gameManager.fightVolume.SetActive(false);
             gameManager.dialogueVolume.SetActive(true);
         }
     }

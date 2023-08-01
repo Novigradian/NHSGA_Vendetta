@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using static PlayerController;
+using System.Linq;
 
 public class EnemyController : MonoBehaviour
 {
@@ -27,11 +28,13 @@ public class EnemyController : MonoBehaviour
     #region Enemy Variables and Components
     public GameManager gameManager;
     public DialogueManager dialogueManager;
+    private float minimumPlayerEnemyDistance;
     public Rigidbody2D rb;
     public Rigidbody2D swordRb;
     public GameObject sword;
     public enemy enemy;
     private Transform swordPivot;
+    private Rigidbody2D swordPivotRb;
     private Collider2D swordCollider;
 
     [Header("Health")]
@@ -45,6 +48,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float stepCooldown;
     [SerializeField] private float shuffleSpeed;
     [SerializeField] private bool canShift;
+    [SerializeField] private bool canMoveTowardsEnemy;
 
     [Header("Enemy Damage")]
     public float enemyLightAttackDamage;
@@ -81,6 +85,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float jumpAttackDuration;
     [SerializeField] private float jumpAttackSwingSpeed;
     [SerializeField] private Vector2 jumpAttackThrustSpeed;
+    [SerializeField] private float jumpAttackEnemyHorizontalSpeed;
 
     [Header("Heavy Attack")]
     [SerializeField] private float heavyLungeWindupSpeed;
@@ -94,117 +99,167 @@ public class EnemyController : MonoBehaviour
     [Header("Parry")]
     [SerializeField] private float parryDuration;
     [SerializeField] private float riposteDamageBonus;
+
+
+    [Header("Enemy AI")]
+    [SerializeField] private float baseIdleChance;
+    [SerializeField] private float aggressiveness;
+    [SerializeField] private float difficulty;
+    [SerializeField] private float shuffleLeftDistanceDivideScale;
+    [SerializeField] private float minimumStepLeftDistance;
+    [SerializeField] private float stepLeftDistanceDivideScale;
+    [SerializeField] private float playerLightAttackRetreatChance;
+    [SerializeField] private float playerJumpAttackRetreatChance;
+    [SerializeField] private float playerHeavyLungeWindupAdvanceChance;
+    [SerializeField] private float chaseAfterEnemyDistanceDivideScale;
+    [SerializeField] private float unableToChangeDirectionDuration;
+    [SerializeField] private bool isAbleToChangeDirection;
+
+    private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
+    [SerializeField] private string stateToEnter;
+
+    private float direction;
+    private float distance;
+
     #region Timers
     private float stepLeftTimer;
     private float stepRightTimer;
+
+    
     #endregion
 #endregion
 
     void Start()
     {
         #region Initialize Variables
+        isAbleToChangeDirection = true;
+        canMoveTowardsEnemy = true;
+        canShift = true;
         playerController = player.GetComponent<PlayerController>();
         swordRb = sword.GetComponent<Rigidbody2D>();
         enemyHealth = maxEnemyHealth;
         enemyHealthBar.SetMaxHealth(maxEnemyHealth);
         swordCollider = sword.GetComponent<BoxCollider2D>();
         swordCollider.enabled = false;
+        swordPivot = sword.transform.parent;
         enemyHeavyLungeDamage = enemyHeavyLungeBaseDamage;
+        minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
+        direction = -1f;
+
+        stateToEnter = "idleChance";
+
+        chanceDict["shuffleLeftChance"] = 0f;
+        chanceDict["shuffleRightChance"] = 0f;
+        chanceDict["stepLeftChance"] = 0f;
+        chanceDict["stepRightChance"] = 0f;
+        chanceDict["idleChance"] = baseIdleChance;
+        chanceDict["lightAttackChance"] = 0f;
+        chanceDict["heavyAttackChance"] = 0f;
+
+        //swordRb.isKinematic = false;
         #endregion
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (state)
+        string gameState = gameManager.gameState;
+        if (gameState == "Fight")
         {
-            #region Idle Actions and Transitions
-            case EnemyState.idle:
-                IdleActions();
-                IdleTransitions();
-                break;
-            #endregion
-
-            #region Movement Actions and Transitions
-            case EnemyState.stepLeft:
-                StepLeftActions();
-                StepLeftTransitions();
-                break;
-            case EnemyState.stepRight:
-                StepRightActions();
-                StepRightTransitions();
-                break;
-            case EnemyState.shuffleLeft:
-                ShuffleLeftActions();
-                ShuffleLeftTransitions();
-                break;
-            case EnemyState.shuffleRight:
-                ShuffleRightActions();
-                ShuffleRightTransitions();
-                break;
-            #endregion
-
-            #region Jump Actions and Transitions
-            case EnemyState.jump:
-                JumpActions();
-                JumpTransitions();
-                break;
-            case EnemyState.jumpAttack:
-                JumpAttackActions();
-                JumpAttackTransitions();
-                break;
-            #endregion
-
-            #region Light Attack Actions and Transitions
-            case EnemyState.lightAttackWindup:
-                LightAttackWindupActions();
-                LightAtackWindupTransitions();
-                break;
-            case EnemyState.lightAttack:
-                LightAttackActions();
-                LightAttackTransitions();
-                break;
-            #endregion
-
-            #region Heavy Attack Actions and Transitions
-            case EnemyState.heavyLungeWindup:
-                HeavyLungeWindup();
-                break;
-            case EnemyState.heavyLunge:
-                HeavyLunge();
-                break;
-            case EnemyState.heavyLungeStun:
-                HeavyLungeStunTransitions();
-                break;
-            #endregion
-
-            #region Parry Actions and Transitions
-            case EnemyState.parry:
-                ParryActions();
-                ParryTransitions();
-                break;
-            #endregion
-
-            #region Get Hit Actions and Transitions
-            case EnemyState.getHit:
-                GetHitActions();
-                GetHitTransitions();
-                break;
-            #endregion
-
-            #region Block Actions and Transitions
-            case EnemyState.block:
-                BlockActions();
-                BlockTransitions();
-                break;
-            #endregion
-
-            #region Dead Actions and Transitions
-            case EnemyState.dead:
-                DeadActions();
-                DeadTransitions();
-                break;
+            UpdateDistance();
+            CheckCanMoveTowardsEnemy();
+            EnemyAI();
+            UpdateState();
+            switch (state)
+            {
+                #region Idle Actions and Transitions
+                case EnemyState.idle:
+                    IdleActions();
+                    IdleTransitions();
+                    break;
                 #endregion
+
+                #region Movement Actions and Transitions
+                case EnemyState.stepLeft:
+                    StepLeftActions();
+                    StepLeftTransitions();
+                    break;
+                case EnemyState.stepRight:
+                    StepRightActions();
+                    StepRightTransitions();
+                    break;
+                case EnemyState.shuffleLeft:
+                    ShuffleLeftActions();
+                    ShuffleLeftTransitions();
+                    break;
+                case EnemyState.shuffleRight:
+                    ShuffleRightActions();
+                    ShuffleRightTransitions();
+                    break;
+                #endregion
+
+                #region Jump Actions and Transitions
+                case EnemyState.jump:
+                    JumpActions();
+                    JumpTransitions();
+                    break;
+                case EnemyState.jumpAttack:
+                    JumpAttackActions();
+                    JumpAttackTransitions();
+                    break;
+                #endregion
+
+                #region Light Attack Actions and Transitions
+                case EnemyState.lightAttackWindup:
+                    LightAttackWindupActions();
+                    LightAtackWindupTransitions();
+                    break;
+                case EnemyState.lightAttack:
+                    LightAttackActions();
+                    LightAttackTransitions();
+                    break;
+                #endregion
+
+                #region Heavy Attack Actions and Transitions
+                case EnemyState.heavyLungeWindup:
+                    HeavyLungeWindup();
+                    break;
+                case EnemyState.heavyLunge:
+                    HeavyLunge();
+                    break;
+                case EnemyState.heavyLungeStun:
+                    HeavyLungeStunTransitions();
+                    break;
+                #endregion
+
+                #region Parry Actions and Transitions
+                case EnemyState.parry:
+                    ParryActions();
+                    ParryTransitions();
+                    break;
+                #endregion
+
+                #region Get Hit Actions and Transitions
+                case EnemyState.getHit:
+                    GetHitActions();
+                    GetHitTransitions();
+                    break;
+                #endregion
+
+                #region Block Actions and Transitions
+                case EnemyState.block:
+                    BlockActions();
+                    BlockTransitions();
+                    break;
+                #endregion
+
+                #region Dead Actions and Transitions
+                case EnemyState.dead:
+                    DeadActions();
+                    DeadTransitions();
+                    break;
+                    #endregion
+            }
         }
     }
 
@@ -223,7 +278,10 @@ public class EnemyController : MonoBehaviour
     #region Movement Functions
     private void StepLeftActions()
     {
-        rb.position += Vector2.left * Time.deltaTime * stepSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.left * Time.deltaTime * stepSpeed;
+        }
     }
 
     private void StepLeftTransitions()
@@ -233,7 +291,7 @@ public class EnemyController : MonoBehaviour
         if (stepLeftTimer >= stepDuration)
         {
             state = EnemyState.idle;
-            canShift = false;
+            //canShift = false;
             StartCoroutine(ResetCanShift());
         }
     }
@@ -250,14 +308,17 @@ public class EnemyController : MonoBehaviour
         if (stepRightTimer >= stepDuration)
         {
             state = EnemyState.idle;
-            canShift = false;
+            //canShift = false;
             StartCoroutine(ResetCanShift());
         }
     }
 
     private void ShuffleLeftActions()
     {
-        rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
+        }
     }
     //Write Transitions
     private void ShuffleLeftTransitions()
@@ -276,6 +337,7 @@ public class EnemyController : MonoBehaviour
     }
     private IEnumerator ResetCanShift()
     {
+        canShift = false;
         yield return new WaitForSeconds(stepCooldown);
         canShift = true;
     }
@@ -285,14 +347,15 @@ public class EnemyController : MonoBehaviour
     #region Jump Functions
     private void JumpActions()
     {
-        if (rb.velocity.x > 0)
-        {
-            rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
-        }
-        else if (rb.velocity.x < 0)
-        {
-            rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
-        }
+        //TODO: IN AIR MOVEMENT
+        //if (rb.velocity.x > 0)
+        //{
+           // rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
+        //}
+        //else if (rb.velocity.x < 0)
+        //{
+           // rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
+        //}
     }
 
     private void JumpTransitions()
@@ -309,7 +372,12 @@ public class EnemyController : MonoBehaviour
     private void JumpAttackActions()
     {
         swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
-        swordRb.position += jumpAttackThrustSpeed * Time.deltaTime;
+        swordPivotRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackEnemyHorizontalSpeed;
+        }
     }
 
     private void JumpAttackTransitions()
@@ -333,7 +401,8 @@ public class EnemyController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
-        swordRb.position += Vector2.right * Time.deltaTime * lightAttackWindupSpeed;
+        rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.1f;
+        swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.7f;
     }
 
     private void LightAtackWindupTransitions()
@@ -349,7 +418,11 @@ public class EnemyController : MonoBehaviour
 
     private void LightAttackActions()
     {
-        swordRb.position += Vector2.left * Time.deltaTime * lightAttackThrustSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.25f;
+            swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
+        }
     }
 
     private void LightAttackTransitions()
@@ -386,31 +459,33 @@ public class EnemyController : MonoBehaviour
     public void HeavyLungeWindup()
     {
         StartCoroutine(HeavyLungeWindupCoroutine());
+        swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
     public IEnumerator HeavyLungeWindupCoroutine()
     {
-        sword.GetComponent<Rigidbody2D>().isKinematic = false;
-        sword.GetComponent<Rigidbody2D>().position += Vector2.right * Time.deltaTime * heavyLungeWindupSpeed;
-        //Debug.Log(Time.deltaTime * heavyLungeWindupSpeed);
-        sword.GetComponent<Rigidbody2D>().position += Vector2.down * heavyLungeLowerSwordScale;
-        heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
-        heavyLungeThrustSpeed += heavyLungeWindupTime * heavyLungeWindupThrustScale;
+        
         yield return new WaitForSeconds(1f);
-        state = EnemyState.heavyLunge;
+        if (state == EnemyState.heavyLungeWindup)
+        {
+            heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
+            heavyLungeThrustSpeed += heavyLungeWindupTime * heavyLungeWindupThrustScale;
+            state = EnemyState.heavyLunge;
+        }
     }
 
     public void HeavyLunge()
     {
         StartCoroutine(HeavyLungeCoroutine());
+        sword.GetComponent<Rigidbody2D>().position += -Vector2.right * Time.deltaTime * heavyLungeThrustSpeed;
     }
     public IEnumerator HeavyLungeCoroutine()
     {
-        yield return new WaitForSeconds(.5f);
-        sword.GetComponent<Rigidbody2D>().position += -Vector2.right * Time.deltaTime * heavyLungeThrustSpeed;
-        Debug.Log(heavyLungeThrustSpeed);
         yield return new WaitForSeconds(heavyLungeThrustTime);
-        ResetSwordPosition();
-        sword.GetComponent<Rigidbody2D>().isKinematic = true;
+        if (state == EnemyState.heavyLunge)
+        {
+            ResetSwordPosition();
+            swordRb.isKinematic = true;
+        }
     }
 
     private void HeavyLungeStunTransitions()
@@ -427,6 +502,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     #endregion
+
     #region Parry Functions
     private void ParryActions()
     {
@@ -485,7 +561,7 @@ public class EnemyController : MonoBehaviour
     #region Block Functions
     private void BlockActions()
     {
-        rb.velocity += Vector2.right * blockPushback;
+        rb.velocity += Vector2.right *-direction* blockPushback;
     }
 
     private void BlockTransitions()
@@ -541,6 +617,7 @@ public class EnemyController : MonoBehaviour
             //Time.timeScale = 0;
             dialogueManager.playerDialogue.SetActive(true);
             gameManager.gameState = "PlayerWinDialogue";
+            gameManager.fightVolume.SetActive(false);
             gameManager.dialogueVolume.SetActive(true);
         }
     }
@@ -672,5 +749,140 @@ public class EnemyController : MonoBehaviour
         swordPivot.position = transform.position + new Vector3(0f, 0.4f, 0f);
         sword.transform.position = new Vector3(swordPivot.position.x + 2f, swordPivot.position.y + 0.6f, transform.position.z);
         sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
+    }
+
+    private void CheckCanMoveTowardsEnemy()
+    {
+        if (distance <= minimumPlayerEnemyDistance)
+        {
+            canMoveTowardsEnemy = false;
+        }
+        else
+        {
+            canMoveTowardsEnemy = true;
+        }
+    }
+
+    private void UpdateDistance()
+    {
+        distance = Mathf.Abs(transform.position.x - player.transform.position.x);
+        //Debug.Log(distance);
+    }
+
+    private void EnemyAI()
+    {
+        PlayerController.PlayerState playerState = playerController.state;
+        if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
+        {
+            #region Adjust Idle Chances
+            chanceDict["shuffleLeftChance"] = (distance / shuffleLeftDistanceDivideScale)*aggressiveness;
+            if (distance <= minimumStepLeftDistance)
+            {
+                chanceDict["stepLeftChance"] = 0f;
+            }
+            else
+            {
+                chanceDict["stepLeftChance"] = (distance / stepLeftDistanceDivideScale)*aggressiveness;
+            }
+            chanceDict["shuffleRightChance"] = (1f - chanceDict["shuffleLeftChance"]);
+            if (chanceDict["shuffleRightChance"] < 0f)
+            {
+                chanceDict["shuffleRightChance"] = 0f;
+            }
+            chanceDict["stepRightChance"] = 0f;
+
+            if (playerState == PlayerController.PlayerState.lightAttack)
+            {
+                chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance*(2f-aggressiveness);
+                chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness)*difficulty;
+            }
+            else if (playerState == PlayerController.PlayerState.jumpAttack)
+            {
+                chanceDict["shuffleRightChance"] += playerJumpAttackRetreatChance * (2f - aggressiveness);
+                chanceDict["stepRightChance"] += playerJumpAttackRetreatChance * (2f - aggressiveness)*difficulty;
+            }
+            else if (playerState == PlayerController.PlayerState.heavyLungeWindup)
+            {
+                chanceDict["shuffleLeftChance"] += playerHeavyLungeWindupAdvanceChance * aggressiveness;
+                chanceDict["stepLeftChance"] += playerHeavyLungeWindupAdvanceChance * aggressiveness*difficulty;
+            }
+            else if (playerState == PlayerController.PlayerState.stepLeft)
+            {
+                chanceDict["stepLeftChance"] += (distance / chaseAfterEnemyDistanceDivideScale) * aggressiveness;
+            }
+
+            if (!canShift)
+            {
+                chanceDict["stepLeftChance"] = 0f;
+                chanceDict["stepRightChance"] = 0f;
+            }
+            #endregion
+
+            #region Select Idle Action
+            float totalChance = chanceDict.Values.Sum();
+            float chanceSelected = Random.Range(0, totalChance);
+
+            float temp= 0f;
+
+            foreach (KeyValuePair<string, float> item in chanceDict)
+            {
+                if (temp <= chanceSelected && chanceSelected < (temp + item.Value))
+                {
+                    stateToEnter = item.Key;
+                }
+                else
+                {
+                    temp += item.Value;
+                }
+            }
+
+            #endregion
+        }
+    }
+
+    private void UpdateState()
+    {
+        if (stateToEnter == "shuffleLeftChance")
+        {
+            state = EnemyState.shuffleLeft;
+            StartCoroutine(UnableToChangeDirection());
+            Debug.Log("switched to shuffleLeft");
+            stateToEnter = "";
+        }
+        else if (stateToEnter == "stepLeftChance")
+        {
+            stepLeftTimer = 0f;
+            state = EnemyState.stepLeft;
+            Debug.Log("switched to stepLeft");
+            stateToEnter = "";
+        }
+        else if (stateToEnter == "shuffleRightChance")
+        {
+            state = EnemyState.shuffleRight;
+            StartCoroutine(UnableToChangeDirection());
+            Debug.Log("switched to shuffleRight");
+            stateToEnter = "";
+        }
+        else if (stateToEnter == "stepRightChance")
+        {
+            stepRightTimer = 0f;
+            state = EnemyState.stepRight;
+            Debug.Log("switched to stepRight");
+            stateToEnter = "";
+        }
+        else if (stateToEnter == "idleChance")
+        {
+            state = EnemyState.idle;
+            Debug.Log("switched to idle");
+            stateToEnter = "";
+        }
+    }
+
+
+    private IEnumerator UnableToChangeDirection()
+    {
+        isAbleToChangeDirection = false;
+        yield return new WaitForSeconds(unableToChangeDirectionDuration);
+        isAbleToChangeDirection = true;
     }
 }
