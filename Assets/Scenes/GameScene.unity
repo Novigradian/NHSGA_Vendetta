@@ -315,7 +315,7 @@ SpriteRenderer:
   m_Size: {x: 7.3478565, y: 4.4955397}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &491070008 stripped
@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
+    - target: {fileID: 1735666211400816202, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
+      propertyPath: minimumStepLeftDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6652532464118253236, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1127,7 +1131,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1454776683, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 293
+      value: 374.1
       objectReference: {fileID: 0}
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x

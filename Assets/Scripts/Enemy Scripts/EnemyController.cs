@@ -114,6 +114,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float chaseAfterEnemyDistanceDivideScale;
     [SerializeField] private float unableToChangeDirectionDuration;
     [SerializeField] private bool isAbleToChangeDirection;
+    [SerializeField] private float baseLightAttackChance;
+    [SerializeField] private float baseHeavyLungeChance;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
@@ -153,8 +155,8 @@ public class EnemyController : MonoBehaviour
         chanceDict["stepLeftChance"] = 0f;
         chanceDict["stepRightChance"] = 0f;
         chanceDict["idleChance"] = baseIdleChance;
-        chanceDict["lightAttackChance"] = 0f;
-        chanceDict["heavyAttackChance"] = 0f;
+        chanceDict["lightAttackChance"] = baseLightAttackChance;
+        chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
         #endregion
