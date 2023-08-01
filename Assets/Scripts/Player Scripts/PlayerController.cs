@@ -864,6 +864,7 @@ public class PlayerController : MonoBehaviour
     {
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
+        Debug.Log("hit, remaining health: "+playerHealth+" damage dealt was: "+damage);
         state = PlayerState.getHit;
         ActivateRally();
         CheckDead();
@@ -1020,6 +1021,7 @@ public class PlayerController : MonoBehaviour
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
                     TakeHitDamage(enemyController.enemyLightAttackDamage);
+                    
                 }
                 else if(enemyState == EnemyController.EnemyState.heavyLunge)
                 {

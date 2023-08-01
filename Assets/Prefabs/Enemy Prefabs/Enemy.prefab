@@ -179,7 +179,7 @@ MonoBehaviour:
   lightAttackThrustSpeed: 36
   blockDuration: 0.25
   blockDamageNegationScale: 0.7
-  blockPushback: 1
+  blockPushback: 0
   jumpAttackDuration: 0.15
   jumpAttackSwingSpeed: 15
   jumpAttackThrustSpeed: {x: 10, y: -60}
@@ -195,7 +195,7 @@ MonoBehaviour:
   aggressiveness: 1.3
   difficulty: 1
   shuffleLeftDistanceDivideScale: 20
-  minimumStepLeftDistance: 3
+  minimumStepLeftDistance: 4
   stepLeftDistanceDivideScale: 35
   playerLightAttackRetreatChance: 0.3
   playerJumpAttackRetreatChance: 0.15
@@ -203,6 +203,9 @@ MonoBehaviour:
   chaseAfterEnemyDistanceDivideScale: 40
   unableToChangeDirectionDuration: 1
   isAbleToChangeDirection: 0
+  baseLightAttackChance: 0.8
+  baseHeavyLungeChance: 0
+  lightAttackRange: 5.5
   stateToEnter: 
 --- !u!1001 &3700987901009323085
 PrefabInstance:

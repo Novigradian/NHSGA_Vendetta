@@ -75,6 +75,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float lightAttackWindupSpeed;
     [SerializeField] private float lightAttackDuration;
     [SerializeField] private float lightAttackThrustSpeed;
+    private bool isLightAttackOnCooldown;
 
     [Header("Block")]
     [SerializeField] private float blockDuration;
@@ -116,6 +117,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool isAbleToChangeDirection;
     [SerializeField] private float baseLightAttackChance;
     [SerializeField] private float baseHeavyLungeChance;
+    [SerializeField] private float lightAttackRange;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
@@ -134,6 +136,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         #region Initialize Variables
+        isLightAttackOnCooldown = false;
         isAbleToChangeDirection = true;
         canMoveTowardsEnemy = true;
         canShift = true;
@@ -147,6 +150,7 @@ public class EnemyController : MonoBehaviour
         enemyHeavyLungeDamage = enemyHeavyLungeBaseDamage;
         minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
         direction = -1f;
+        enemyLightAttackBaseDamage = enemyLightAttackDamage;
 
         stateToEnter = "idleChance";
 
@@ -156,7 +160,7 @@ public class EnemyController : MonoBehaviour
         chanceDict["stepRightChance"] = 0f;
         chanceDict["idleChance"] = baseIdleChance;
         chanceDict["lightAttackChance"] = baseLightAttackChance;
-        chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
+        //chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
         #endregion
@@ -410,12 +414,6 @@ public class EnemyController : MonoBehaviour
     private void LightAtackWindupTransitions()
     {
         StartCoroutine(LightAttackWindup());
-        //if ()     //Write Transitions
-        {
-            swordRb.isKinematic = true;
-            ResetSwordPosition();
-            state = EnemyState.idle;
-        }
     }
 
     private void LightAttackActions()
@@ -453,7 +451,15 @@ public class EnemyController : MonoBehaviour
             ResetSwordPosition();
             state = EnemyState.idle;
             enemyLightAttackDamage = enemyLightAttackBaseDamage;
+            StartCoroutine(ResetLightAttackCooldown());
         }
+    }
+
+    private IEnumerator ResetLightAttackCooldown()
+    {
+        isLightAttackOnCooldown = true;
+        yield return new WaitForSeconds(Random.Range(0.1f, 1f));
+        isLightAttackOnCooldown = false;
     }
     #endregion
 
@@ -749,7 +755,7 @@ public class EnemyController : MonoBehaviour
     {
         swordPivot.localEulerAngles = Vector3.zero;
         swordPivot.position = transform.position + new Vector3(0f, 0.4f, 0f);
-        sword.transform.position = new Vector3(swordPivot.position.x + 2f, swordPivot.position.y + 0.6f, transform.position.z);
+        sword.transform.position = new Vector3(swordPivot.position.x -2f, swordPivot.position.y + 0.6f, transform.position.z);
         sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
     }
 
@@ -777,6 +783,16 @@ public class EnemyController : MonoBehaviour
         if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
         {
             #region Adjust Idle Chances
+            
+            if (distance > lightAttackRange || isLightAttackOnCooldown)
+            {
+                chanceDict["lightAttackChance"] = 0f;
+            }
+            else
+            {
+                chanceDict["lightAttackChance"] = baseLightAttackChance*aggressiveness;
+            }
+
             chanceDict["shuffleLeftChance"] = (distance / shuffleLeftDistanceDivideScale)*aggressiveness;
             if (distance <= minimumStepLeftDistance)
             {
@@ -877,6 +893,13 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.idle;
             Debug.Log("switched to idle");
             stateToEnter = "";
+        }
+        else if (stateToEnter == "lightAttackChance")
+        {
+            state = EnemyState.lightAttackWindup;
+            Debug.Log("switched to light attack");
+            stateToEnter = "";
+            swordRb.isKinematic = false;
         }
     }
 
