@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour
     #region Idle Functions
     private void IdleActions()
     {
-
+        animator.Play("Idle");
     }
 
     private void IdleTransitions()
