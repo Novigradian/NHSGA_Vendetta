@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float playerHeavyLungeDamage;
     public float playerJumpAttackDamage;
 
+    [HideInInspector] public float currentDamageValue;
+
     [Header("Rally")]
     [SerializeField] private float rallyScale;
     [SerializeField] private float rallyDuration;
@@ -614,11 +616,15 @@ public class PlayerController : MonoBehaviour
     {
         swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
         swordRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+
         if (canMoveTowardsEnemy)
         {
             rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackPlayerHorizontalSpeed;
         }
         CheckBuffer();
+
+        currentDamageValue = playerJumpAttackDamage;
+
     }
 
     private void JumpAttackTransitions()
@@ -667,6 +673,7 @@ public class PlayerController : MonoBehaviour
             swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
         }
         CheckBuffer();
+        currentDamageValue = playerLightAttackDamage;
     }
 
     private void LightAttackTransitions()
@@ -726,6 +733,7 @@ public class PlayerController : MonoBehaviour
                 swordRb.position += Vector2.down*heavyLungeLowerSwordScale;
                 heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 heavyLungeThrustSpeed+= heavyLungeWindupTime * heavyLungeWindupThrustScale;
+                currentDamageValue = playerHeavyLungeDamage;
             }
             else
             {
@@ -1102,19 +1110,19 @@ public class PlayerController : MonoBehaviour
     #endregion
     #endregion
 
-    void Flip()
-    {
-        isFacingLeft = !isFacingLeft;
-        if (isFacingLeft)
-        {
-            direction = -1f;
-        }
-        else
-        {
-            direction = 1f;
-        }
-        transform.Rotate(0f, 180f, 0f);
-    }
+    //void Flip()
+    //{
+    //    isFacingLeft = !isFacingLeft;
+    //    if (isFacingLeft)
+    //    {
+    //        direction = -1f;
+    //    }
+    //    else
+    //    {
+    //        direction = 1f;
+    //    }
+    //    transform.Rotate(0f, 180f, 0f);
+    //}
 
     public void ResetSwordPosition()
     {
