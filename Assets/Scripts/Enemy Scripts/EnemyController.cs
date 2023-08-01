@@ -537,10 +537,11 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.dead;
             playerController.state = PlayerController.PlayerState.idle;
             playerController.ResetSwordPosition();
-            player.transform.position = new Vector3(transform.position.x, -2f, transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x, -2.1f, player.transform.position.z);
             //Time.timeScale = 0;
             dialogueManager.playerDialogue.SetActive(true);
             gameManager.gameState = "PlayerWinDialogue";
+            gameManager.dialogueVolume.SetActive(true);
         }
     }
     #endregion

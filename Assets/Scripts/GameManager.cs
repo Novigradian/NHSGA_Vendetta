@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public float minimumPlayerEnemyDistance;
 
     public string gameState;
+
+    public GameObject dialogueVolume;
     #endregion
 
     void Awake()
@@ -15,6 +17,8 @@ public class GameManager : MonoBehaviour
         #region Initialize Variables
         gameState = "PreFight";
         #endregion
+
+        dialogueVolume.SetActive(true);
     }
 
     // Update is called once per frame

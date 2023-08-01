@@ -84,6 +84,7 @@ MonoBehaviour:
   isFacingLeft: 0
   sword: {fileID: 1735666212459705732}
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
   playerHealthBar: {fileID: 0}
   maxPlayerHealth: 100
   playerLightAttackDamage: 15
@@ -114,6 +115,7 @@ MonoBehaviour:
   stepCooldown: 0.5
   shuffleSpeed: 1
   canShift: 0
+  canMoveTowardsEnemy: 0
   jumpForce: 10
   jumpHorizontalSpeed: 1
   lightAttackWindupDuration: 0.2

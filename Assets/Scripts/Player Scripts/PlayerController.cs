@@ -678,10 +678,7 @@ public class PlayerController : MonoBehaviour
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
             heavyLungeWindupTime += Time.deltaTime;
-            if (canMoveTowardsEnemy)
-            {
-                swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
-            }
+            swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
         }
     }
 
@@ -711,8 +708,11 @@ public class PlayerController : MonoBehaviour
 
     private void HeavyLungeActions()
     {
-        rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
-        swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+            swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+        }
     }
 
     private void HeavyLungeTransitions()
@@ -870,6 +870,7 @@ public class PlayerController : MonoBehaviour
             //Time.timeScale = 0;
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
+            gameManager.dialogueVolume.SetActive(true);
         }
     }
     #endregion
