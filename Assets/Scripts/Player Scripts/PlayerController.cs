@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     Keyboard kb;
 
     [HideInInspector] public bool isFacingLeft;
-
+    public Animator animator;
     private Rigidbody2D rb;
     public GameObject sword;
     private Rigidbody2D swordRb;
@@ -156,12 +156,15 @@ public class PlayerController : MonoBehaviour
         swordCollider.enabled = false;
         swordPivot = sword.transform.parent;
 
+        animator = GetComponent<Animator>();
+
         isFacingLeft = false;
 
         canShift = true;
         canMoveTowardsEnemy = true;
 
         direction = 1f;
+
         #endregion
     }
 
@@ -619,6 +622,7 @@ public class PlayerController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
+        animator.Play("LightAttack");
         swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed;
     }
 
