@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public float playerHeavyLungeExtraDamageScale;
     [HideInInspector] public float playerHeavyLungeDamage;
     public float playerJumpAttackDamage;
+    [HideInInspector] public float currentDamageValue;
 
     [Header("Rally")]
     [SerializeField] private float rallyScale;
@@ -234,7 +235,6 @@ public class PlayerController : MonoBehaviour
                     HeavyLungeTransitions();
                     break;
                 case PlayerState.heavyLungeStun:
-                    HeavyLungeStunActions();
                     HeavyLungeStunTransitions();
                     break;
                 #endregion
@@ -594,6 +594,7 @@ public class PlayerController : MonoBehaviour
     {
         swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
         swordRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+        currentDamageValue = playerJumpAttackDamage;
     }
 
     private void JumpAttackTransitions()
@@ -635,6 +636,7 @@ public class PlayerController : MonoBehaviour
     private void LightAttackActions()
     {
         swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed;
+        currentDamageValue = playerLightAttackDamage;
     }
 
     private void LightAttackTransitions()
@@ -697,6 +699,7 @@ public class PlayerController : MonoBehaviour
                 swordRb.position += Vector2.down*heavyLungeLowerSwordScale;
                 heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 heavyLungeThrustSpeed+= heavyLungeWindupTime * heavyLungeWindupThrustScale;
+                currentDamageValue = playerHeavyLungeDamage;
             }
             else
             {
@@ -730,10 +733,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HeavyLungeStunActions()
-    {
-
-    }
 
     private void HeavyLungeStunTransitions()
     {
@@ -1063,19 +1062,19 @@ public class PlayerController : MonoBehaviour
     #endregion
     #endregion
 
-    void Flip()
-    {
-        isFacingLeft = !isFacingLeft;
-        if (isFacingLeft)
-        {
-            direction = -1f;
-        }
-        else
-        {
-            direction = 1f;
-        }
-        transform.Rotate(0f, 180f, 0f);
-    }
+    //void Flip()
+    //{
+    //    isFacingLeft = !isFacingLeft;
+    //    if (isFacingLeft)
+    //    {
+    //        direction = -1f;
+    //    }
+    //    else
+    //    {
+    //        direction = 1f;
+    //    }
+    //    transform.Rotate(0f, 180f, 0f);
+    //}
 
     public void ResetSwordPosition()
     {
