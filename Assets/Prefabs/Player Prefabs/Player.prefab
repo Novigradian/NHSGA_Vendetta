@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1296976084}
+  - component: {fileID: 2134099059}
   m_Layer: 0
   m_Name: PlayerSwordPivot
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   m_Father: {fileID: 1735666210835693572}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2134099059
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296976083}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &1735666210835693573
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,14 +114,15 @@ MonoBehaviour:
   playerHeavyLungeExtraDamageScale: 25
   playerHeavyLungeDamage: 0
   playerJumpAttackDamage: 30
+  currentDamageValue: 0
   rallyScale: 0.33
   rallyDuration: 2
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
-  maxPlayerStamina: 36
+  maxPlayerStamina: 42
   playerStaminaRecoverySpeed: 0.15
   playerStaminaRecoveryDelay: 1.7
-  playerStepStaminaCost: 8
+  playerStepStaminaCost: 6
   playerJumpStaminaCost: 4
   playerJumpAttackStaminaCost: 10
   playerLightAttackStaminaCost: 7
@@ -130,8 +153,9 @@ MonoBehaviour:
   heavyLungeThrustSpeed: 20
   heavyLungeStunDuration: 0.7
   jumpAttackDuration: 0.15
-  jumpAttackSwingSpeed: 1.5
-  jumpAttackThrustSpeed: {x: 12, y: -20}
+  jumpAttackSwingSpeed: 15
+  jumpAttackThrustSpeed: {x: 10, y: -60}
+  jumpAttackPlayerHorizontalSpeed: 17.5
   parryDuration: 0.1
   riposteDamageBonus: 25
 --- !u!61 &1051260131
