@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3472306370896711299}
   - component: {fileID: 3472306370896711298}
   - component: {fileID: 3472306370635930197}
+  - component: {fileID: 3472306370635930199}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -79,8 +80,36 @@ MonoBehaviour:
     grave. '
   - Enough of this prattle, soon you shall hear only the clash of my steel upon your
     flesh! En garde!
+  playerWinDialogueList:
+  - Yet another faint and feeble foe, forever to be remembered as a mere footnote
+    in my brilliant legacy!
+  enemyWinDialogueList:
+  - The master swordsman Lucius Lioni, pitifully slaughtered under the artistry of
+    my stikes!
+  - 'Thou art better suited for a life of contemplation and prayer, for the realm
+    of fencing does not favor the likes of thee. '
   playerDialogue: {fileID: 0}
   playerDialogueText: {fileID: 0}
   enemyDialogue: {fileID: 0}
   enemyDialogueText: {fileID: 0}
+  displayDialogueInterval: 0.02
+  gameManager: {fileID: 3472306370896711298}
+--- !u!114 &3472306370635930199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472306370896711324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c309065797f949e4bb2371cb81cab682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUI: {fileID: 0}
+  enemyUI: {fileID: 0}
+  playerWinUI: {fileID: 0}
+  enemyWinUI: {fileID: 0}
+  fightTextUI: {fileID: 0}
+  fightTextUIShowDuration: 4
   gameManager: {fileID: 3472306370896711298}

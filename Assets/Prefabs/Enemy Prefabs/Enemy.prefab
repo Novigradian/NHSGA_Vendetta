@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
   enemyHealthBar: {fileID: 0}
   maxEnemyHealth: 150
   enemyLightAttackDamage: 15

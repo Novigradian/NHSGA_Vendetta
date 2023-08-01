@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
 
     #region Dialogue Manager Components and Variables
     Keyboard kb;
+    private Animator anim;
 
     public string[] preFightDialogueSpeakerList;
     public string[] preFightDialogueList;
@@ -24,6 +25,10 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text playerDialogueText;
     public GameObject enemyDialogue;
     public TMP_Text enemyDialogueText;
+
+    private Coroutine currentCoroutine;
+
+    [SerializeField] private float displayDialogueInterval;
 
     public GameManager gameManager;
     #endregion
@@ -52,11 +57,13 @@ public class DialogueManager : MonoBehaviour
                 preFightDialogueIndex++;
                 if (preFightDialogueIndex < preFightDialogueList.Length)
                 {
+                    anim.SetTrigger("returnToIdle");
                     ShowPreFightDialogue(preFightDialogueIndex);
                 }
                 else
                 {
-                    gameManager.gameState = "Fight";
+                    currentCoroutine = null;
+                    gameManager.gameState = "FightText";
                     playerDialogue.SetActive(false);
                     enemyDialogue.SetActive(false);
                 }
@@ -64,7 +71,11 @@ public class DialogueManager : MonoBehaviour
         }
         else if (gameState == "PlayerWinDialogue")
         {
-            playerDialogueText.text = playerWinDialogueList[playerWinDialogueIndex];
+            if (currentCoroutine == null)
+            {
+                currentCoroutine = StartCoroutine(DisplayPlayerText(playerWinDialogueList[playerWinDialogueIndex]));
+            }
+            
             if (kb.anyKey.wasPressedThisFrame)
             {
                 playerWinDialogueIndex++;
@@ -73,11 +84,20 @@ public class DialogueManager : MonoBehaviour
                     gameManager.gameState = "PlayerWin";
                     playerDialogue.SetActive(false);
                 }
+                else
+                {
+                    StopCoroutine(currentCoroutine);
+                    anim.SetTrigger("returnToIdle");
+                    currentCoroutine =StartCoroutine(DisplayPlayerText(playerWinDialogueList[playerWinDialogueIndex]));
+                }
             }
         }
         else if (gameState == "EnemyWinDialogue")
         {
-            enemyDialogueText.text = enemyWinDialogueList[enemyWinDialogueIndex];
+            if (currentCoroutine == null)
+            {
+                currentCoroutine = StartCoroutine(DisplayEnemyText(enemyWinDialogueList[enemyWinDialogueIndex]));
+            }
             if (kb.anyKey.wasPressedThisFrame)
             {
                 enemyWinDialogueIndex++;
@@ -85,6 +105,12 @@ public class DialogueManager : MonoBehaviour
                 {
                     gameManager.gameState = "EnemyWin";
                     enemyDialogue.SetActive(false);
+                }
+                else
+                {
+                    StopCoroutine(currentCoroutine);
+                    anim.SetTrigger("returnToIdle");
+                    currentCoroutine =StartCoroutine(DisplayEnemyText(enemyWinDialogueList[enemyWinDialogueIndex]));
                 }
             }
         }
@@ -95,16 +121,48 @@ public class DialogueManager : MonoBehaviour
         playerDialogue.SetActive(false);
         enemyDialogue.SetActive(false);
 
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
         string speaker = preFightDialogueSpeakerList[index];
+        string text= preFightDialogueList[index];
         if (speaker == "Enemy")
         {
             enemyDialogue.SetActive(true);
-            enemyDialogueText.text = preFightDialogueList[index];
+            currentCoroutine=StartCoroutine(DisplayEnemyText(text));
         }
         else if (speaker == "Player")
         {
             playerDialogue.SetActive(true);
-            playerDialogueText.text = preFightDialogueList[index];
+            currentCoroutine=StartCoroutine(DisplayPlayerText(text));
+        }
+    }
+
+    private IEnumerator DisplayPlayerText(string text)
+    {
+        anim = playerDialogueText.GetComponent<Animator>();
+        anim.SetTrigger("startFadeIn");
+        
+        playerDialogueText.text = "";
+        foreach (char character in text)
+        {
+            playerDialogueText.text += character;
+            yield return new WaitForSeconds(displayDialogueInterval);
+        }
+    }
+
+    private IEnumerator DisplayEnemyText(string text)
+    {
+        anim = enemyDialogueText.GetComponent<Animator>();
+        anim.SetTrigger("startFadeIn");
+
+        enemyDialogueText.text = "";
+        foreach (char character in text)
+        {
+            enemyDialogueText.text += character;
+            yield return new WaitForSeconds(displayDialogueInterval);
         }
     }
 }
