@@ -96,10 +96,10 @@ MonoBehaviour:
   rallyDuration: 2
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
-  maxPlayerStamina: 36
+  maxPlayerStamina: 42
   playerStaminaRecoverySpeed: 0.15
   playerStaminaRecoveryDelay: 1.7
-  playerStepStaminaCost: 8
+  playerStepStaminaCost: 6
   playerJumpStaminaCost: 4
   playerJumpAttackStaminaCost: 10
   playerLightAttackStaminaCost: 7
@@ -132,6 +132,7 @@ MonoBehaviour:
   jumpAttackDuration: 0.15
   jumpAttackSwingSpeed: 1.5
   jumpAttackThrustSpeed: {x: 12, y: -20}
+  jumpAttackPlayerHorizontalSpeed: 17.5
   parryDuration: 0.1
   riposteDamageBonus: 25
 --- !u!61 &1051260131

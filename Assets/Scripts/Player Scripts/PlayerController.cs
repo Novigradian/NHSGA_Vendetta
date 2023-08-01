@@ -119,12 +119,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpAttackDuration;
     [SerializeField] private float jumpAttackSwingSpeed;
     [SerializeField] private Vector2 jumpAttackThrustSpeed;
+    [SerializeField] private float jumpAttackPlayerHorizontalSpeed;
 
     [Header("Parry")]
     [SerializeField] private float parryDuration;
     [SerializeField] private float riposteDamageBonus;
 
     private float direction;
+    private string bufferState;
     #region Timers
     private float stepLeftTimer;
     private float stepRightTimer;
@@ -161,6 +163,8 @@ public class PlayerController : MonoBehaviour
         canMoveTowardsEnemy = true;
 
         direction = 1f;
+
+        bufferState = "None";
         #endregion
     }
 
@@ -329,24 +333,28 @@ public class PlayerController : MonoBehaviour
             }
             */
         }
-        else if (kb.spaceKey.isPressed && !isOutOfStamina)
+        else if ((kb.spaceKey.isPressed||bufferState=="Jump") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.jump;
             UseStamina(playerJumpStaminaCost);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        else if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.oKey.wasPressedThisFrame||bufferState=="LightAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.pKey.wasPressedThisFrame||bufferState=="HeavyAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
-        else if (kb.iKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.parry;
         }
     }
@@ -356,6 +364,7 @@ public class PlayerController : MonoBehaviour
     private void StepLeftActions()
     {
         rb.position += Vector2.left * Time.deltaTime * stepSpeed;
+        CheckBuffer();
     }
 
     private void StepLeftTransitions()
@@ -397,6 +406,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.position += Vector2.right * Time.deltaTime * stepSpeed;
         }
+        CheckBuffer();
     }
 
     private void StepRightTransitions()
@@ -440,22 +450,26 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleLeftTransitions()
     {
-        if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
+        if ((kb.oKey.wasPressedThisFrame || bufferState=="LightAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.pKey.wasPressedThisFrame||bufferState=="HeavyAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
-        else if (kb.iKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.parry;
         }
-        else if (kb.spaceKey.isPressed && !isOutOfStamina)
+        else if ((kb.spaceKey.isPressed||bufferState=="Jump") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.jump;
             UseStamina(playerJumpStaminaCost);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -504,22 +518,26 @@ public class PlayerController : MonoBehaviour
 
     private void ShuffleRightTransitions()
     {
-        if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
+        if ((kb.oKey.wasPressedThisFrame||bufferState=="LightAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.lightAttackWindup;
         }
-        else if (kb.pKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.pKey.wasPressedThisFrame||bufferState=="HeavyAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
         }
-        else if (kb.iKey.wasPressedThisFrame && !isOutOfStamina)
+        else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.parry;
         }
-        else if (kb.spaceKey.isPressed && !isOutOfStamina)
+        else if ((kb.spaceKey.isPressed||bufferState=="Jump") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.jump;
             UseStamina(playerJumpStaminaCost);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -576,12 +594,14 @@ public class PlayerController : MonoBehaviour
         {
             rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
         }
+        CheckBuffer();
     }
 
     private void JumpTransitions()
     {
-        if (kb.oKey.wasPressedThisFrame && !isOutOfStamina)
+        if ((kb.oKey.wasPressedThisFrame||bufferState=="JumpAttack") && !isOutOfStamina)
         {
+            bufferState = "None";
             state = PlayerState.jumpAttack;
             swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
             UseStamina(playerJumpAttackStaminaCost);
@@ -594,6 +614,11 @@ public class PlayerController : MonoBehaviour
     {
         swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
         swordRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackPlayerHorizontalSpeed;
+        }
+        CheckBuffer();
     }
 
     private void JumpAttackTransitions()
@@ -618,7 +643,9 @@ public class PlayerController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
-        swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed;
+        rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed*0.1f;
+        swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed*0.7f;
+        CheckBuffer();
     }
 
     private void LightAtackWindupTransitions()
@@ -634,7 +661,12 @@ public class PlayerController : MonoBehaviour
 
     private void LightAttackActions()
     {
-        swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            rb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.25f;
+            swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
+        }
+        CheckBuffer();
     }
 
     private void LightAttackTransitions()
@@ -701,6 +733,11 @@ public class PlayerController : MonoBehaviour
                 ResetSwordPosition();
             }
         }
+        else if (!kb.pKey.isPressed)
+        {
+            state = PlayerState.idle;
+            ResetSwordPosition();
+        }
     }
 
     private void HeavyLungeActions()
@@ -710,6 +747,7 @@ public class PlayerController : MonoBehaviour
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
         }
+        CheckBuffer();
     }
 
     private void HeavyLungeTransitions()
@@ -732,7 +770,7 @@ public class PlayerController : MonoBehaviour
 
     private void HeavyLungeStunActions()
     {
-
+        CheckBuffer();
     }
 
     private void HeavyLungeStunTransitions()
@@ -765,7 +803,7 @@ public class PlayerController : MonoBehaviour
     #region Parry Functions
     private void ParryActions()
     {
-
+        CheckBuffer();
     }
 
     private void ParryTransitions()
@@ -786,7 +824,7 @@ public class PlayerController : MonoBehaviour
     #region Get Hit Functions
     private void GetHitActions()
     {
-
+        CheckBuffer();
     }
 
     private void GetHitTransitions()
@@ -1096,5 +1134,33 @@ public class PlayerController : MonoBehaviour
         {
             canMoveTowardsEnemy = true;
         }
+    }
+
+    private void CheckBuffer()
+    {
+        if (kb.spaceKey.wasPressedThisFrame)
+            {
+                bufferState = "Jump";
+            }
+        else if (kb.oKey.wasPressedThisFrame && state!=PlayerState.jump)
+            {
+            if (state == PlayerState.jumpAttack)
+            {
+                bufferState = "JumpAttack";
+            }
+            else
+            {
+                bufferState = "LightAttack";
+            }
+            }
+         else if (kb.pKey.wasPressedThisFrame)
+            {
+                bufferState = "HeavyAttack";
+            }
+          else if (kb.iKey.wasPressedThisFrame)
+            {
+                bufferState = "Parry";
+            }
+        
     }
 }
