@@ -874,7 +874,6 @@ public class PlayerController : MonoBehaviour
     #region Block Functions
     private void BlockActions()
     {
-        FindObjectOfType<AudioManager>().Play("Block");
         rb.velocity += Vector2.right * direction * blockPushBack;
     }
 
