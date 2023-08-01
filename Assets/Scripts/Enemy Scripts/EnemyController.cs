@@ -491,7 +491,8 @@ public class EnemyController : MonoBehaviour
     public void HeavyLunge()
     {
         StartCoroutine(HeavyLungeCoroutine());
-        sword.GetComponent<Rigidbody2D>().position += -Vector2.right * Time.deltaTime * heavyLungeThrustSpeed;
+        rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+        swordRb.position += -Vector2.right * Time.deltaTime * heavyLungeThrustSpeed;
     }
     public IEnumerator HeavyLungeCoroutine()
     {
