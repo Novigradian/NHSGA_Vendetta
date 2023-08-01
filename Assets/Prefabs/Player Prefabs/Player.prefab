@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   isFacingLeft: 0
-  animator: {fileID: 0}
+  animator: {fileID: 483007522}
   sword: {fileID: 1735666212459705732}
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
@@ -229,7 +229,7 @@ MonoBehaviour:
   rallyDuration: 2
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
-  maxPlayerStamina: 42
+  maxPlayerStamina: 60
   playerStaminaRecoverySpeed: 0.15
   playerStaminaRecoveryDelay: 1.7
   playerStepStaminaCost: 6
