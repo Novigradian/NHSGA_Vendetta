@@ -871,6 +871,7 @@ public class PlayerController : MonoBehaviour
             //Time.timeScale = 0;
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
+            gameManager.dialogueVolume.SetActive(true);
         }
     }
     #endregion

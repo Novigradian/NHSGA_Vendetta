@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     currentCoroutine = null;
                     gameManager.gameState = "FightText";
+                    gameManager.dialogueVolume.SetActive(false);
                     playerDialogue.SetActive(false);
                     enemyDialogue.SetActive(false);
                 }

@@ -400,6 +400,7 @@ public class EnemyController : MonoBehaviour
             //Time.timeScale = 0;
             dialogueManager.playerDialogue.SetActive(true);
             gameManager.gameState = "PlayerWinDialogue";
+            gameManager.dialogueVolume.SetActive(true);
         }
     }
     #endregion
