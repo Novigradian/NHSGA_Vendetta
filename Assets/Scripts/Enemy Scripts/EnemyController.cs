@@ -98,6 +98,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float heavyLungeLowerSwordScale;
     [SerializeField] private float heavyLungeThrustSpeed;
     [SerializeField] private float heavyLungeStunDuration;
+    [SerializeField] private float minHeavyLungeWindupDuration;
+    [SerializeField] private float maxHeavyLungeWindupDuration;
 
     [Header("Parry")]
     [SerializeField] private float parryDuration;
@@ -120,6 +122,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float baseLightAttackChance;
     [SerializeField] private float baseHeavyLungeChance;
     [SerializeField] private float lightAttackRange;
+    [SerializeField] private float heavyLungeRange;
+    [SerializeField] private float heavyLungeDistanceScale;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
@@ -156,6 +160,7 @@ public class EnemyController : MonoBehaviour
 
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
+        heavyLungeWindupTime = 0f;
 
         stateToEnter = "idleChance";
 
@@ -478,13 +483,14 @@ public class EnemyController : MonoBehaviour
     }
     public IEnumerator HeavyLungeWindupCoroutine()
     {
-        
-        yield return new WaitForSeconds(1f);
+        heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
+        yield return new WaitForSeconds(heavyLungeWindupTime);
         if (state == EnemyState.heavyLungeWindup)
         {
             heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
             heavyLungeThrustSpeed += heavyLungeWindupTime * heavyLungeWindupThrustScale;
             state = EnemyState.heavyLunge;
+            swordCollider.enabled = true;
         }
     }
 
@@ -500,6 +506,8 @@ public class EnemyController : MonoBehaviour
         {
             ResetSwordPosition();
             swordRb.isKinematic = true;
+            swordCollider.enabled = false;
+            state = EnemyState.heavyLungeStun;
         }
     }
 
@@ -790,7 +798,15 @@ public class EnemyController : MonoBehaviour
         if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
         {
             #region Adjust Idle Chances
-            
+            if (distance < heavyLungeRange)
+            {
+                chanceDict["heavyLungeChance"] = 0f;
+            }
+            else
+            {
+                chanceDict["heavyLungeChance"] = baseHeavyLungeChance * aggressiveness*(distance/heavyLungeDistanceScale);
+            }
+
             if (distance > lightAttackRange || isLightAttackOnCooldown)
             {
                 chanceDict["lightAttackChance"] = 0f;
@@ -905,6 +921,13 @@ public class EnemyController : MonoBehaviour
         {
             state = EnemyState.lightAttackWindup;
             Debug.Log("switched to light attack");
+            stateToEnter = "";
+            swordRb.isKinematic = false;
+        }
+        else if (stateToEnter == "heavyLungeChance")
+        {
+            state = EnemyState.heavyLungeWindup;
+            Debug.Log("switched to heavy lunge");
             stateToEnter = "";
             swordRb.isKinematic = false;
         }

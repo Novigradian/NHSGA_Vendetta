@@ -189,6 +189,8 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 20
   heavyLungeStunDuration: 0.7
+  minHeavyLungeWindupDuration: 1
+  maxHeavyLungeWindupDuration: 4
   parryDuration: 0.1
   riposteDamageBonus: 25
   baseIdleChance: 0.2
@@ -203,9 +205,11 @@ MonoBehaviour:
   chaseAfterEnemyDistanceDivideScale: 40
   unableToChangeDirectionDuration: 1
   isAbleToChangeDirection: 0
-  baseLightAttackChance: 0.8
-  baseHeavyLungeChance: 0
+  baseLightAttackChance: 0.4
+  baseHeavyLungeChance: 0.001
   lightAttackRange: 5.5
+  heavyLungeRange: 7.5
+  heavyLungeDistanceScale: 11
   stateToEnter: 
 --- !u!1001 &3700987901009323085
 PrefabInstance:
