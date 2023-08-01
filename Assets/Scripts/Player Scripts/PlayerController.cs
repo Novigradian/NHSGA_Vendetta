@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     Keyboard kb;
 
     [HideInInspector] public bool isFacingLeft;
-
+    public Animator animator;
     private Rigidbody2D rb;
     public GameObject sword;
     private Rigidbody2D swordRb;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public DialogueManager dialogueManager;
     private float minimumPlayerEnemyDistance;
+    public Transform controllerTransform;
 
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
@@ -161,6 +162,9 @@ public class PlayerController : MonoBehaviour
         swordCollider.enabled = false;
         swordPivot = sword.transform.parent;
         swordPivotRb = swordPivot.GetComponent<Rigidbody2D>();
+
+        controllerTransform = this.gameObject.transform.GetChild(2);
+        animator = controllerTransform.GetComponent<Animator>();
 
         isFacingLeft = false;
 
@@ -654,6 +658,8 @@ public class PlayerController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
+        animator.Play("LightAttack");
+        swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed;
         rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed*0.1f;
         swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed*0.7f;
         CheckBuffer();
