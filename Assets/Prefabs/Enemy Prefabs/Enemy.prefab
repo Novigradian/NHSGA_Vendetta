@@ -319,10 +319,10 @@ MonoBehaviour:
   unableToChangeDirectionDuration: 0.6
   isAbleToChangeDirection: 0
   baseLightAttackChance: 0.125
-  baseHeavyLungeChance: 0.004
+  baseHeavyLungeChance: 0.01
   lightAttackRange: 5.5
   heavyLungeRange: 7.5
-  heavyLungeDistanceScale: 17
+  heavyLungeDistanceScale: 16
   playerHeavyLungeJumpChance: 0.3
   stateToEnter: 
 --- !u!1001 &3700987901009323085
@@ -415,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 3188216389853677384, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_Name
       value: EnemyBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188216389853677384, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3188216389853677388, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_RootOrder
