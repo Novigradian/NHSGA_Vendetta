@@ -102,7 +102,7 @@ public class UIManager : MonoBehaviour
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
         Vector2 canvasPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
-        riposteTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
+        parryTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
         StartCoroutine(HideParryText());
     }
 

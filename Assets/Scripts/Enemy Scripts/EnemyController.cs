@@ -679,7 +679,7 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController.PlayerState playerState = playerController.state;
 
-            #region Player is Idle/Moving/Jumping/Windup/Stun
+            #region Enemy is Idle/Moving/Jumping/Windup/Stun
             if (state == EnemyState.idle || state == EnemyState.shuffleLeft || state == EnemyState.stepLeft || state == EnemyState.stepRight || state == EnemyState.lightAttackWindup || state == EnemyState.heavyLungeWindup || state == EnemyState.heavyLungeStun || state == EnemyState.jump || state == EnemyState.lightAttack)
             {
                 //state = PlayerState.getHit;
@@ -703,7 +703,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is Blocking
+            #region Enemy is Blocking
             else if (state == EnemyState.shuffleRight)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
@@ -725,7 +725,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is Jump Attacking
+            #region Enemy is Jump Attacking
             else if (state == EnemyState.jumpAttack)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
@@ -743,7 +743,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is Parrying
+            #region Enemy is Parrying
             else if (state == EnemyState.parry)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
@@ -761,7 +761,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is Heavy Lunging
+            #region Enemy is Heavy Lunging
             else if (state == EnemyState.heavyLunge)
             {
                 if (playerState == PlayerController.PlayerState.jumpAttack)
@@ -771,7 +771,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is already in Get Hit
+            #region Enemy is already in Get Hit
             else if (state == EnemyState.getHit)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
