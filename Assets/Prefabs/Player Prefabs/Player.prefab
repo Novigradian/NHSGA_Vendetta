@@ -100,7 +100,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.3564157, y: 4.49}
+  m_Size: {x: 7.368205, y: 4.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   playerHeavyLungeExtraStaminaCostScale: 6
   enemy: {fileID: 0}
   getHitStunDuration: 0.5
-  getHitKnockBackForce: 0.035
+  getHitKnockBackForce: 0.07
   blockDuration: 0.25
   blockDamageNegationScale: 0.75
   blockStaminaDrainScale: 0.375
@@ -466,11 +466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -478,19 +478,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7933534
+      value: 0.8191521
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.60876137
+      value: -0.5735764
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -502,7 +502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -75
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 8244029177226976792, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_Constraints

@@ -409,6 +409,14 @@ PrefabInstance:
       propertyPath: playerStaminaBar
       value: 
       objectReference: {fileID: 1789710035}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: getHitKnockBackForce
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: getHitKnockBackSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -516,6 +524,10 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
+    - target: {fileID: 1735666211400816202, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
+      propertyPath: getHitKnockBackSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6652532464118253236, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -563,10 +575,6 @@ PrefabInstance:
     - target: {fileID: 6652532464118253237, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652532464816386060, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
@@ -817,10 +825,6 @@ PrefabInstance:
       propertyPath: enemyWinUI
       value: 
       objectReference: {fileID: 224276259}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: fientTextUI
-      value: 
-      objectReference: {fileID: 6078899087307618118, guid: 5604e1b2b591702438d686e7135ca890, type: 3}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: fightTextUI
       value: 

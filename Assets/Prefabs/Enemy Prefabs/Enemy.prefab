@@ -285,8 +285,8 @@ MonoBehaviour:
   jumpForce: 7.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
-  getHitKnockBackForce: 0.035
-  lightAttackWindupDuration: 0.38
+  getHitKnockBackForce: 0.04
+  lightAttackWindupDuration: 0.39
   lightAttackWindupSpeed: 6
   lightAttackDuration: 0.15
   lightAttackThrustSpeed: 36
@@ -418,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3188216389853677384, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3188216389853677388, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_RootOrder
