@@ -260,7 +260,7 @@ MonoBehaviour:
   lightAttackWindupDuration: 0.2
   lightAttackWindupSpeed: 5
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 45
+  lightAttackThrustSpeed: 30
   heavyLungeMinimumWindupTime: 0.5
   heavyLungeMaximumWindupTime: 2
   heavyLungeWindupSpeed: 1
