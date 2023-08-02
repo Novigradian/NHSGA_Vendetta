@@ -716,10 +716,15 @@ public class EnemyController : MonoBehaviour
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
-                    TakeBlockDamage(playerController.playerLightAttackDamage);
+                    
                     if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
                     {
                         UIManager.ShowRiposteText(player.transform.position);
+                        TakeHitDamage(playerController.playerLightAttackDamage);
+                    }
+                    else
+                    {
+                        TakeBlockDamage(playerController.playerLightAttackDamage);
                     }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)

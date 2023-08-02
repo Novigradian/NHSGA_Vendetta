@@ -285,6 +285,7 @@ MonoBehaviour:
   jumpForce: 7.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
+  getHitKnockBackForce: 0.035
   lightAttackWindupDuration: 0.38
   lightAttackWindupSpeed: 6
   lightAttackDuration: 0.15
