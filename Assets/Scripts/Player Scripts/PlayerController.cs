@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     public UIManager UIManager;
     private float minimumPlayerEnemyDistance;
     public Transform controllerTransform;
-    public AudioManager audioManager;
 
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
@@ -145,7 +144,6 @@ public class PlayerController : MonoBehaviour
         kb = Keyboard.current;
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        audioManager = FindObjectOfType<AudioManager>();
         minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
 
         playerHealth = maxPlayerHealth;
@@ -375,8 +373,6 @@ public class PlayerController : MonoBehaviour
     #region Movement Functions
     private void StepLeftActions()
     {
-        animator.Play("StepLeft");
-        audioManager.Play("Dash");
         rb.position += Vector2.left * Time.deltaTime * stepSpeed;
         CheckBuffer();
     }
@@ -418,8 +414,6 @@ public class PlayerController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            animator.Play("StepRight");
-            audioManager.Play("Dash");
             rb.position += Vector2.right * Time.deltaTime * stepSpeed;
         }
         CheckBuffer();
@@ -461,8 +455,6 @@ public class PlayerController : MonoBehaviour
     
     private void ShuffleLeftActions()
     {
-        animator.Play("ShuffleLeft");
-        audioManager.Play("Shuffle");
         rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
     }
 
@@ -530,8 +522,6 @@ public class PlayerController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            animator.Play("ShuffleRight");
-            audioManager.Play("Shuffle");
             rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
         }
     }
@@ -609,12 +599,10 @@ public class PlayerController : MonoBehaviour
         if (kb.dKey.isPressed && canMoveTowardsEnemy)
         {
             rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
-            audioManager.Play("Jump");
         }
         else if (kb.aKey.isPressed)
         {
             rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
-            audioManager.Play("Jump");
         }
         CheckBuffer();
     }
@@ -672,7 +660,6 @@ public class PlayerController : MonoBehaviour
     private void LightAttackWindupActions()
     {
         animator.Play("LightAttack");
-        audioManager.Play("LightAttack");
         swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed;
         rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed*0.1f;
         swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed*0.7f;
@@ -739,7 +726,6 @@ public class PlayerController : MonoBehaviour
     {
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
-            animator.SetTrigger("HeavyWindup");
             heavyLungeWindupTime += Time.deltaTime;
             swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
         }
@@ -778,7 +764,6 @@ public class PlayerController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            animator.Play("HeavyAttack");
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
         }
@@ -869,7 +854,6 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator GetHit()
     {
-        animator.Play("GetHit");
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == PlayerState.getHit)
         {
@@ -911,7 +895,6 @@ public class PlayerController : MonoBehaviour
 
     private void ActivateBlock()
     {
-        audioManager.Play("Block");
         state = PlayerState.block;
         StopCoroutine(ResetBlock());
         StartCoroutine(ResetBlock());
