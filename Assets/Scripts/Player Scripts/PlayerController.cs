@@ -977,12 +977,14 @@ public class PlayerController : MonoBehaviour
         {
             playerStamina = 0f;
             isOutOfStamina = true;
+            UIManager.outOfStaminaTextUI.SetActive(true);
         }
     }
     private IEnumerator RecoverStamina()
     {
         yield return new WaitForSeconds(playerStaminaRecoveryDelay);
         isOutOfStamina = false;
+        UIManager.outOfStaminaTextUI.SetActive(false);
         while (playerStamina < maxPlayerStamina)
         {
             playerStamina += playerStaminaRecoverySpeed;

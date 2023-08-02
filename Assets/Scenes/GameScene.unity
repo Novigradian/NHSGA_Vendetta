@@ -349,6 +349,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 816303626, guid: c5b52f2aabe855f4697496106941a369, type: 3}
   m_PrefabInstance: {fileID: 7079391959960851292}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &828659996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4348450871370017701, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1105556314 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7775932672884712829, guid: c5b52f2aabe855f4697496106941a369, type: 3}
@@ -824,10 +829,10 @@ PrefabInstance:
       propertyPath: riposteTextUI
       value: 
       objectReference: {fileID: 7079391959960851293}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: fightVolume
+    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: outOfStaminaTextUI
       value: 
-      objectReference: {fileID: 224290066}
+      objectReference: {fileID: 828659996}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: getHitVolume
       value: 
@@ -836,10 +841,6 @@ PrefabInstance:
       propertyPath: dialogueVolume
       value: 
       objectReference: {fileID: 1406694649}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: getHitVolumeShowDuration
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: m_RootOrder
       value: 8

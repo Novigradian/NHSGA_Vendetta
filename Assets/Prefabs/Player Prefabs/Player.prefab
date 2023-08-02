@@ -221,7 +221,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   playerHealthBar: {fileID: 0}
   maxPlayerHealth: 110
-  playerLightAttackDamage: 15
+  playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 12
   playerHeavyLungeExtraDamageScale: 20
@@ -271,7 +271,7 @@ MonoBehaviour:
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackPlayerHorizontalSpeed: 17.5
   parryDuration: 0.1
-  riposteDamageBonus: 30
+  riposteDamageBonus: 25
 --- !u!61 &1051260131
 BoxCollider2D:
   m_ObjectHideFlags: 0
