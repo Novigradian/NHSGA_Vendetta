@@ -216,14 +216,12 @@ MonoBehaviour:
   sword: {fileID: 1735666212459705732}
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
-  UIManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 110
+  maxPlayerHealth: 100
   playerLightAttackDamage: 15
-  playerLightAttackBaseDamage: 0
-  playerHeavyLungeBaseDamage: 12
-  playerHeavyLungeExtraDamageScale: 20
+  playerHeavyLungeBaseDamage: 20
+  playerHeavyLungeExtraDamageScale: 25
   playerHeavyLungeDamage: 0
   playerJumpAttackDamage: 30
   currentDamageValue: 0
@@ -232,8 +230,8 @@ MonoBehaviour:
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
-  playerStaminaRecoverySpeed: 0.5
-  playerStaminaRecoveryDelay: 1.2
+  playerStaminaRecoverySpeed: 0.15
+  playerStaminaRecoveryDelay: 1.7
   playerStepStaminaCost: 6
   playerJumpStaminaCost: 4
   playerJumpAttackStaminaCost: 10
@@ -241,10 +239,10 @@ MonoBehaviour:
   playerHeavyLungeBaseStaminaCost: 9
   playerHeavyLungeExtraStaminaCostScale: 6
   enemy: {fileID: 0}
-  getHitStunDuration: 0.5
+  getHitStunDuration: 0.25
   blockDuration: 0.25
-  blockDamageNegationScale: 0.85
-  blockStaminaDrainScale: 0.2
+  blockDamageNegationScale: 0.7
+  blockStaminaDrainScale: 0.25
   blockPushBack: 0
   stepSpeed: 7
   stepDuration: 0.35
@@ -269,8 +267,8 @@ MonoBehaviour:
   jumpAttackSwingSpeed: 15
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackPlayerHorizontalSpeed: 17.5
-  parryDuration: 0.6
-  riposteDamageBonus: 30
+  parryDuration: 0.1
+  riposteDamageBonus: 25
 --- !u!61 &1051260131
 BoxCollider2D:
   m_ObjectHideFlags: 0

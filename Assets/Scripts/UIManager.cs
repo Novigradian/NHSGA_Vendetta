@@ -14,19 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject fightTextUI;
     [SerializeField] private float fightTextUIShowDuration;
 
-    public GameObject parryTextUI;
-    public GameObject riposteTextUI;
-    public GameObject damageTextUI;
-    public GameObject blockTextUI;
-    public GameObject critTextUI;
-    private RectTransform parryTextRectTransform;
-    private RectTransform riposteTextRectTransform;
-    [SerializeField] private float showTextDuration;
-    [SerializeField] private float showDamageTextDuration;
-
     public GameManager gameManager;
-    public GameObject canvas;
-    private RectTransform canvasRectTransform;
 
     private bool isResetUIPos;
     private bool isShowWinText;
@@ -39,10 +27,6 @@ public class UIManager : MonoBehaviour
         isShowFightText = false;
         enemyUI.transform.position = new Vector3(enemyUI.transform.position.x, enemyUI.transform.position.y + 100f, enemyUI.transform.position.z);
         playerUI.transform.position = new Vector3(playerUI.transform.position.x, playerUI.transform.position.y - 100f, playerUI.transform.position.z);
-
-        parryTextRectTransform = parryTextUI.GetComponent<RectTransform>();
-        riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
-        canvasRectTransform = canvas.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -95,73 +79,5 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(fightTextUIShowDuration * 0.25f);
         fightTextUI.SetActive(false);
-    }
-
-    public void ShowParryText(Vector3 playerWorldPos)
-    {
-        parryTextUI.SetActive(true);
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
-        Vector2 canvasPosition;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
-        parryTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
-        StartCoroutine(HideParryText());
-    }
-
-    private IEnumerator HideParryText()
-    {
-        yield return new WaitForSeconds(showTextDuration);
-        parryTextUI.SetActive(false);
-    }
-
-    public void ShowRiposteText(Vector3 playerWorldPos)
-    {
-        riposteTextUI.SetActive(true);
-        riposteTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos)+new Vector2(0f,145f);
-        StartCoroutine(HideRiposteText());
-    }
-
-    private IEnumerator HideRiposteText()
-    {
-        yield return new WaitForSeconds(showTextDuration);
-        riposteTextUI.SetActive(false);
-    }
-
-    public void ShowDamageText(Vector3 playerWorldPos, float damage)
-    {
-        GameObject damageTextUIInstance = Instantiate(damageTextUI,canvas.transform);
-        damageTextUIInstance.GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(damage).ToString();
-
-        damageTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
-        StartCoroutine(HideDamageText(damageTextUIInstance));
-    }
-
-    private IEnumerator HideDamageText(GameObject damageTextUIInstance)
-    {
-        yield return new WaitForSeconds(showDamageTextDuration);
-        Destroy(damageTextUIInstance);
-    }
-
-    public void ShowBlockText(Vector3 playerWorldPos)
-    {
-        GameObject blockTextUIInstance = Instantiate(blockTextUI, canvas.transform);
-
-        blockTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 187.5f);
-        StartCoroutine(HideDamageText(blockTextUIInstance));
-    }
-
-    public void ShowCritText(Vector3 playerWorldPos)
-    {
-        GameObject critTextUIInstance = Instantiate(critTextUI, canvas.transform);
-
-        critTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 187.5f);
-        StartCoroutine(HideDamageText(critTextUIInstance));
-    }
-
-    private Vector2 WorldToCanvasPos(Vector3 playerWorldPos)
-    {
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
-        Vector2 canvasPosition;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
-        return canvasPosition;
     }
 }
