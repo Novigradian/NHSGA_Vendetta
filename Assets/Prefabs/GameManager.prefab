@@ -116,6 +116,8 @@ MonoBehaviour:
   fightTextUIShowDuration: 4
   parryTextUI: {fileID: 0}
   riposteTextUI: {fileID: 0}
+  damageTextUI: {fileID: 6058835268198662534, guid: fde00fe4f5f05c746b8df480dc10877b, type: 3}
   showTextDuration: 0.75
+  showDamageTextDuration: 0.75
   gameManager: {fileID: 3472306370896711298}
   canvas: {fileID: 0}

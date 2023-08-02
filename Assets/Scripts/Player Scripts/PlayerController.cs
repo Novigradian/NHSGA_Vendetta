@@ -866,6 +866,7 @@ public class PlayerController : MonoBehaviour
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
         Debug.Log("hit, remaining health: "+playerHealth+" damage dealt was: "+damage);
+        UIManager.ShowDamageText(transform.position,damage);
         state = PlayerState.getHit;
         ActivateRally();
         CheckDead();
@@ -902,8 +903,10 @@ public class PlayerController : MonoBehaviour
     private void TakeBlockDamage(float baseDamage)
     {
         ActivateBlock();
-        playerHealth -= baseDamage * blockDamageNegationScale;
+        float blockedDamage = baseDamage * (1f - blockDamageNegationScale);
+        playerHealth -= blockedDamage;
         playerHealthBar.SetHealth(playerHealth);
+        UIManager.ShowDamageText(transform.position, blockedDamage);
         UseStamina(baseDamage * blockStaminaDrainScale);
         CheckDead();
     }
@@ -1109,16 +1112,19 @@ public class PlayerController : MonoBehaviour
                 {
                     playerHealth -= enemyController.enemyLightAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
+                    UIManager.ShowDamageText(transform.position, enemyController.enemyLightAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
                     playerHealth -= enemyController.enemyJumpAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
+                    UIManager.ShowDamageText(transform.position, enemyController.enemyJumpAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.heavyLunge)
                 {
                     playerHealth -= enemyController.enemyHeavyLungeDamage;
                     playerHealthBar.SetHealth(playerHealth);
+                    UIManager.ShowDamageText(transform.position, enemyController.enemyHeavyLungeDamage);
                 }
             }
             

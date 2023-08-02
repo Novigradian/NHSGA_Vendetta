@@ -16,9 +16,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject parryTextUI;
     public GameObject riposteTextUI;
+    public GameObject damageTextUI;
     private RectTransform parryTextRectTransform;
     private RectTransform riposteTextRectTransform;
     [SerializeField] private float showTextDuration;
+    [SerializeField] private float showDamageTextDuration;
 
     public GameManager gameManager;
     public GameObject canvas;
@@ -99,7 +101,7 @@ public class UIManager : MonoBehaviour
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
         Vector2 canvasPosition;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
-        parryTextRectTransform.localPosition = canvasPosition + new Vector2(0f, 145f);
+        riposteTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
         StartCoroutine(HideParryText());
     }
 
@@ -112,10 +114,7 @@ public class UIManager : MonoBehaviour
     public void ShowRiposteText(Vector3 playerWorldPos)
     {
         riposteTextUI.SetActive(true);
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
-        Vector2 canvasPosition;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
-        riposteTextRectTransform.localPosition = canvasPosition+new Vector2(0f,145f);
+        riposteTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos)+new Vector2(0f,145f);
         StartCoroutine(HideRiposteText());
     }
 
@@ -123,5 +122,28 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(showTextDuration);
         riposteTextUI.SetActive(false);
+    }
+
+    public void ShowDamageText(Vector3 playerWorldPos, float damage)
+    {
+        GameObject damageTextUIInstance = Instantiate(damageTextUI,canvas.transform);
+        damageTextUIInstance.GetComponent<TextMeshProUGUI>().text = Mathf.RoundToInt(damage).ToString();
+
+        damageTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
+        StartCoroutine(HideDamageText(damageTextUIInstance));
+    }
+
+    private IEnumerator HideDamageText(GameObject damageTextUIInstance)
+    {
+        yield return new WaitForSeconds(showDamageTextDuration);
+        Destroy(damageTextUIInstance);
+    }
+
+    private Vector2 WorldToCanvasPos(Vector3 playerWorldPos)
+    {
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
+        Vector2 canvasPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
+        return canvasPosition;
     }
 }

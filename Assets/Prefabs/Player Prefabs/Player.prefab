@@ -222,7 +222,7 @@ MonoBehaviour:
   maxPlayerHealth: 110
   playerLightAttackDamage: 15
   playerLightAttackBaseDamage: 0
-  playerHeavyLungeBaseDamage: 20
+  playerHeavyLungeBaseDamage: 12
   playerHeavyLungeExtraDamageScale: 20
   playerHeavyLungeDamage: 0
   playerJumpAttackDamage: 30

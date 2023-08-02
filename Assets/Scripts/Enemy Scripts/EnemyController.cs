@@ -576,6 +576,7 @@ public class EnemyController : MonoBehaviour
     {
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
+        UIManager.ShowDamageText(transform.position, damage);
         //Debug.Log("enemy damaged, remaining health: " + enemyHealth);
         state = EnemyState.getHit;
 
@@ -618,8 +619,10 @@ public class EnemyController : MonoBehaviour
     private void TakeBlockDamage(float baseDamage)
     {
         ActivateBlock();
-        enemyHealth -= baseDamage * blockDamageNegationScale;
+        float blockedDamage = baseDamage * (1f - blockDamageNegationScale);
+        enemyHealth -= blockedDamage;
         enemyHealthBar.SetHealth(enemyHealth);
+        UIManager.ShowDamageText(transform.position, blockedDamage);
         CheckDead();
     }
     #endregion
@@ -760,11 +763,11 @@ public class EnemyController : MonoBehaviour
             #region Player is already in Get Hit
             else if (state == EnemyState.getHit)
             {
-                
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     enemyHealth -= playerController.playerLightAttackDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    UIManager.ShowDamageText(transform.position, playerController.playerLightAttackDamage);
                     if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
                     {
                         UIManager.ShowRiposteText(player.transform.position);
@@ -774,11 +777,13 @@ public class EnemyController : MonoBehaviour
                 {
                     enemyHealth -= playerController.playerJumpAttackDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    UIManager.ShowDamageText(transform.position, playerController.playerJumpAttackDamage);
                 }
                 else if (playerState == PlayerController.PlayerState.heavyLunge)
                 {
                     enemyHealth -= playerController.playerHeavyLungeDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    UIManager.ShowDamageText(transform.position, playerController.playerHeavyLungeDamage);
                 }
                 
             }
