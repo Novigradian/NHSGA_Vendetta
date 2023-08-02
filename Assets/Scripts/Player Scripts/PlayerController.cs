@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private Transform swordPivot;
     private Rigidbody2D swordPivotRb;
     private Collider2D swordCollider;
+    private bool hasPlayed = false;
 
     public GameManager gameManager;
     public DialogueManager dialogueManager;
@@ -610,15 +611,19 @@ public class PlayerController : MonoBehaviour
     #region Jump Functions
     private void JumpActions()
     {
+        if(hasPlayed == false)
+        {
+            audioManager.Play("Jump");
+            hasPlayed = true;
+        }
         if (kb.dKey.isPressed && canMoveTowardsEnemy)
         {
+            
             rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
-            audioManager.Play("Jump");
         }
         else if (kb.aKey.isPressed)
         {
             rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
-            audioManager.Play("Jump");
         }
         CheckBuffer();
     }
