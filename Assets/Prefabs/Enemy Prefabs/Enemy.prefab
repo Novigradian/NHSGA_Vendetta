@@ -267,9 +267,9 @@ MonoBehaviour:
   controllerTransform: {fileID: 0}
   enemyHealthBar: {fileID: 0}
   maxEnemyHealth: 150
-  stepSpeed: 5
+  stepSpeed: 7
   stepDuration: 0.35
-  stepCooldown: 1
+  stepCooldown: 1.5
   shuffleSpeed: 1
   canShift: 1
   canMoveTowardsEnemy: 1
@@ -294,31 +294,31 @@ MonoBehaviour:
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackEnemyHorizontalSpeed: 17.5
   heavyLungeWindupSpeed: 1
-  heavyLungeWindupThrustScale: 0.3
+  heavyLungeWindupThrustScale: 0.175
   heavyLungeLowerSwordScale: 1
-  heavyLungeThrustSpeed: 12
+  heavyLungeThrustSpeed: 10
   heavyLungeStunDuration: 0.7
   minHeavyLungeWindupDuration: 1
   maxHeavyLungeWindupDuration: 4
   parryDuration: 0.1
   riposteDamageBonus: 25
-  baseIdleChance: 0.2
-  aggressiveness: 1.3
+  baseIdleChance: 0.1
+  aggressiveness: 1
   difficulty: 1
-  shuffleLeftDistanceDivideScale: 20
-  minimumStepLeftDistance: 4
-  stepLeftDistanceDivideScale: 35
-  playerLightAttackRetreatChance: 0.3
+  shuffleLeftDistanceDivideScale: 10
+  minimumStepLeftDistance: 6.5
+  stepLeftDistanceDivideScale: 50
+  playerLightAttackRetreatChance: 0.6
   playerJumpAttackRetreatChance: 0.15
   playerHeavyLungeWindupAdvanceChance: 0.8
-  chaseAfterEnemyDistanceDivideScale: 40
-  unableToChangeDirectionDuration: 1
+  chaseAfterEnemyDistanceDivideScale: 15
+  unableToChangeDirectionDuration: 0.6
   isAbleToChangeDirection: 0
-  baseLightAttackChance: 0.4
-  baseHeavyLungeChance: 0.001
+  baseLightAttackChance: 0.1
+  baseHeavyLungeChance: 0.0025
   lightAttackRange: 5.5
   heavyLungeRange: 7.5
-  heavyLungeDistanceScale: 11
+  heavyLungeDistanceScale: 24
   stateToEnter: 
 --- !u!1001 &3700987901009323085
 PrefabInstance:

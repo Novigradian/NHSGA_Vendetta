@@ -97,6 +97,7 @@ public class EnemyController : MonoBehaviour
     private float heavyLungeThrustTime;
     [SerializeField] private float heavyLungeLowerSwordScale;
     [SerializeField] private float heavyLungeThrustSpeed;
+    private float baseHeavyLungeThrustSpeed;
     [SerializeField] private float heavyLungeStunDuration;
     [SerializeField] private float minHeavyLungeWindupDuration;
     [SerializeField] private float maxHeavyLungeWindupDuration;
@@ -157,6 +158,7 @@ public class EnemyController : MonoBehaviour
         minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
         direction = -1f;
         enemyLightAttackBaseDamage = enemyLightAttackDamage;
+        baseHeavyLungeThrustSpeed = heavyLungeThrustSpeed;
 
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
@@ -488,7 +490,7 @@ public class EnemyController : MonoBehaviour
         if (state == EnemyState.heavyLungeWindup)
         {
             heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
-            heavyLungeThrustSpeed += heavyLungeWindupTime * heavyLungeWindupThrustScale;
+            heavyLungeThrustSpeed = baseHeavyLungeThrustSpeed+heavyLungeWindupTime * heavyLungeWindupThrustScale;
             state = EnemyState.heavyLunge;
             swordCollider.enabled = true;
         }
