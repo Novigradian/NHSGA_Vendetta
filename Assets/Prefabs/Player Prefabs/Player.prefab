@@ -216,14 +216,16 @@ MonoBehaviour:
   sword: {fileID: 1735666212459705732}
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
+  UIManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 120
-  playerLightAttackDamage: 30
+  maxPlayerHealth: 110
+  playerLightAttackDamage: 15
+  playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 20
-  playerHeavyLungeExtraDamageScale: 25
+  playerHeavyLungeExtraDamageScale: 20
   playerHeavyLungeDamage: 0
-  playerJumpAttackDamage: 45
+  playerJumpAttackDamage: 30
   currentDamageValue: 0
   rallyScale: 0.33
   rallyDuration: 2
