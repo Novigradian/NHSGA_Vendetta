@@ -1091,7 +1091,7 @@ public class PlayerController : MonoBehaviour
             EnemyController.EnemyState enemyState = enemyController.state;
 
             #region Player is Idle/Moving/Jumping/Windup/Stun
-            if (state == PlayerState.idle || state == PlayerState.shuffleRight || state == PlayerState.stepLeft || state == PlayerState.stepRight || state == PlayerState.lightAttackWindup || state == PlayerState.heavyLungeWindup || state == PlayerState.heavyLungeStun || state == PlayerState.jump || state == PlayerState.lightAttack)
+            if (state == PlayerState.idle || state == PlayerState.shuffleRight || state == PlayerState.stepLeft || state == PlayerState.stepRight || state == PlayerState.lightAttackWindup || state == PlayerState.heavyLungeWindup || state == PlayerState.heavyLungeStun || state == PlayerState.jump || state == PlayerState.lightAttack || state == PlayerState.parried)
             {
                 //state = PlayerState.getHit;
                 //ActivateRally();
@@ -1153,10 +1153,11 @@ public class PlayerController : MonoBehaviour
                     {
                         playerLightAttackDamage += riposteDamageBonus;
                         //Debug.Log("parried");
-                        UIManager.ShowParryText(transform.position);
-                        enemyController.ActivateParried();
+                        
                         //Debug.Log("yes!");
                     }
+                    UIManager.ShowParryText(transform.position);
+                    enemyController.ActivateParried();
                 }
                 else if(enemyState == EnemyController.EnemyState.jumpAttack)
                 {
@@ -1186,14 +1187,14 @@ public class PlayerController : MonoBehaviour
             {
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
-                    audioManager.Play("LightDamageLit");
+                    audioManager.Play("LightDamageHit");
                     playerHealth -= enemyController.enemyLightAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyLightAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
-                    audioManager.Play("LightDamageLit");
+                    audioManager.Play("LightDamageHit");
                     playerHealth -= enemyController.enemyJumpAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyJumpAttackDamage);

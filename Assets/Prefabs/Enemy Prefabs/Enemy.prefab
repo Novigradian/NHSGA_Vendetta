@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619430404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.71, z: 0}
+  m_LocalPosition: {x: -0.4, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -285,7 +285,8 @@ MonoBehaviour:
   jumpForce: 7.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
-  getHitKnockBackForce: 0.04
+  getHitKnockBackSpeed: 4
+  getParriedStunDuration: 0.7
   lightAttackWindupDuration: 0.39
   lightAttackWindupSpeed: 6
   lightAttackDuration: 0.15
@@ -312,7 +313,7 @@ MonoBehaviour:
   shuffleLeftDistanceDivideScale: 10
   minimumStepLeftDistance: 6.5
   stepLeftDistanceDivideScale: 50
-  playerLightAttackRetreatChance: 0.6
+  playerLightAttackRetreatChance: 0.2
   playerJumpAttackRetreatChance: 0.15
   playerHeavyLungeWindupAdvanceChance: 0.8
   chaseAfterEnemyDistanceDivideScale: 15
@@ -339,6 +340,10 @@ PrefabInstance:
     - target: {fileID: 8002342267121850233, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_TagString
       value: EnemySword
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002342267121850234, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8002342267121850235, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_RootOrder
@@ -418,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3188216389853677384, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3188216389853677388, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_RootOrder
@@ -462,6 +467,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3188216389853677388, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188216389853677389, guid: c4b757a7a404f3c4ab7e5bd99a909394, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

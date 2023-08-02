@@ -585,7 +585,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator Parried()
     {
-        Debug.Log("parried");
+        //Debug.Log("parried");
         yield return new WaitForSeconds(getParriedStunDuration);
         if (state == EnemyState.parried)
         {
@@ -729,7 +729,7 @@ public class EnemyController : MonoBehaviour
             PlayerController.PlayerState playerState = playerController.state;
 
             #region Enemy is Idle/Moving/Jumping/Windup/Stun
-            if (state == EnemyState.idle || state == EnemyState.shuffleLeft || state == EnemyState.stepLeft || state == EnemyState.stepRight || state == EnemyState.lightAttackWindup || state == EnemyState.heavyLungeWindup || state == EnemyState.heavyLungeStun || state == EnemyState.jump || state == EnemyState.lightAttack)
+            if (state == EnemyState.idle || state == EnemyState.shuffleLeft || state == EnemyState.stepLeft || state == EnemyState.stepRight || state == EnemyState.lightAttackWindup || state == EnemyState.heavyLungeWindup || state == EnemyState.heavyLungeStun || state == EnemyState.jump || state == EnemyState.lightAttack || state==EnemyState.parried)
             {
                 //state = PlayerState.getHit;
                 //ActivateRally();

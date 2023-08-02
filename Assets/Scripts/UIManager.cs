@@ -101,6 +101,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowParryText(Vector3 playerWorldPos)
     {
+        StopCoroutine(HideParryText());
         parryTextUI.SetActive(true);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
         Vector2 canvasPosition;
@@ -117,6 +118,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowRiposteText(Vector3 playerWorldPos)
     {
+        StopCoroutine(HideRiposteText());
         riposteTextUI.SetActive(true);
         riposteTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
         StartCoroutine(HideRiposteText());
