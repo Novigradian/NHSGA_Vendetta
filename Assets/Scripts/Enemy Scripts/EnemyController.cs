@@ -623,6 +623,7 @@ public class EnemyController : MonoBehaviour
         enemyHealth -= blockedDamage;
         enemyHealthBar.SetHealth(enemyHealth);
         UIManager.ShowDamageText(transform.position, blockedDamage);
+        UIManager.ShowBlockText(transform.position);
         CheckDead();
     }
     #endregion
@@ -659,6 +660,16 @@ public class EnemyController : MonoBehaviour
     #region Collisions
 
     #region Ground Collision
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            state = EnemyState.idle;
+            ResetSwordPosition();
+            swordRb.isKinematic = true;
+        }
+
+    }
     #endregion
 
     #region Player Sword Collision
@@ -681,7 +692,7 @@ public class EnemyController : MonoBehaviour
                         UIManager.ShowRiposteText(player.transform.position);
                     }
                 }
-                else if (playerState == PlayerController.PlayerState.heavyLunge)
+                else if (playerState == PlayerController.PlayerState.heavyLunge && !(state==EnemyState.jump))
                 {
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
                 }

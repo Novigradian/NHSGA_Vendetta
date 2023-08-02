@@ -907,6 +907,7 @@ public class PlayerController : MonoBehaviour
         playerHealth -= blockedDamage;
         playerHealthBar.SetHealth(playerHealth);
         UIManager.ShowDamageText(transform.position, blockedDamage);
+        UIManager.ShowBlockText(transform.position);
         UseStamina(baseDamage * blockStaminaDrainScale);
         CheckDead();
     }

@@ -280,7 +280,7 @@ MonoBehaviour:
   enemyHeavyLungeDamage: 0
   enemyJumpAttackDamage: 15
   player: {fileID: 0}
-  jumpForce: 10
+  jumpForce: 7.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
   lightAttackWindupDuration: 0.38
