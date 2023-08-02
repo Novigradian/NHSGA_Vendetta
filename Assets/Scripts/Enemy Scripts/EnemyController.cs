@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
         lightAttackWindup, lightAttack,
         heavyLungeWindup, heavyLunge, heavyLungeStun,
         parry,
+        parried,
         getHit,
         block,
         dead
@@ -73,6 +74,7 @@ public class EnemyController : MonoBehaviour
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
     [SerializeField] private float getHitKnockBackSpeed;
+    [SerializeField] private float getParriedStunDuration;
 
     [Header("Light Attack")]
 
@@ -263,6 +265,13 @@ public class EnemyController : MonoBehaviour
                     break;
                 #endregion
 
+                #region Parried Actions and Transitions
+                case EnemyState.parried:
+                    ParriedActions();
+                    ParriedTransitions();
+                    break;
+                #endregion]
+
                 #region Get Hit Actions and Transitions
                 case EnemyState.getHit:
                     GetHitActions();
@@ -444,8 +453,8 @@ public class EnemyController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            rb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.25f;
-            swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
+            rb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.35f;
+            swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.65f;
         }
     }
 
@@ -558,6 +567,33 @@ public class EnemyController : MonoBehaviour
         {
             state = EnemyState.idle;
         }
+    }
+    #endregion
+
+    #region Parried Functions
+    private void ParriedActions()
+    {
+
+    }
+
+    private void ParriedTransitions()
+    {
+        StartCoroutine(Parried());
+    }
+
+    private IEnumerator Parried()
+    {
+        Debug.Log("parried");
+        yield return new WaitForSeconds(getParriedStunDuration);
+        if (state == EnemyState.parried)
+        {
+            state = EnemyState.idle;
+        }
+    }
+
+    public void ActivateParried()
+    {
+        state = EnemyState.parried;
     }
     #endregion
 
@@ -765,7 +801,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
-                    //playerState = PlayerController.PlayerState.getParried;
+                    playerController.ActivateParried();
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {

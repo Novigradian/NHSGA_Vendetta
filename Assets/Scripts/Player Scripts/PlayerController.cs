@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         heavyLungeWindup, heavyLunge, heavyLungeStun,
         cancel,
         parry,
+        parried,
         block,
         getHit,
         dead
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
     [SerializeField] private float getHitKnockBackSpeed;
+    [SerializeField] private float getParriedStunDuration;
 
     [Header("Block")]
     [SerializeField] private float blockDuration;
@@ -269,6 +271,13 @@ public class PlayerController : MonoBehaviour
                 case PlayerState.parry:
                     ParryActions();
                     ParryTransitions();
+                    break;
+                #endregion
+
+                #region Parry Actions and Transitions
+                case PlayerState.parried:
+                    ParriedActions();
+                    ParriedTransitions();
                     break;
                 #endregion
 
@@ -866,6 +875,34 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Parried Functions
+    private void ParriedActions()
+    {
+
+    }
+
+    private void ParriedTransitions()
+    {
+        StartCoroutine(Parried());
+    }
+
+    private IEnumerator Parried()
+    {
+        Debug.Log("parried");
+        yield return new WaitForSeconds(getParriedStunDuration);
+        if (state == PlayerState.parried)
+        {
+            state = PlayerState.idle;
+        }
+
+    }
+
+    public void ActivateParried()
+    {
+        state = PlayerState.parried;
+    }
+    #endregion
+
     #region Get Hit Functions
     private void GetHitActions()
     {
@@ -1114,9 +1151,10 @@ public class PlayerController : MonoBehaviour
                     if (playerLightAttackDamage == playerLightAttackBaseDamage)
                     {
                         playerLightAttackDamage += riposteDamageBonus;
-                        Debug.Log("parried");
+                        //Debug.Log("parried");
                         UIManager.ShowParryText(transform.position);
-                        enemyState = EnemyController.EnemyState.getHit;
+                        enemyController.ActivateParried();
+                        //Debug.Log("yes!");
                     }
                 }
                 else if(enemyState == EnemyController.EnemyState.jumpAttack)
