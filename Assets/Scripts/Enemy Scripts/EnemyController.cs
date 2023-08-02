@@ -36,8 +36,8 @@ public class EnemyController : MonoBehaviour
     private Transform swordPivot;
     private Rigidbody2D swordPivotRb;
     private Collider2D swordCollider;
-    //public Animator animator;
-    //public Transform controllerTransform;
+    public Animator animator;
+    public Transform controllerTransform;
 
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
@@ -158,8 +158,8 @@ public class EnemyController : MonoBehaviour
         direction = -1f;
         enemyLightAttackBaseDamage = enemyLightAttackDamage;
 
-        //controllerTransform = this.gameObject.transform.GetChild(2);
-        //animator = controllerTransform.GetComponent<Animator>();
+        controllerTransform = this.gameObject.transform.GetChild(2);
+        animator = controllerTransform.GetComponent<Animator>();
         heavyLungeWindupTime = 0f;
 
         stateToEnter = "idleChance";
@@ -333,7 +333,7 @@ public class EnemyController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            //animator.Play("ShuffleLeft");
+            animator.Play("ShuffleLeft");
             rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
         }
     }
@@ -345,7 +345,7 @@ public class EnemyController : MonoBehaviour
 
     private void ShuffleRightActions()
     {
-        //animator.Play("ShuffleRight");
+        animator.Play("ShuffleRight");
         rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
     }
     //Write Transitions
