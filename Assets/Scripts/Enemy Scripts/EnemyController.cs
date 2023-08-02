@@ -289,7 +289,8 @@ public class EnemyController : MonoBehaviour
     #region Idle Functions
     private void IdleActions()
     {
-
+        ResetSwordPosition();
+        swordRb.isKinematic = true;
     }
 
     private void IdleTransitions()

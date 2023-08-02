@@ -297,6 +297,8 @@ public class PlayerController : MonoBehaviour
     private void IdleActions()
     {
         animator.Play("Idle");
+        ResetSwordPosition();
+        swordRb.isKinematic = true;
     }
 
     private void IdleTransitions()
