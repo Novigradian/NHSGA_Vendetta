@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
+    [SerializeField] private float getHitKnockBackForce;
 
     [Header("Block")]
     [SerializeField] private float blockDuration;
@@ -872,6 +873,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator GetHit()
     {
         animator.Play("GetHit");
+        rb.AddForce(Vector2.left * getHitKnockBackForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == PlayerState.getHit)
         {
