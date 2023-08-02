@@ -1074,6 +1074,8 @@ public class PlayerController : MonoBehaviour
                     if (playerLightAttackDamage == playerLightAttackBaseDamage)
                     {
                         playerLightAttackDamage += riposteDamageBonus;
+                        Debug.Log("parried");
+                        enemyState = EnemyController.EnemyState.getHit;
                     }
                 }
                 else if(enemyState == EnemyController.EnemyState.jumpAttack)

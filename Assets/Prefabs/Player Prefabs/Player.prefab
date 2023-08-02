@@ -267,8 +267,8 @@ MonoBehaviour:
   jumpAttackSwingSpeed: 15
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackPlayerHorizontalSpeed: 17.5
-  parryDuration: 0.1
-  riposteDamageBonus: 25
+  parryDuration: 0.6
+  riposteDamageBonus: 30
 --- !u!61 &1051260131
 BoxCollider2D:
   m_ObjectHideFlags: 0

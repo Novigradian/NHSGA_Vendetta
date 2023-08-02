@@ -212,11 +212,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &483007522 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 483007522, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-  m_PrefabInstance: {fileID: 1374824776}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &491070008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 491070008, guid: c5b52f2aabe855f4697496106941a369, type: 3}
@@ -375,10 +370,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1368823892}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 483007522}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1904956625}
@@ -386,10 +377,6 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: maxPlayerHealth
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: playerHealthBar
       value: 
@@ -399,32 +386,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1789710035}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: getHitStunDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: blockStaminaDrainScale
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerJumpAttackDamage
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerLightAttackDamage
+      propertyPath: riposteDamageBonus
       value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: blockDamageNegationScale
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerStaminaRecoveryDelay
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerStaminaRecoverySpeed
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
@@ -525,6 +488,14 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
+    - target: {fileID: 1735666211400816202, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
+      propertyPath: lightAttackWindupSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735666211400816202, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
+      propertyPath: lightAttackWindupDuration
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6652532464118253236, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
       propertyPath: m_RootOrder
       value: 5
