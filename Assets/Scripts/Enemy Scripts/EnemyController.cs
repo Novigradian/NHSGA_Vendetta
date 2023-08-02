@@ -72,6 +72,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
+    [SerializeField] private float getHitKnockBackForce;
 
     [Header("Light Attack")]
 
@@ -289,7 +290,8 @@ public class EnemyController : MonoBehaviour
     #region Idle Functions
     private void IdleActions()
     {
-
+        ResetSwordPosition();
+        swordRb.isKinematic = true;
     }
 
     private void IdleTransitions()
@@ -571,6 +573,7 @@ public class EnemyController : MonoBehaviour
     }
     private IEnumerator GetHit()
     {
+        rb.AddForce(Vector2.left * getHitKnockBackForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == EnemyState.getHit)
         {
@@ -584,6 +587,8 @@ public class EnemyController : MonoBehaviour
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
         UIManager.ShowDamageText(transform.position, damage);
+        //gameManager.getHitVolume.SetActive(true);
+        //gameManager.ResetGetHitUI();
         //Debug.Log("enemy damaged, remaining health: " + enemyHealth);
         state = EnemyState.getHit;
 
@@ -656,9 +661,9 @@ public class EnemyController : MonoBehaviour
             playerController.ResetSwordPosition();
             player.transform.position = new Vector3(player.transform.position.x, -2.1f, player.transform.position.z);
             //Time.timeScale = 0;
+            gameManager.getHitVolume.SetActive(false);
             dialogueManager.playerDialogue.SetActive(true);
             gameManager.gameState = "PlayerWinDialogue";
-            gameManager.fightVolume.SetActive(false);
             gameManager.dialogueVolume.SetActive(true);
         }
     }
@@ -715,10 +720,15 @@ public class EnemyController : MonoBehaviour
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
-                    TakeBlockDamage(playerController.playerLightAttackDamage);
+                    
                     if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
                     {
                         UIManager.ShowRiposteText(player.transform.position);
+                        TakeHitDamage(playerController.playerLightAttackDamage);
+                    }
+                    else
+                    {
+                        TakeBlockDamage(playerController.playerLightAttackDamage);
                     }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)

@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public string gameState;
 
     public GameObject dialogueVolume;
-    public GameObject fightVolume;
+    public GameObject getHitVolume;
+
+    [SerializeField] private float getHitVolumeShowDuration;
     #endregion
 
     void Awake()
@@ -20,12 +22,23 @@ public class GameManager : MonoBehaviour
         #endregion
 
         dialogueVolume.SetActive(true);
-        fightVolume.SetActive(false);
+        getHitVolume.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ResetGetHitUI()
+    {
+        StartCoroutine(ResetGetHitUICoroutine());
+    }
+
+    private IEnumerator ResetGetHitUICoroutine()
+    {
+        yield return new WaitForSeconds(getHitVolumeShowDuration);
+        getHitVolume.SetActive(false);
     }
 }

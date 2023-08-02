@@ -221,7 +221,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   playerHealthBar: {fileID: 0}
   maxPlayerHealth: 110
-  playerLightAttackDamage: 15
+  playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 12
   playerHeavyLungeExtraDamageScale: 20
@@ -229,7 +229,7 @@ MonoBehaviour:
   playerJumpAttackDamage: 30
   currentDamageValue: 0
   rallyScale: 0.33
-  rallyDuration: 2
+  rallyDuration: 4
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
@@ -243,9 +243,10 @@ MonoBehaviour:
   playerHeavyLungeExtraStaminaCostScale: 6
   enemy: {fileID: 0}
   getHitStunDuration: 0.5
+  getHitKnockBackForce: 0.035
   blockDuration: 0.25
-  blockDamageNegationScale: 0.85
-  blockStaminaDrainScale: 0.25
+  blockDamageNegationScale: 0.75
+  blockStaminaDrainScale: 0.375
   blockPushBack: 0
   stepSpeed: 7
   stepDuration: 0.35
@@ -256,9 +257,9 @@ MonoBehaviour:
   jumpForce: 7.5
   jumpHorizontalSpeed: 1
   lightAttackWindupDuration: 0.2
-  lightAttackWindupSpeed: 10
+  lightAttackWindupSpeed: 6
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 36
+  lightAttackThrustSpeed: 40
   heavyLungeMinimumWindupTime: 0.5
   heavyLungeMaximumWindupTime: 2
   heavyLungeWindupSpeed: 1
@@ -271,7 +272,7 @@ MonoBehaviour:
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackPlayerHorizontalSpeed: 17.5
   parryDuration: 0.1
-  riposteDamageBonus: 30
+  riposteDamageBonus: 25
 --- !u!61 &1051260131
 BoxCollider2D:
   m_ObjectHideFlags: 0

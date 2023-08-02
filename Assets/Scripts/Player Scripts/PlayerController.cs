@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
+    [SerializeField] private float getHitKnockBackForce;
 
     [Header("Block")]
     [SerializeField] private float blockDuration;
@@ -298,6 +299,8 @@ public class PlayerController : MonoBehaviour
     private void IdleActions()
     {
         animator.Play("Idle");
+        ResetSwordPosition();
+        swordRb.isKinematic = true;
     }
 
     private void IdleTransitions()
@@ -687,6 +690,7 @@ public class PlayerController : MonoBehaviour
         {
             swordRb.isKinematic = true;
             ResetSwordPosition();
+            UIManager.ShowFientText(transform.position);
             state = PlayerState.idle;
         }
     }
@@ -872,6 +876,7 @@ public class PlayerController : MonoBehaviour
     {
         audioManager.Play("LightDamageHit");
         animator.Play("GetHit");
+        rb.AddForce(Vector2.left * getHitKnockBackForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == PlayerState.getHit)
         {
@@ -885,10 +890,13 @@ public class PlayerController : MonoBehaviour
         playerHealthBar.SetHealth(playerHealth);
         Debug.Log("hit, remaining health: "+playerHealth+" damage dealt was: "+damage);
         UIManager.ShowDamageText(transform.position, damage);
+        gameManager.getHitVolume.SetActive(true);
+        gameManager.ResetGetHitUI();
         state = PlayerState.getHit;
         ActivateRally();
         CheckDead();
     }
+
     #endregion
 
     #region Block Functions
@@ -951,9 +959,9 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.dead;
             enemyController.state = EnemyController.EnemyState.idle;
             //Time.timeScale = 0;
+            gameManager.getHitVolume.SetActive(false);
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
-            gameManager.fightVolume.SetActive(false);
             gameManager.dialogueVolume.SetActive(true);
         }
     }
@@ -976,12 +984,14 @@ public class PlayerController : MonoBehaviour
         {
             playerStamina = 0f;
             isOutOfStamina = true;
+            UIManager.outOfStaminaTextUI.SetActive(true);
         }
     }
     private IEnumerator RecoverStamina()
     {
         yield return new WaitForSeconds(playerStaminaRecoveryDelay);
         isOutOfStamina = false;
+        UIManager.outOfStaminaTextUI.SetActive(false);
         while (playerStamina < maxPlayerStamina)
         {
             playerStamina += playerStaminaRecoverySpeed;
