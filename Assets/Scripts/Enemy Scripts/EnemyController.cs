@@ -126,6 +126,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float lightAttackRange;
     [SerializeField] private float heavyLungeRange;
     [SerializeField] private float heavyLungeDistanceScale;
+    [SerializeField] private float playerHeavyLungeJumpChance;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
@@ -173,6 +174,7 @@ public class EnemyController : MonoBehaviour
         chanceDict["stepRightChance"] = 0f;
         chanceDict["idleChance"] = baseIdleChance;
         chanceDict["lightAttackChance"] = baseLightAttackChance;
+        chanceDict["jumpChance"] = 0f;
         //chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
@@ -381,13 +383,14 @@ public class EnemyController : MonoBehaviour
 
     private void JumpTransitions()
     {
-        //if ()    //Write Transitions
+        /*
         {
             state = EnemyState.jumpAttack;
             swordPivot.position = transform.position + new Vector3(0.5f, -1f, 0f);
             swordRb.isKinematic = false;
             swordCollider.enabled = true;
         }
+        */
     }
 
     private void JumpAttackActions()
@@ -818,6 +821,15 @@ public class EnemyController : MonoBehaviour
         if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
         {
             #region Adjust Idle Chances
+            if (playerState == PlayerController.PlayerState.heavyLunge)
+            {
+                chanceDict["jumpChance"] = playerHeavyLungeJumpChance;
+            }
+            else
+            {
+                chanceDict["jumpChance"] = 0f;
+            }
+
             if (distance < heavyLungeRange)
             {
                 chanceDict["heavyLungeChance"] = 0f;
@@ -950,6 +962,13 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to heavy lunge");
             stateToEnter = "";
             swordRb.isKinematic = false;
+        }
+        else if (stateToEnter == "jumpChance")
+        {
+            state = EnemyState.jump;
+            Debug.Log("switched to jump");
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            stateToEnter = "";
         }
     }
 

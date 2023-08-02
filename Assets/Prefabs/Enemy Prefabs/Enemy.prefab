@@ -283,7 +283,7 @@ MonoBehaviour:
   jumpForce: 10
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
-  lightAttackWindupDuration: 0.36
+  lightAttackWindupDuration: 0.38
   lightAttackWindupSpeed: 6
   lightAttackDuration: 0.15
   lightAttackThrustSpeed: 36
@@ -320,6 +320,7 @@ MonoBehaviour:
   lightAttackRange: 5.5
   heavyLungeRange: 7.5
   heavyLungeDistanceScale: 24
+  playerHeavyLungeJumpChance: 0.3
   stateToEnter: 
 --- !u!1001 &3700987901009323085
 PrefabInstance:
