@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
-    [SerializeField] private float getHitKnockBackForce;
+    [SerializeField] private float getHitKnockBackSpeed;
 
     [Header("Block")]
     [SerializeField] private float blockDuration;
@@ -871,6 +871,7 @@ public class PlayerController : MonoBehaviour
     private void GetHitActions()
     {
         CheckBuffer();
+        rb.position += Vector2.left * getHitKnockBackSpeed * Time.deltaTime;
     }
 
     private void GetHitTransitions()
@@ -882,7 +883,6 @@ public class PlayerController : MonoBehaviour
     {
         audioManager.Play("LightDamageHit");
         animator.Play("GetHit");
-        rb.AddForce(Vector2.left * getHitKnockBackForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == PlayerState.getHit)
         {
@@ -1194,8 +1194,8 @@ public class PlayerController : MonoBehaviour
     {
         swordPivot.localEulerAngles = Vector3.zero;
         swordPivot.position = transform.position+new Vector3(0f, 0.4f, 0f);
-        sword.transform.position = new Vector3(swordPivot.position.x + 2f, swordPivot.position.y + 0.6f, transform.position.z);
-        sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
+        sword.transform.position = new Vector3(swordPivot.position.x + 2.6f, swordPivot.position.y + 0.9f, transform.position.z);
+        sword.transform.localEulerAngles = new Vector3(0f, 0f, -70f);
     }
 
     private void CheckCanMoveTowardsEnemy()

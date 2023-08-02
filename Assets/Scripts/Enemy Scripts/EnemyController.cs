@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Get Hit")]
     [SerializeField] private float getHitStunDuration;
-    [SerializeField] private float getHitKnockBackForce;
+    [SerializeField] private float getHitKnockBackSpeed;
 
     [Header("Light Attack")]
 
@@ -567,6 +567,7 @@ public class EnemyController : MonoBehaviour
     private void GetHitActions()
     {
         //TakeHitDamage(playerController.currentDamageValue);
+        rb.position += Vector2.right * getHitKnockBackSpeed * Time.deltaTime;
     }
 
     private void GetHitTransitions()
@@ -575,7 +576,6 @@ public class EnemyController : MonoBehaviour
     }
     private IEnumerator GetHit()
     {
-        rb.AddForce(Vector2.left * getHitKnockBackForce, ForceMode2D.Impulse);
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == EnemyState.getHit)
         {
