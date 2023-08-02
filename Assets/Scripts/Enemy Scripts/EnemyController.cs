@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     #region Enemy Variables and Components
     public GameManager gameManager;
     public DialogueManager dialogueManager;
+    public UIManager UIManager;
     private float minimumPlayerEnemyDistance;
     public Rigidbody2D rb;
     public Rigidbody2D swordRb;
@@ -669,6 +670,10 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeHitDamage(playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.heavyLunge)
                 {
@@ -687,6 +692,10 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeBlockDamage(playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
@@ -705,6 +714,10 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeHitDamage(playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
@@ -749,6 +762,10 @@ public class EnemyController : MonoBehaviour
                 {
                     enemyHealth -= playerController.playerLightAttackDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {

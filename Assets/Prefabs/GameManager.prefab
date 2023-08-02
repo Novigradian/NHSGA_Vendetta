@@ -49,6 +49,7 @@ MonoBehaviour:
   minimumPlayerEnemyDistance: 2
   gameState: 
   dialogueVolume: {fileID: 0}
+  fightVolume: {fileID: 0}
 --- !u!114 &3472306370635930197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,4 +114,7 @@ MonoBehaviour:
   enemyWinUI: {fileID: 0}
   fightTextUI: {fileID: 0}
   fightTextUIShowDuration: 4
+  parryTextUI: {fileID: 0}
+  riposteTextUI: {fileID: 0}
   gameManager: {fileID: 3472306370896711298}
+  canvas: {fileID: 0}

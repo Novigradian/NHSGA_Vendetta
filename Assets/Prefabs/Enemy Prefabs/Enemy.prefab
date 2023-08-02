@@ -259,6 +259,7 @@ MonoBehaviour:
   state: 0
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
+  UIManager: {fileID: 0}
   rb: {fileID: 4919294456943850068}
   swordRb: {fileID: 4919294457425414101}
   sword: {fileID: 6652532465775260468}
@@ -282,8 +283,8 @@ MonoBehaviour:
   jumpForce: 10
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
-  lightAttackWindupDuration: 0.2
-  lightAttackWindupSpeed: 10
+  lightAttackWindupDuration: 0.36
+  lightAttackWindupSpeed: 6
   lightAttackDuration: 0.15
   lightAttackThrustSpeed: 36
   blockDuration: 0.25

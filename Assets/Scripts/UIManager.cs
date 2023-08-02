@@ -14,7 +14,15 @@ public class UIManager : MonoBehaviour
     public GameObject fightTextUI;
     [SerializeField] private float fightTextUIShowDuration;
 
+    public GameObject parryTextUI;
+    public GameObject riposteTextUI;
+    private RectTransform parryTextRectTransform;
+    private RectTransform riposteTextRectTransform;
+    [SerializeField] private float showTextDuration;
+
     public GameManager gameManager;
+    public GameObject canvas;
+    private RectTransform canvasRectTransform;
 
     private bool isResetUIPos;
     private bool isShowWinText;
@@ -27,6 +35,10 @@ public class UIManager : MonoBehaviour
         isShowFightText = false;
         enemyUI.transform.position = new Vector3(enemyUI.transform.position.x, enemyUI.transform.position.y + 100f, enemyUI.transform.position.z);
         playerUI.transform.position = new Vector3(playerUI.transform.position.x, playerUI.transform.position.y - 100f, playerUI.transform.position.z);
+
+        parryTextRectTransform = parryTextUI.GetComponent<RectTransform>();
+        riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
+        canvasRectTransform = canvas.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -79,5 +91,37 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(fightTextUIShowDuration * 0.25f);
         fightTextUI.SetActive(false);
+    }
+
+    public void ShowParryText(Vector3 playerWorldPos)
+    {
+        parryTextUI.SetActive(true);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
+        Vector2 canvasPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
+        parryTextRectTransform.localPosition = canvasPosition + new Vector2(0f, 145f);
+        StartCoroutine(HideParryText());
+    }
+
+    private IEnumerator HideParryText()
+    {
+        yield return new WaitForSeconds(showTextDuration);
+        parryTextUI.SetActive(false);
+    }
+
+    public void ShowRiposteText(Vector3 playerWorldPos)
+    {
+        riposteTextUI.SetActive(true);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
+        Vector2 canvasPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
+        riposteTextRectTransform.localPosition = canvasPosition+new Vector2(0f,145f);
+        StartCoroutine(HideRiposteText());
+    }
+
+    private IEnumerator HideRiposteText()
+    {
+        yield return new WaitForSeconds(showTextDuration);
+        riposteTextUI.SetActive(false);
     }
 }

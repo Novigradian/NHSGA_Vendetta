@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public GameManager gameManager;
     public DialogueManager dialogueManager;
+    public UIManager UIManager;
     private float minimumPlayerEnemyDistance;
     public Transform controllerTransform;
 
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Damage")]
     public float playerLightAttackDamage;
-    private float playerLightAttackBaseDamage;
+    [HideInInspector] public float playerLightAttackBaseDamage;
     public float playerHeavyLungeBaseDamage;
     public float playerHeavyLungeExtraDamageScale;
     [HideInInspector] public float playerHeavyLungeDamage;
@@ -1075,6 +1076,7 @@ public class PlayerController : MonoBehaviour
                     {
                         playerLightAttackDamage += riposteDamageBonus;
                         Debug.Log("parried");
+                        UIManager.ShowParryText(transform.position);
                         enemyState = EnemyController.EnemyState.getHit;
                     }
                 }
