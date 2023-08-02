@@ -314,6 +314,7 @@ public class EnemyController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
+            animator.Play("StepLeft");
             rb.position += Vector2.left * Time.deltaTime * stepSpeed;
         }
     }
@@ -332,6 +333,7 @@ public class EnemyController : MonoBehaviour
 
     private void StepRightActions()
     {
+        animator.Play("StepRight");
         rb.position += Vector2.right * Time.deltaTime * stepSpeed;
     }
 
