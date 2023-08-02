@@ -772,7 +772,7 @@ public class EnemyController : MonoBehaviour
         swordPivot.localEulerAngles = Vector3.zero;
         swordPivot.position = transform.position + new Vector3(0f, 0.4f, 0f);
         sword.transform.position = new Vector3(swordPivot.position.x -2f, swordPivot.position.y + 0.6f, transform.position.z);
-        sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
+        sword.transform.localEulerAngles = new Vector3(0f, 180f, -75f);
     }
 
     private void CheckCanMoveTowardsEnemy()
