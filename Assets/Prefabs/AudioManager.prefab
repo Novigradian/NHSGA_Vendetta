@@ -51,7 +51,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Dash
-    clip: {fileID: 8300000, guid: a69445552d79643a8aeab1c7a936cdb7, type: 3}
+    clip: {fileID: 8300000, guid: d53dbff6bc2f7479d80878c554a29f1c, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -67,6 +67,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 5c3350956c765401e9e21ecc4002406b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Parry
+    clip: {fileID: 8300000, guid: ce1b963d0e980478d8a1e8fb83c1360e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: HeavyDamageHit
+    clip: {fileID: 8300000, guid: 1b8ad7c7edf8b457199912e01f5e7f47, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: LightDamageHit
+    clip: {fileID: 8300000, guid: db4a1ef05817543d8adcc34ce076072d, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

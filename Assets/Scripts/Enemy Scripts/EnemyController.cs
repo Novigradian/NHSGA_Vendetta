@@ -427,6 +427,7 @@ public class EnemyController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
+        animator.Play("LightAttack");
         audioManager.Play("LightAttack");
         rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.1f;
         swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.7f;
@@ -492,6 +493,7 @@ public class EnemyController : MonoBehaviour
     }
     public IEnumerator HeavyLungeWindupCoroutine()
     {
+        animator.Play("HeavyWindup");
         heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
         yield return new WaitForSeconds(heavyLungeWindupTime);
         if (state == EnemyState.heavyLungeWindup)
@@ -506,6 +508,7 @@ public class EnemyController : MonoBehaviour
     public void HeavyLunge()
     {
         StartCoroutine(HeavyLungeCoroutine());
+        animator.Play("HeavyAttack");
         rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
         swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
     }
@@ -577,6 +580,7 @@ public class EnemyController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        animator.Play("GetHit");
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
         UIManager.ShowDamageText(transform.position, damage);

@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour
 
                 #region Heavy Attack Actions and Transitions
                 case PlayerState.heavyLungeWindup:
+                    animator.Play("HeavyWindup");
                     HeavyLungeWindupActions();
                     HeavyLungeWindupTransitions();
                     break;
@@ -461,8 +462,8 @@ public class PlayerController : MonoBehaviour
     
     private void ShuffleLeftActions()
     {
-        animator.Play("ShuffleLeft");
         audioManager.Play("Shuffle");
+        animator.Play("ShuffleLeft");
         rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
     }
 
@@ -530,8 +531,8 @@ public class PlayerController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            animator.Play("ShuffleRight");
             audioManager.Play("Shuffle");
+            animator.Play("ShuffleRight");
             rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
         }
     }
@@ -739,7 +740,6 @@ public class PlayerController : MonoBehaviour
     {
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
-            animator.SetTrigger("HeavyWindup");
             heavyLungeWindupTime += Time.deltaTime;
             swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
         }
@@ -848,6 +848,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Parry()
     {
+        audioManager.Play("Parry");
         yield return new WaitForSeconds(parryDuration);
         if (state == PlayerState.parry)
         {
@@ -869,6 +870,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator GetHit()
     {
+        audioManager.Play("LightDamageHit");
         animator.Play("GetHit");
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == PlayerState.getHit)
@@ -1130,18 +1132,21 @@ public class PlayerController : MonoBehaviour
             {
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
+                    audioManager.Play("LightDamageLit");
                     playerHealth -= enemyController.enemyLightAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyLightAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
+                    audioManager.Play("LightDamageLit");
                     playerHealth -= enemyController.enemyJumpAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyJumpAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.heavyLunge)
                 {
+                    audioManager.Play("HeavyDamageHit");
                     playerHealth -= enemyController.enemyHeavyLungeDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyHeavyLungeDamage);
