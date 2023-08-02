@@ -858,6 +858,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Parry()
     {
         audioManager.Play("Parry");
+        animator.Play("Parry");
         yield return new WaitForSeconds(parryDuration);
         if (state == PlayerState.parry)
         {
