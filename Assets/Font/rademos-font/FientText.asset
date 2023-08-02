@@ -151,7 +151,7 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.838233, g: 0, b: 1, a: 0.6862745}
+    - _UnderlayColor: {r: 0, g: 0.7974181, b: 1, a: 0.6862745}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -163,11 +163,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: RiposteFont
+  m_Name: FientText
   m_EditorClassIdentifier: 
-  hashCode: 1862484277
+  hashCode: -1167631795
   material: {fileID: -7656034239515100060}
-  materialHashCode: 1579269877
+  materialHashCode: 1854440269
   m_Version: 1.1.0
   m_SourceFontFileGUID: 43c0b245224070e44a21b252a91660b0
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 43c0b245224070e44a21b252a91660b0, type: 3}

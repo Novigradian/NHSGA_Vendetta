@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public GameObject blockTextUI;
     public GameObject critTextUI;
     public GameObject outOfStaminaTextUI;
+    public GameObject fientTextUI;
     private RectTransform parryTextRectTransform;
     private RectTransform riposteTextRectTransform;
     [SerializeField] private float showTextDuration;
@@ -158,6 +159,14 @@ public class UIManager : MonoBehaviour
         StartCoroutine(HideDamageText(critTextUIInstance));
     }
 
+    public void ShowFientText(Vector3 playerWorldPos)
+    {
+        GameObject fientTextUIInstance = Instantiate(fientTextUI, canvas.transform);
+
+        fientTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
+        StartCoroutine(HideDamageText(fientTextUIInstance));
+    }
+
     private Vector2 WorldToCanvasPos(Vector3 playerWorldPos)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
@@ -165,4 +174,6 @@ public class UIManager : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
         return canvasPosition;
     }
+
+    
 }

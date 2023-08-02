@@ -689,6 +689,7 @@ public class PlayerController : MonoBehaviour
         {
             swordRb.isKinematic = true;
             ResetSwordPosition();
+            UIManager.ShowFientText(transform.position);
             state = PlayerState.idle;
         }
     }
