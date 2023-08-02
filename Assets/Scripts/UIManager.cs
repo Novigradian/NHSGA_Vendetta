@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject riposteTextUI;
     public GameObject damageTextUI;
     public GameObject blockTextUI;
+    public GameObject critTextUI;
     private RectTransform parryTextRectTransform;
     private RectTransform riposteTextRectTransform;
     [SerializeField] private float showTextDuration;
@@ -146,6 +147,14 @@ public class UIManager : MonoBehaviour
 
         blockTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 187.5f);
         StartCoroutine(HideDamageText(blockTextUIInstance));
+    }
+
+    public void ShowCritText(Vector3 playerWorldPos)
+    {
+        GameObject critTextUIInstance = Instantiate(critTextUI, canvas.transform);
+
+        critTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 187.5f);
+        StartCoroutine(HideDamageText(critTextUIInstance));
     }
 
     private Vector2 WorldToCanvasPos(Vector3 playerWorldPos)

@@ -695,6 +695,7 @@ public class EnemyController : MonoBehaviour
                 else if (playerState == PlayerController.PlayerState.heavyLunge && !(state==EnemyState.jump))
                 {
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
+                    UIManager.ShowCritText(transform.position);
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
@@ -757,6 +758,7 @@ public class EnemyController : MonoBehaviour
                 else if (playerState == PlayerController.PlayerState.heavyLunge)
                 {
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
+                    UIManager.ShowCritText(transform.position);
                 }
             }
             #endregion
@@ -795,6 +797,7 @@ public class EnemyController : MonoBehaviour
                     enemyHealth -= playerController.playerHeavyLungeDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
                     UIManager.ShowDamageText(transform.position, playerController.playerHeavyLungeDamage);
+                    UIManager.ShowCritText(transform.position);
                 }
                 
             }
