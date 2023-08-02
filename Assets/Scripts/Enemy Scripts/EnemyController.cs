@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     #region Enemy Variables and Components
     public GameManager gameManager;
     public DialogueManager dialogueManager;
+    public UIManager UIManager;
     private float minimumPlayerEnemyDistance;
     public Rigidbody2D rb;
     public Rigidbody2D swordRb;
@@ -55,7 +56,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Enemy Damage")]
     public float enemyLightAttackDamage;
-    private float enemyLightAttackBaseDamage;
+    [HideInInspector] public float enemyLightAttackBaseDamage;
     public float enemyHeavyLungeBaseDamage;
     public float enemyHeavyLungeExtraDamageScale;
     [HideInInspector] public float enemyHeavyLungeDamage;
@@ -98,6 +99,7 @@ public class EnemyController : MonoBehaviour
     private float heavyLungeThrustTime;
     [SerializeField] private float heavyLungeLowerSwordScale;
     [SerializeField] private float heavyLungeThrustSpeed;
+    private float baseHeavyLungeThrustSpeed;
     [SerializeField] private float heavyLungeStunDuration;
     [SerializeField] private float minHeavyLungeWindupDuration;
     [SerializeField] private float maxHeavyLungeWindupDuration;
@@ -125,6 +127,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float lightAttackRange;
     [SerializeField] private float heavyLungeRange;
     [SerializeField] private float heavyLungeDistanceScale;
+    [SerializeField] private float playerHeavyLungeJumpChance;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
@@ -159,6 +162,7 @@ public class EnemyController : MonoBehaviour
         minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
         direction = -1f;
         enemyLightAttackBaseDamage = enemyLightAttackDamage;
+        baseHeavyLungeThrustSpeed = heavyLungeThrustSpeed;
 
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
@@ -172,6 +176,7 @@ public class EnemyController : MonoBehaviour
         chanceDict["stepRightChance"] = 0f;
         chanceDict["idleChance"] = baseIdleChance;
         chanceDict["lightAttackChance"] = baseLightAttackChance;
+        chanceDict["jumpChance"] = 0f;
         //chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
@@ -380,13 +385,14 @@ public class EnemyController : MonoBehaviour
 
     private void JumpTransitions()
     {
-        //if ()    //Write Transitions
+        /*
         {
             state = EnemyState.jumpAttack;
             swordPivot.position = transform.position + new Vector3(0.5f, -1f, 0f);
             swordRb.isKinematic = false;
             swordCollider.enabled = true;
         }
+        */
     }
 
     private void JumpAttackActions()
@@ -491,7 +497,7 @@ public class EnemyController : MonoBehaviour
         if (state == EnemyState.heavyLungeWindup)
         {
             heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
-            heavyLungeThrustSpeed += heavyLungeWindupTime * heavyLungeWindupThrustScale;
+            heavyLungeThrustSpeed = baseHeavyLungeThrustSpeed + heavyLungeWindupTime * heavyLungeWindupThrustScale;
             state = EnemyState.heavyLunge;
             swordCollider.enabled = true;
         }
@@ -573,6 +579,7 @@ public class EnemyController : MonoBehaviour
     {
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
+        UIManager.ShowDamageText(transform.position, damage);
         //Debug.Log("enemy damaged, remaining health: " + enemyHealth);
         state = EnemyState.getHit;
 
@@ -615,8 +622,11 @@ public class EnemyController : MonoBehaviour
     private void TakeBlockDamage(float baseDamage)
     {
         ActivateBlock();
-        enemyHealth -= baseDamage * blockDamageNegationScale;
+        float blockedDamage = baseDamage * (1f - blockDamageNegationScale);
+        enemyHealth -= blockedDamage;
         enemyHealthBar.SetHealth(enemyHealth);
+        UIManager.ShowDamageText(transform.position, blockedDamage);
+        UIManager.ShowBlockText(transform.position);
         CheckDead();
     }
     #endregion
@@ -653,16 +663,25 @@ public class EnemyController : MonoBehaviour
     #region Collisions
 
     #region Ground Collision
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            state = EnemyState.idle;
+            ResetSwordPosition();
+            swordRb.isKinematic = true;
+        }
+    }
     #endregion
 
-    #region Player Sword Collision
+    #region Enemy Sword Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PlayerSword")
         {
             PlayerController.PlayerState playerState = playerController.state;
 
-            #region Player is Idle/Moving/Jumping/Windup/Stun
+            #region Enemy is Idle/Moving/Jumping/Windup/Stun
             if (state == EnemyState.idle || state == EnemyState.shuffleLeft || state == EnemyState.stepLeft || state == EnemyState.stepRight || state == EnemyState.lightAttackWindup || state == EnemyState.heavyLungeWindup || state == EnemyState.heavyLungeStun || state == EnemyState.jump || state == EnemyState.lightAttack)
             {
                 //state = PlayerState.getHit;
@@ -670,9 +689,14 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeHitDamage(playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
-                else if (playerState == PlayerController.PlayerState.heavyLunge)
+                else if (playerState == PlayerController.PlayerState.heavyLunge && !(state == EnemyState.jump))
                 {
+                    UIManager.ShowCritText(transform.position);
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
@@ -682,30 +706,38 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is Blocking
+            #region Enemy is Blocking
             else if (state == EnemyState.shuffleRight)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeBlockDamage(playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
                     TakeBlockDamage(playerController.playerJumpAttackDamage);
                 }
-                else if (playerState == PlayerController.PlayerState.heavyLunge)
+                else if (playerState == PlayerController.PlayerState.heavyLunge && !(state == EnemyState.jump))
                 {
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
                 }
             }
             #endregion
 
-            #region Player is Jump Attacking
+            #region Enemy is Jump Attacking
             else if (state == EnemyState.jumpAttack)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeHitDamage(playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
@@ -714,7 +746,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is Parrying
+            #region Enemy is Parrying
             else if (state == EnemyState.parry)
             {
                 if (playerState == PlayerController.PlayerState.lightAttack)
@@ -728,11 +760,12 @@ public class EnemyController : MonoBehaviour
                 else if (playerState == PlayerController.PlayerState.heavyLunge)
                 {
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
+                    UIManager.ShowCritText(transform.position);
                 }
             }
             #endregion
 
-            #region Player is Heavy Lunging
+            #region Enemy is Heavy Lunging
             else if (state == EnemyState.heavyLunge)
             {
                 if (playerState == PlayerController.PlayerState.jumpAttack)
@@ -742,7 +775,7 @@ public class EnemyController : MonoBehaviour
             }
             #endregion
 
-            #region Player is already in Get Hit
+            #region Enemy is already in Get Hit
             else if (state == EnemyState.getHit)
             {
                 
@@ -750,16 +783,24 @@ public class EnemyController : MonoBehaviour
                 {
                     enemyHealth -= playerController.playerLightAttackDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    UIManager.ShowDamageText(transform.position, playerController.playerLightAttackDamage);
+                    if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
+                    {
+                        UIManager.ShowRiposteText(player.transform.position);
+                    }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
                     enemyHealth -= playerController.playerJumpAttackDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    UIManager.ShowDamageText(transform.position, playerController.playerJumpAttackDamage);
                 }
                 else if (playerState == PlayerController.PlayerState.heavyLunge)
                 {
                     enemyHealth -= playerController.playerHeavyLungeDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
+                    UIManager.ShowDamageText(transform.position, playerController.playerHeavyLungeDamage);
+                    UIManager.ShowCritText(transform.position);
                 }
                 
             }
@@ -775,7 +816,7 @@ public class EnemyController : MonoBehaviour
         swordPivot.localEulerAngles = Vector3.zero;
         swordPivot.position = transform.position + new Vector3(0f, 0.4f, 0f);
         sword.transform.position = new Vector3(swordPivot.position.x -2f, swordPivot.position.y + 0.6f, transform.position.z);
-        sword.transform.localEulerAngles = new Vector3(0f, 0f, -75f);
+        sword.transform.localEulerAngles = new Vector3(0f, 180f, -75f);
     }
 
     private void CheckCanMoveTowardsEnemy()
@@ -802,6 +843,15 @@ public class EnemyController : MonoBehaviour
         if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
         {
             #region Adjust Idle Chances
+            if (playerState == PlayerController.PlayerState.heavyLunge)
+            {
+                chanceDict["jumpChance"] = playerHeavyLungeJumpChance;
+            }
+            else
+            {
+                chanceDict["jumpChance"] = 0f;
+            }
+
             if (distance < heavyLungeRange)
             {
                 chanceDict["heavyLungeChance"] = 0f;
@@ -934,6 +984,13 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to heavy lunge");
             stateToEnter = "";
             swordRb.isKinematic = false;
+        }
+        else if (stateToEnter == "jumpChance")
+        {
+            state = EnemyState.jump;
+            Debug.Log("switched to jump");
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            stateToEnter = "";
         }
     }
 
