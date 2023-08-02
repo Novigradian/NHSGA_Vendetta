@@ -218,20 +218,20 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 100
-  playerLightAttackDamage: 15
+  maxPlayerHealth: 120
+  playerLightAttackDamage: 30
   playerHeavyLungeBaseDamage: 20
   playerHeavyLungeExtraDamageScale: 25
   playerHeavyLungeDamage: 0
-  playerJumpAttackDamage: 30
+  playerJumpAttackDamage: 45
   currentDamageValue: 0
   rallyScale: 0.33
   rallyDuration: 2
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
-  playerStaminaRecoverySpeed: 0.15
-  playerStaminaRecoveryDelay: 1.7
+  playerStaminaRecoverySpeed: 0.5
+  playerStaminaRecoveryDelay: 1.2
   playerStepStaminaCost: 6
   playerJumpStaminaCost: 4
   playerJumpAttackStaminaCost: 10
@@ -239,10 +239,10 @@ MonoBehaviour:
   playerHeavyLungeBaseStaminaCost: 9
   playerHeavyLungeExtraStaminaCostScale: 6
   enemy: {fileID: 0}
-  getHitStunDuration: 0.25
+  getHitStunDuration: 0.5
   blockDuration: 0.25
-  blockDamageNegationScale: 0.7
-  blockStaminaDrainScale: 0.25
+  blockDamageNegationScale: 0.85
+  blockStaminaDrainScale: 0.2
   blockPushBack: 0
   stepSpeed: 7
   stepDuration: 0.35
