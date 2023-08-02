@@ -829,9 +829,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 224290066}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: getHitVolume
+      value: 
+      objectReference: {fileID: 224290066}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: dialogueVolume
       value: 
       objectReference: {fileID: 1406694649}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: getHitVolumeShowDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1014,7 +1022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606237153021451462, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
       propertyPath: m_Name
-      value: FightVolume
+      value: GetHitVolume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}

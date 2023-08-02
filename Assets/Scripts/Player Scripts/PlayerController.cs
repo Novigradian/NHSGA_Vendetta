@@ -883,10 +883,13 @@ public class PlayerController : MonoBehaviour
         playerHealthBar.SetHealth(playerHealth);
         Debug.Log("hit, remaining health: "+playerHealth+" damage dealt was: "+damage);
         UIManager.ShowDamageText(transform.position, damage);
+        gameManager.getHitVolume.SetActive(true);
+        gameManager.ResetGetHitUI();
         state = PlayerState.getHit;
         ActivateRally();
         CheckDead();
     }
+
     #endregion
 
     #region Block Functions
@@ -949,9 +952,9 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.dead;
             enemyController.state = EnemyController.EnemyState.idle;
             //Time.timeScale = 0;
+            gameManager.getHitVolume.SetActive(false);
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
-            gameManager.fightVolume.SetActive(false);
             gameManager.dialogueVolume.SetActive(true);
         }
     }

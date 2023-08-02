@@ -580,6 +580,8 @@ public class EnemyController : MonoBehaviour
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
         UIManager.ShowDamageText(transform.position, damage);
+        //gameManager.getHitVolume.SetActive(true);
+        //gameManager.ResetGetHitUI();
         //Debug.Log("enemy damaged, remaining health: " + enemyHealth);
         state = EnemyState.getHit;
 
@@ -652,9 +654,9 @@ public class EnemyController : MonoBehaviour
             playerController.ResetSwordPosition();
             player.transform.position = new Vector3(player.transform.position.x, -2.1f, player.transform.position.z);
             //Time.timeScale = 0;
+            gameManager.getHitVolume.SetActive(false);
             dialogueManager.playerDialogue.SetActive(true);
             gameManager.gameState = "PlayerWinDialogue";
-            gameManager.fightVolume.SetActive(false);
             gameManager.dialogueVolume.SetActive(true);
         }
     }
