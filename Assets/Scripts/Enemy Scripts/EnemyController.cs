@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
     private Collider2D swordCollider;
     public Animator animator;
     public Transform controllerTransform;
+    public AudioManager audioManager;
 
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
@@ -148,6 +149,7 @@ public class EnemyController : MonoBehaviour
         isLightAttackOnCooldown = false;
         isAbleToChangeDirection = true;
         canMoveTowardsEnemy = true;
+        audioManager = FindObjectOfType<AudioManager>();
         canShift = true;
         playerController = player.GetComponent<PlayerController>();
         swordRb = sword.GetComponent<Rigidbody2D>();
@@ -425,6 +427,7 @@ public class EnemyController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
+        audioManager.Play("LightAttack");
         rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.1f;
         swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.7f;
     }
