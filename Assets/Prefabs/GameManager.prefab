@@ -72,10 +72,10 @@ MonoBehaviour:
   - Player
   - Enemy
   preFightDialogueList:
-  - 'Lucius Lioni! I remember you clearly. '
+  - 'Dante! I remember you clearly. '
   - "In the days of yore, I beheld your triumph in that bygone tourney, yet \u2018tis
     decades past."
-  - The sands of time have left their mark upon you, Lucius...
+  - The sands of time have left their mark upon you, Dante...
   - '...and to my eyes, your once-touted renown is worth naught more than the lowly
     filth beneath my soles! '
   - You are blighted with the arrogance of youth, and the foolishness of inexperience!
@@ -87,8 +87,8 @@ MonoBehaviour:
   - Yet another faint and feeble foe, forever to be remembered as a mere footnote
     in my brilliant legacy!
   enemyWinDialogueList:
-  - The master swordsman Lucius Lioni, pitifully slaughtered under the artistry of
-    my stikes!
+  - The master swordsman Dante D'Angelo, pitifully slaughtered under the artistry
+    of my stikes!
   - 'Thou art better suited for a life of contemplation and prayer, for the realm
     of fencing does not favor the likes of thee. '
   playerDialogue: {fileID: 0}

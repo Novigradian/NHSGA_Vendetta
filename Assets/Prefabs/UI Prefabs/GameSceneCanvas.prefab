@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LUCIUS WINS
+  m_text: DANTE WINS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50734c0a7f52aff418fc4b601381adad, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2074,6 +2074,10 @@ PrefabInstance:
     - target: {fileID: 36110739, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 26.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 36110740, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
+      propertyPath: m_text
+      value: Dante D'Angelo
       objectReference: {fileID: 0}
     - target: {fileID: 36110740, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
       propertyPath: m_fontSize
