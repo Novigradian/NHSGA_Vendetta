@@ -310,6 +310,10 @@ public class EnemyController : MonoBehaviour
     {
         
     }
+    public void ResetToIdle()
+    {
+        state = EnemyState.dead;
+    }
     #endregion
 
     #region Movement Functions
@@ -710,7 +714,7 @@ public class EnemyController : MonoBehaviour
         {
             enemyHealth = 0f;
             state = EnemyState.dead;
-            playerController.state = PlayerController.PlayerState.idle;
+            playerController.ResetToIdle();
             playerController.ResetSwordPosition();
             player.transform.position = new Vector3(player.transform.position.x, -2.1f, player.transform.position.z);
             //Time.timeScale = 0;

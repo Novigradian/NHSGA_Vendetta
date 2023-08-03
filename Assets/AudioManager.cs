@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         Debug.Log(name);
-        if (!s.source.isPlaying)
+        if (!s.source.isPlaying || name!="Parry")
         {
             s.source.Play();
         }

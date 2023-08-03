@@ -78,8 +78,8 @@ MonoBehaviour:
   preFightDialogueList:
   - DANTE D'ANGELO!
   - You have wronged many in your reign of bloodshed.
-  - Thirteen years past, I watched my father fall under your blade, murdered for
-    nothing but your own glory in a mere town spar.
+  - As a child, I watched my father fall under your blade, murdered for nothing but
+    your own glory in a mere town spar.
   - I have waited thirteen years to avenge him.
   - You shall answer for it now.
   - ...
@@ -89,7 +89,7 @@ MonoBehaviour:
   playerWinDialogueList:
   - "Father, I\u2019m sorry\u2026"
   - "\u2026You may have won, but I am only the first."
-  - "You WILL be punished for your sins, D\u2019Angelo."
+  - You WILL be punished for your sins, Dante D'Angelo.
   - ...
   playerWinDialogueSpeakerList:
   - Enemy

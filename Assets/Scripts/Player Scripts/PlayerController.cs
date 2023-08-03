@@ -384,6 +384,11 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.parry;
         }
     }
+
+    public void ResetToIdle()
+    {
+        state = PlayerState.dead;
+    }
     #endregion
 
     #region Movement Functions
@@ -866,7 +871,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Parry()
     {
-        audioManager.Play("Parry");
+        //audioManager.Play("Parry");
         animator.Play("Parry");
         yield return new WaitForSeconds(parryDuration);
         if (state == PlayerState.parry)
@@ -1003,7 +1008,7 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth = 0f;
             state = PlayerState.dead;
-            enemyController.state = EnemyController.EnemyState.idle;
+            enemyController.ResetToIdle();
             //Time.timeScale = 0;
             gameManager.getHitVolume.SetActive(false);
             dialogueManager.enemyDialogue.SetActive(true);
@@ -1161,6 +1166,7 @@ public class PlayerController : MonoBehaviour
                     }
                     UIManager.ShowParryText(transform.position);
                     enemyController.ActivateParried();
+                    audioManager.Play("Parry");
                 }
                 else if(enemyState == EnemyController.EnemyState.jumpAttack)
                 {
