@@ -247,6 +247,7 @@ public class PlayerController : MonoBehaviour
                 #region Heavy Attack Actions and Transitions
                 case PlayerState.heavyLungeWindup:
                     animator.Play("HeavyWindup");
+                    audioManager.Play("HeavyCharge");
                     HeavyLungeWindupActions();
                     HeavyLungeWindupTransitions();
                     break;
@@ -641,6 +642,7 @@ public class PlayerController : MonoBehaviour
     {
         if ((kb.oKey.wasPressedThisFrame||bufferState=="JumpAttack") && !isOutOfStamina)
         {
+            audioManager.Play("JumpAttack");
             bufferState = "None";
             state = PlayerState.jumpAttack;
             swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
@@ -702,6 +704,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(LightAttackWindup());
         if (kb.wKey.wasPressedThisFrame)
         {
+            audioManager.Play("Cancel");
             swordRb.isKinematic = true;
             ResetSwordPosition();
             UIManager.ShowFientText(transform.position);
@@ -796,6 +799,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
+            audioManager.Play("HeavyAttack");
             animator.Play("HeavyAttack");
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
