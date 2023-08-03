@@ -287,10 +287,10 @@ MonoBehaviour:
   getHitStunDuration: 0.5
   getHitKnockBackSpeed: 4
   getParriedStunDuration: 0.7
-  lightAttackWindupDuration: 0.39
-  lightAttackWindupSpeed: 6
+  lightAttackWindupDuration: 0.4
+  lightAttackWindupSpeed: 2.5
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 36
+  lightAttackThrustSpeed: 40
   blockDuration: 0.25
   blockDamageNegationScale: 0.85
   blockPushback: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 10
   heavyLungeStunDuration: 0.7
-  minHeavyLungeWindupDuration: 1
+  minHeavyLungeWindupDuration: 0.75
   maxHeavyLungeWindupDuration: 4
   parryDuration: 0.1
   riposteDamageBonus: 25

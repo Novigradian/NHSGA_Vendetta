@@ -463,8 +463,9 @@ public class EnemyController : MonoBehaviour
         if (canMoveTowardsEnemy)
         {
             rb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.35f;
-            swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.65f;
+            
         }
+        swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
     }
 
     private void LightAttackTransitions()
@@ -528,9 +529,15 @@ public class EnemyController : MonoBehaviour
     public void HeavyLunge()
     {
         StartCoroutine(HeavyLungeCoroutine());
-        animator.Play("HeavyAttack");
-        rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+        if (canMoveTowardsEnemy)
+        {
+            audioManager.Play("HeavyAttack");
+            animator.Play("HeavyAttack");
+            rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+            
+        }
         swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+
     }
     public IEnumerator HeavyLungeCoroutine()
     {
