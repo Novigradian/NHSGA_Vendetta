@@ -603,6 +603,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6462676467052779739, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6462676467325051485, guid: 87e6191e225a5b84189667189c974b39, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1042,9 +1046,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 180061235, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+    - target: {fileID: 3548147992146327530, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_text
-      value: DANTE WINS
+      value: Dante
       objectReference: {fileID: 0}
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x

@@ -51,6 +51,8 @@ MonoBehaviour:
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
   getHitVolumeShowDuration: 0.5
+  leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
+  rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
 --- !u!114 &3472306370635930197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,21 +70,22 @@ MonoBehaviour:
   - Enemy
   - Enemy
   - Enemy
-  - Player
+  - Enemy
   - Player
   - Enemy
+  - Enemy
+  - Enemy
   preFightDialogueList:
-  - 'Dante! I remember you clearly. '
-  - "In the days of yore, I beheld your triumph in that bygone tourney, yet \u2018tis
-    decades past."
-  - The sands of time have left their mark upon you, Dante...
-  - '...and to my eyes, your once-touted renown is worth naught more than the lowly
-    filth beneath my soles! '
-  - You are blighted with the arrogance of youth, and the foolishness of inexperience!
-  - 'Tread cautiously around an old man in a profession where men oft meet an early
-    grave. '
-  - Enough of this prattle, soon you shall hear only the clash of my steel upon your
-    flesh! En garde!
+  - DANTE D'ANGELO!
+  - You have wronged many in your reign of bloodshed.
+  - Thirteen years past, I watched my father fall under your blade, murdered for
+    nothing but your own glory in a mere town spar.
+  - I have waited thirteen years to avenge him.
+  - You shall answer for it now.
+  - ...
+  - No words, even when facing your judgment?
+  - Very well...
+  - ...THEN PREPARE TO DIE!
   playerWinDialogueList:
   - Yet another faint and feeble foe, forever to be remembered as a mere footnote
     in my brilliant legacy!

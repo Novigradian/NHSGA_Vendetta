@@ -612,6 +612,7 @@ public class EnemyController : MonoBehaviour
     }
     private IEnumerator GetHit()
     {
+        
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == EnemyState.getHit)
         {
@@ -622,6 +623,7 @@ public class EnemyController : MonoBehaviour
     private void TakeHitDamage(float damage)
     {
         animator.Play("GetHit");
+        gameManager.SpawnRightBloodParticle(transform.position);
         enemyHealth -= damage;
         enemyHealthBar.SetHealth(enemyHealth);
         UIManager.ShowDamageText(transform.position, damage);

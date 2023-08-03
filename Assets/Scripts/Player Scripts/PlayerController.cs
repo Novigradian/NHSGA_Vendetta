@@ -920,6 +920,7 @@ public class PlayerController : MonoBehaviour
     {
         audioManager.Play("LightDamageHit");
         animator.Play("GetHit");
+        
         yield return new WaitForSeconds(getHitStunDuration);
         if (state == PlayerState.getHit)
         {
@@ -931,6 +932,7 @@ public class PlayerController : MonoBehaviour
     {
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
+        gameManager.SpawnLeftBloodParticle(transform.position);
         Debug.Log("hit, remaining health: "+playerHealth+" damage dealt was: "+damage);
         UIManager.ShowDamageText(transform.position, damage);
         gameManager.getHitVolume.SetActive(true);

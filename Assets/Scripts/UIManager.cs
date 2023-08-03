@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
     private bool isShowWinText;
     private bool isShowFightText;
 
+    
+
     void Start()
     {
         isResetUIPos = false;
@@ -79,6 +81,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #region Text Functions
     private IEnumerator BeginFight()
     {
         isShowFightText = true;
@@ -168,6 +171,9 @@ public class UIManager : MonoBehaviour
         fientTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
         StartCoroutine(HideDamageText(fientTextUIInstance));
     }
+    #endregion
+
+    
 
     private Vector2 WorldToCanvasPos(Vector3 playerWorldPos)
     {

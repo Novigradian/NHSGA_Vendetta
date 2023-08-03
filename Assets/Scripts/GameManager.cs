@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject getHitVolume;
 
     [SerializeField] private float getHitVolumeShowDuration;
+
+    public GameObject leftBloodParticlePrefab;
+    public GameObject rightBloodParticlePrefab;
+
     #endregion
 
     void Awake()
@@ -40,5 +44,23 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(getHitVolumeShowDuration);
         getHitVolume.SetActive(false);
+    }
+
+    public void SpawnLeftBloodParticle(Vector3 WorldPos)
+    {
+        GameObject bloodParticle = Instantiate(leftBloodParticlePrefab, WorldPos,Quaternion.identity);
+        StartCoroutine(DestroyBloodParticle(bloodParticle));
+    }
+
+    public void SpawnRightBloodParticle(Vector3 WorldPos)
+    {
+        GameObject bloodParticle = Instantiate(leftBloodParticlePrefab, WorldPos, Quaternion.identity);
+        StartCoroutine(DestroyBloodParticle(bloodParticle));
+    }
+
+    private IEnumerator DestroyBloodParticle(GameObject particle)
+    {
+        yield return new WaitForSeconds(15f);
+        Destroy(particle);
     }
 }
