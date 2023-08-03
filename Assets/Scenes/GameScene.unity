@@ -417,6 +417,14 @@ PrefabInstance:
       propertyPath: lightAttackWindupDuration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1051260131, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: m_Size.y
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051260131, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.70256054
+      objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -540,6 +548,10 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
+    - target: {fileID: 4919294456943850067, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
+      propertyPath: m_Size.y
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6652532464118253236, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -622,6 +634,18 @@ PrefabInstance:
     - target: {fileID: 84869279465883261, guid: 87e6191e225a5b84189667189c974b39, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 84869279465883261, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 84869279465883261, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462676467052779736, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6462676467325051485, guid: 87e6191e225a5b84189667189c974b39, type: 3}
       propertyPath: m_RootOrder
