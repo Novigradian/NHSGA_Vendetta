@@ -85,3 +85,23 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: JumpAttack
+    clip: {fileID: 8300000, guid: 8f2807b5266ff4d308567e29acc9de4a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: HeavyCharge
+    clip: {fileID: 8300000, guid: 90bfeaf5240794d8094e5bdab6d42775, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: HeavyAttack
+    clip: {fileID: 8300000, guid: c58594ed1b68e49758c3f80762d2d9a2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Cancel
+    clip: {fileID: 8300000, guid: 6a6845e07b45841acaa1e656bf3f050d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}

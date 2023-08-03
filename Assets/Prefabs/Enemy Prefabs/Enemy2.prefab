@@ -124,13 +124,13 @@ MonoBehaviour:
   player: {fileID: 0}
   jumpForce: 7.5
   jumpHorizontalSpeed: 1
-  getHitStunDuration: 0.5
-  getHitKnockBackSpeed: 4
+  getHitStunDuration: 0.35
+  getHitKnockBackSpeed: 8
   getParriedStunDuration: 0.7
-  lightAttackWindupDuration: 0.39
-  lightAttackWindupSpeed: 6
+  lightAttackWindupDuration: 0.3
+  lightAttackWindupSpeed: 3.75
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 36
+  lightAttackThrustSpeed: 40
   blockDuration: 0.25
   blockDamageNegationScale: 0.85
   blockPushback: 0
@@ -141,31 +141,32 @@ MonoBehaviour:
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.175
   heavyLungeLowerSwordScale: 1
-  heavyLungeThrustSpeed: 10
+  heavyLungeThrustSpeed: 20
   heavyLungeStunDuration: 0.7
   minHeavyLungeWindupDuration: 1
   maxHeavyLungeWindupDuration: 4
   parryDuration: 0.1
   riposteDamageBonus: 25
+  parryChance: 1
   baseIdleChance: 0.1
   aggressiveness: 1.5
   difficulty: 1.5
   shuffleLeftDistanceDivideScale: 10
-  minimumStepLeftDistance: 6.5
+  minimumStepLeftDistance: 7
   stepLeftDistanceDivideScale: 50
-  playerLightAttackRetreatChance: 0.7
+  playerLightAttackRetreatChance: 1
   playerJumpAttackRetreatChance: 0.15
   playerHeavyLungeWindupAdvanceChance: 0.8
   chaseAfterEnemyDistanceDivideScale: 15
   unableToChangeDirectionDuration: 0.6
   isAbleToChangeDirection: 0
-  baseLightAttackChance: 0.15
-  baseHeavyLungeChance: 0.02
+  baseLightAttackChance: 0.1
+  baseHeavyLungeChance: 0.4
   lightAttackRange: 5.5
   heavyLungeRange: 8
   heavyLungeDistanceScale: 16
   playerHeavyLungeJumpChance: 1
-  stateToEnter: 
+  stateToEnter: HeavyWindup
 --- !u!1 &4232357887429879600
 GameObject:
   m_ObjectHideFlags: 0

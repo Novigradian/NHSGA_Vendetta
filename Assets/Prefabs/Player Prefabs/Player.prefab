@@ -233,21 +233,21 @@ MonoBehaviour:
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
-  playerStaminaRecoverySpeed: 0.4
+  playerStaminaRecoverySpeed: 0.45
   playerStaminaRecoveryDelay: 1
   playerStepStaminaCost: 6
   playerJumpStaminaCost: 4
   playerJumpAttackStaminaCost: 10
-  playerLightAttackStaminaCost: 7
-  playerHeavyLungeBaseStaminaCost: 9
+  playerLightAttackStaminaCost: 20
+  playerHeavyLungeBaseStaminaCost: 13
   playerHeavyLungeExtraStaminaCostScale: 6
   enemy: {fileID: 0}
-  getHitStunDuration: 0.5
-  getHitKnockBackSpeed: 4
-  getParriedStunDuration: 0.7
+  getHitStunDuration: 0.35
+  getHitKnockBackSpeed: 8
+  getParriedStunDuration: 0.5
   blockDuration: 0.25
   blockDamageNegationScale: 0.75
-  blockStaminaDrainScale: 0.375
+  blockStaminaDrainScale: 0
   blockPushBack: 0
   stepSpeed: 7
   stepDuration: 0.35
@@ -255,24 +255,24 @@ MonoBehaviour:
   shuffleSpeed: 1
   canShift: 0
   canMoveTowardsEnemy: 0
-  jumpForce: 7.5
+  jumpForce: 6
   jumpHorizontalSpeed: 1
   lightAttackWindupDuration: 0.2
   lightAttackWindupSpeed: 5
   lightAttackDuration: 0.15
   lightAttackThrustSpeed: 40
-  heavyLungeMinimumWindupTime: 0.65
+  heavyLungeMinimumWindupTime: 0.5
   heavyLungeMaximumWindupTime: 2
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.3
   heavyLungeLowerSwordScale: 1
-  heavyLungeThrustSpeed: 20
+  heavyLungeThrustSpeed: 23
   heavyLungeStunDuration: 0.7
   jumpAttackDuration: 0.15
   jumpAttackSwingSpeed: 15
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackPlayerHorizontalSpeed: 17.5
-  parryDuration: 0.4
+  parryDuration: 0.2
   riposteDamageBonus: 25
 --- !u!61 &1051260131
 BoxCollider2D:

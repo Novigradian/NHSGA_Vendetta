@@ -513,6 +513,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 302981266}
     - target: {fileID: 1735666211400816202, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
+      propertyPath: maxEnemyHealth
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735666211400816202, guid: f7be18acb1244854d9f9820ecbc12ea1, type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
@@ -925,10 +929,6 @@ PrefabInstance:
       propertyPath: dialogueVolume
       value: 
       objectReference: {fileID: 1406694649}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: minimumPlayerEnemyDistance
-      value: 5.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: m_RootOrder
       value: 8

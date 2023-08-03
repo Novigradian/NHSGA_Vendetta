@@ -385,10 +385,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3472306370635930198}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: jumpForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1904956625}
@@ -408,42 +404,6 @@ PrefabInstance:
       propertyPath: playerStaminaBar
       value: 
       objectReference: {fileID: 1789710035}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: blockStaminaDrainScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: getParriedStunDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: lightAttackThrustSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: lightAttackWindupDuration
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerStaminaRecoverySpeed
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerLightAttackStaminaCost
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: playerHeavyLungeBaseStaminaCost
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260131, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: m_Size.y
-      value: 3.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1051260131, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.70256054
-      objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -491,22 +451,6 @@ PrefabInstance:
     - target: {fileID: 1735666210835693573, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1735666210935917107, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1735666211534223033, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1735666211534223036, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1735666212459705735, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
@@ -654,67 +598,19 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8f2807b5266ff4d308567e29acc9de4a, type: 3}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[8].name
-      value: JumpAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 90bfeaf5240794d8094e5bdab6d42775, type: 3}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[9].name
-      value: HeavyCharge
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: c58594ed1b68e49758c3f80762d2d9a2, type: 3}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[10].name
-      value: HeavyAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[11].clip
+      propertyPath: sounds.Array.data[12].clip
       value: 
       objectReference: {fileID: 8300000, guid: 6a6845e07b45841acaa1e656bf3f050d, type: 3}
     - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[11].name
+      propertyPath: sounds.Array.data[12].name
       value: Cancel
       objectReference: {fileID: 0}
     - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[8].pitch
+      propertyPath: sounds.Array.data[12].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[9].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[10].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[11].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[8].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[9].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[10].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[11].volume
+      propertyPath: sounds.Array.data[12].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 552338697762719805, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
@@ -1313,17 +1209,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904956625}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: parryChance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 203019790}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: stateToEnter
-      value: HeavyWindup
-      objectReference: {fileID: 0}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: enemyHealthBar
       value: 
@@ -1332,37 +1220,5 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: getHitStunDuration
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: baseHeavyLungeChance
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: baseLightAttackChance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: heavyLungeThrustSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: isAbleToChangeDirection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: minimumStepLeftDistance
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: playerHeavyLungeJumpChance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: playerLightAttackRetreatChance
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
