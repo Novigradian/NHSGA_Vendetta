@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
     public Transform controllerTransform;
     public AudioManager audioManager;
+    private int block;
 
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
@@ -170,6 +171,8 @@ public class EnemyController : MonoBehaviour
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
         heavyLungeWindupTime = 0f;
+
+        block = 1;
 
         stateToEnter = "idleChance";
 
@@ -654,6 +657,16 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator ResetBlock()
     {
+        if (block == 1)
+        {
+            animator.Play("Block");
+            block = 2;
+        }
+        else if (block == 2)
+        {
+            animator.Play("Block2");
+            block = 1;
+        }
         yield return new WaitForSeconds(blockDuration);
         if (state == EnemyState.block)
         {

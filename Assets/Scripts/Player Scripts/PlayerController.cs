@@ -966,6 +966,7 @@ public class PlayerController : MonoBehaviour
 
     private void ActivateBlock()
     {
+        animator.Play("Block");
         audioManager.Play("Block");
         state = PlayerState.block;
         StopCoroutine(ResetBlock());
