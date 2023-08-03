@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483007520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 0.61, z: 0}
+  m_LocalPosition: {x: 0.75, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,7 +100,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.368205, y: 4.49}
+  m_Size: {x: 7.355, y: 4.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -243,7 +243,8 @@ MonoBehaviour:
   playerHeavyLungeExtraStaminaCostScale: 6
   enemy: {fileID: 0}
   getHitStunDuration: 0.5
-  getHitKnockBackForce: 0.07
+  getHitKnockBackSpeed: 4
+  getParriedStunDuration: 0.7
   blockDuration: 0.25
   blockDamageNegationScale: 0.75
   blockStaminaDrainScale: 0.375
@@ -257,9 +258,9 @@ MonoBehaviour:
   jumpForce: 7.5
   jumpHorizontalSpeed: 1
   lightAttackWindupDuration: 0.2
-  lightAttackWindupSpeed: 6
+  lightAttackWindupSpeed: 5
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 40
+  lightAttackThrustSpeed: 30
   heavyLungeMinimumWindupTime: 0.5
   heavyLungeMaximumWindupTime: 2
   heavyLungeWindupSpeed: 1
@@ -271,7 +272,7 @@ MonoBehaviour:
   jumpAttackSwingSpeed: 15
   jumpAttackThrustSpeed: {x: 10, y: -60}
   jumpAttackPlayerHorizontalSpeed: 17.5
-  parryDuration: 0.1
+  parryDuration: 0.4
   riposteDamageBonus: 25
 --- !u!61 &1051260131
 BoxCollider2D:
@@ -379,6 +380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1735666210835693572}
     m_Modifications:
+    - target: {fileID: 3806825493153827621, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3806825493350266794, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
       propertyPath: m_Name
       value: PlayerBody
@@ -435,6 +440,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3806825493350266799, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3806825493350266797, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
     - {fileID: 3806825493350266792, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
@@ -459,6 +468,10 @@ PrefabInstance:
     - target: {fileID: 7673852163725699833, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_TagString
       value: PlayerSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673852163725699834, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_RootOrder
