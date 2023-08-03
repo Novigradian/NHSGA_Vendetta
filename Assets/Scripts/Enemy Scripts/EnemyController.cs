@@ -111,6 +111,7 @@ public class EnemyController : MonoBehaviour
     [Header("Parry")]
     [SerializeField] private float parryDuration;
     [SerializeField] private float riposteDamageBonus;
+    [SerializeField] private float parryChance;
 
 
     [Header("Enemy AI")]
@@ -183,6 +184,7 @@ public class EnemyController : MonoBehaviour
         chanceDict["idleChance"] = baseIdleChance;
         chanceDict["lightAttackChance"] = baseLightAttackChance;
         chanceDict["jumpChance"] = 0f;
+        chanceDict["parryChance"] = 0f;
         //chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
@@ -956,11 +958,13 @@ public class EnemyController : MonoBehaviour
                 chanceDict["shuffleRightChance"] = 0f;
             }
             chanceDict["stepRightChance"] = 0f;
-
+            chanceDict["parryChance"] = 0f;
             if (playerState == PlayerController.PlayerState.lightAttack)
             {
                 chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance*(2f-aggressiveness);
                 chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness)*difficulty;
+                chanceDict["parryChance"] = parryChance * difficulty;
+                Debug.Log(chanceDict["parryChance"]);
             }
             else if (playerState == PlayerController.PlayerState.jumpAttack)
             {
@@ -975,6 +979,10 @@ public class EnemyController : MonoBehaviour
             else if (playerState == PlayerController.PlayerState.stepLeft)
             {
                 chanceDict["stepLeftChance"] += (distance / chaseAfterEnemyDistanceDivideScale) * aggressiveness;
+            }
+            if (playerState == PlayerController.PlayerState.parried)
+            {
+                state = EnemyState.lightAttackWindup;
             }
 
             if (!canShift)
@@ -1063,6 +1071,12 @@ public class EnemyController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             stateToEnter = "";
         }
+        //else if(stateToEnter == "parryChance")
+        //{
+        //    state = EnemyState.parry;
+        //    Debug.Log("switched to parry");
+        //    swordRb.isKinematic = false;
+        //}
     }
 
 
