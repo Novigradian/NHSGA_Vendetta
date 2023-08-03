@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     private int preFightDialogueIndex;
 
     public string[] playerWinDialogueList;
+    public string[] playerWinDialogueSpeakerList;
     private int playerWinDialogueIndex;
 
     public string[] enemyWinDialogueList;
@@ -82,14 +83,15 @@ public class DialogueManager : MonoBehaviour
                 playerWinDialogueIndex++;
                 if (playerWinDialogueIndex >= playerWinDialogueList.Length)
                 {
+                    currentCoroutine = null;
                     gameManager.gameState = "PlayerWin";
                     playerDialogue.SetActive(false);
+                    enemyDialogue.SetActive(false);
                 }
                 else
                 {
-                    StopCoroutine(currentCoroutine);
                     anim.SetTrigger("returnToIdle");
-                    currentCoroutine =StartCoroutine(DisplayPlayerText(playerWinDialogueList[playerWinDialogueIndex]));
+                    ShowPlayerWinDialogue(playerWinDialogueIndex);
                 }
             }
         }
@@ -140,9 +142,34 @@ public class DialogueManager : MonoBehaviour
             currentCoroutine=StartCoroutine(DisplayPlayerText(text));
         }
     }
+    public void ShowPlayerWinDialogue(int index)
+    {
+        playerDialogue.SetActive(false);
+        enemyDialogue.SetActive(false);
+
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
+        string speaker = playerWinDialogueSpeakerList[index];
+        Debug.Log(speaker);
+        string text = playerWinDialogueList[index];
+        if (speaker == "Enemy")
+        {
+            enemyDialogue.SetActive(true);
+            currentCoroutine = StartCoroutine(DisplayEnemyText(text));
+        }
+        else if (speaker == "Player")
+        {
+            playerDialogue.SetActive(true);
+            currentCoroutine = StartCoroutine(DisplayPlayerText(text));
+        }
+    }
 
     private IEnumerator DisplayPlayerText(string text)
     {
+
         anim = playerDialogueText.GetComponent<Animator>();
         anim.SetTrigger("startFadeIn");
         
