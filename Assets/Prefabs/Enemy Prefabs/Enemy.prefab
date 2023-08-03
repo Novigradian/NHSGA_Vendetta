@@ -221,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3350735, y: 3.1436028}
+  m_Size: {x: 1.3350735, y: 3.5}
   m_EdgeRadius: 0
 --- !u!50 &4919294456943850068
 Rigidbody2D:
@@ -282,15 +282,15 @@ MonoBehaviour:
   enemyHeavyLungeDamage: 0
   enemyJumpAttackDamage: 15
   player: {fileID: 0}
-  jumpForce: 7.5
+  jumpForce: 6.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.5
   getHitKnockBackSpeed: 4
   getParriedStunDuration: 0.7
-  lightAttackWindupDuration: 0.39
-  lightAttackWindupSpeed: 6
+  lightAttackWindupDuration: 0.4
+  lightAttackWindupSpeed: 2.5
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 36
+  lightAttackThrustSpeed: 40
   blockDuration: 0.25
   blockDamageNegationScale: 0.85
   blockPushback: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 10
   heavyLungeStunDuration: 0.7
-  minHeavyLungeWindupDuration: 1
+  minHeavyLungeWindupDuration: 0.75
   maxHeavyLungeWindupDuration: 4
   parryDuration: 0.1
   riposteDamageBonus: 25
@@ -367,15 +367,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002342267121850235, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.60876137
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8002342267121850235, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7933534
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8002342267121850235, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8002342267121850235, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002342267121850235, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -75
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58ff6d5904c95384cb173cff25f87bfa, type: 3}

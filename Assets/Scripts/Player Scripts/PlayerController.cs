@@ -722,8 +722,9 @@ public class PlayerController : MonoBehaviour
         if (canMoveTowardsEnemy)
         {
             rb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.25f;
-            swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
+            
         }
+        swordRb.position += Vector2.right * direction * Time.deltaTime * lightAttackThrustSpeed * 0.75f;
         CheckBuffer();
         currentDamageValue = playerLightAttackDamage;
     }
@@ -742,12 +743,13 @@ public class PlayerController : MonoBehaviour
             UseStamina(playerLightAttackStaminaCost);
             Debug.Log("used stamina, stamina remaining" + playerStamina);
             state = PlayerState.lightAttack;
-            swordCollider.enabled = true;
+            //swordCollider.enabled = true;
         }
     }
 
     private IEnumerator LightAttack()
     {
+        swordCollider.enabled = true;
         yield return new WaitForSeconds(lightAttackDuration);
         if (state == PlayerState.lightAttack)
         {
@@ -767,8 +769,9 @@ public class PlayerController : MonoBehaviour
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
             heavyLungeWindupTime += Time.deltaTime;
-            swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
+            
         }
+        swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
 
     private void HeavyLungeWindupTransitions()
@@ -807,8 +810,9 @@ public class PlayerController : MonoBehaviour
             audioManager.Play("HeavyAttack");
             animator.Play("HeavyAttack");
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
-            swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+            
         }
+        swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
         CheckBuffer();
     }
 
