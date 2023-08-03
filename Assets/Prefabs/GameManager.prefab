@@ -87,7 +87,15 @@ MonoBehaviour:
   - Very well...
   - ...THEN PREPARE TO DIE!
   playerWinDialogueList:
+  - "Father, I\u2019m sorry\u2026"
+  - "\u2026You may have won, but I am only the first."
+  - "You WILL be punished for your sins, D\u2019Angelo."
   - ...
+  playerWinDialogueSpeakerList:
+  - Enemy
+  - Enemy
+  - Enemy
+  - Player
   enemyWinDialogueList:
   - You lived without honor, and deserve none in death.
   - "May you rot in hell for all of the souls you\u2019ve taken from this world. "

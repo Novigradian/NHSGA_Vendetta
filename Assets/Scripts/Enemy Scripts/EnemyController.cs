@@ -715,8 +715,8 @@ public class EnemyController : MonoBehaviour
             player.transform.position = new Vector3(player.transform.position.x, -2.1f, player.transform.position.z);
             //Time.timeScale = 0;
             gameManager.getHitVolume.SetActive(false);
-            dialogueManager.playerDialogue.SetActive(true);
             gameManager.gameState = "PlayerWinDialogue";
+            dialogueManager.ShowPlayerWinDialogue(0);
             gameManager.dialogueVolume.SetActive(true);
         }
     }
