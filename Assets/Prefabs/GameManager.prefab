@@ -87,13 +87,10 @@ MonoBehaviour:
   - Very well...
   - ...THEN PREPARE TO DIE!
   playerWinDialogueList:
-  - Yet another faint and feeble foe, forever to be remembered as a mere footnote
-    in my brilliant legacy!
+  - ...
   enemyWinDialogueList:
-  - The master swordsman Dante D'Angelo, pitifully slaughtered under the artistry
-    of my stikes!
-  - 'Thou art better suited for a life of contemplation and prayer, for the realm
-    of fencing does not favor the likes of thee. '
+  - You lived without honor, and deserve none in death.
+  - "May you rot in hell for all of the souls you\u2019ve taken from this world. "
   playerDialogue: {fileID: 0}
   playerDialogueText: {fileID: 0}
   enemyDialogue: {fileID: 0}
