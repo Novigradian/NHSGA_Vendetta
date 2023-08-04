@@ -656,6 +656,7 @@ public class PlayerController : MonoBehaviour
         if ((kb.oKey.wasPressedThisFrame||bufferState=="JumpAttack") && !isOutOfStamina)
         {
             audioManager.Play("JumpAttack");
+            animator.Play("JumpAttack");
             bufferState = "None";
             state = PlayerState.jumpAttack;
             swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
