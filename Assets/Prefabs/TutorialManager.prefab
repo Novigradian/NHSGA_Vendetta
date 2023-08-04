@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1812213232839424339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1812213232839424337}
+  - component: {fileID: 1812213232839424338}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1812213232839424337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812213232839424339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8704839, y: 1.5819077, z: 0.059305254}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1812213232839424338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812213232839424339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22182a25cbbfa94ead1a3e65b55fd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumPlayerDummyDistance: 5
+  gameState: 
+  fientTextUI: {fileID: 6078899087307618118, guid: 5604e1b2b591702438d686e7135ca890, type: 3}
+  damageTextUI: {fileID: 6058835268198662534, guid: fde00fe4f5f05c746b8df480dc10877b, type: 3}
+  blockTextUI: {fileID: 1249155006081439823, guid: 19bdff087aabc274c80f9a33cc2b6498, type: 3}
+  outOfStaminaTextUI: {fileID: 0}
+  riposteTextUI: {fileID: 0}
+  critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}
+  showDamageTextDuration: 0.75
+  showTextDuration: 0.75
+  canvas: {fileID: 0}
+  leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
+  rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
+  getHitVolume: {fileID: 6606237153021451462, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
+  getHitVolumeShowDuration: 0.75
