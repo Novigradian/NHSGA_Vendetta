@@ -1015,6 +1015,7 @@ public class PlayerController : MonoBehaviour
         if (playerHealth <= 0f)
         {
             playerHealth = 0f;
+            animator.Play("Death");
             state = PlayerState.dead;
             enemyController.ResetToIdle();
             //Time.timeScale = 0;
