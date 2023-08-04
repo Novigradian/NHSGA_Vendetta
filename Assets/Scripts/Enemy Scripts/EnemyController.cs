@@ -743,6 +743,10 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            if(state == EnemyState.jump)
+            {
+                animator.Play("Land");
+            }
             state = EnemyState.idle;
             ResetSwordPosition();
             swordRb.isKinematic = true;

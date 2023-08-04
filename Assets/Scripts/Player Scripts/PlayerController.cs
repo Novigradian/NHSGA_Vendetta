@@ -674,7 +674,7 @@ public class PlayerController : MonoBehaviour
 
         if (canMoveTowardsEnemy)
         {
-            rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackPlayerHorizontalSpeed;
+            //rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackPlayerHorizontalSpeed;
         }
         CheckBuffer();
 
