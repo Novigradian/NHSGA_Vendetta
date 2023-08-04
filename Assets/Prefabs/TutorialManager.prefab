@@ -44,8 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22182a25cbbfa94ead1a3e65b55fd49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumPlayerDummyDistance: 5
   gameState: 
+  canvas: {fileID: 0}
+  tutorialPlayerController: {fileID: 0}
+  minimumPlayerDummyDistance: 5
+  tutorialInstructionUI: {fileID: 0}
+  tutorialInstructionText: {fileID: 0}
+  tutorialInstructionList:
+  - Hold [A] and [D] to shuffle forwards and backwards.
+  - Hold [S] with [A] and [D] to dash forwards and backwards.
+  - Press [O] to thrust.<br>Take note of the slight windup.
+  - Press [W] during windup to cancel the thrust.
+  - Hold and release [P] to lunge.<br>You are vulnerable while charging the lunge.
+  - Press [Space] to jump.
+  - Press [O] while jumping to jump attack.
+  - All your actions consume stamina, which regenerate over time.<br>Press [Esc]
+    to continue.
+  - Press [I] while the enemy is thrusting to parry.<br>Follow up with [O] for a
+    riposte with extra damage.<br>Press [Esc] to continue.
+  - Practice with the dummy, <br>or press [Esc] to exit.
+  tutorialInstructionIndex: 0
+  instructionTasksCompletedList: 02000000020000000300000003000000010000000200000002000000
   fientTextUI: {fileID: 6078899087307618118, guid: 5604e1b2b591702438d686e7135ca890, type: 3}
   damageTextUI: {fileID: 6058835268198662534, guid: fde00fe4f5f05c746b8df480dc10877b, type: 3}
   blockTextUI: {fileID: 1249155006081439823, guid: 19bdff087aabc274c80f9a33cc2b6498, type: 3}
@@ -54,8 +73,16 @@ MonoBehaviour:
   critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}
   showDamageTextDuration: 0.75
   showTextDuration: 0.75
-  canvas: {fileID: 0}
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
-  getHitVolume: {fileID: 6606237153021451462, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
+  dialogueVolume: {fileID: 0}
+  getHitVolume: {fileID: 0}
   getHitVolumeShowDuration: 0.75
+  displayDialogueInterval: 0.02
+  playerDialogue: {fileID: 0}
+  playerDialogueText: {fileID: 0}
+  preTutorialDialogueList:
+  - 'Alas. Even in my dreams, this wretched past pursues me. '
+  - I remember it all, still.
+  - "Good. I\u2019ve recalled the basics."
+  preTutorialDialogueIndex: 0

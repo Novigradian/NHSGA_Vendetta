@@ -354,6 +354,7 @@ MonoBehaviour:
   canMoveTowardsEnemy: 0
   jumpForce: 15
   jumpHorizontalSpeed: 1
+  isJumping: 0
   lightAttackWindupDuration: 0.2
   lightAttackWindupSpeed: 5
   lightAttackDuration: 0.15

@@ -107,10 +107,15 @@ public class TutorialPlayerController : MonoBehaviour
     [SerializeField] private float shuffleSpeed;
     [SerializeField] private bool canShift;
     [SerializeField] private bool canMoveTowardsEnemy;
+    private bool completedShuffleLeft;
+    private bool completedShuffleRight;
+    private bool completedStepLeft;
+    private bool completedStepRight;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpHorizontalSpeed;
+    [HideInInspector] public bool isJumping;
 
     [Header("Light Attack")]
     
@@ -185,6 +190,12 @@ public class TutorialPlayerController : MonoBehaviour
         direction = 1f;
 
         bufferState = "None";
+
+        completedShuffleLeft = false;
+        completedShuffleRight = false;
+        completedStepLeft = false;
+        completedStepRight = false;
+        isJumping = false;
         #endregion
     }
 
@@ -196,7 +207,7 @@ public class TutorialPlayerController : MonoBehaviour
         CheckCanMoveTowardsEnemy();
 
         string gameState = tutorialManager.gameState;
-        if (gameState == "Fight")
+        if (gameState == "Fight"||gameState=="Practice"||gameState== "SpecialTutorialInstructions")
         {
             switch (state)
             {
@@ -403,6 +414,12 @@ public class TutorialPlayerController : MonoBehaviour
         audioManager.Play("Dash");
         rb.position += Vector2.left * Time.deltaTime * stepSpeed;
         CheckBuffer();
+
+        if (tutorialManager.tutorialInstructionIndex == 1 && !completedStepLeft)
+        {
+            completedStepLeft = true;
+            tutorialManager.UpdateInstructionsCompleted();
+        }
     }
 
     private void StepLeftTransitions()
@@ -447,6 +464,12 @@ public class TutorialPlayerController : MonoBehaviour
             rb.position += Vector2.right * Time.deltaTime * stepSpeed;
         }
         CheckBuffer();
+
+        if (tutorialManager.tutorialInstructionIndex == 1 && !completedStepRight)
+        {
+            completedStepRight = true;
+            tutorialManager.UpdateInstructionsCompleted();
+        }
     }
 
     private void StepRightTransitions()
@@ -488,6 +511,13 @@ public class TutorialPlayerController : MonoBehaviour
         audioManager.Play("Shuffle");
         animator.Play("ShuffleLeft");
         rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
+
+        if (tutorialManager.tutorialInstructionIndex == 0 &&!completedShuffleLeft) 
+        {
+            completedShuffleLeft = true;
+            Debug.Log("completed");
+            tutorialManager.UpdateInstructionsCompleted();
+        }
     }
 
     private void ShuffleLeftTransitions()
@@ -557,6 +587,12 @@ public class TutorialPlayerController : MonoBehaviour
             audioManager.Play("Shuffle");
             animator.Play("ShuffleRight");
             rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
+        }
+
+        if (tutorialManager.tutorialInstructionIndex == 0 && !completedShuffleRight)
+        {
+            completedShuffleRight = true;
+            tutorialManager.UpdateInstructionsCompleted();
         }
     }
 
@@ -630,7 +666,13 @@ public class TutorialPlayerController : MonoBehaviour
     #region Jump Functions
     private void JumpActions()
     {
-        if(hasPlayed == false)
+        
+        if (tutorialManager.tutorialInstructionIndex==5 && !isJumping)
+        {
+            tutorialManager.UpdateInstructionsCompleted();
+        }
+        isJumping = true;
+        if (hasPlayed == false)
         {
             audioManager.Play("Jump");
             hasPlayed = true;
@@ -659,6 +701,10 @@ public class TutorialPlayerController : MonoBehaviour
             swordRb.isKinematic = false;
             swordPivotRb.isKinematic = false;
             swordCollider.enabled = true;
+            if (tutorialManager.tutorialInstructionIndex == 6)
+            {
+                tutorialManager.UpdateInstructionsCompleted();
+            }
         }
     }
 
@@ -718,6 +764,10 @@ public class TutorialPlayerController : MonoBehaviour
             ResetSwordPosition();
             tutorialManager.ShowFientText(transform.position);
             state = PlayerState.idle;
+            if (tutorialManager.tutorialInstructionIndex == 3)
+            {
+                tutorialManager.UpdateInstructionsCompleted();
+            }
         }
     }
 
@@ -747,6 +797,7 @@ public class TutorialPlayerController : MonoBehaviour
             UseStamina(playerLightAttackStaminaCost);
             Debug.Log("used stamina, stamina remaining" + playerStamina);
             state = PlayerState.lightAttack;
+            
             //swordCollider.enabled = true;
         }
     }
@@ -762,6 +813,10 @@ public class TutorialPlayerController : MonoBehaviour
             ResetSwordPosition();
             state = PlayerState.idle;
             playerLightAttackDamage = playerLightAttackBaseDamage;
+            if (tutorialManager.tutorialInstructionIndex == 2)
+            {
+                tutorialManager.UpdateInstructionsCompleted();
+            }
         }
     }
 
@@ -793,6 +848,10 @@ public class TutorialPlayerController : MonoBehaviour
                 heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 heavyLungeThrustSpeed+= heavyLungeWindupTime * heavyLungeWindupThrustScale;
                 currentDamageValue = playerHeavyLungeDamage;
+                if (tutorialManager.tutorialInstructionIndex == 4)
+                {
+                    tutorialManager.UpdateInstructionsCompleted();
+                }
             }
             else
             {
@@ -835,6 +894,7 @@ public class TutorialPlayerController : MonoBehaviour
             ResetSwordPosition();
             swordRb.isKinematic = true;
             swordCollider.enabled = false;
+            
         }
     }
 
@@ -1092,6 +1152,7 @@ public class TutorialPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             state = PlayerState.idle;
+            isJumping = false;
             ResetSwordPosition();
             swordRb.isKinematic = true;
         }

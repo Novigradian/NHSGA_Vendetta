@@ -1,15 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
     #region Tutorial Manager Variables and Components
-    public float minimumPlayerDummyDistance;
+    Keyboard kb;
 
     public string gameState;
 
+    public GameObject canvas;
+    private RectTransform canvasRectTransform;
+
+    public TutorialPlayerController tutorialPlayerController;
+
+    [Header ("GamePlay")]
+    public float minimumPlayerDummyDistance;
+
+    [Header("Tutorial Instructions")]
+    public GameObject tutorialInstructionUI;
+    public TMP_Text tutorialInstructionText;
+    public string[] tutorialInstructionList;
+    public int tutorialInstructionIndex;
+
+    public int[] instructionTasksCompletedList;
+    private int instructionTasksCompleted;
+    private bool isNextInstruction;
+    //[SerializeField] private float showNextInstructionWaitDuration;
+
+    [Header("Text")]
     public GameObject fientTextUI;
     public GameObject damageTextUI;
     public GameObject blockTextUI;
@@ -20,32 +42,186 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private float showTextDuration;
     private RectTransform riposteTextRectTransform;
 
-    public GameObject canvas;
-    private RectTransform canvasRectTransform;
-
+    [Header("Particle Effects")]
     public GameObject leftBloodParticlePrefab;
     public GameObject rightBloodParticlePrefab;
 
+    [Header("Postprocessing")]
+    public GameObject dialogueVolume;
     public GameObject getHitVolume;
     [SerializeField] private float getHitVolumeShowDuration;
+
+    [Header("Dialogue")]
+    [SerializeField] private float displayDialogueInterval;
+    public GameObject playerDialogue;
+    public TMP_Text playerDialogueText;
+    public string[] preTutorialDialogueList;
+    public int preTutorialDialogueIndex;
+    private Animator anim;
+
+    private Coroutine currentCoroutine;
     #endregion
 
     // Start is called before the first frame update
     void Awake()
     {
         #region Initialize Variables
-        gameState = "Fight";
+        kb = Keyboard.current;
+
+        gameState = "PreTutorialDialogue";
+
+        tutorialInstructionIndex = -1;
+        isNextInstruction = true;
+        instructionTasksCompleted = 0;
+
+        playerDialogue.SetActive(false);
+        preTutorialDialogueIndex = 0;
 
         canvasRectTransform = canvas.GetComponent<RectTransform>();
         riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
+
+        dialogueVolume.SetActive(true);
+        getHitVolume.SetActive(false);
         #endregion
+
+        ShowPreTutorialDialogue(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameState== "PreTutorialDialogue")
+        {
+            if (kb.anyKey.wasPressedThisFrame)
+            {
+                preTutorialDialogueIndex++;
+                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
+                {
+                    anim.SetTrigger("returnToIdle");
+                    ShowPreTutorialDialogue(preTutorialDialogueIndex);
+                }
+                else
+                {
+                    currentCoroutine = null;
+                    gameState = "Fight";
+                    dialogueVolume.SetActive(false);
+                    playerDialogue.SetActive(false);
+                    tutorialInstructionUI.SetActive(true);
+                }
+            }
+        }
+        else if (gameState == "Fight" && isNextInstruction)
+        {
+            tutorialInstructionIndex++;
+            isNextInstruction = false;
+            //Debug.Log(tutorialInstructionIndex);
+            if (tutorialInstructionIndex < tutorialInstructionList.Length - 3)
+            {
+                ShowInstruction(tutorialInstructionIndex);
+                
+            }
+            else
+            {
+                gameState = "SpecialTutorialInstructions";
+                ShowSpecialInstruction(tutorialInstructionIndex);
+            }
+
+        }
+        else if (gameState == "SpecialTutorialInstructions")
+        {
+            if (kb.escapeKey.wasPressedThisFrame)
+            {
+                tutorialInstructionIndex++;
+                if (tutorialInstructionIndex < tutorialInstructionList.Length - 1)
+                {
+                    ShowSpecialInstruction(tutorialInstructionIndex);
+                }
+                else
+                {
+                    if (!tutorialPlayerController.isJumping)
+                    {
+                        gameState = "PostTutorialDialogue";
+                        tutorialInstructionUI.SetActive(false);
+                        dialogueVolume.SetActive(true);
+                        ShowPreTutorialDialogue(2);
+                    }
+                }
+            }
+        }
+        else if (gameState == "PostTutorialDialogue")
+        {
+            if (kb.anyKey.wasPressedThisFrame)
+            {
+                currentCoroutine = null;
+                gameState = "Practice";
+                tutorialInstructionUI.SetActive(true);
+                dialogueVolume.SetActive(false);
+                playerDialogue.SetActive(false);
+            }
+        }
+        else if (gameState == "Practice")
+        {
+            tutorialInstructionText.text = tutorialInstructionList[tutorialInstructionList.Length - 1];
+            if (kb.escapeKey.wasPressedThisFrame)
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
     }
+
+    #region Tutorial Instruction Functions
+    private void ShowInstruction(int index)
+    {
+        tutorialInstructionText.text = tutorialInstructionList[index]+"\n"+instructionTasksCompleted.ToString()+"/"+instructionTasksCompletedList[tutorialInstructionIndex];
+    }
+
+    private void ShowSpecialInstruction(int index)
+    {
+        tutorialInstructionText.text = tutorialInstructionList[index];
+    }
+
+    public void UpdateInstructionsCompleted()
+    {
+        instructionTasksCompleted++;
+        ShowInstruction(tutorialInstructionIndex);
+
+        if (instructionTasksCompleted >= instructionTasksCompletedList[tutorialInstructionIndex])
+        {
+            instructionTasksCompleted = 0;
+            isNextInstruction = true;
+        }
+    }
+    #endregion
+
+    #region Dialogue
+    private void ShowPreTutorialDialogue(int index)
+    {
+        playerDialogue.SetActive(false);
+
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
+        string text = preTutorialDialogueList[index];
+        playerDialogue.SetActive(true);
+        currentCoroutine = StartCoroutine(DisplayPlayerText(text));
+    }
+
+    private IEnumerator DisplayPlayerText(string text)
+    {
+
+        anim = playerDialogueText.GetComponent<Animator>();
+        anim.SetTrigger("startFadeIn");
+
+        playerDialogueText.text = "";
+        foreach (char character in text)
+        {
+            playerDialogueText.text += character;
+            yield return new WaitForSeconds(displayDialogueInterval);
+        }
+    }
+    #endregion
 
     #region Text Functions
     public void ShowFientText(Vector3 playerWorldPos)
