@@ -261,7 +261,7 @@ MonoBehaviour:
   jumpHorizontalSpeed: 1
   lightAttackWindupDuration: 0.2
   lightAttackWindupSpeed: 5
-  lightAttackDuration: 0.15
+  lightAttackDuration: 0.125
   lightAttackThrustSpeed: 40
   heavyLungeMinimumWindupTime: 0.6
   heavyLungeMaximumWindupTime: 2

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumPlayerEnemyDistance: 5.5
+  minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
