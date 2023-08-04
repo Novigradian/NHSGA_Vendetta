@@ -290,7 +290,7 @@ MonoBehaviour:
   lightAttackWindupDuration: 0.4
   lightAttackWindupSpeed: 2.5
   lightAttackDuration: 0.15
-  lightAttackThrustSpeed: 40
+  lightAttackThrustSpeed: 30
   blockDuration: 0.25
   blockDamageNegationScale: 0.85
   blockPushback: 0
