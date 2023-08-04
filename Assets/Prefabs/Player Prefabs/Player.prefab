@@ -219,6 +219,7 @@ MonoBehaviour:
   UIManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
   audioManager: {fileID: 0}
+  playerHeavyLungeChargeBar: {fileID: 0}
   playerHealthBar: {fileID: 0}
   maxPlayerHealth: 110
   playerLightAttackDamage: 10

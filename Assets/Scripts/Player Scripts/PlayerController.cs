@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     public Transform controllerTransform;
     public AudioManager audioManager;
 
+    [Header("Misc UI")]
+    public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
+
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
     [SerializeField] private float maxPlayerHealth;
@@ -151,6 +154,8 @@ public class PlayerController : MonoBehaviour
 
         audioManager = FindObjectOfType<AudioManager>();
         minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
+
+        playerHeavyLungeChargeBar.SetMaxValue(heavyLungeMaximumWindupTime);
 
         playerHealth = maxPlayerHealth;
         playerStamina = maxPlayerStamina;
@@ -378,6 +383,7 @@ public class PlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+            UIManager.ShowChargeBar(transform.position);
         }
         else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
@@ -499,6 +505,7 @@ public class PlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+            UIManager.ShowChargeBar(transform.position);
         }
         else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
@@ -569,6 +576,7 @@ public class PlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+            UIManager.ShowChargeBar(transform.position);
         }
         else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
@@ -769,7 +777,11 @@ public class PlayerController : MonoBehaviour
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
             heavyLungeWindupTime += Time.deltaTime;
-            
+            playerHeavyLungeChargeBar.SetValue(heavyLungeWindupTime);
+        }
+        if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
+        {
+            playerHeavyLungeChargeBar.ChangeColor();
         }
         swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
@@ -779,6 +791,7 @@ public class PlayerController : MonoBehaviour
         
         if (kb.pKey.wasReleasedThisFrame)
         {
+            UIManager.HideChargeBar();
             if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
             {
                 swordCollider.enabled = true;

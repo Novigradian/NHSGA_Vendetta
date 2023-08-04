@@ -404,6 +404,10 @@ PrefabInstance:
       propertyPath: playerStaminaBar
       value: 
       objectReference: {fileID: 1789710035}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: playerHeavyLungeChargeBar
+      value: 
+      objectReference: {fileID: 7079391959960851297}
     - target: {fileID: 1735666210835693572, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -845,6 +849,14 @@ PrefabInstance:
       propertyPath: outOfStaminaTextUI
       value: 
       objectReference: {fileID: 828659996}
+    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerHeavyLungeChargeBar
+      value: 
+      objectReference: {fileID: 7079391959960851297}
+    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerHeavyLungeChargeBarUI
+      value: 
+      objectReference: {fileID: 7079391959960851298}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: combatVolume
       value: 
@@ -1205,6 +1217,22 @@ MonoBehaviour:
 --- !u!1 &7079391959960851296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7079391960193146275, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7079391959960851297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1197106016, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079391959960851298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d953502a18542c40bd7a40e54ecbfad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7079391959960851298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1197106012, guid: c5b52f2aabe855f4697496106941a369, type: 3}
   m_PrefabInstance: {fileID: 7079391959960851292}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9149206875278435821

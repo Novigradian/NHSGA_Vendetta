@@ -122,6 +122,8 @@ MonoBehaviour:
   enemyUI: {fileID: 0}
   playerWinUI: {fileID: 0}
   enemyWinUI: {fileID: 0}
+  playerHeavyLungeChargeBarUI: {fileID: 0}
+  playerHeavyLungeChargeBar: {fileID: 0}
   fightTextUI: {fileID: 0}
   fightTextUIShowDuration: 4
   parryTextUI: {fileID: 0}
