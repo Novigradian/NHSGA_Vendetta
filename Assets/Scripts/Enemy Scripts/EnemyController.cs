@@ -721,6 +721,8 @@ public class EnemyController : MonoBehaviour
     {
         if (enemyHealth <= 0f)
         {
+            playerController.ResetToIdle();
+            animator.Play("Idle");
             enemyHealth = 0f;
             state = EnemyState.dead;
             playerController.ResetToIdle();
