@@ -1078,12 +1078,12 @@ public class EnemyController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             stateToEnter = "";
         }
-        //else if(stateToEnter == "parryChance")
-        //{
-        //    state = EnemyState.parry;
-        //    Debug.Log("switched to parry");
-        //    swordRb.isKinematic = false;
-        //}
+        else if (stateToEnter == "parryChance")
+        {
+            state = EnemyState.parry;
+            Debug.Log("switched to parry");
+            swordRb.isKinematic = false;
+        }
     }
 
 
