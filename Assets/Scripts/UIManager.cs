@@ -42,6 +42,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        
+
         isResetUIPos = false;
         isShowWinText = false;
         isShowFightText = false;

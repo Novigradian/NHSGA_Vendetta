@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     #region GameManager Components and Variables
+    Keyboard kb;
+
     public float minimumPlayerEnemyDistance;
 
     public string gameState;
@@ -24,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         #region Initialize Variables
         gameState = "PreFight";
+        kb = Keyboard.current;
         #endregion
 
         dialogueVolume.SetActive(true);
@@ -33,7 +38,27 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameState == "PlayerWin")
+        {
+            if (kb.rKey.wasPressedThisFrame)
+            {
+                if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    Debug.Log("GAME OVER");
+                }
+            }
+        }
+        else if (gameState == "EnemyWin")
+        {
+            if (kb.rKey.wasPressedThisFrame)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     public void ResetGetHitUI()
