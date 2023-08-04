@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject dialogueVolume;
     public GameObject getHitVolume;
+    public GameObject combatVolume;
 
     [SerializeField] private float getHitVolumeShowDuration;
 

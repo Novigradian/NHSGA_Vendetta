@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     public GameObject playerWinUI;
     public GameObject enemyWinUI;
 
+    public GameObject playerHeavyLungeChargeBarUI;
+    public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
+    private RectTransform playerHeavyLungeChargeBarRectTransform;
+
     public GameObject fightTextUI;
     [SerializeField] private float fightTextUIShowDuration;
 
@@ -47,6 +51,7 @@ public class UIManager : MonoBehaviour
         parryTextRectTransform = parryTextUI.GetComponent<RectTransform>();
         riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
         canvasRectTransform = canvas.GetComponent<RectTransform>();
+        playerHeavyLungeChargeBarRectTransform = playerHeavyLungeChargeBarUI.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -96,6 +101,7 @@ public class UIManager : MonoBehaviour
         fightText.text = "En Garde!";
 
         gameManager.gameState = "Fight";
+        gameManager.combatVolume.SetActive(true);
 
         yield return new WaitForSeconds(fightTextUIShowDuration * 0.25f);
         fightTextUI.SetActive(false);
@@ -173,7 +179,23 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    
+    #region Charge Bar Functions
+    public void ShowChargeBar(Vector3 worldPos)
+    {
+        playerHeavyLungeChargeBar.SetValue(0f);
+        playerHeavyLungeChargeBar.ResetColor();
+        playerHeavyLungeChargeBarUI.SetActive(true);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPos);
+        Vector2 canvasPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
+        playerHeavyLungeChargeBarRectTransform.localPosition = WorldToCanvasPos(worldPos) + new Vector2(20f, 142f);
+    }
+
+    public void HideChargeBar()
+    {
+        playerHeavyLungeChargeBarUI.SetActive(false);
+    }
+    #endregion
 
     private Vector2 WorldToCanvasPos(Vector3 playerWorldPos)
     {

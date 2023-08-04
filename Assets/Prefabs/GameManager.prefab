@@ -50,6 +50,7 @@ MonoBehaviour:
   gameState: 
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
+  combatVolume: {fileID: 0}
   getHitVolumeShowDuration: 0.5
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
@@ -121,6 +122,8 @@ MonoBehaviour:
   enemyUI: {fileID: 0}
   playerWinUI: {fileID: 0}
   enemyWinUI: {fileID: 0}
+  playerHeavyLungeChargeBarUI: {fileID: 0}
+  playerHeavyLungeChargeBar: {fileID: 0}
   fightTextUI: {fileID: 0}
   fightTextUIShowDuration: 4
   parryTextUI: {fileID: 0}

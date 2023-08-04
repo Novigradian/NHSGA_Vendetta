@@ -62,6 +62,7 @@ MonoBehaviour:
     to continue.
   - Press [I] while the enemy is thrusting to parry.<br>Follow up with [O] for a
     riposte with extra damage.<br>Press [Esc] to continue.
+  - You block thrusts automatically when shuffling backwards.<br>Press [Esc] to continue.
   - Practice with the dummy, <br>or press [Esc] to exit.
   tutorialInstructionIndex: 0
   instructionTasksCompletedList: 02000000020000000300000003000000010000000200000002000000

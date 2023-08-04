@@ -731,6 +731,7 @@ public class EnemyController : MonoBehaviour
             gameManager.gameState = "PlayerWinDialogue";
             dialogueManager.ShowPlayerWinDialogue(0);
             gameManager.dialogueVolume.SetActive(true);
+            gameManager.combatVolume.SetActive(false);
         }
     }
     #endregion
