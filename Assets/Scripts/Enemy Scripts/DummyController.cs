@@ -33,7 +33,8 @@ public class DummyController : MonoBehaviour
     #region Enemy Sword Collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerSword")
+        string gameState = tutorialManager.gameState;
+        if (collision.gameObject.tag == "PlayerSword" && (gameState=="Fight"||gameState=="Practice"))
         {
             TutorialPlayerController.PlayerState playerState = playerController.state;
 
