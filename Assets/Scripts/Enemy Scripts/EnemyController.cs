@@ -862,6 +862,10 @@ public class EnemyController : MonoBehaviour
                 {
                     TakeHitDamage(playerController.playerJumpAttackDamage);
                 }
+                else if (playerState == PlayerController.PlayerState.heavyLunge)
+                {
+                    TakeHitDamage(playerController.playerHeavyLungeDamage);
+                }
             }
             #endregion
 
