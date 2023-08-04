@@ -675,6 +675,7 @@ public class TutorialPlayerController : MonoBehaviour
         if (hasPlayed == false)
         {
             audioManager.Play("Jump");
+            
             hasPlayed = true;
         }
         if (kb.dKey.isPressed && canMoveTowardsEnemy)
