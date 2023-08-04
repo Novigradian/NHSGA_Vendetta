@@ -353,7 +353,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enzo Marino II
+  m_text: Final Boss
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50734c0a7f52aff418fc4b601381adad, type: 2}
   m_sharedMaterial: {fileID: -7897978870905695500, guid: 50734c0a7f52aff418fc4b601381adad, type: 2}
@@ -1909,6 +1909,10 @@ PrefabInstance:
     - target: {fileID: 996062638, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 996062639, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
+      propertyPath: m_text
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 996062639, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
       propertyPath: m_fontSize

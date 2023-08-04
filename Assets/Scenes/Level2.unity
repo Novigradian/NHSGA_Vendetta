@@ -1051,14 +1051,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3548147992146327530, guid: c5b52f2aabe855f4697496106941a369, type: 3}
-      propertyPath: m_text
-      value: Dante
-      objectReference: {fileID: 0}
-    - target: {fileID: 3548147992829363153, guid: c5b52f2aabe855f4697496106941a369, type: 3}
-      propertyPath: m_text
-      value: ...
-      objectReference: {fileID: 0}
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

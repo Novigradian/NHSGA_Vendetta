@@ -1244,6 +1244,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7079391959402958831, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_text
+      value: Enzo Marino II
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391960193145950, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_Camera
       value: 
