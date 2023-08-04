@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     public GameManager gameManager;
     public DialogueManager dialogueManager;
     public UIManager UIManager;
+    public MusicManager musicManager;
     private float minimumPlayerEnemyDistance;
     public Rigidbody2D rb;
     public Rigidbody2D swordRb;
@@ -734,6 +735,8 @@ public class EnemyController : MonoBehaviour
             dialogueManager.ShowPlayerWinDialogue(0);
             gameManager.dialogueVolume.SetActive(true);
             gameManager.combatVolume.SetActive(false);
+
+            musicManager.StartMuffle();
         }
     }
     #endregion

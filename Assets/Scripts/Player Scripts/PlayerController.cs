@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public GameManager gameManager;
     public DialogueManager dialogueManager;
     public UIManager UIManager;
+    public MusicManager musicManager;
     private float minimumPlayerEnemyDistance;
     public Transform controllerTransform;
     public AudioManager audioManager;
@@ -1038,6 +1039,8 @@ public class PlayerController : MonoBehaviour
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
             gameManager.dialogueVolume.SetActive(true);
+
+            musicManager.StartMuffle();
         }
     }
     #endregion

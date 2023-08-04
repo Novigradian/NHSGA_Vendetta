@@ -298,6 +298,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &610947298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7388930531778910786, guid: 1471b57113374004ab5f30186b428169, type: 3}
+  m_PrefabInstance: {fileID: 7388930531310832288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84a5ccd9d81db3499273e54dc2ebb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &633634164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -797,6 +808,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1874028105}
     - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: musicManager
+      value: 
+      objectReference: {fileID: 610947298}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: riposteTextUI
       value: 
       objectReference: {fileID: 211364362}
@@ -820,10 +835,6 @@ PrefabInstance:
       propertyPath: tutorialInstructionUI
       value: 
       objectReference: {fileID: 391983879}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: leftBloodParticlePrefab
-      value: 
-      objectReference: {fileID: 6332039828886475304, guid: 6f9327320e489ab45abf0104b1374bf9, type: 3}
     - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: tutorialInstructionText
       value: 

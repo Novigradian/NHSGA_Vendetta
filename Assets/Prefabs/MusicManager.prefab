@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7388930531778910785}
   - component: {fileID: 7388930531778910786}
   - component: {fileID: 7388930531778910787}
+  - component: {fileID: 610947300}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -45,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84a5ccd9d81db3499273e54dc2ebb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 7388930531778910787}
+  lowPassFilter: {fileID: 610947300}
+  muffledCutOffFrequency: 500
+  originalCutOffFrequency: 5000
 --- !u!82 &7388930531778910787
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55,7 +60,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5073d59a705976440b29f601c6123e91, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -132,6 +137,31 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!169 &610947300
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388930531778910784}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.22692133
       inSlope: 0
       outSlope: 0
       tangentMode: 0

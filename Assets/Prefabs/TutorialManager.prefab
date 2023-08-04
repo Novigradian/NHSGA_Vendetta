@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 
   canvas: {fileID: 0}
+  musicManager: {fileID: 0}
   tutorialPlayerController: {fileID: 0}
   minimumPlayerDummyDistance: 5
   tutorialInstructionUI: {fileID: 0}
@@ -74,7 +75,7 @@ MonoBehaviour:
   critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}
   showDamageTextDuration: 0.75
   showTextDuration: 0.75
-  leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
+  leftBloodParticlePrefab: {fileID: 6332039828886475304, guid: 6f9327320e489ab45abf0104b1374bf9, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
