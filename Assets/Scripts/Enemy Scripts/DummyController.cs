@@ -22,7 +22,7 @@ public class DummyController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
-        tutorialManager.SpawnRightBloodParticle(transform.position);
+        tutorialManager.SpawnRightBloodParticle(transform.position+new Vector3(0f,0.5f,0f));
         tutorialManager.ShowDamageText(transform.position, damage);
         //Debug.Log(transform.position);
         //gameManager.getHitVolume.SetActive(true);
