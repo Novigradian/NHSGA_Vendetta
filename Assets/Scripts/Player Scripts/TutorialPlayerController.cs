@@ -666,7 +666,7 @@ public class TutorialPlayerController : MonoBehaviour
     #region Jump Functions
     private void JumpActions()
     {
-        
+        animator.Play("Jump");
         if (tutorialManager.tutorialInstructionIndex==5 && !isJumping)
         {
             tutorialManager.UpdateInstructionsCompleted();
@@ -694,6 +694,7 @@ public class TutorialPlayerController : MonoBehaviour
         if ((kb.oKey.wasPressedThisFrame||bufferState=="JumpAttack") && !isOutOfStamina)
         {
             audioManager.Play("JumpAttack");
+            animator.Play("JumpAttack");
             bufferState = "None";
             state = PlayerState.jumpAttack;
             swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
@@ -715,7 +716,7 @@ public class TutorialPlayerController : MonoBehaviour
 
         if (canMoveTowardsEnemy)
         {
-            rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackPlayerHorizontalSpeed;
+            //rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackPlayerHorizontalSpeed;
         }
         CheckBuffer();
 
