@@ -1019,6 +1019,7 @@ public class PlayerController : MonoBehaviour
             enemyController.ResetToIdle();
             //Time.timeScale = 0;
             gameManager.getHitVolume.SetActive(false);
+            gameManager.combatVolume.SetActive(false);
             dialogueManager.enemyDialogue.SetActive(true);
             gameManager.gameState = "EnemyWinDialogue";
             gameManager.dialogueVolume.SetActive(true);
