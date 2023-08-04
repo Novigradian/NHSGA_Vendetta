@@ -275,7 +275,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 #endregion
 
-                #region Parry Actions and Transitions
+                #region Parried Actions and Transitions
                 case PlayerState.parried:
                     ParriedActions();
                     ParriedTransitions();
