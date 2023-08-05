@@ -88,3 +88,5 @@ MonoBehaviour:
   - I remember it all, still.
   - "Good. I\u2019ve recalled the basics."
   preTutorialDialogueIndex: 0
+  playerHeavyLungeChargeBarUI: {fileID: 0}
+  playerHeavyLungeChargeBar: {fileID: 0}

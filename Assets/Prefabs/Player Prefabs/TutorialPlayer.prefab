@@ -316,6 +316,7 @@ MonoBehaviour:
   tutorialManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
   audioManager: {fileID: 0}
+  playerHeavyLungeChargeBar: {fileID: 0}
   playerHealthBar: {fileID: 0}
   maxPlayerHealth: 110
   playerLightAttackDamage: 10
@@ -440,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806825493350266799, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3806825493350266797, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
@@ -469,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699834, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_RootOrder

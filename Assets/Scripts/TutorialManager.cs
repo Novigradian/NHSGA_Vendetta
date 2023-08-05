@@ -62,6 +62,11 @@ public class TutorialManager : MonoBehaviour
     private Animator anim;
 
     private Coroutine currentCoroutine;
+
+    [Header("Charge Bar")]
+    public GameObject playerHeavyLungeChargeBarUI;
+    public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
+    private RectTransform playerHeavyLungeChargeBarRectTransform;
     #endregion
 
     // Start is called before the first frame update
@@ -81,9 +86,12 @@ public class TutorialManager : MonoBehaviour
 
         canvasRectTransform = canvas.GetComponent<RectTransform>();
         riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
+        playerHeavyLungeChargeBarRectTransform = playerHeavyLungeChargeBarUI.GetComponent<RectTransform>();
 
         dialogueVolume.SetActive(true);
         getHitVolume.SetActive(false);
+
+
         #endregion
 
         
@@ -318,6 +326,24 @@ public class TutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(getHitVolumeShowDuration);
         getHitVolume.SetActive(false);
+    }
+    #endregion
+
+    #region Charge Bar Functions
+    public void ShowChargeBar(Vector3 worldPos)
+    {
+        playerHeavyLungeChargeBar.SetValue(0f);
+        playerHeavyLungeChargeBar.ResetColor();
+        playerHeavyLungeChargeBarUI.SetActive(true);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPos);
+        Vector2 canvasPosition;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
+        playerHeavyLungeChargeBarRectTransform.localPosition = WorldToCanvasPos(worldPos) + new Vector2(20f, 142f);
+    }
+
+    public void HideChargeBar()
+    {
+        playerHeavyLungeChargeBarUI.SetActive(false);
     }
     #endregion
 

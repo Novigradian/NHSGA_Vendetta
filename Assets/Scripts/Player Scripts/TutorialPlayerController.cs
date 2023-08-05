@@ -48,6 +48,9 @@ public class TutorialPlayerController : MonoBehaviour
     public Transform controllerTransform;
     public AudioManager audioManager;
 
+    [Header("Misc UI")]
+    public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
+
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
     [SerializeField] private float maxPlayerHealth;
@@ -156,6 +159,8 @@ public class TutorialPlayerController : MonoBehaviour
         #region Initialize Variables
         kb = Keyboard.current;
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        playerHeavyLungeChargeBar.SetMaxValue(heavyLungeMaximumWindupTime);
 
         audioManager = FindObjectOfType<AudioManager>();
         minimumPlayerDummyDistance = tutorialManager.minimumPlayerDummyDistance;
@@ -393,6 +398,7 @@ public class TutorialPlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+            tutorialManager.ShowChargeBar(transform.position);
         }
         else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
@@ -533,6 +539,7 @@ public class TutorialPlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+            tutorialManager.ShowChargeBar(transform.position);
         }
         else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
@@ -609,6 +616,7 @@ public class TutorialPlayerController : MonoBehaviour
             heavyLungeWindupTime = 0f;
             swordRb.isKinematic = false;
             state = PlayerState.heavyLungeWindup;
+            tutorialManager.ShowChargeBar(transform.position);
         }
         else if ((kb.iKey.wasPressedThisFrame||bufferState=="Parry") && !isOutOfStamina)
         {
@@ -829,7 +837,11 @@ public class TutorialPlayerController : MonoBehaviour
         if (heavyLungeWindupTime <= heavyLungeMaximumWindupTime)
         {
             heavyLungeWindupTime += Time.deltaTime;
-            
+            playerHeavyLungeChargeBar.SetValue(heavyLungeWindupTime);
+        }
+        if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
+        {
+            playerHeavyLungeChargeBar.ChangeColor();
         }
         swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
@@ -839,6 +851,7 @@ public class TutorialPlayerController : MonoBehaviour
         
         if (kb.pKey.wasReleasedThisFrame)
         {
+            tutorialManager.HideChargeBar();
             if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
             {
                 swordCollider.enabled = true;
@@ -1008,6 +1021,7 @@ public class TutorialPlayerController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        tutorialManager.HideChargeBar();
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
         tutorialManager.SpawnLeftBloodParticle(transform.position);
