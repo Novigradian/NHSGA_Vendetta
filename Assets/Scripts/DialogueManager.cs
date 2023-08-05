@@ -71,6 +71,7 @@ public class DialogueManager : MonoBehaviour
                     gameManager.dialogueVolume.SetActive(false);
                     playerDialogue.SetActive(false);
                     enemyDialogue.SetActive(false);
+                    gameManager.combatVolume.SetActive(true);
 
                     musicManager.EndMuffle();
                 }
