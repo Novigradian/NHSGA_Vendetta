@@ -336,8 +336,8 @@ MonoBehaviour:
   playerJumpStaminaCost: 10
   playerJumpAttackStaminaCost: 25
   playerLightAttackStaminaCost: 20
-  playerHeavyLungeBaseStaminaCost: 16
-  playerHeavyLungeExtraStaminaCostScale: 10
+  playerHeavyLungeBaseStaminaCost: 32
+  playerHeavyLungeExtraStaminaCostScale: 20
   dummy: {fileID: 0}
   getHitStunDuration: 0.35
   getHitKnockBackSpeed: 8
