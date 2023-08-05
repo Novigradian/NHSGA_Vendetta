@@ -344,6 +344,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &644527999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7079391959318562050, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &816303626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 816303626, guid: c5b52f2aabe855f4697496106941a369, type: 3}
@@ -719,26 +724,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[12].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6a6845e07b45841acaa1e656bf3f050d, type: 3}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[12].name
-      value: Cancel
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[12].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
-      propertyPath: sounds.Array.data[12].volume
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 552338697762719805, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -921,6 +906,14 @@ PrefabInstance:
       propertyPath: playerHeavyLungeChargeBarUI
       value: 
       objectReference: {fileID: 7079391959960851298}
+    - target: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 644527999}
+    - target: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: musicManager
+      value: 
+      objectReference: {fileID: 1529170568}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: combatVolume
       value: 
@@ -1003,6 +996,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c309065797f949e4bb2371cb81cab682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3472306370635930199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+  m_PrefabInstance: {fileID: 3472306370635930195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1952ac81ed4741c98c44be4eaf0282c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6297542155244215767
@@ -1139,6 +1143,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7079391960005761757, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3472306370635930199}
+    - target: {fileID: 7079391960005761757, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391960193145950, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1230,6 +1242,14 @@ PrefabInstance:
     - target: {fileID: 7079391960193146275, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_Name
       value: GameSceneCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391960584226691, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3472306370635930199}
+    - target: {fileID: 7079391960584226691, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 7079391960965363986, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x

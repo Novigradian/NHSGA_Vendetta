@@ -104,7 +104,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (gameState== "PreTutorialDialogue")
         {
-            if (kb.anyKey.wasPressedThisFrame)
+            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 preTutorialDialogueIndex++;
                 if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
@@ -143,7 +143,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (gameState == "SpecialTutorialInstructions")
         {
-            if (kb.escapeKey.wasPressedThisFrame)
+            if (kb.enterKey.wasPressedThisFrame)
             {
                 tutorialInstructionIndex++;
                 if (tutorialInstructionIndex < tutorialInstructionList.Length - 1)
@@ -166,7 +166,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (gameState == "PostTutorialDialogue")
         {
-            if (kb.anyKey.wasPressedThisFrame)
+            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 currentCoroutine = null;
                 gameState = "Practice";
@@ -180,7 +180,7 @@ public class TutorialManager : MonoBehaviour
         else if (gameState == "Practice")
         {
             tutorialInstructionText.text = tutorialInstructionList[tutorialInstructionList.Length - 1];
-            if (kb.escapeKey.wasPressedThisFrame)
+            if (kb.enterKey.wasPressedThisFrame)
             {
                 SceneManager.LoadScene(2);
             }

@@ -135,18 +135,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4174505420218171938, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4174505420243673629, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4174505420243673629, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2437572951213145187, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1812213232269693032}
+    - target: {fileID: 2437572951674954045, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1812213232269693032}
     - target: {fileID: 7079391959326716189, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -575,6 +571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed2f913b2a841f4f947d58074c3171c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1647092003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2437572950526665660, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
+  m_PrefabInstance: {fileID: 211364359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1809749529 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3252482192318696466, guid: 2227d04abeae0324f8fcfef648b945c4, type: 3}
@@ -887,8 +888,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5510313816062045007, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1647092003}
+    - target: {fileID: 5510313816062045007, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: musicManager
+      value: 
+      objectReference: {fileID: 610947298}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+--- !u!114 &1812213232269693032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5510313816062045007, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+  m_PrefabInstance: {fileID: 1812213232269693031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1952ac81ed4741c98c44be4eaf0282c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3252482191601310219
 PrefabInstance:
   m_ObjectHideFlags: 0

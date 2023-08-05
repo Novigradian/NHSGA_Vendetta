@@ -56,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         string gameState = gameManager.gameState;
         if (gameState == "PreFight")
         {
-            if (kb.anyKey.wasPressedThisFrame)
+            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 preFightDialogueIndex++;
                 if (preFightDialogueIndex < preFightDialogueList.Length)
@@ -84,7 +84,7 @@ public class DialogueManager : MonoBehaviour
                 currentCoroutine = StartCoroutine(DisplayPlayerText(playerWinDialogueList[playerWinDialogueIndex]));
             }
             
-            if (kb.anyKey.wasPressedThisFrame)
+            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 playerWinDialogueIndex++;
                 if (playerWinDialogueIndex >= playerWinDialogueList.Length)
@@ -109,7 +109,7 @@ public class DialogueManager : MonoBehaviour
             {
                 currentCoroutine = StartCoroutine(DisplayEnemyText(enemyWinDialogueList[enemyWinDialogueIndex]));
             }
-            if (kb.anyKey.wasPressedThisFrame)
+            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 enemyWinDialogueIndex++;
                 if (enemyWinDialogueIndex >= enemyWinDialogueList.Length)

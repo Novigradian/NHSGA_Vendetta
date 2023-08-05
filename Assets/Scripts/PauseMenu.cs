@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public MusicManager musicManager;
     [HideInInspector] public bool isPaused;
 
     private void Start()
@@ -22,7 +23,14 @@ public class PauseMenu : MonoBehaviour
                 Resume();
                 foreach (AudioSource a in audios)
                 {
-                    a.UnPause();
+                    if (a.clip.name != "TutorialMusic")
+                    {
+                        a.UnPause();
+                    }
+                    else
+                    {
+                        musicManager.EndMuffle();
+                    }
                 }
             }
             else
@@ -30,7 +38,14 @@ public class PauseMenu : MonoBehaviour
                 Pause();
                 foreach (AudioSource a in audios)
                 {
-                    a.Pause();
+                    if (a.clip.name != "TutorialMusic")
+                    {
+                        a.Pause();
+                    }
+                    else
+                    {
+                        musicManager.StartMuffle();
+                    }
                 }
             }
         }
@@ -45,12 +60,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        Debug.Log("resume");
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
     }
     public void Exit()
     {
+        Debug.Log("exit");
         SceneManager.LoadScene("MainMenu");
     }
 }

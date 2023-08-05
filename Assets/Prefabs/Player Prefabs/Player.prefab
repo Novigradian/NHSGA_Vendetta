@@ -272,7 +272,7 @@ MonoBehaviour:
   heavyLungeStunDuration: 0.7
   jumpAttackDuration: 0.6
   jumpAttackSwordPivotRotation: -40
-  jumpAttackThrustSpeed: 6
+  jumpAttackThrustSpeed: 12
   parryDuration: 0.2
   riposteDamageBonus: 25
 --- !u!61 &1051260131
