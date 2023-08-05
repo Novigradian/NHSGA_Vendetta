@@ -222,7 +222,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   playerHeavyLungeChargeBar: {fileID: 0}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 110
+  maxPlayerHealth: 100
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 12

@@ -956,6 +956,7 @@ public class PlayerController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        UIManager.HideChargeBar();
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
         gameManager.SpawnLeftBloodParticle(transform.position);
@@ -966,6 +967,7 @@ public class PlayerController : MonoBehaviour
         state = PlayerState.getHit;
         ActivateRally();
         CheckDead();
+        
     }
 
     #endregion
@@ -1210,14 +1212,17 @@ public class PlayerController : MonoBehaviour
             #region Player is Heavy Lunging
             else if (state == PlayerState.heavyLunge)
             {
+                
                 if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
                     TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                    //UIManager.HideChargeBar();
                 }
                 else if (enemyState == EnemyController.EnemyState.heavyLunge)
                     {
                         TakeHitDamage(enemyController.enemyHeavyLungeDamage);
-                    }
+                        //UIManager.HideChargeBar();
+                }
             }
             #endregion
 
