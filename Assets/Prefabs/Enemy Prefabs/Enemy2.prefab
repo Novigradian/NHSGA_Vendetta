@@ -100,6 +100,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   UIManager: {fileID: 0}
+  musicManager: {fileID: 0}
   rb: {fileID: 4232357888753015559}
   swordRb: {fileID: 4232357887164182150}
   sword: {fileID: 2497817920845126247}
@@ -108,7 +109,7 @@ MonoBehaviour:
   controllerTransform: {fileID: 9149206876430691158}
   audioManager: {fileID: 0}
   enemyHealthBar: {fileID: 0}
-  maxEnemyHealth: 150
+  maxEnemyHealth: 200
   stepSpeed: 7
   stepDuration: 0.35
   stepCooldown: 1
@@ -129,7 +130,7 @@ MonoBehaviour:
   getParriedStunDuration: 0.7
   lightAttackWindupDuration: 0.3
   lightAttackWindupSpeed: 3.75
-  lightAttackDuration: 0.15
+  lightAttackDuration: 0.125
   lightAttackThrustSpeed: 40
   blockDuration: 0.25
   blockDamageNegationScale: 0.85
@@ -141,7 +142,7 @@ MonoBehaviour:
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.175
   heavyLungeLowerSwordScale: 1
-  heavyLungeThrustSpeed: 20
+  heavyLungeThrustSpeed: 27
   heavyLungeStunDuration: 0.7
   minHeavyLungeWindupDuration: 1
   maxHeavyLungeWindupDuration: 4
@@ -154,18 +155,18 @@ MonoBehaviour:
   shuffleLeftDistanceDivideScale: 10
   minimumStepLeftDistance: 7
   stepLeftDistanceDivideScale: 50
-  playerLightAttackRetreatChance: 1
+  playerLightAttackRetreatChance: 2
   playerJumpAttackRetreatChance: 0.15
-  playerHeavyLungeWindupAdvanceChance: 0.8
+  playerHeavyLungeWindupAdvanceChance: 5
   chaseAfterEnemyDistanceDivideScale: 15
   unableToChangeDirectionDuration: 0.6
   isAbleToChangeDirection: 0
-  baseLightAttackChance: 0.1
+  baseLightAttackChance: 0.4
   baseHeavyLungeChance: 0.4
   lightAttackRange: 5.5
   heavyLungeRange: 8
   heavyLungeDistanceScale: 16
-  playerHeavyLungeJumpChance: 1
+  playerHeavyLungeJumpChance: 2.5
   stateToEnter: HeavyWindup
 --- !u!1 &4232357887429879600
 GameObject:

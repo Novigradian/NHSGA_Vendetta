@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     Keyboard kb;
     private Animator anim;
 
+    public MusicManager musicManager;
+
     public string[] preFightDialogueSpeakerList;
     public string[] preFightDialogueList;
     private int preFightDialogueIndex;
@@ -45,6 +47,7 @@ public class DialogueManager : MonoBehaviour
         #endregion
 
         ShowPreFightDialogue(preFightDialogueIndex);
+        musicManager.StartMuffle();
     }
 
     // Update is called once per frame
@@ -68,6 +71,9 @@ public class DialogueManager : MonoBehaviour
                     gameManager.dialogueVolume.SetActive(false);
                     playerDialogue.SetActive(false);
                     enemyDialogue.SetActive(false);
+                    gameManager.combatVolume.SetActive(true);
+
+                    musicManager.EndMuffle();
                 }
             }
         }
@@ -87,6 +93,8 @@ public class DialogueManager : MonoBehaviour
                     gameManager.gameState = "PlayerWin";
                     playerDialogue.SetActive(false);
                     enemyDialogue.SetActive(false);
+
+                    musicManager.EndMuffle();
                 }
                 else
                 {
@@ -108,6 +116,8 @@ public class DialogueManager : MonoBehaviour
                 {
                     gameManager.gameState = "EnemyWin";
                     enemyDialogue.SetActive(false);
+
+                    musicManager.EndMuffle();
                 }
                 else
                 {

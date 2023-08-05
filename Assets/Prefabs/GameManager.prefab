@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumPlayerEnemyDistance: 5.5
+  minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5fa39aa9731348bc86b20ebb15575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicManager: {fileID: 0}
   preFightDialogueSpeakerList:
   - Enemy
   - Enemy
@@ -133,7 +134,9 @@ MonoBehaviour:
   critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}
   outOfStaminaTextUI: {fileID: 0}
   fientTextUI: {fileID: 6078899087307618118, guid: 5604e1b2b591702438d686e7135ca890, type: 3}
+  exclaimationTextUI: {fileID: 6648933288502072810, guid: 6d2c2df7e68391648891a74e8e163d8c, type: 3}
   showTextDuration: 0.75
   showDamageTextDuration: 0.5
+  showExclaimationTextDuration: 0.3
   gameManager: {fileID: 3472306370896711298}
   canvas: {fileID: 0}

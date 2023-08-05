@@ -15,6 +15,8 @@ public class TutorialManager : MonoBehaviour
     public GameObject canvas;
     private RectTransform canvasRectTransform;
 
+    public MusicManager musicManager;
+
     public TutorialPlayerController tutorialPlayerController;
 
     [Header ("GamePlay")]
@@ -84,7 +86,9 @@ public class TutorialManager : MonoBehaviour
         getHitVolume.SetActive(false);
         #endregion
 
+        
         ShowPreTutorialDialogue(0);
+        musicManager.StartMuffle();
     }
 
     // Update is called once per frame
@@ -107,6 +111,8 @@ public class TutorialManager : MonoBehaviour
                     dialogueVolume.SetActive(false);
                     playerDialogue.SetActive(false);
                     tutorialInstructionUI.SetActive(true);
+
+                    musicManager.EndMuffle();
                 }
             }
         }
@@ -144,6 +150,8 @@ public class TutorialManager : MonoBehaviour
                         tutorialInstructionUI.SetActive(false);
                         dialogueVolume.SetActive(true);
                         ShowPreTutorialDialogue(2);
+
+                        musicManager.StartMuffle();
                     }
                 }
             }
@@ -157,6 +165,8 @@ public class TutorialManager : MonoBehaviour
                 tutorialInstructionUI.SetActive(true);
                 dialogueVolume.SetActive(false);
                 playerDialogue.SetActive(false);
+
+                musicManager.EndMuffle();
             }
         }
         else if (gameState == "Practice")

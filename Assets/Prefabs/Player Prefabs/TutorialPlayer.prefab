@@ -130,7 +130,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296976083}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.42261827, w: 0.9063079}
   m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -138,7 +138,7 @@ Transform:
   - {fileID: 1735666212459705734}
   m_Father: {fileID: 1735666210835693572}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50}
 --- !u!50 &2134099059
 Rigidbody2D:
   serializedVersion: 4
@@ -239,7 +239,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -323,21 +323,21 @@ MonoBehaviour:
   playerHeavyLungeBaseDamage: 12
   playerHeavyLungeExtraDamageScale: 20
   playerHeavyLungeDamage: 0
-  playerJumpAttackDamage: 30
+  playerJumpAttackDamage: 20
   currentDamageValue: 0
   rallyScale: 0.33
   rallyDuration: 4
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
-  playerStaminaRecoverySpeed: 0.45
+  playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
-  playerStepStaminaCost: 6
-  playerJumpStaminaCost: 4
-  playerJumpAttackStaminaCost: 10
+  playerStepStaminaCost: 4
+  playerJumpStaminaCost: 10
+  playerJumpAttackStaminaCost: 25
   playerLightAttackStaminaCost: 20
-  playerHeavyLungeBaseStaminaCost: 13
-  playerHeavyLungeExtraStaminaCostScale: 6
+  playerHeavyLungeBaseStaminaCost: 32
+  playerHeavyLungeExtraStaminaCostScale: 20
   dummy: {fileID: 0}
   getHitStunDuration: 0.35
   getHitKnockBackSpeed: 8
@@ -366,10 +366,9 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 23
   heavyLungeStunDuration: 0.7
-  jumpAttackDuration: 0.15
-  jumpAttackSwingSpeed: 15
-  jumpAttackThrustSpeed: {x: 10, y: -60}
-  jumpAttackPlayerHorizontalSpeed: 17.5
+  jumpAttackDuration: 0.6
+  jumpAttackSwordPivotRotation: -40
+  jumpAttackThrustSpeed: 6
   parryDuration: 0.2
   riposteDamageBonus: 25
 --- !u!1001 &3225382883676782870
@@ -441,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3806825493350266799, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3806825493350266797, guid: b53addc28acae7a478c43379b7c4f76b, type: 3}
@@ -470,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699834, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7673852163725699835, guid: 9fee4dc12d85fad4abd56e26a39d5c42, type: 3}
       propertyPath: m_RootOrder

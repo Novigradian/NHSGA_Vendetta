@@ -217,31 +217,32 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   UIManager: {fileID: 0}
+  musicManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
   audioManager: {fileID: 0}
   playerHeavyLungeChargeBar: {fileID: 0}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 110
+  maxPlayerHealth: 100
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 12
   playerHeavyLungeExtraDamageScale: 20
   playerHeavyLungeDamage: 0
-  playerJumpAttackDamage: 30
+  playerJumpAttackDamage: 20
   currentDamageValue: 0
   rallyScale: 0.33
   rallyDuration: 4
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
-  playerStaminaRecoverySpeed: 0.45
+  playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
-  playerStepStaminaCost: 6
-  playerJumpStaminaCost: 4
-  playerJumpAttackStaminaCost: 10
+  playerStepStaminaCost: 4
+  playerJumpStaminaCost: 10
+  playerJumpAttackStaminaCost: 25
   playerLightAttackStaminaCost: 20
-  playerHeavyLungeBaseStaminaCost: 13
-  playerHeavyLungeExtraStaminaCostScale: 6
+  playerHeavyLungeBaseStaminaCost: 32
+  playerHeavyLungeExtraStaminaCostScale: 20
   enemy: {fileID: 0}
   getHitStunDuration: 0.35
   getHitKnockBackSpeed: 8
@@ -260,19 +261,18 @@ MonoBehaviour:
   jumpHorizontalSpeed: 1
   lightAttackWindupDuration: 0.2
   lightAttackWindupSpeed: 5
-  lightAttackDuration: 0.15
+  lightAttackDuration: 0.125
   lightAttackThrustSpeed: 40
   heavyLungeMinimumWindupTime: 0.6
   heavyLungeMaximumWindupTime: 2
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.3
   heavyLungeLowerSwordScale: 1
-  heavyLungeThrustSpeed: 23
+  heavyLungeThrustSpeed: 24
   heavyLungeStunDuration: 0.7
-  jumpAttackDuration: 0.15
-  jumpAttackSwingSpeed: 15
-  jumpAttackThrustSpeed: {x: 10, y: -60}
-  jumpAttackPlayerHorizontalSpeed: 17.5
+  jumpAttackDuration: 0.6
+  jumpAttackSwordPivotRotation: -40
+  jumpAttackThrustSpeed: 6
   parryDuration: 0.2
   riposteDamageBonus: 25
 --- !u!61 &1051260131
@@ -316,7 +316,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
