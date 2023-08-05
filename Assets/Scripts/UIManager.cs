@@ -25,10 +25,12 @@ public class UIManager : MonoBehaviour
     public GameObject critTextUI;
     public GameObject outOfStaminaTextUI;
     public GameObject fientTextUI;
+    public GameObject exclaimationTextUI;
     private RectTransform parryTextRectTransform;
     private RectTransform riposteTextRectTransform;
     [SerializeField] private float showTextDuration;
     [SerializeField] private float showDamageTextDuration;
+    public float showExclaimationTextDuration;
 
     public GameManager gameManager;
     public GameObject canvas;
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
         riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
         canvasRectTransform = canvas.GetComponent<RectTransform>();
         playerHeavyLungeChargeBarRectTransform = playerHeavyLungeChargeBarUI.GetComponent<RectTransform>();
+
     }
 
     // Update is called once per frame
@@ -178,6 +181,20 @@ public class UIManager : MonoBehaviour
 
         fientTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
         StartCoroutine(HideDamageText(fientTextUIInstance));
+    }
+
+    public void ShowExclaimationText(Vector3 playerWorldPos)
+    {
+        GameObject exclaimationTextUIInstance = Instantiate(exclaimationTextUI, canvas.transform);
+        exclaimationTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(-90f, 145f);
+        StartCoroutine(HideExclaimationText(exclaimationTextUIInstance));
+
+    }
+
+    private IEnumerator HideExclaimationText(GameObject exclaimationTextUIInstance)
+    {
+        yield return new WaitForSeconds(showExclaimationTextDuration);
+        Destroy(exclaimationTextUIInstance);
     }
     #endregion
 

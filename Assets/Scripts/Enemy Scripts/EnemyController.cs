@@ -518,8 +518,9 @@ public class EnemyController : MonoBehaviour
     public IEnumerator HeavyLungeWindupCoroutine()
     {
         animator.Play("HeavyWindup");
-        heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
+        
         yield return new WaitForSeconds(heavyLungeWindupTime);
+        
         if (state == EnemyState.heavyLungeWindup)
         {
             heavyLungeThrustTime = heavyLungeWindupTime * heavyLungeWindupThrustScale;
@@ -527,6 +528,13 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.heavyLunge;
             swordCollider.enabled = true;
         }
+    }
+
+    private IEnumerator ShowHeavyLungeExclaimationText()
+    {
+        yield return new WaitForSeconds(heavyLungeWindupTime - UIManager.showExclaimationTextDuration);
+        UIManager.ShowExclaimationText(transform.position);
+        yield return new WaitForSeconds(UIManager.showExclaimationTextDuration);
     }
 
     public void HeavyLunge()
@@ -1074,6 +1082,7 @@ public class EnemyController : MonoBehaviour
         else if (stateToEnter == "lightAttackChance")
         {
             state = EnemyState.lightAttackWindup;
+            UIManager.ShowExclaimationText(transform.position);
             Debug.Log("switched to light attack");
             stateToEnter = "";
             swordRb.isKinematic = false;
@@ -1084,6 +1093,8 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to heavy lunge");
             stateToEnter = "";
             swordRb.isKinematic = false;
+            heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
+            StartCoroutine(ShowHeavyLungeExclaimationText());
         }
         else if (stateToEnter == "jumpChance")
         {
