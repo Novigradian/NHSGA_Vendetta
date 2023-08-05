@@ -505,6 +505,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 1735666211534223033, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735666212459705735, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: dummy
       value: 
