@@ -8,17 +8,30 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     [HideInInspector] public bool isPaused;
 
+    private void Start()
+    {
+        
+    }
     void Update()
     {
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {
                 Resume();
+                foreach (AudioSource a in audios)
+                {
+                    a.UnPause();
+                }
             }
             else
             {
                 Pause();
+                foreach (AudioSource a in audios)
+                {
+                    a.Pause();
+                }
             }
         }
     }
