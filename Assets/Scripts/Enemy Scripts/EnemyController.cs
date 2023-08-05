@@ -93,9 +93,8 @@ public class EnemyController : MonoBehaviour
 
     [Header("Jump Attack")]
     [SerializeField] private float jumpAttackDuration;
-    [SerializeField] private float jumpAttackSwingSpeed;
-    [SerializeField] private Vector2 jumpAttackThrustSpeed;
-    [SerializeField] private float jumpAttackEnemyHorizontalSpeed;
+    [SerializeField] private float jumpAttackSwordPivotRotation;
+    [SerializeField] private float jumpAttackThrustSpeed;
 
     [Header("Heavy Attack")]
     [SerializeField] private float heavyLungeWindupSpeed;
@@ -134,6 +133,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float heavyLungeRange;
     [SerializeField] private float heavyLungeDistanceScale;
     [SerializeField] private float playerHeavyLungeJumpChance;
+    [SerializeField] private float baseJumpAttackChance;
+    [SerializeField] private float playerHeavyLungeJumpAttackChance;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
@@ -164,6 +165,7 @@ public class EnemyController : MonoBehaviour
         swordCollider = sword.GetComponent<BoxCollider2D>();
         swordCollider.enabled = false;
         swordPivot = sword.transform.parent;
+        swordPivotRb = swordPivot.GetComponent<Rigidbody2D>();
         enemyHeavyLungeDamage = enemyHeavyLungeBaseDamage;
         minimumPlayerEnemyDistance = gameManager.minimumPlayerEnemyDistance;
         direction = -1f;
@@ -186,6 +188,7 @@ public class EnemyController : MonoBehaviour
         chanceDict["lightAttackChance"] = baseLightAttackChance;
         chanceDict["jumpChance"] = 0f;
         chanceDict["parryChance"] = 0f;
+        chanceDict["jumpAttackChance"] = 0f;
         //chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
@@ -196,6 +199,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         string gameState = gameManager.gameState;
+        //Debug.Log(chanceDict["jumpAttackChance"]);
         if (gameState == "Fight")
         {
             UpdateDistance();
@@ -420,13 +424,8 @@ public class EnemyController : MonoBehaviour
 
     private void JumpAttackActions()
     {
-        swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
-        swordPivotRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+        sword.transform.localPosition += new Vector3(jumpAttackThrustSpeed * Time.deltaTime, 0f, 0f);
 
-        if (canMoveTowardsEnemy)
-        {
-            rb.position += Vector2.right * direction * Time.deltaTime * jumpAttackEnemyHorizontalSpeed;
-        }
     }
 
     private void JumpAttackTransitions()
@@ -437,10 +436,11 @@ public class EnemyController : MonoBehaviour
     private IEnumerator JumpAttack()
     {
         yield return new WaitForSeconds(jumpAttackDuration);
-        if (state != EnemyState.idle && state == EnemyState.jumpAttack)
+        if (state == EnemyState.jumpAttack)
         {
             ResetSwordPosition();
             swordRb.isKinematic = true;
+            swordPivotRb.isKinematic = true;
             state = EnemyState.jump;
             swordCollider.enabled = false;
         }
@@ -762,6 +762,8 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.idle;
             ResetSwordPosition();
             swordRb.isKinematic = true;
+            swordPivotRb.isKinematic = true;
+            swordCollider.enabled = false;
         }
     }
     #endregion
@@ -947,10 +949,13 @@ public class EnemyController : MonoBehaviour
             if (playerState == PlayerController.PlayerState.heavyLunge)
             {
                 chanceDict["jumpChance"] = playerHeavyLungeJumpChance;
+                Debug.Log("jump chance updated");
+                chanceDict["jumpAttackChance"] = playerHeavyLungeJumpAttackChance;
             }
             else
             {
                 chanceDict["jumpChance"] = 0f;
+                chanceDict["jumpAttackChance"] = 0f;
             }
 
             if (distance < heavyLungeRange)
@@ -1101,6 +1106,16 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             stateToEnter = "";
+        }
+        else if (stateToEnter == "jumpAttackChance" && state==EnemyState.jump)
+        {
+            state = EnemyState.jumpAttack;
+            Debug.Log("switched to jump attack");
+            stateToEnter = "";
+            swordPivot.localEulerAngles = new Vector3(0f, 0f, jumpAttackSwordPivotRotation);
+            swordRb.isKinematic = false;
+            swordPivotRb.isKinematic = false;
+            swordCollider.enabled = true;
         }
         else if (stateToEnter == "parryChance")
         {
