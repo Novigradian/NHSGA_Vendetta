@@ -50,7 +50,6 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-
     public void Pause()
     {
         pauseMenu.SetActive(true);
