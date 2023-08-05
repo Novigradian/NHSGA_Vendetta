@@ -269,7 +269,7 @@ MonoBehaviour:
   controllerTransform: {fileID: 619430405}
   audioManager: {fileID: 0}
   enemyHealthBar: {fileID: 0}
-  maxEnemyHealth: 160
+  maxEnemyHealth: 200
   stepSpeed: 7
   stepDuration: 0.35
   stepCooldown: 1

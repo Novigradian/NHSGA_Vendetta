@@ -228,21 +228,21 @@ MonoBehaviour:
   playerHeavyLungeBaseDamage: 12
   playerHeavyLungeExtraDamageScale: 20
   playerHeavyLungeDamage: 0
-  playerJumpAttackDamage: 30
+  playerJumpAttackDamage: 20
   currentDamageValue: 0
   rallyScale: 0.33
   rallyDuration: 4
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 60
-  playerStaminaRecoverySpeed: 0.45
+  playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
-  playerStepStaminaCost: 6
-  playerJumpStaminaCost: 4
-  playerJumpAttackStaminaCost: 10
+  playerStepStaminaCost: 4
+  playerJumpStaminaCost: 10
+  playerJumpAttackStaminaCost: 25
   playerLightAttackStaminaCost: 20
-  playerHeavyLungeBaseStaminaCost: 13
-  playerHeavyLungeExtraStaminaCostScale: 6
+  playerHeavyLungeBaseStaminaCost: 16
+  playerHeavyLungeExtraStaminaCostScale: 10
   enemy: {fileID: 0}
   getHitStunDuration: 0.35
   getHitKnockBackSpeed: 8
@@ -270,10 +270,9 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 23
   heavyLungeStunDuration: 0.7
-  jumpAttackDuration: 0.15
-  jumpAttackSwingSpeed: 15
-  jumpAttackThrustSpeed: {x: 10, y: -60}
-  jumpAttackPlayerHorizontalSpeed: 17.5
+  jumpAttackDuration: 0.6
+  jumpAttackSwordPivotRotation: -40
+  jumpAttackThrustSpeed: 6
   parryDuration: 0.2
   riposteDamageBonus: 25
 --- !u!61 &1051260131

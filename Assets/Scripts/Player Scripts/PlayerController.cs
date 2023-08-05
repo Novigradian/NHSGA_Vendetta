@@ -132,9 +132,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump Attack")]
     [SerializeField] private float jumpAttackDuration;
-    [SerializeField] private float jumpAttackSwingSpeed;
-    [SerializeField] private Vector2 jumpAttackThrustSpeed;
-    [SerializeField] private float jumpAttackPlayerHorizontalSpeed;
+    [SerializeField] private float jumpAttackSwordPivotRotation;
+    [SerializeField] private float jumpAttackThrustSpeed;
 
     [Header("Parry")]
     [SerializeField] private float parryDuration;
@@ -660,7 +659,7 @@ public class PlayerController : MonoBehaviour
             animator.Play("JumpAttack");
             bufferState = "None";
             state = PlayerState.jumpAttack;
-            swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
+            swordPivot.localEulerAngles = new Vector3(0f, 0f, jumpAttackSwordPivotRotation);
             UseStamina(playerJumpAttackStaminaCost);
             swordRb.isKinematic = false;
             swordPivotRb.isKinematic = false;
@@ -670,8 +669,7 @@ public class PlayerController : MonoBehaviour
 
     private void JumpAttackActions()
     {
-        swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
-        swordPivotRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+        sword.transform.localPosition += new Vector3(jumpAttackThrustSpeed * Time.deltaTime, 0f, 0f);
 
         if (canMoveTowardsEnemy)
         {
@@ -691,7 +689,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpAttack()
     {
         yield return new WaitForSeconds(jumpAttackDuration);
-        if (state != PlayerState.idle && state==PlayerState.jumpAttack)
+        if (state==PlayerState.jumpAttack)
         {
             ResetSwordPosition();
             swordRb.isKinematic = true;
@@ -1113,6 +1111,8 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.idle;
             ResetSwordPosition();
             swordRb.isKinematic = true;
+            swordPivotRb.isKinematic = true;
+            swordCollider.enabled = false;
         }
         
     }

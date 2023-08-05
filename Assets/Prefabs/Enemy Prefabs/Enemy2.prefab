@@ -100,6 +100,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   UIManager: {fileID: 0}
+  musicManager: {fileID: 0}
   rb: {fileID: 4232357888753015559}
   swordRb: {fileID: 4232357887164182150}
   sword: {fileID: 2497817920845126247}
@@ -108,7 +109,7 @@ MonoBehaviour:
   controllerTransform: {fileID: 9149206876430691158}
   audioManager: {fileID: 0}
   enemyHealthBar: {fileID: 0}
-  maxEnemyHealth: 150
+  maxEnemyHealth: 200
   stepSpeed: 7
   stepDuration: 0.35
   stepCooldown: 1

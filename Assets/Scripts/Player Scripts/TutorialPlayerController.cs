@@ -137,9 +137,8 @@ public class TutorialPlayerController : MonoBehaviour
 
     [Header("Jump Attack")]
     [SerializeField] private float jumpAttackDuration;
-    [SerializeField] private float jumpAttackSwingSpeed;
-    [SerializeField] private Vector2 jumpAttackThrustSpeed;
-    [SerializeField] private float jumpAttackPlayerHorizontalSpeed;
+    [SerializeField] private float jumpAttackSwordPivotRotation;
+    [SerializeField] private float jumpAttackThrustSpeed;
 
     [Header("Parry")]
     [SerializeField] private float parryDuration;
@@ -377,6 +376,7 @@ public class TutorialPlayerController : MonoBehaviour
         }
         else if ((kb.spaceKey.isPressed||bufferState=="Jump") && !isOutOfStamina)
         {
+            
             bufferState = "None";
             state = PlayerState.jump;
             UseStamina(playerJumpStaminaCost);
@@ -698,7 +698,7 @@ public class TutorialPlayerController : MonoBehaviour
             animator.Play("JumpAttack");
             bufferState = "None";
             state = PlayerState.jumpAttack;
-            swordPivot.position = transform.position+new Vector3(0.5f, -1f, 0f);
+            swordPivot.localEulerAngles = new Vector3(0f, 0f, jumpAttackSwordPivotRotation);
             UseStamina(playerJumpAttackStaminaCost);
             swordRb.isKinematic = false;
             swordPivotRb.isKinematic = false;
@@ -712,8 +712,7 @@ public class TutorialPlayerController : MonoBehaviour
 
     private void JumpAttackActions()
     {
-        swordPivot.localEulerAngles -= new Vector3(0f, 0f, jumpAttackSwingSpeed);
-        swordPivotRb.position += jumpAttackThrustSpeed * direction * Time.deltaTime;
+        sword.transform.localPosition += new Vector3(jumpAttackThrustSpeed  * Time.deltaTime,0f,0f);
 
         if (canMoveTowardsEnemy)
         {
@@ -733,7 +732,7 @@ public class TutorialPlayerController : MonoBehaviour
     private IEnumerator JumpAttack()
     {
         yield return new WaitForSeconds(jumpAttackDuration);
-        if (state != PlayerState.idle && state==PlayerState.jumpAttack)
+        if (state==PlayerState.jumpAttack)
         {
             ResetSwordPosition();
             swordRb.isKinematic = true;
@@ -1154,9 +1153,12 @@ public class TutorialPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             state = PlayerState.idle;
+            //Debug.Log(isOutOfStamina);
             isJumping = false;
             ResetSwordPosition();
             swordRb.isKinematic = true;
+            swordPivotRb.isKinematic = true;
+            swordCollider.enabled = false;
         }
         
     }
