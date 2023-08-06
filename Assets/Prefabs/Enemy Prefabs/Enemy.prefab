@@ -296,9 +296,8 @@ MonoBehaviour:
   blockDamageNegationScale: 0.85
   blockPushback: 0
   jumpAttackDuration: 0.15
-  jumpAttackSwingSpeed: 15
-  jumpAttackThrustSpeed: {x: 10, y: -60}
-  jumpAttackEnemyHorizontalSpeed: 17.5
+  jumpAttackSwordPivotRotation: 0
+  jumpAttackThrustSpeed: 0
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.175
   heavyLungeLowerSwordScale: 1
@@ -325,8 +324,7 @@ MonoBehaviour:
   baseHeavyLungeChance: 0.01
   lightAttackRange: 5.5
   heavyLungeRange: 7.5
-  heavyLungeDistanceScale: 16
-  playerHeavyLungeJumpChance: 0.2
+  heavyLungeDistanceScale: 22
   stateToEnter: 
 --- !u!1001 &3700987901009323085
 PrefabInstance:

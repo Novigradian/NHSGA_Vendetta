@@ -123,7 +123,7 @@ MonoBehaviour:
   enemyHeavyLungeDamage: 0
   enemyJumpAttackDamage: 15
   player: {fileID: 0}
-  jumpForce: 15
+  jumpForce: 6.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.35
   getHitKnockBackSpeed: 8
@@ -149,8 +149,8 @@ MonoBehaviour:
   riposteDamageBonus: 25
   parryChance: 1
   baseIdleChance: 0.1
-  aggressiveness: 1.4
-  difficulty: 1.6
+  aggressiveness: 1
+  difficulty: 2.2
   shuffleLeftDistanceDivideScale: 10
   minimumStepLeftDistance: 7
   stepLeftDistanceDivideScale: 50
@@ -165,9 +165,9 @@ MonoBehaviour:
   lightAttackRange: 5.5
   heavyLungeRange: 8
   heavyLungeDistanceScale: 16
-  playerHeavyLungeJumpChance: 5
+  playerHeavyLungeJumpChance: 1000
   baseJumpAttackChance: 0
-  playerHeavyLungeJumpAttackChance: 4
+  playerHeavyLungeJumpAttackChance: 1000
   stateToEnter: HeavyWindup
 --- !u!1 &4232357887429879600
 GameObject:
