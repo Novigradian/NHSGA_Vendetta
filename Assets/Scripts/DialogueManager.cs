@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class DialogueManager : MonoBehaviour
     private Animator anim;
 
     public MusicManager musicManager;
+
+    public string[] mysteriousVoiceDialogueList;
+    private int mysteriousVoiceDialogueIndex;
 
     public string[] preFightDialogueSpeakerList;
     public string[] preFightDialogueList;
@@ -28,6 +32,8 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text playerDialogueText;
     public GameObject enemyDialogue;
     public TMP_Text enemyDialogueText;
+    public GameObject mysteroisVoiceDialogue;
+    public TMP_Text mysteriousVoiceDialogueText;
 
     private Coroutine currentCoroutine;
 
@@ -44,17 +50,47 @@ public class DialogueManager : MonoBehaviour
         preFightDialogueIndex = 0;
         playerWinDialogueIndex = 0;
         enemyWinDialogueIndex = 0;
+        mysteriousVoiceDialogueIndex = 0;
         #endregion
-
-        ShowPreFightDialogue(preFightDialogueIndex);
         musicManager.StartMuffle();
+        if (gameManager.gameState == "PreFight")
+        {
+            ShowPreFightDialogue(preFightDialogueIndex);
+            
+        }
+        else if (gameManager.gameState=="MysteriousVoice")
+        {
+            mysteroisVoiceDialogue.SetActive(true);
+            ShowMysteriousVoiceDialogue(mysteriousVoiceDialogueIndex);
+            
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         string gameState = gameManager.gameState;
-        if (gameState == "PreFight")
+        if (gameState=="MysteriousVoice")
+        {
+            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
+            {
+                mysteriousVoiceDialogueIndex++;
+                if (mysteriousVoiceDialogueIndex < mysteriousVoiceDialogueList.Length)
+                {
+                    anim.SetTrigger("returnToIdle");
+                    ShowMysteriousVoiceDialogue(mysteriousVoiceDialogueIndex);
+                }
+                else
+                {
+                    currentCoroutine = null;
+                    gameManager.gameState = "PreFight";
+                    gameManager.enemy.SetActive(true);
+                    mysteroisVoiceDialogue.SetActive(false);
+                    ShowPreFightDialogue(preFightDialogueIndex);
+                }
+            }
+        }
+        else if (gameState == "PreFight")
         {
             if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
@@ -129,6 +165,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void ShowMysteriousVoiceDialogue(int index)
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
+        currentCoroutine = StartCoroutine(DisplayMysteriousVoiceText(mysteriousVoiceDialogueList[index]));
+    }
+
     private void ShowPreFightDialogue(int index)
     {
         playerDialogue.SetActive(false);
@@ -177,6 +223,18 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private IEnumerator DisplayMysteriousVoiceText(string text)
+    {
+        anim = mysteriousVoiceDialogueText.GetComponent<Animator>();
+        anim.SetTrigger("startFadeIn");
+
+        mysteriousVoiceDialogueText.text = "";
+        foreach (char character in text)
+        {
+            mysteriousVoiceDialogueText.text += character;
+            yield return new WaitForSeconds(displayDialogueInterval);
+        }
+    }
     private IEnumerator DisplayPlayerText(string text)
     {
 

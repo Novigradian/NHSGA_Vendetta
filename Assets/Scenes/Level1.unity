@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &143182716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4101417134331441143, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &203019790 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
@@ -987,6 +992,14 @@ PrefabInstance:
       propertyPath: playerDialogueText
       value: 
       objectReference: {fileID: 1434600439}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteroisVoiceDialogue
+      value: 
+      objectReference: {fileID: 143182716}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteriousVoiceDialogueText
+      value: 
+      objectReference: {fileID: 7079391959960851294}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: canvas
       value: 
@@ -1008,17 +1021,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 491070008}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: parryTextUI
-      value: 
-      objectReference: {fileID: 7079391959960851294}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: playerWinUI
       value: 
       objectReference: {fileID: 816303626}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: riposteTextUI
-      value: 
-      objectReference: {fileID: 7079391959960851293}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: outOfStaminaTextUI
       value: 
@@ -1043,6 +1048,10 @@ PrefabInstance:
       propertyPath: musicManager
       value: 
       objectReference: {fileID: 1984859303}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1368823892}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: combatVolume
       value: 
@@ -1397,16 +1406,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b52f2aabe855f4697496106941a369, type: 3}
---- !u!1 &7079391959960851293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1392644193358211769, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+--- !u!114 &7079391959960851294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7079391959172712795, guid: c5b52f2aabe855f4697496106941a369, type: 3}
   m_PrefabInstance: {fileID: 7079391959960851292}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7079391959960851294 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4693336193744178193, guid: c5b52f2aabe855f4697496106941a369, type: 3}
-  m_PrefabInstance: {fileID: 7079391959960851292}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7079391959960851295 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1983592649464911618, guid: c5b52f2aabe855f4697496106941a369, type: 3}

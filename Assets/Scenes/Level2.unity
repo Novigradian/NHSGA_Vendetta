@@ -472,6 +472,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+--- !u!114 &1374824777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+  m_PrefabInstance: {fileID: 1374824776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243442846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d615beb348d9cc469e218e3bbc8d0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1406694649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6297542153924602158, guid: e27627fa9d138fb47bc9ce19fc398f84, type: 3}
@@ -871,6 +882,14 @@ PrefabInstance:
       propertyPath: playerDialogueText
       value: 
       objectReference: {fileID: 1434600439}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteroisVoiceDialogue
+      value: 
+      objectReference: {fileID: 7079391959960851294}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteriousVoiceDialogueText
+      value: 
+      objectReference: {fileID: 7079391959960851293}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: canvas
       value: 
@@ -920,6 +939,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1529170568}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 6652532465784064523}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: combatVolume
       value: 
       objectReference: {fileID: 1501199553}
@@ -931,6 +954,10 @@ PrefabInstance:
       propertyPath: dialogueVolume
       value: 
       objectReference: {fileID: 1406694649}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1374824777}
     - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1274,6 +1301,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+--- !u!114 &7079391959960851293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7079391959172712795, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7079391959960851294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4101417134331441143, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7079391959960851295 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1983592649464911618, guid: c5b52f2aabe855f4697496106941a369, type: 3}
