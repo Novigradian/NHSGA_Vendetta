@@ -414,6 +414,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1789710035}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: playerStepStaminaCost
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: playerHeavyLungeChargeBar
       value: 
       objectReference: {fileID: 7079391959960851297}
