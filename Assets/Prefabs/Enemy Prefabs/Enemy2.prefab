@@ -147,7 +147,7 @@ MonoBehaviour:
   maxHeavyLungeWindupDuration: 4
   parryDuration: 0.1
   riposteDamageBonus: 25
-  parryChance: 1
+  parryChance: 100
   baseIdleChance: 0
   aggressiveness: 1.25
   difficulty: 2.2
@@ -165,7 +165,9 @@ MonoBehaviour:
   lightAttackRange: 5.5
   heavyLungeRange: 8
   heavyLungeDistanceScale: 20
-  stateToEnter: HeavyWindup
+  canParry: 1
+  canJumpAttack: 0
+  stateToEnter: 
 --- !u!1 &4232357887429879600
 GameObject:
   m_ObjectHideFlags: 0

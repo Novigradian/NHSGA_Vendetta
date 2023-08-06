@@ -146,6 +146,7 @@ public class EnemyController : MonoBehaviour
     private float distance;
 
     private bool isGrounded;
+    public bool isParrying;
 
     #region Timers
     private float stepLeftTimer;
@@ -159,6 +160,7 @@ public class EnemyController : MonoBehaviour
     {
         #region Initialize Variables
         isGrounded = true;
+        isParrying = false;
 
         isLightAttackOnCooldown = false;
         isAbleToChangeDirection = true;
@@ -591,7 +593,7 @@ public class EnemyController : MonoBehaviour
     }
     private void ParryTransitions()
     {
-        StartCoroutine(Parry());
+        
     }
 
     private IEnumerator Parry()
@@ -600,6 +602,7 @@ public class EnemyController : MonoBehaviour
         if (state == EnemyState.parry)
         {
             state = EnemyState.idle;
+            isParrying = false;
         }
     }
     #endregion
@@ -623,6 +626,7 @@ public class EnemyController : MonoBehaviour
         if (state == EnemyState.parried)
         {
             state = EnemyState.idle;
+            
         }
     }
 
@@ -957,82 +961,91 @@ public class EnemyController : MonoBehaviour
     private void EnemyAI()
     {
         PlayerController.PlayerState playerState = playerController.state;
-        if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&&isAbleToChangeDirection)
+        if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight))
         {
             #region Adjust Idle Chances
-            
-            if (distance < heavyLungeRange)
+            if (isAbleToChangeDirection)
             {
-                chanceDict["heavyLungeChance"] = 0f;
-            }
-            else
-            {
-                chanceDict["heavyLungeChance"] = baseHeavyLungeChance * aggressiveness*(distance/heavyLungeDistanceScale);
+                if (distance < heavyLungeRange)
+                {
+                    chanceDict["heavyLungeChance"] = 0f;
+                }
+                else
+                {
+                    chanceDict["heavyLungeChance"] = baseHeavyLungeChance * aggressiveness * (distance / heavyLungeDistanceScale);
+                }
+
+                if (distance > lightAttackRange || isLightAttackOnCooldown)
+                {
+                    chanceDict["lightAttackChance"] = 0f;
+                }
+                else
+                {
+                    chanceDict["lightAttackChance"] = baseLightAttackChance * aggressiveness;
+                }
+
+                chanceDict["shuffleLeftChance"] = (distance / shuffleLeftDistanceDivideScale) * aggressiveness;
+                if (distance <= minimumStepLeftDistance)
+                {
+                    chanceDict["stepLeftChance"] = 0f;
+                }
+                else
+                {
+                    chanceDict["stepLeftChance"] = (distance / stepLeftDistanceDivideScale) * aggressiveness;
+                }
+                chanceDict["shuffleRightChance"] = (1f - chanceDict["shuffleLeftChance"]);
+                if (chanceDict["shuffleRightChance"] < 0f)
+                {
+                    chanceDict["shuffleRightChance"] = 0f;
+                }
+                chanceDict["stepRightChance"] = 0f;
+                
+                if (playerState == PlayerController.PlayerState.lightAttack)
+                {
+                    chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness);
+                    chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness) * difficulty;
+                    
+                }
+                else if (playerState == PlayerController.PlayerState.jumpAttack)
+                {
+                    chanceDict["shuffleRightChance"] += playerJumpAttackRetreatChance * (2f - aggressiveness);
+                    chanceDict["stepRightChance"] += playerJumpAttackRetreatChance * (2f - aggressiveness) * difficulty;
+                }
+                else if (playerState == PlayerController.PlayerState.heavyLungeWindup)
+                {
+                    chanceDict["shuffleLeftChance"] += playerHeavyLungeWindupAdvanceChance * aggressiveness;
+                    chanceDict["stepLeftChance"] += playerHeavyLungeWindupAdvanceChance * aggressiveness * difficulty;
+                }
+                else if (playerState == PlayerController.PlayerState.stepLeft)
+                {
+                    chanceDict["stepLeftChance"] += (distance / chaseAfterEnemyDistanceDivideScale) * aggressiveness;
+                }
+                if (playerState == PlayerController.PlayerState.parried)
+                {
+                    state = EnemyState.lightAttackWindup;
+                }
+
+                if (!canShift)
+                {
+                    chanceDict["stepLeftChance"] = 0f;
+                    chanceDict["stepRightChance"] = 0f;
+                }
             }
 
-            if (distance > lightAttackRange || isLightAttackOnCooldown)
-            {
-                chanceDict["lightAttackChance"] = 0f;
-            }
-            else
-            {
-                chanceDict["lightAttackChance"] = baseLightAttackChance*aggressiveness;
-            }
-
-            chanceDict["shuffleLeftChance"] = (distance / shuffleLeftDistanceDivideScale)*aggressiveness;
-            if (distance <= minimumStepLeftDistance)
-            {
-                chanceDict["stepLeftChance"] = 0f;
-            }
-            else
-            {
-                chanceDict["stepLeftChance"] = (distance / stepLeftDistanceDivideScale)*aggressiveness;
-            }
-            chanceDict["shuffleRightChance"] = (1f - chanceDict["shuffleLeftChance"]);
-            if (chanceDict["shuffleRightChance"] < 0f)
-            {
-                chanceDict["shuffleRightChance"] = 0f;
-            }
-            chanceDict["stepRightChance"] = 0f;
             chanceDict["parryChance"] = 0f;
             if (playerState == PlayerController.PlayerState.lightAttack)
             {
-                chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance*(2f-aggressiveness);
-                chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness)*difficulty;
                 if (canParry)
                 {
                     chanceDict["parryChance"] = parryChance * difficulty;
                     Debug.Log("parry chance: " + chanceDict["parryChance"]);
                 }
             }
-            else if (playerState == PlayerController.PlayerState.jumpAttack)
-            {
-                chanceDict["shuffleRightChance"] += playerJumpAttackRetreatChance * (2f - aggressiveness);
-                chanceDict["stepRightChance"] += playerJumpAttackRetreatChance * (2f - aggressiveness)*difficulty;
-            }
-            else if (playerState == PlayerController.PlayerState.heavyLungeWindup)
-            {
-                chanceDict["shuffleLeftChance"] += playerHeavyLungeWindupAdvanceChance * aggressiveness;
-                chanceDict["stepLeftChance"] += playerHeavyLungeWindupAdvanceChance * aggressiveness*difficulty;
-            }
-            else if (playerState == PlayerController.PlayerState.stepLeft)
-            {
-                chanceDict["stepLeftChance"] += (distance / chaseAfterEnemyDistanceDivideScale) * aggressiveness;
-            }
-            if (playerState == PlayerController.PlayerState.parried)
-            {
-                state = EnemyState.lightAttackWindup;
-            }
 
-            if (!canShift)
-            {
-                chanceDict["stepLeftChance"] = 0f;
-                chanceDict["stepRightChance"] = 0f;
-            }
-            #endregion
+                #endregion
 
-            #region Select Idle Action
-            float totalChance = chanceDict.Values.Sum();
+                #region Select Idle Action
+                float totalChance = chanceDict.Values.Sum();
             float chanceSelected = Random.Range(0, totalChance);
 
             float temp= 0f;
@@ -1062,41 +1075,41 @@ public class EnemyController : MonoBehaviour
     private void UpdateState()
     {
         //Debug.Log("state to enter:" + stateToEnter);
-        if (stateToEnter == "shuffleLeftChance" &&isGrounded)
+        if (stateToEnter == "shuffleLeftChance" &&isGrounded &&isAbleToChangeDirection && !isParrying)
         {
             state = EnemyState.shuffleLeft;
             StartCoroutine(UnableToChangeDirection());
             Debug.Log("switched to shuffleLeft");
             stateToEnter = "";
         }
-        else if (stateToEnter == "stepLeftChance" &&isGrounded)
+        else if (stateToEnter == "stepLeftChance" &&isGrounded && isAbleToChangeDirection && !isParrying)
         {
             stepLeftTimer = 0f;
             state = EnemyState.stepLeft;
             Debug.Log("switched to stepLeft");
             stateToEnter = "";
         }
-        else if (stateToEnter == "shuffleRightChance" && isGrounded)
+        else if (stateToEnter == "shuffleRightChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
             state = EnemyState.shuffleRight;
             StartCoroutine(UnableToChangeDirection());
             Debug.Log("switched to shuffleRight");
             stateToEnter = "";
         }
-        else if (stateToEnter == "stepRightChance" && isGrounded)
+        else if (stateToEnter == "stepRightChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
             stepRightTimer = 0f;
             state = EnemyState.stepRight;
             Debug.Log("switched to stepRight");
             stateToEnter = "";
         }
-        else if (stateToEnter == "idleChance" && isGrounded)
+        else if (stateToEnter == "idleChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
             state = EnemyState.idle;
             Debug.Log("switched to idle");
             stateToEnter = "";
         }
-        else if (stateToEnter == "lightAttackChance" && isGrounded)
+        else if (stateToEnter == "lightAttackChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
             state = EnemyState.lightAttackWindup;
             UIManager.ShowExclaimationText(transform.position);
@@ -1104,7 +1117,7 @@ public class EnemyController : MonoBehaviour
             stateToEnter = "";
             swordRb.isKinematic = false;
         }
-        else if (stateToEnter == "heavyLungeChance" && isGrounded)
+        else if (stateToEnter == "heavyLungeChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
             state = EnemyState.heavyLungeWindup;
             Debug.Log("switched to heavy lunge");
@@ -1114,7 +1127,7 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(ShowHeavyLungeExclaimationText());
             StartCoroutine(HeavyLungeWindupCoroutine());
         }
-        else if (stateToEnter == "jumpChance" && isGrounded)
+        else if (stateToEnter == "jumpChance" && isGrounded &&!isParrying)
         {
             state = EnemyState.jump;
             Debug.Log("switched to jump");
@@ -1135,8 +1148,10 @@ public class EnemyController : MonoBehaviour
         else if (stateToEnter == "parryChance" && isGrounded)
         {
             state = EnemyState.parry;
+            StartCoroutine(Parry());
             Debug.Log("switched to parry");
             stateToEnter = "";
+            isParrying = true;
         }
     }
 
