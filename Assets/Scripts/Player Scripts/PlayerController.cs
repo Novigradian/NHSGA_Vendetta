@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
     [SerializeField] private float maxPlayerHealth;
-    private float playerHealth;
+    [HideInInspector] public float playerHealth;
 
     [Header("Player Damage")]
     public float playerLightAttackDamage;
@@ -157,10 +157,18 @@ public class PlayerController : MonoBehaviour
 
         playerHeavyLungeChargeBar.SetMaxValue(heavyLungeMaximumWindupTime);
 
-        playerHealth = maxPlayerHealth;
         playerStamina = maxPlayerStamina;
         playerHealthBar.SetMaxHealth(maxPlayerHealth);
         playerStaminaBar.SetMaxStamina(maxPlayerStamina);
+        if (PlayerPrefs.GetFloat("playerHealth") != 0f)
+        {
+            playerHealth = PlayerPrefs.GetFloat("playerHealth");
+        }
+        else
+        {
+            playerHealth = maxPlayerHealth;
+        }
+        playerHealthBar.SetHealth(playerHealth);
         isOutOfStamina = false;
         isRallyOn = false;
 
