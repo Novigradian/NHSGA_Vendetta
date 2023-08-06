@@ -155,5 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  controlsMenu: {fileID: 0}
   musicManager: {fileID: 0}
   isPaused: 0
