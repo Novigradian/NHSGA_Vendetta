@@ -489,7 +489,7 @@ public class EnemyController : MonoBehaviour
     {
         swordRb.isKinematic = false;
         yield return new WaitForSeconds(lightAttackWindupDuration);
-        if (state == EnemyState.lightAttackWindup)
+        if (state == EnemyState.lightAttackWindup && !isParrying)
         {
             state = EnemyState.lightAttack;
             swordCollider.enabled = true;
