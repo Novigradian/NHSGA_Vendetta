@@ -132,6 +132,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float lightAttackRange;
     [SerializeField] private float heavyLungeRange;
     [SerializeField] private float heavyLungeDistanceScale;
+
+    [SerializeField] private bool canParry;
+    [SerializeField] private bool canJumpAttack;
     //[SerializeField] private float playerHeavyLungeJumpChance;
     //[SerializeField] private float baseJumpAttackChance;
     //[SerializeField] private float playerHeavyLungeJumpAttackChance;
@@ -860,6 +863,8 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     playerController.ActivateParried();
+                    UIManager.ShowParryText(transform.position);
+                    audioManager.Play("Parry");
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
@@ -952,11 +957,10 @@ public class EnemyController : MonoBehaviour
     private void EnemyAI()
     {
         PlayerController.PlayerState playerState = playerController.state;
-        if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
+        if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&&isAbleToChangeDirection)
         {
             #region Adjust Idle Chances
             
-
             if (distance < heavyLungeRange)
             {
                 chanceDict["heavyLungeChance"] = 0f;
@@ -995,8 +999,11 @@ public class EnemyController : MonoBehaviour
             {
                 chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance*(2f-aggressiveness);
                 chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness)*difficulty;
-                chanceDict["parryChance"] = parryChance * difficulty;
-                Debug.Log(chanceDict["parryChance"]);
+                if (canParry)
+                {
+                    chanceDict["parryChance"] = parryChance * difficulty;
+                    Debug.Log("parry chance: " + chanceDict["parryChance"]);
+                }
             }
             else if (playerState == PlayerController.PlayerState.jumpAttack)
             {
@@ -1129,7 +1136,7 @@ public class EnemyController : MonoBehaviour
         {
             state = EnemyState.parry;
             Debug.Log("switched to parry");
-            swordRb.isKinematic = false;
+            stateToEnter = "";
         }
     }
 

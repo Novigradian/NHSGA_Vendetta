@@ -1384,6 +1384,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1243442846}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: canParry
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: UIManager
       value: 
       objectReference: {fileID: 3472306370635930198}
@@ -1391,6 +1395,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1904956625}
+    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: parryChance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: audioManager
       value: 
