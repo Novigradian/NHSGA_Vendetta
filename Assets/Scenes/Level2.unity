@@ -892,17 +892,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 491070008}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: parryTextUI
-      value: 
-      objectReference: {fileID: 7079391959960851294}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: playerWinUI
       value: 
       objectReference: {fileID: 816303626}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: riposteTextUI
-      value: 
-      objectReference: {fileID: 7079391959960851293}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: outOfStaminaTextUI
       value: 
@@ -1282,16 +1274,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b52f2aabe855f4697496106941a369, type: 3}
---- !u!1 &7079391959960851293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1392644193358211769, guid: c5b52f2aabe855f4697496106941a369, type: 3}
-  m_PrefabInstance: {fileID: 7079391959960851292}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7079391959960851294 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4693336193744178193, guid: c5b52f2aabe855f4697496106941a369, type: 3}
-  m_PrefabInstance: {fileID: 7079391959960851292}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7079391959960851295 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1983592649464911618, guid: c5b52f2aabe855f4697496106941a369, type: 3}
@@ -1391,10 +1373,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1904956625}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: parryChance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: audioManager
       value: 

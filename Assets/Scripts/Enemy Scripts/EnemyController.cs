@@ -459,15 +459,22 @@ public class EnemyController : MonoBehaviour
     #region Light Attack Functions
     private void LightAttackWindupActions()
     {
-        animator.Play("LightAttack");
-        audioManager.Play("LightAttack");
-        rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.1f;
-        swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.7f;
+        if (!isParrying)
+        {
+            animator.Play("LightAttack");
+            audioManager.Play("LightAttack");
+            rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.1f;
+            swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.7f;
+        }
     }
 
     private void LightAtackWindupTransitions()
     {
-        StartCoroutine(LightAttackWindup());
+        if (!isParrying)
+        {
+            StartCoroutine(LightAttackWindup());
+        }
+        
     }
 
     private void LightAttackActions()
@@ -489,7 +496,7 @@ public class EnemyController : MonoBehaviour
     {
         swordRb.isKinematic = false;
         yield return new WaitForSeconds(lightAttackWindupDuration);
-        if (state == EnemyState.lightAttackWindup && !isParrying)
+        if (state == EnemyState.lightAttackWindup)
         {
             state = EnemyState.lightAttack;
             swordCollider.enabled = true;
@@ -1116,6 +1123,10 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to light attack");
             stateToEnter = "";
             swordRb.isKinematic = false;
+            if (enemyLightAttackDamage != enemyLightAttackBaseDamage)
+            {
+                StartCoroutine(ShowEnemyRiposteText());
+            }
         }
         else if (stateToEnter == "heavyLungeChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
@@ -1152,6 +1163,8 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to parry");
             stateToEnter = "";
             isParrying = true;
+
+            enemyLightAttackDamage += riposteDamageBonus;
         }
     }
 
@@ -1161,5 +1174,11 @@ public class EnemyController : MonoBehaviour
         isAbleToChangeDirection = false;
         yield return new WaitForSeconds(unableToChangeDirectionDuration);
         isAbleToChangeDirection = true;
+    }
+
+    private IEnumerator ShowEnemyRiposteText()
+    {
+        yield return new WaitForSeconds(0.5f);
+        UIManager.ShowRiposteText(transform.position);
     }
 }
