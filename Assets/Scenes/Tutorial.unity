@@ -593,6 +593,14 @@ PrefabInstance:
       propertyPath: playerHeavyLungeChargeBar
       value: 
       objectReference: {fileID: 941418991}
+    - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: heavyLungeMaximumWindupTime
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: heavyLungeMinimumWindupTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
 --- !u!1 &1243913385 stripped
@@ -779,10 +787,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 622207294086109288, guid: dac4e07267dad764984207968e87d0b5, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 622207294367752941, guid: dac4e07267dad764984207968e87d0b5, type: 3}
       propertyPath: m_Name
       value: TutorialEnvironment

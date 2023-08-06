@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     #region GameManager Components and Variables
     Keyboard kb;
+    public PlayerController playerController;
 
     public float minimumPlayerEnemyDistance;
 
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
                 {
+                    PlayerPrefs.SetFloat("playerHealth", playerController.playerHealth);
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
                 else
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
         {
             if (kb.rKey.wasPressedThisFrame)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene("Level1");
             }
         }
     }

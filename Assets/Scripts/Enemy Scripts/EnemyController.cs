@@ -132,15 +132,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float lightAttackRange;
     [SerializeField] private float heavyLungeRange;
     [SerializeField] private float heavyLungeDistanceScale;
-    [SerializeField] private float playerHeavyLungeJumpChance;
-    [SerializeField] private float baseJumpAttackChance;
-    [SerializeField] private float playerHeavyLungeJumpAttackChance;
+    //[SerializeField] private float playerHeavyLungeJumpChance;
+    //[SerializeField] private float baseJumpAttackChance;
+    //[SerializeField] private float playerHeavyLungeJumpAttackChance;
 
     private Dictionary<string, float> chanceDict = new Dictionary<string, float>();
     [SerializeField] private string stateToEnter;
 
     private float direction;
     private float distance;
+
+    private bool isGrounded;
 
     #region Timers
     private float stepLeftTimer;
@@ -153,6 +155,8 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         #region Initialize Variables
+        isGrounded = true;
+
         isLightAttackOnCooldown = false;
         isAbleToChangeDirection = true;
         canMoveTowardsEnemy = true;
@@ -186,9 +190,9 @@ public class EnemyController : MonoBehaviour
         chanceDict["stepRightChance"] = 0f;
         chanceDict["idleChance"] = baseIdleChance;
         chanceDict["lightAttackChance"] = baseLightAttackChance;
-        chanceDict["jumpChance"] = 0f;
+        //chanceDict["jumpChance"] = 0f;
         chanceDict["parryChance"] = 0f;
-        chanceDict["jumpAttackChance"] = 0f;
+        //chanceDict["jumpAttackChance"] = 0f;
         //chanceDict["heavyAttackChance"] = baseHeavyLungeChance;
 
         //swordRb.isKinematic = false;
@@ -512,7 +516,7 @@ public class EnemyController : MonoBehaviour
     #region Heavy Attack Functions
     public void HeavyLungeWindup()
     {
-        StartCoroutine(HeavyLungeWindupCoroutine());
+        //StartCoroutine(HeavyLungeWindupCoroutine());
         swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
     public IEnumerator HeavyLungeWindupCoroutine()
@@ -762,10 +766,13 @@ public class EnemyController : MonoBehaviour
                 animator.Play("Land");
             }
             state = EnemyState.idle;
+
             ResetSwordPosition();
             swordRb.isKinematic = true;
             swordPivotRb.isKinematic = true;
             swordCollider.enabled = false;
+
+            isGrounded = true;
         }
     }
     #endregion
@@ -948,17 +955,7 @@ public class EnemyController : MonoBehaviour
         if ((state == EnemyState.idle || state==EnemyState.shuffleLeft||state==EnemyState.shuffleRight)&& isAbleToChangeDirection)
         {
             #region Adjust Idle Chances
-            if (playerState == PlayerController.PlayerState.heavyLunge)
-            {
-                chanceDict["jumpChance"] = playerHeavyLungeJumpChance;
-                Debug.Log("jump chance updated");
-                chanceDict["jumpAttackChance"] = playerHeavyLungeJumpAttackChance;
-            }
-            else
-            {
-                chanceDict["jumpChance"] = 0f;
-                chanceDict["jumpAttackChance"] = 0f;
-            }
+            
 
             if (distance < heavyLungeRange)
             {
@@ -1046,46 +1043,53 @@ public class EnemyController : MonoBehaviour
             }
 
             #endregion
+
+            if (playerState == PlayerController.PlayerState.heavyLunge)
+            {
+                //Debug.Log("state to enter set to jump");
+                stateToEnter = "jumpChance";
+            }
         }
     }
 
     private void UpdateState()
     {
-        if (stateToEnter == "shuffleLeftChance")
+        //Debug.Log("state to enter:" + stateToEnter);
+        if (stateToEnter == "shuffleLeftChance" &&isGrounded)
         {
             state = EnemyState.shuffleLeft;
             StartCoroutine(UnableToChangeDirection());
             Debug.Log("switched to shuffleLeft");
             stateToEnter = "";
         }
-        else if (stateToEnter == "stepLeftChance")
+        else if (stateToEnter == "stepLeftChance" &&isGrounded)
         {
             stepLeftTimer = 0f;
             state = EnemyState.stepLeft;
             Debug.Log("switched to stepLeft");
             stateToEnter = "";
         }
-        else if (stateToEnter == "shuffleRightChance")
+        else if (stateToEnter == "shuffleRightChance" && isGrounded)
         {
             state = EnemyState.shuffleRight;
             StartCoroutine(UnableToChangeDirection());
             Debug.Log("switched to shuffleRight");
             stateToEnter = "";
         }
-        else if (stateToEnter == "stepRightChance")
+        else if (stateToEnter == "stepRightChance" && isGrounded)
         {
             stepRightTimer = 0f;
             state = EnemyState.stepRight;
             Debug.Log("switched to stepRight");
             stateToEnter = "";
         }
-        else if (stateToEnter == "idleChance")
+        else if (stateToEnter == "idleChance" && isGrounded)
         {
             state = EnemyState.idle;
             Debug.Log("switched to idle");
             stateToEnter = "";
         }
-        else if (stateToEnter == "lightAttackChance")
+        else if (stateToEnter == "lightAttackChance" && isGrounded)
         {
             state = EnemyState.lightAttackWindup;
             UIManager.ShowExclaimationText(transform.position);
@@ -1093,7 +1097,7 @@ public class EnemyController : MonoBehaviour
             stateToEnter = "";
             swordRb.isKinematic = false;
         }
-        else if (stateToEnter == "heavyLungeChance")
+        else if (stateToEnter == "heavyLungeChance" && isGrounded)
         {
             state = EnemyState.heavyLungeWindup;
             Debug.Log("switched to heavy lunge");
@@ -1101,13 +1105,15 @@ public class EnemyController : MonoBehaviour
             swordRb.isKinematic = false;
             heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
             StartCoroutine(ShowHeavyLungeExclaimationText());
+            StartCoroutine(HeavyLungeWindupCoroutine());
         }
-        else if (stateToEnter == "jumpChance")
+        else if (stateToEnter == "jumpChance" && isGrounded)
         {
             state = EnemyState.jump;
             Debug.Log("switched to jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             stateToEnter = "";
+            isGrounded = false;
         }
         else if (stateToEnter == "jumpAttackChance" && state==EnemyState.jump)
         {
@@ -1119,7 +1125,7 @@ public class EnemyController : MonoBehaviour
             swordPivotRb.isKinematic = false;
             swordCollider.enabled = true;
         }
-        else if (stateToEnter == "parryChance")
+        else if (stateToEnter == "parryChance" && isGrounded)
         {
             state = EnemyState.parry;
             Debug.Log("switched to parry");

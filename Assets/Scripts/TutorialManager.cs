@@ -60,6 +60,7 @@ public class TutorialManager : MonoBehaviour
     public string[] preTutorialDialogueList;
     public int preTutorialDialogueIndex;
     private Animator anim;
+    private int postTutorialDialogueCount;
 
     private Coroutine currentCoroutine;
 
@@ -83,6 +84,7 @@ public class TutorialManager : MonoBehaviour
 
         playerDialogue.SetActive(false);
         preTutorialDialogueIndex = 0;
+        postTutorialDialogueCount = 0;
 
         canvasRectTransform = canvas.GetComponent<RectTransform>();
         riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
@@ -168,13 +170,21 @@ public class TutorialManager : MonoBehaviour
         {
             if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
-                currentCoroutine = null;
-                gameState = "Practice";
-                tutorialInstructionUI.SetActive(true);
-                dialogueVolume.SetActive(false);
-                playerDialogue.SetActive(false);
+                postTutorialDialogueCount++;
+                if (postTutorialDialogueCount == 1)
+                {
+                    ShowPreTutorialDialogue(3);
+                }
+                else
+                {
+                    currentCoroutine = null;
+                    gameState = "Practice";
+                    tutorialInstructionUI.SetActive(true);
+                    dialogueVolume.SetActive(false);
+                    playerDialogue.SetActive(false);
 
-                musicManager.EndMuffle();
+                    musicManager.EndMuffle();
+                }
             }
         }
         else if (gameState == "Practice")

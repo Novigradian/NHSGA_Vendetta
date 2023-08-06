@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
   minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
@@ -154,4 +155,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  musicManager: {fileID: 0}
   isPaused: 0

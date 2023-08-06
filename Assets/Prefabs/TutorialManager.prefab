@@ -88,7 +88,8 @@ MonoBehaviour:
   preTutorialDialogueList:
   - 'Alas. Even in my dreams, this wretched past pursues me. '
   - I remember it all, still.
-  - "Good. I\u2019ve recalled the basics."
+  - Good. I've remembered the basics.
+  - This is how one kills. Even regret does not allow you to forget.
   preTutorialDialogueIndex: 0
   playerHeavyLungeChargeBarUI: {fileID: 0}
   playerHeavyLungeChargeBar: {fileID: 0}
