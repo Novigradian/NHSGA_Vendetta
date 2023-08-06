@@ -787,10 +787,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 622207294086109288, guid: dac4e07267dad764984207968e87d0b5, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 622207294367752941, guid: dac4e07267dad764984207968e87d0b5, type: 3}
       propertyPath: m_Name
       value: TutorialEnvironment
