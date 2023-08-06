@@ -360,8 +360,8 @@ MonoBehaviour:
   lightAttackWindupSpeed: 5
   lightAttackDuration: 0.15
   lightAttackThrustSpeed: 28
-  heavyLungeMinimumWindupTime: 0.6
-  heavyLungeMaximumWindupTime: 2
+  heavyLungeMinimumWindupTime: 1
+  heavyLungeMaximumWindupTime: 2.4
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.3
   heavyLungeLowerSwordScale: 1

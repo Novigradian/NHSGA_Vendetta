@@ -882,10 +882,11 @@ public class TutorialPlayerController : MonoBehaviour
 
     private void HeavyLungeActions()
     {
+        audioManager.Play("HeavyAttack");
+        animator.Play("HeavyAttack");
         if (canMoveTowardsEnemy)
         {
-            audioManager.Play("HeavyAttack");
-            animator.Play("HeavyAttack");
+            
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             
         }
