@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -160,7 +161,7 @@ public class PlayerController : MonoBehaviour
         playerStamina = maxPlayerStamina;
         playerHealthBar.SetMaxHealth(maxPlayerHealth);
         playerStaminaBar.SetMaxStamina(maxPlayerStamina);
-        if (PlayerPrefs.GetFloat("playerHealth") != 0f)
+        if (SceneManager.GetActiveScene().name!="Level1")
         {
             playerHealth = PlayerPrefs.GetFloat("playerHealth");
         }
