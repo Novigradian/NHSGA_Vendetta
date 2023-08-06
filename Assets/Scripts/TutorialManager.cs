@@ -51,6 +51,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Postprocessing")]
     public GameObject dialogueVolume;
     public GameObject getHitVolume;
+    public GameObject postDialogueVolume;
     [SerializeField] private float getHitVolumeShowDuration;
 
     [Header("Dialogue")]
@@ -92,6 +93,7 @@ public class TutorialManager : MonoBehaviour
 
         dialogueVolume.SetActive(true);
         getHitVolume.SetActive(false);
+        postDialogueVolume.SetActive(false);
 
 
         #endregion
@@ -120,6 +122,7 @@ public class TutorialManager : MonoBehaviour
                     gameState = "Fight";
                     dialogueVolume.SetActive(false);
                     playerDialogue.SetActive(false);
+                    postDialogueVolume.SetActive(true);
                     tutorialInstructionUI.SetActive(true);
 
                     musicManager.EndMuffle();
@@ -159,6 +162,7 @@ public class TutorialManager : MonoBehaviour
                         gameState = "PostTutorialDialogue";
                         tutorialInstructionUI.SetActive(false);
                         dialogueVolume.SetActive(true);
+                        postDialogueVolume.SetActive(false);
                         ShowPreTutorialDialogue(2);
 
                         musicManager.StartMuffle();
@@ -182,6 +186,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialInstructionUI.SetActive(true);
                     dialogueVolume.SetActive(false);
                     playerDialogue.SetActive(false);
+                    postDialogueVolume.SetActive(true);
 
                     musicManager.EndMuffle();
                 }
