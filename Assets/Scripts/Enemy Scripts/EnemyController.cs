@@ -611,6 +611,7 @@ public class EnemyController : MonoBehaviour
     private IEnumerator Parried()
     {
         //Debug.Log("parried");
+        animator.Play("Parried");
         yield return new WaitForSeconds(getParriedStunDuration);
         if (state == EnemyState.parried)
         {
@@ -731,6 +732,7 @@ public class EnemyController : MonoBehaviour
         if (enemyHealth <= 0f)
         {
             playerController.ResetToIdle();
+            animator.Play("Death");
             enemyHealth = 0f;
             state = EnemyState.dead;
             playerController.ResetToIdle();
