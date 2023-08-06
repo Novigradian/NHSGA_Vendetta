@@ -238,7 +238,7 @@ MonoBehaviour:
   maxPlayerStamina: 60
   playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
-  playerStepStaminaCost: 4
+  playerStepStaminaCost: 13
   playerJumpStaminaCost: 10
   playerJumpAttackStaminaCost: 25
   playerLightAttackStaminaCost: 20
@@ -250,7 +250,7 @@ MonoBehaviour:
   getParriedStunDuration: 0.5
   blockDuration: 0.25
   blockDamageNegationScale: 0.75
-  blockStaminaDrainScale: 0
+  blockStaminaDrainScale: 0.25
   blockPushBack: 0
   stepSpeed: 7
   stepDuration: 0.35

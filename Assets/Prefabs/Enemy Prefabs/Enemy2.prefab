@@ -126,7 +126,7 @@ MonoBehaviour:
   jumpForce: 6.5
   jumpHorizontalSpeed: 1
   getHitStunDuration: 0.35
-  getHitKnockBackSpeed: 8
+  getHitKnockBackSpeed: 7
   getParriedStunDuration: 0.7
   lightAttackWindupDuration: 0.3
   lightAttackWindupSpeed: 3.75
@@ -148,8 +148,8 @@ MonoBehaviour:
   parryDuration: 0.1
   riposteDamageBonus: 25
   parryChance: 1
-  baseIdleChance: 0.1
-  aggressiveness: 1
+  baseIdleChance: 0
+  aggressiveness: 1.25
   difficulty: 2.2
   shuffleLeftDistanceDivideScale: 10
   minimumStepLeftDistance: 7
@@ -161,13 +161,10 @@ MonoBehaviour:
   unableToChangeDirectionDuration: 0.6
   isAbleToChangeDirection: 0
   baseLightAttackChance: 0.4
-  baseHeavyLungeChance: 0.4
+  baseHeavyLungeChance: 0.2
   lightAttackRange: 5.5
   heavyLungeRange: 8
-  heavyLungeDistanceScale: 16
-  playerHeavyLungeJumpChance: 1000
-  baseJumpAttackChance: 0
-  playerHeavyLungeJumpAttackChance: 1000
+  heavyLungeDistanceScale: 20
   stateToEnter: HeavyWindup
 --- !u!1 &4232357887429879600
 GameObject:

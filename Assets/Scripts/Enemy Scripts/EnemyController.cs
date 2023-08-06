@@ -516,7 +516,7 @@ public class EnemyController : MonoBehaviour
     #region Heavy Attack Functions
     public void HeavyLungeWindup()
     {
-        StartCoroutine(HeavyLungeWindupCoroutine());
+        //StartCoroutine(HeavyLungeWindupCoroutine());
         swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
     public IEnumerator HeavyLungeWindupCoroutine()
@@ -1103,6 +1103,7 @@ public class EnemyController : MonoBehaviour
             swordRb.isKinematic = false;
             heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
             StartCoroutine(ShowHeavyLungeExclaimationText());
+            StartCoroutine(HeavyLungeWindupCoroutine());
         }
         else if (stateToEnter == "jumpChance" && isGrounded)
         {
