@@ -129,8 +129,8 @@ MonoBehaviour:
   playerHeavyLungeChargeBar: {fileID: 0}
   fightTextUI: {fileID: 0}
   fightTextUIShowDuration: 4
-  parryTextUI: {fileID: 0}
-  riposteTextUI: {fileID: 0}
+  parryTextUI: {fileID: 8018333474151425822, guid: 7f14291d7cc581141a3d35baf084022a, type: 3}
+  riposteTextUI: {fileID: 414134676722091296, guid: 6c091332c4560d94caa8d2bdcc3a131e, type: 3}
   damageTextUI: {fileID: 6058835268198662534, guid: fde00fe4f5f05c746b8df480dc10877b, type: 3}
   blockTextUI: {fileID: 1249155006081439823, guid: 19bdff087aabc274c80f9a33cc2b6498, type: 3}
   critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}

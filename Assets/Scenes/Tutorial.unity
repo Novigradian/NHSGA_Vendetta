@@ -511,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.61401063
+      value: -2.33
       objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1054,7 +1054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252482192318696464, guid: 2227d04abeae0324f8fcfef648b945c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 3252482192318696464, guid: 2227d04abeae0324f8fcfef648b945c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1160,10 +1160,6 @@ PrefabInstance:
     - target: {fileID: 9103285586041311928, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
       propertyPath: m_Name
       value: PostDialogueVolume
-      objectReference: {fileID: 0}
-    - target: {fileID: 9103285586041311928, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}

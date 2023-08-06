@@ -111,7 +111,7 @@ public class TutorialManager : MonoBehaviour
             if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 preTutorialDialogueIndex++;
-                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
+                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-2)
                 {
                     anim.SetTrigger("returnToIdle");
                     ShowPreTutorialDialogue(preTutorialDialogueIndex);

@@ -26,8 +26,8 @@ public class UIManager : MonoBehaviour
     public GameObject outOfStaminaTextUI;
     public GameObject fientTextUI;
     public GameObject exclaimationTextUI;
-    private RectTransform parryTextRectTransform;
-    private RectTransform riposteTextRectTransform;
+    //private RectTransform parryTextRectTransform;
+    //private RectTransform riposteTextRectTransform;
     [SerializeField] private float showTextDuration;
     [SerializeField] private float showDamageTextDuration;
     public float showExclaimationTextDuration;
@@ -52,8 +52,8 @@ public class UIManager : MonoBehaviour
         enemyUI.transform.position = new Vector3(enemyUI.transform.position.x, enemyUI.transform.position.y + 100f, enemyUI.transform.position.z);
         playerUI.transform.position = new Vector3(playerUI.transform.position.x, playerUI.transform.position.y - 100f, playerUI.transform.position.z);
 
-        parryTextRectTransform = parryTextUI.GetComponent<RectTransform>();
-        riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
+        //parryTextRectTransform = parryTextUI.GetComponent<RectTransform>();
+        //riposteTextRectTransform = riposteTextUI.GetComponent<RectTransform>();
         canvasRectTransform = canvas.GetComponent<RectTransform>();
         playerHeavyLungeChargeBarRectTransform = playerHeavyLungeChargeBarUI.GetComponent<RectTransform>();
 
@@ -115,34 +115,26 @@ public class UIManager : MonoBehaviour
 
     public void ShowParryText(Vector3 playerWorldPos)
     {
-        StopCoroutine(HideParryText());
-        parryTextUI.SetActive(true);
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(playerWorldPos);
-        Vector2 canvasPosition;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, Camera.main, out canvasPosition);
-        parryTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
-        StartCoroutine(HideParryText());
+        GameObject parryTextUIInstance = Instantiate(parryTextUI, canvas.transform);
+
+        parryTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
+        StartCoroutine(HideParryText(parryTextUIInstance));
     }
 
-    private IEnumerator HideParryText()
+    private IEnumerator HideParryText(GameObject parryTextUIInstance)
     {
         yield return new WaitForSeconds(showTextDuration);
-        parryTextUI.SetActive(false);
+        Destroy(parryTextUIInstance);
     }
 
     public void ShowRiposteText(Vector3 playerWorldPos)
     {
-        StopCoroutine(HideRiposteText());
-        riposteTextUI.SetActive(true);
-        riposteTextRectTransform.localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
-        StartCoroutine(HideRiposteText());
+        GameObject riposteTextUIInstance = Instantiate(riposteTextUI, canvas.transform);
+
+        riposteTextUIInstance.GetComponent<RectTransform>().localPosition = WorldToCanvasPos(playerWorldPos) + new Vector2(0f, 145f);
+        StartCoroutine(HideParryText(riposteTextUIInstance));
     }
 
-    private IEnumerator HideRiposteText()
-    {
-        yield return new WaitForSeconds(showTextDuration);
-        riposteTextUI.SetActive(false);
-    }
 
     public void ShowDamageText(Vector3 playerWorldPos, float damage)
     {
