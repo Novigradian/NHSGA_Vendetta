@@ -638,6 +638,7 @@ public class PlayerController : MonoBehaviour
         if(hasPlayed == false)
         {
             audioManager.Play("Jump");
+            animator.Play("Jump");
             hasPlayed = true;
         }
         if (kb.dKey.isPressed && canMoveTowardsEnemy)
@@ -1111,6 +1112,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            if (state == PlayerState.jump)
+            {
+                animator.Play("Land");
+            }
+            hasPlayed = false;
             state = PlayerState.idle;
             ResetSwordPosition();
             swordRb.isKinematic = true;
