@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
     public AudioManager audioManager;
     private int block;
     private bool hasPlayed;
+    public float shuffleTransitionDistance;
 
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
@@ -378,7 +379,15 @@ public class EnemyController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            animator.Play("ShuffleLeft");
+            if(Vector2.Distance(gameObject.transform.position, player.transform.position) <= shuffleTransitionDistance)
+            {
+                animator.Play("CloseShuffleLeft");
+            }
+            else
+            {
+                animator.Play("ShuffleLeft");
+            }
+            
             rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
         }
     }
@@ -390,7 +399,14 @@ public class EnemyController : MonoBehaviour
 
     private void ShuffleRightActions()
     {
-        animator.Play("ShuffleRight");
+        if (Vector2.Distance(gameObject.transform.position, player.transform.position) <= shuffleTransitionDistance)
+        {
+            animator.Play("CloseShuffleRight");
+        }
+        else
+        {
+            animator.Play("ShuffleRight");
+        }
         rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
     }
     //Write Transitions
