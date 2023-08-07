@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
             player.SetActive(true);
             combatVolume.SetActive(true);
 
-            dataHolder.hasPlayerDied = false;
+            //dataHolder.hasPlayerDied = false;
         }
         else
         {
@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("GAME OVER");
+                    dataHolder.hasPlayerDied = false;
                 }
             }
         }
@@ -94,7 +95,6 @@ public class GameManager : MonoBehaviour
         {
             if (kb.rKey.wasPressedThisFrame)
             {
-                dataHolder = FindObjectOfType<DataHolder>();
                 dataHolder.hasPlayerDied = true;
                 SceneManager.LoadScene("Level1");
             }
