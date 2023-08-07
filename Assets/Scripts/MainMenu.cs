@@ -6,19 +6,63 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    Keyboard kb;
+
+    public GameObject selectTutorialMenu;
+    public GameObject creditsMenu;
+    public GameObject crossfade;
+    private Animator crossfadeAnim;
 
     void Start()
     {
-        kb = Keyboard.current;
+        crossfadeAnim = crossfade.GetComponent<Animator>();
+
+        selectTutorialMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (kb.anyKey.wasPressedThisFrame)
-        {
-            SceneManager.LoadScene(1);
-        }   
+
     }
+
+    #region Start Game
+    public void StartGame()
+    {
+        selectTutorialMenu.SetActive(true);
+    }
+
+    public void StartTutorial()
+    {
+        StartCoroutine(BeginLoadScene(1));
+    }
+
+    public void SkipTutorial()
+    {
+        StartCoroutine(BeginLoadScene(2));
+    }
+
+    private IEnumerator BeginLoadScene(int index)
+    {
+        //crossfade.SetActive(true);
+        crossfadeAnim.SetTrigger("StartFade");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(index);
+    }
+
+    #endregion
+
+    #region Credits
+    public void ShowCredits()
+    {
+        creditsMenu.SetActive(true);
+    }
+
+    public void HideCredits()
+    {
+        creditsMenu.SetActive(false);
+    }
+
+    #endregion
 }

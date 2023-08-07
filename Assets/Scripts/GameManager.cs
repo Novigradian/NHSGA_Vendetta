@@ -89,6 +89,9 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("GAME OVER");
+                    dataHolder.hasPlayerDiedLevelOne = false;
+                    dataHolder.hasPlayerDiedLevelTwo = false;
+                    SceneManager.LoadScene(0);
                 }
             }
         }
