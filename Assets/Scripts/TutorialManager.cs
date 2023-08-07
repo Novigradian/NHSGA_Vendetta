@@ -221,8 +221,14 @@ public class TutorialManager : MonoBehaviour
         if (instructionTasksCompleted >= instructionTasksCompletedList[tutorialInstructionIndex])
         {
             instructionTasksCompleted = 0;
-            isNextInstruction = true;
+            StartCoroutine(SetIsNextInstruction());
         }
+    }
+
+    private IEnumerator SetIsNextInstruction()
+    {
+        yield return new WaitForSeconds(1f);
+        isNextInstruction = true;
     }
     #endregion
 
