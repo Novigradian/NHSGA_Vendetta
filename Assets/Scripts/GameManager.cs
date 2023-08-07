@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         #region Initialize Variables
         uiManager = FindObjectOfType<UIManager>();
         dataHolder= FindObjectOfType<DataHolder>();
-        if (dataHolder.hasPlayerDied)
         if (SceneManager.GetActiveScene().name == "Level2")
         {
             isSceneTwo = true;
@@ -48,8 +47,6 @@ public class GameManager : MonoBehaviour
         {
             isSceneTwo = false;
         }
-
-        dataHolder = FindObjectOfType<DataHolder>();
         if ((dataHolder.hasPlayerDiedLevelOne && !isSceneTwo) || (dataHolder.hasPlayerDiedLevelTwo && isSceneTwo)) 
         {
             gameState = "FightText";
