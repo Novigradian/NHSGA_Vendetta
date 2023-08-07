@@ -114,7 +114,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float parryDuration;
     [SerializeField] private float riposteDamageBonus;
     [SerializeField] private float parryChance;
-
+    [SerializeField] private float parryCooldown;
+    private bool isParryCooldown;
 
     [Header("Enemy AI")]
     [SerializeField] private float baseIdleChance;
@@ -165,6 +166,7 @@ public class EnemyController : MonoBehaviour
         isParrying = false;
 
         isLightAttackOnCooldown = false;
+        isParryCooldown = false;
         isAbleToChangeDirection = true;
         canMoveTowardsEnemy = true;
         audioManager = FindObjectOfType<AudioManager>();
@@ -635,7 +637,14 @@ public class EnemyController : MonoBehaviour
         {
             state = EnemyState.idle;
             isParrying = false;
+            StartCoroutine(ResetParryCooldown());
         }
+    }
+
+    private IEnumerator ResetParryCooldown()
+    {
+        yield return new WaitForSeconds(parryCooldown);
+        isParryCooldown = false;
     }
     #endregion
 
@@ -1070,9 +1079,9 @@ public class EnemyController : MonoBehaviour
             }
 
             chanceDict["parryChance"] = 0f;
-            if (playerState == PlayerController.PlayerState.lightAttack)
+            if (playerState == PlayerController.PlayerState.lightAttackWindup)
             {
-                if (canParry)
+                if (canParry && !isParryCooldown)
                 {
                     chanceDict["parryChance"] = parryChance * difficulty;
                     Debug.Log("parry chance: " + chanceDict["parryChance"]);
@@ -1193,7 +1202,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to parry");
             stateToEnter = "";
             isParrying = true;
-
+            isParryCooldown = true;
             enemyLightAttackDamage += riposteDamageBonus;
         }
     }
