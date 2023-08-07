@@ -631,6 +631,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator Parry()
     {
+        animator.Play("Parry");
         yield return new WaitForSeconds(parryDuration);
         if (state == EnemyState.parry)
         {

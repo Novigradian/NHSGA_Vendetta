@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DataHolder : MonoBehaviour
 {
+
     public bool hasPlayerDiedLevelOne;
     public bool hasPlayerDiedLevelTwo;
+
     private static DataHolder instance;
 
     private void Awake()
