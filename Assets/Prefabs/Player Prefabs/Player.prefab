@@ -253,11 +253,11 @@ MonoBehaviour:
   rallyDuration: 4
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
-  maxPlayerStamina: 60
+  maxPlayerStamina: 65
   playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
   outOfStaminaColorTransition: {fileID: 1374824778}
-  playerStepStaminaCost: 12
+  playerStepStaminaCost: 11
   playerJumpStaminaCost: 10
   playerJumpAttackStaminaCost: 25
   playerLightAttackStaminaCost: 20
