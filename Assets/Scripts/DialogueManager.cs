@@ -56,17 +56,17 @@ public class DialogueManager : MonoBehaviour
 
         isSceneTwo = gameManager.isSceneTwo;
         #endregion
-        musicManager.StartMuffle();
+        
         if (gameManager.gameState == "PreFight")
         {
             ShowPreFightDialogue(preFightDialogueIndex);
-            
+            musicManager.StartMuffle();
         }
         else if (gameManager.gameState=="MysteriousVoice")
         {
             mysteroisVoiceDialogue.SetActive(true);
             ShowMysteriousVoiceDialogue(mysteriousVoiceDialogueIndex);
-            
+            musicManager.StartMuffle();
         }
     }
 

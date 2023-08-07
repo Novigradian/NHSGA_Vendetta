@@ -301,10 +301,10 @@ MonoBehaviour:
   heavyLungeWindupSpeed: 1
   heavyLungeWindupThrustScale: 0.175
   heavyLungeLowerSwordScale: 1
-  heavyLungeThrustSpeed: 14
+  heavyLungeThrustSpeed: 20
   heavyLungeStunDuration: 0.7
-  minHeavyLungeWindupDuration: 0.75
-  maxHeavyLungeWindupDuration: 4
+  minHeavyLungeWindupDuration: 0.65
+  maxHeavyLungeWindupDuration: 2.4
   parryDuration: 0.1
   riposteDamageBonus: 25
   parryChance: 0
@@ -325,7 +325,10 @@ MonoBehaviour:
   lightAttackRange: 5.5
   heavyLungeRange: 7.5
   heavyLungeDistanceScale: 22
+  canParry: 0
+  canJumpAttack: 0
   stateToEnter: 
+  isParrying: 0
 --- !u!1001 &3700987901009323085
 PrefabInstance:
   m_ObjectHideFlags: 0

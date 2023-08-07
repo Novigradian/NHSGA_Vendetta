@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region GameManager Components and Variables
+    private DataHolder dataHolder;
+
     Keyboard kb;
     public PlayerController playerController;
     public GameObject enemy;
@@ -33,15 +35,32 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         #region Initialize Variables
-        gameState = "MysteriousVoice";
-        enemy.SetActive(false);
-        player.SetActive(false);
+        dataHolder= FindObjectOfType<DataHolder>();
+        if (dataHolder.hasPlayerDied)
+        {
+            gameState = "FightText";
+            enemy.SetActive(true);
+            player.SetActive(true);
+            combatVolume.SetActive(true);
+
+            //dataHolder.hasPlayerDied = false;
+        }
+        else
+        {
+            gameState = "MysteriousVoice";
+            enemy.SetActive(false);
+            player.SetActive(false);
+            mysteriousVoiceVolume.SetActive(true);
+            getHitVolume.SetActive(false);
+            
+        }
+        
+        
 
         kb = Keyboard.current;
         #endregion
 
-        mysteriousVoiceVolume.SetActive(true);
-        getHitVolume.SetActive(false);
+        
 
         if (SceneManager.GetActiveScene().name == "Level2")
         {
@@ -68,6 +87,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("GAME OVER");
+                    dataHolder.hasPlayerDied = false;
                 }
             }
         }
@@ -75,6 +95,7 @@ public class GameManager : MonoBehaviour
         {
             if (kb.rKey.wasPressedThisFrame)
             {
+                dataHolder.hasPlayerDied = true;
                 SceneManager.LoadScene("Level1");
             }
         }
@@ -88,7 +109,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator ResetGetHitUICoroutine()
     {
         yield return new WaitForSeconds(getHitVolumeShowDuration);
-        getHitVolume.SetActive(false);
+        if (playerController.playerHealth >= 20)
+        {
+            getHitVolume.SetActive(false);
+        }
+        
     }
 
     public void SpawnLeftBloodParticle(Vector3 WorldPos)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 483007521}
   - component: {fileID: 483007522}
   - component: {fileID: 483007523}
+  - component: {fileID: 1374824778}
   m_Layer: 0
   m_Name: ControllerTransform
   m_TagString: Untagged
@@ -106,6 +107,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1374824778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483007520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef4584db5f452346badf01e5111eb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  outOfStaminaColor: {r: 0.7830189, g: 0.7830189, b: 0, a: 1}
+  frequency: 16
+  amplitude: 0.5
+  isOutOfStamina: 0
 --- !u!1 &1296976083
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +256,7 @@ MonoBehaviour:
   maxPlayerStamina: 60
   playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
+  outOfStaminaColorTransition: {fileID: 1374824778}
   playerStepStaminaCost: 12
   playerJumpStaminaCost: 10
   playerJumpAttackStaminaCost: 25
