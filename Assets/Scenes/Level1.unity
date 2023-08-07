@@ -1000,6 +1000,10 @@ PrefabInstance:
       propertyPath: mysteriousVoiceDialogueText
       value: 
       objectReference: {fileID: 7079391959960851294}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteriousVoiceDialogueList.Array.data[0]
+      value: Good. You're awake.
+      objectReference: {fileID: 0}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: canvas
       value: 

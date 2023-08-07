@@ -40,6 +40,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float displayDialogueInterval;
 
     public GameManager gameManager;
+
+    private bool isSceneTwo;
     #endregion
 
     void Start()
@@ -51,6 +53,8 @@ public class DialogueManager : MonoBehaviour
         playerWinDialogueIndex = 0;
         enemyWinDialogueIndex = 0;
         mysteriousVoiceDialogueIndex = 0;
+
+        isSceneTwo = gameManager.isSceneTwo;
         #endregion
         musicManager.StartMuffle();
         if (gameManager.gameState == "PreFight")
@@ -183,6 +187,11 @@ public class DialogueManager : MonoBehaviour
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
+        }
+
+        if (index == 3 && isSceneTwo)
+        {
+            enemyDialogue.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Daniel D'Angelo";
         }
 
         string speaker = preFightDialogueSpeakerList[index];

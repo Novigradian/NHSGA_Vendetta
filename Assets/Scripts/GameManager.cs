@@ -24,26 +24,30 @@ public class GameManager : MonoBehaviour
     public GameObject leftBloodParticlePrefab;
     public GameObject rightBloodParticlePrefab;
 
+    [HideInInspector] public bool isSceneTwo;
+
     #endregion
 
     void Awake()
     {
         #region Initialize Variables
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            gameState = "MysteriousVoice";
-            enemy.SetActive(false);
-        }
-        else
-        {
-            gameState = "PreFight";
-        }
-        
+        gameState = "MysteriousVoice";
+        enemy.SetActive(false);
+
         kb = Keyboard.current;
         #endregion
 
         dialogueVolume.SetActive(true);
         getHitVolume.SetActive(false);
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            isSceneTwo = true;
+        }
+        else
+        {
+            isSceneTwo = false;
+        }
     }
 
     // Update is called once per frame

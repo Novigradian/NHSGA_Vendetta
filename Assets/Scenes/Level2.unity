@@ -890,6 +890,153 @@ PrefabInstance:
       propertyPath: mysteriousVoiceDialogueText
       value: 
       objectReference: {fileID: 7079391959960851293}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[0]
+      value: "Don\u2019t remember me?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[1]
+      value: "Has the great Dante D\u2019Angelo grown so vain to forget even his
+        own flesh and blood?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[2]
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[3]
+      value: "I am your brother, DANIEL D\u2019ANGELO!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[4]
+      value: Ten years past, you mortally wounded me in a royal tourney.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[5]
+      value: You destroyed your own brother, just so you could add another title
+        of champion to your roster.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[6]
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[7]
+      value: You stripped me of my honor, my strength, my youth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[8]
+      value: YOU RUINED ME!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[9]
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueList.Array.data[0]
+      value: No words of mine can abate what I have done to you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueList.Array.data[1]
+      value: You had every right to kill me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueList.Array.data[2]
+      value: But when I put down my blade many years ago I swore to let go of my
+        past.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueList.Array.data[3]
+      value: "May you finally find peace in the afterlife, Daniel D\u2019Angelo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[10]
+      value: WILL YOU NOT HEED ME, BROTHER?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[11]
+      value: 'DO YOU HAVE NO REMORSE? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[12]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[13]
+      value: "I see there\u2019s no point talking to you. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueList.Array.data[14]
+      value: Draw your blade, let us end this.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteriousVoiceDialogueList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueSpeakerList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteriousVoiceDialogueList.Array.data[0]
+      value: Alas, I have to do everything myself.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[2]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[5]
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[6]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[9]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueSpeakerList.Array.data[0]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueSpeakerList.Array.data[1]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: playerWinDialogueSpeakerList.Array.data[2]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[10]
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[11]
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[12]
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[13]
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: preFightDialogueSpeakerList.Array.data[14]
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: canvas
       value: 
@@ -1167,6 +1314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1983592649878610745, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_text
+      value: Voice In The Dark
+      objectReference: {fileID: 0}
     - target: {fileID: 4994726706988342436, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1182,6 +1333,10 @@ PrefabInstance:
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391959402958831, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_text
+      value: Daniel D'Angelo
       objectReference: {fileID: 0}
     - target: {fileID: 7079391960005761757, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
