@@ -40,6 +40,17 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         dataHolder= FindObjectOfType<DataHolder>();
         if (dataHolder.hasPlayerDied)
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            isSceneTwo = true;
+        }
+        else
+        {
+            isSceneTwo = false;
+        }
+
+        dataHolder = FindObjectOfType<DataHolder>();
+        if ((dataHolder.hasPlayerDiedLevelOne && !isSceneTwo) || (dataHolder.hasPlayerDiedLevelTwo && isSceneTwo)) 
         {
             gameState = "FightText";
             enemy.SetActive(true);
@@ -65,14 +76,7 @@ public class GameManager : MonoBehaviour
 
         
 
-        if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            isSceneTwo = true;
-        }
-        else
-        {
-            isSceneTwo = false;
-        }
+        
     }
 
     // Update is called once per frame
@@ -90,7 +94,6 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("GAME OVER");
-                    dataHolder.hasPlayerDied = false;
                 }
             }
         }
@@ -98,7 +101,14 @@ public class GameManager : MonoBehaviour
         {
             if (kb.rKey.wasPressedThisFrame)
             {
-                dataHolder.hasPlayerDied = true;
+                if (!isSceneTwo)
+                {
+                    dataHolder.hasPlayerDiedLevelOne = true;
+                }
+                else
+                {
+                    dataHolder.hasPlayerDiedLevelTwo = true;
+                }
                 SceneManager.LoadScene("Level1");
             }
         }
