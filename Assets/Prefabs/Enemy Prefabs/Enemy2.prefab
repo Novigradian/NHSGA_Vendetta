@@ -143,8 +143,8 @@ MonoBehaviour:
   heavyLungeLowerSwordScale: 1
   heavyLungeThrustSpeed: 27
   heavyLungeStunDuration: 0.7
-  minHeavyLungeWindupDuration: 1
-  maxHeavyLungeWindupDuration: 4
+  minHeavyLungeWindupDuration: 0.75
+  maxHeavyLungeWindupDuration: 2.4
   parryDuration: 0.2
   riposteDamageBonus: 20
   parryChance: 1

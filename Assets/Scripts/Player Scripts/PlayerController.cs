@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private Coroutine recoverStamina;
     private bool isOutOfStamina;
     [SerializeField] private float playerStaminaRecoveryDelay;
+    public OutOfStaminaColorTransition outOfStaminaColorTransition;
 
     [Header("Stamina Cost")]
     [SerializeField] private float playerStepStaminaCost;
@@ -1074,6 +1075,7 @@ public class PlayerController : MonoBehaviour
         {
             playerStamina = 0f;
             isOutOfStamina = true;
+            outOfStaminaColorTransition.isOutOfStamina = true;
             UIManager.outOfStaminaTextUI.SetActive(true);
         }
     }
@@ -1081,6 +1083,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(playerStaminaRecoveryDelay);
         isOutOfStamina = false;
+        outOfStaminaColorTransition.isOutOfStamina = false;
         UIManager.outOfStaminaTextUI.SetActive(false);
         while (playerStamina < maxPlayerStamina)
         {
