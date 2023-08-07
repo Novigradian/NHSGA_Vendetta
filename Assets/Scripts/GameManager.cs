@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     #region GameManager Components and Variables
     Keyboard kb;
     public PlayerController playerController;
+    public GameObject enemy;
 
     public float minimumPlayerEnemyDistance;
 
@@ -28,7 +29,16 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         #region Initialize Variables
-        gameState = "PreFight";
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            gameState = "MysteriousVoice";
+            enemy.SetActive(false);
+        }
+        else
+        {
+            gameState = "PreFight";
+        }
+        
         kb = Keyboard.current;
         #endregion
 

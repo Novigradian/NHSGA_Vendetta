@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  enemy: {fileID: 0}
   minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
@@ -69,6 +70,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicManager: {fileID: 0}
+  mysteriousVoiceDialogueList:
+  - "You\u2019re finally awake."
+  - Look around you, the crowd is cheering for blood yet to be spilt.
+  - Did you really think your past would never catch up to you?
+  - No one can wash away their sins that easily.
+  - "That\u2019s what we\u2019re all here to remind you of."
+  - This is our vendetta.
   preFightDialogueSpeakerList:
   - Enemy
   - Enemy
@@ -107,6 +115,8 @@ MonoBehaviour:
   playerDialogueText: {fileID: 0}
   enemyDialogue: {fileID: 0}
   enemyDialogueText: {fileID: 0}
+  mysteroisVoiceDialogue: {fileID: 0}
+  mysteriousVoiceDialogueText: {fileID: 0}
   displayDialogueInterval: 0.02
   gameManager: {fileID: 3472306370896711298}
 --- !u!114 &3472306370635930199
