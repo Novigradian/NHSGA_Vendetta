@@ -89,8 +89,12 @@ public class DialogueManager : MonoBehaviour
                     currentCoroutine = null;
                     gameManager.gameState = "PreFight";
                     gameManager.enemy.SetActive(true);
+                    gameManager.player.SetActive(true);
                     mysteroisVoiceDialogue.SetActive(false);
                     ShowPreFightDialogue(preFightDialogueIndex);
+
+                    gameManager.mysteriousVoiceVolume.SetActive(false);
+                    gameManager.dialogueVolume.SetActive(true);
                 }
             }
         }

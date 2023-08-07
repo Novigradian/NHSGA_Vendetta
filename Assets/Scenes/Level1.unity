@@ -370,6 +370,68 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7079391959318562050, guid: c5b52f2aabe855f4697496106941a369, type: 3}
   m_PrefabInstance: {fileID: 7079391959960851292}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &690225241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1658098694402344757, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_Name
+      value: MysteriousVoiceVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+--- !u!1 &690225242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1658098694402344757, guid: e9baada0b00307448b620eb43860dc67, type: 3}
+  m_PrefabInstance: {fileID: 690225241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &816303626 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 816303626, guid: c5b52f2aabe855f4697496106941a369, type: 3}
@@ -720,7 +782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1057,6 +1119,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1368823892}
     - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1243442846}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: combatVolume
       value: 
       objectReference: {fileID: 1771797158}
@@ -1072,6 +1138,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1243442850}
+    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
+      propertyPath: mysteriousVoiceVolume
+      value: 
+      objectReference: {fileID: 690225242}
     - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1276,6 +1346,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1983592649878610745, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_text
+      value: Enzo
+      objectReference: {fileID: 0}
     - target: {fileID: 4994726706988342436, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

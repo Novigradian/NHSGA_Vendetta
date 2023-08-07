@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     Keyboard kb;
     public PlayerController playerController;
     public GameObject enemy;
+    public GameObject player;
 
     public float minimumPlayerEnemyDistance;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueVolume;
     public GameObject getHitVolume;
     public GameObject combatVolume;
+    public GameObject mysteriousVoiceVolume;
 
     [SerializeField] private float getHitVolumeShowDuration;
 
@@ -33,11 +35,12 @@ public class GameManager : MonoBehaviour
         #region Initialize Variables
         gameState = "MysteriousVoice";
         enemy.SetActive(false);
+        player.SetActive(false);
 
         kb = Keyboard.current;
         #endregion
 
-        dialogueVolume.SetActive(true);
+        mysteriousVoiceVolume.SetActive(true);
         getHitVolume.SetActive(false);
 
         if (SceneManager.GetActiveScene().name == "Level2")
