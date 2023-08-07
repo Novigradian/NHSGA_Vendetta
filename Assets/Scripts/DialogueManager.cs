@@ -134,7 +134,15 @@ public class DialogueManager : MonoBehaviour
                 if (playerWinDialogueIndex >= playerWinDialogueList.Length)
                 {
                     currentCoroutine = null;
-                    gameManager.gameState = "PlayerWin";
+                    if (isSceneTwo)
+                    {
+                        gameManager.gameState = "KillChoice";
+                    }
+                    else
+                    {
+                        gameManager.gameState = "PlayerWin";
+                    }
+                    
                     playerDialogue.SetActive(false);
                     enemyDialogue.SetActive(false);
 

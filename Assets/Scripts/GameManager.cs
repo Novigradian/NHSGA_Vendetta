@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject enemy;
     public GameObject player;
 
+    public UIManager uiManager;
+
     public float minimumPlayerEnemyDistance;
 
     public string gameState;
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         #region Initialize Variables
+        uiManager = FindObjectOfType<UIManager>();
+        dataHolder= FindObjectOfType<DataHolder>();
         if (SceneManager.GetActiveScene().name == "Level2")
         {
             isSceneTwo = true;
@@ -43,8 +47,6 @@ public class GameManager : MonoBehaviour
         {
             isSceneTwo = false;
         }
-
-        dataHolder = FindObjectOfType<DataHolder>();
         if ((dataHolder.hasPlayerDiedLevelOne && !isSceneTwo) || (dataHolder.hasPlayerDiedLevelTwo && isSceneTwo)) 
         {
             gameState = "FightText";
@@ -108,6 +110,19 @@ public class GameManager : MonoBehaviour
                     dataHolder.hasPlayerDiedLevelTwo = true;
                 }
                 SceneManager.LoadScene("Level1");
+            }
+        }
+        else if (gameState == "KillChoice")
+        {
+            if (kb.pKey.wasPressedThisFrame)
+            {
+                uiManager.killChoice.SetActive(false);
+                SceneManager.LoadScene("KillScene");
+            }
+            else if (kb.oKey.wasPressedThisFrame)
+            {
+                uiManager.killChoice.SetActive(false);
+                SceneManager.LoadScene("SpareScene");
             }
         }
     }
