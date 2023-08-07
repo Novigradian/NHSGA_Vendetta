@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3472306370896711324
+--- !u!1 &3539506281370740450
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3472306370896711299}
-  - component: {fileID: 3472306370896711298}
-  - component: {fileID: 3472306370635930197}
-  - component: {fileID: 3472306370635930199}
-  - component: {fileID: 3472306370635930200}
+  - component: {fileID: 3539506281370740477}
+  - component: {fileID: 3539506281370740476}
+  - component: {fileID: 3539506281630315051}
+  - component: {fileID: 3539506281630315049}
+  - component: {fileID: 3539506281630315046}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManagerLv2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3472306370896711299
+--- !u!4 &3539506281370740477
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3539506281370740450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.98920095, y: 0.6246274, z: 66.9527}
+  m_LocalPosition: {x: 0, y: 0, z: 66.9527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3472306370896711298
+--- !u!114 &3539506281370740476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3539506281370740450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
@@ -60,13 +60,13 @@ MonoBehaviour:
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   isSceneTwo: 0
---- !u!114 &3472306370635930197
+--- !u!114 &3539506281630315051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3539506281370740450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b5fa39aa9731348bc86b20ebb15575, type: 3}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicManager: {fileID: 0}
   mysteriousVoiceDialogueList:
-  - Alas, I have to do everything myself.
+  - Good. You're awake.
   preFightDialogueSpeakerList:
   - Enemy
   - Enemy
@@ -129,14 +129,14 @@ MonoBehaviour:
   mysteroisVoiceDialogue: {fileID: 0}
   mysteriousVoiceDialogueText: {fileID: 0}
   displayDialogueInterval: 0.02
-  gameManager: {fileID: 3472306370896711298}
---- !u!114 &3472306370635930199
+  gameManager: {fileID: 3539506281370740476}
+--- !u!114 &3539506281630315049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3539506281370740450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c309065797f949e4bb2371cb81cab682, type: 3}
@@ -161,15 +161,15 @@ MonoBehaviour:
   showTextDuration: 0.75
   showDamageTextDuration: 0.5
   showExclaimationTextDuration: 0.3
-  gameManager: {fileID: 3472306370896711298}
+  gameManager: {fileID: 3539506281370740476}
   canvas: {fileID: 0}
---- !u!114 &3472306370635930200
+--- !u!114 &3539506281630315046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3539506281370740450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1952ac81ed4741c98c44be4eaf0282c, type: 3}

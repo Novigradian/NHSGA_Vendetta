@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     Keyboard kb;
     public PlayerController playerController;
     public GameObject enemy;
+    public GameObject player;
 
     public float minimumPlayerEnemyDistance;
 
@@ -18,32 +19,38 @@ public class GameManager : MonoBehaviour
     public GameObject dialogueVolume;
     public GameObject getHitVolume;
     public GameObject combatVolume;
+    public GameObject mysteriousVoiceVolume;
 
     [SerializeField] private float getHitVolumeShowDuration;
 
     public GameObject leftBloodParticlePrefab;
     public GameObject rightBloodParticlePrefab;
 
+    [HideInInspector] public bool isSceneTwo;
+
     #endregion
 
     void Awake()
     {
         #region Initialize Variables
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            gameState = "MysteriousVoice";
-            enemy.SetActive(false);
-        }
-        else
-        {
-            gameState = "PreFight";
-        }
-        
+        gameState = "MysteriousVoice";
+        enemy.SetActive(false);
+        player.SetActive(false);
+
         kb = Keyboard.current;
         #endregion
 
-        dialogueVolume.SetActive(true);
+        mysteriousVoiceVolume.SetActive(true);
         getHitVolume.SetActive(false);
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            isSceneTwo = true;
+        }
+        else
+        {
+            isSceneTwo = false;
+        }
     }
 
     // Update is called once per frame
@@ -92,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnRightBloodParticle(Vector3 WorldPos)
     {
-        GameObject bloodParticle = Instantiate(leftBloodParticlePrefab, WorldPos, Quaternion.identity);
+        GameObject bloodParticle = Instantiate(rightBloodParticlePrefab, WorldPos, Quaternion.identity);
         StartCoroutine(DestroyBloodParticle(bloodParticle));
     }
 
