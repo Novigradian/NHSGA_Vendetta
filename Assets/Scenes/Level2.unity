@@ -1316,7 +1316,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1983592649878610745, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_text
-      value: Voice In The Dark
+      value: ???
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101417134331441143, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4994726706988342436, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1587,21 +1591,5 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 3472306370635930197}
-    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_Size.x
-      value: 7.355
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_Size.y
-      value: 4.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149206876430691158, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.14
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}

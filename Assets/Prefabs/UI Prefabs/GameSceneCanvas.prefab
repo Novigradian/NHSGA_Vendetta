@@ -1341,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 36110740, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
       propertyPath: m_text
-      value: Enzo
+      value: ???
       objectReference: {fileID: 0}
     - target: {fileID: 36110740, guid: 1a2ca5d628802ac41a58640ea643e5d6, type: 3}
       propertyPath: m_fontSize
