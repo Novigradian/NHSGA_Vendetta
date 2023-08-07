@@ -929,6 +929,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Parried()
     {
         Debug.Log("parried");
+        animator.Play("Parried");
         yield return new WaitForSeconds(getParriedStunDuration);
         if (state == PlayerState.parried)
         {

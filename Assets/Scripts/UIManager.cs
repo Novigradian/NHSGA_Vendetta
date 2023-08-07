@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject playerWinUI;
     public GameObject enemyWinUI;
+    public GameObject killChoice;
 
     public GameObject playerHeavyLungeChargeBarUI;
     public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour
     private bool isResetUIPos;
     private bool isShowWinText;
     private bool isShowFightText;
+    private bool isShowChoice;
 
     
 
@@ -88,6 +90,11 @@ public class UIManager : MonoBehaviour
         {
             isShowWinText = true;
             enemyWinUI.SetActive(true);
+        }
+        else if((gameState == "KillChoice") && !isShowChoice)
+        {
+            isShowChoice = true;
+            killChoice.SetActive(true);
         }
     }
 
