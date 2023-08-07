@@ -927,6 +927,10 @@ PrefabInstance:
       propertyPath: musicManager
       value: 
       objectReference: {fileID: 1529170568}
+    - target: {fileID: 3539506281630315046, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: crossfadeAnim
+      value: 
+      objectReference: {fileID: 1702721567}
     - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
       propertyPath: canvas
       value: 
@@ -1403,6 +1407,11 @@ MonoBehaviour:
 --- !u!1 &1600119703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4707114129898811822, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1702721567 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7079391960069631395, guid: c5b52f2aabe855f4697496106941a369, type: 3}
   m_PrefabInstance: {fileID: 7079391959960851292}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1789710035 stripped
@@ -2071,6 +2080,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HideControls
       objectReference: {fileID: 0}
+    - target: {fileID: 4994726707675300731, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4994726708535386551, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2078,6 +2091,10 @@ PrefabInstance:
     - target: {fileID: 4994726708535386551, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511502822975891782, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7079391959318562050, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive

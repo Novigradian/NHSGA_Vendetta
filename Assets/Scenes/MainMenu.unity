@@ -314,6 +314,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2068230208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
   m_PrefabInstance: {fileID: 1831972390928583630}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2068230209 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4062963933032232100, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
+  m_PrefabInstance: {fileID: 1831972390928583630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1831972390928583630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,6 +508,10 @@ PrefabInstance:
       propertyPath: creditsMenu
       value: 
       objectReference: {fileID: 6849289252528874442}
+    - target: {fileID: 3400536914371201531, guid: 3693da02d1d2ea447a22b101ff2134aa, type: 3}
+      propertyPath: crossfadeAnim
+      value: 
+      objectReference: {fileID: 2068230209}
     - target: {fileID: 3400536914371201531, guid: 3693da02d1d2ea447a22b101ff2134aa, type: 3}
       propertyPath: selectTutorialMenu
       value: 

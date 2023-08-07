@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectTutorialMenu: {fileID: 0}
+  creditsMenu: {fileID: 0}
+  crossfade: {fileID: 0}
+  crossfadeAnim: {fileID: 0}

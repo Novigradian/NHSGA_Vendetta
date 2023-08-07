@@ -9,17 +9,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject selectTutorialMenu;
     public GameObject creditsMenu;
-    public GameObject crossfade;
-    private Animator crossfadeAnim;
-
-    void Start()
-    {
-        crossfadeAnim = crossfade.GetComponent<Animator>();
-
-        selectTutorialMenu.SetActive(false);
-        creditsMenu.SetActive(false);
-
-    }
+    public Animator crossfadeAnim;
 
     // Update is called once per frame
     void Update()
@@ -45,7 +35,6 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator BeginLoadScene(int index)
     {
-        //crossfade.SetActive(true);
         crossfadeAnim.SetTrigger("StartFade");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(index);

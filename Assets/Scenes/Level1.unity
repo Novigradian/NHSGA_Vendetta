@@ -510,10 +510,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1243442846}
     - target: {fileID: 3441756881646033983, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
-      propertyPath: dataHolder
-      value: 
-      objectReference: {fileID: 1261518822}
-    - target: {fileID: 3441756881646033983, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
       propertyPath: combatVolume
       value: 
       objectReference: {fileID: 1771797158}
@@ -545,6 +541,10 @@ PrefabInstance:
       propertyPath: musicManager
       value: 
       objectReference: {fileID: 1984859303}
+    - target: {fileID: 3441756883500648677, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
+      propertyPath: crossfadeAnim
+      value: 
+      objectReference: {fileID: 7079391959960851293}
     - target: {fileID: 3441756883500648680, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
       propertyPath: musicManager
       value: 
@@ -630,17 +630,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d615beb348d9cc469e218e3bbc8d0fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1261518822 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3088683316766036630, guid: b300931ba0df1c74daad8ad5132ee988, type: 3}
-  m_PrefabInstance: {fileID: 3088683317147868529}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b91c92c874f4447a94827339095e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1318750742 stripped
@@ -1552,6 +1541,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+--- !u!95 &7079391959960851293 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7079391960069631395, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7079391959960851294 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7079391959172712795, guid: c5b52f2aabe855f4697496106941a369, type: 3}
