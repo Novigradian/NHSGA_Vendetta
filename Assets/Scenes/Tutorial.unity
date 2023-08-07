@@ -501,6 +501,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1243913388, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: outOfStaminaColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243913388, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: outOfStaminaColor.r
+      value: 0.78431374
+      objectReference: {fileID: 0}
     - target: {fileID: 1735666210835693572, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: m_RootOrder
       value: 3
