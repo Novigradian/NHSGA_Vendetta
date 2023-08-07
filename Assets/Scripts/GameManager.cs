@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnRightBloodParticle(Vector3 WorldPos)
     {
-        GameObject bloodParticle = Instantiate(leftBloodParticlePrefab, WorldPos, Quaternion.identity);
+        GameObject bloodParticle = Instantiate(rightBloodParticlePrefab, WorldPos, Quaternion.identity);
         StartCoroutine(DestroyBloodParticle(bloodParticle));
     }
 

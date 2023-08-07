@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3472306370896711324
+--- !u!1 &3441756881646033953
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3472306370896711299}
-  - component: {fileID: 3472306370896711298}
-  - component: {fileID: 3472306370635930197}
-  - component: {fileID: 3472306370635930199}
-  - component: {fileID: 3472306370635930200}
+  - component: {fileID: 3441756881646033982}
+  - component: {fileID: 3441756881646033983}
+  - component: {fileID: 3441756883500648680}
+  - component: {fileID: 3441756883500648682}
+  - component: {fileID: 3441756883500648677}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManagerLv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3472306370896711299
+--- !u!4 &3441756881646033982
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3441756881646033953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.98920095, y: 0.6246274, z: 66.9527}
+  m_LocalPosition: {x: 0, y: 0, z: 66.9527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3472306370896711298
+--- !u!114 &3441756881646033983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3441756881646033953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
@@ -60,13 +60,13 @@ MonoBehaviour:
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   isSceneTwo: 0
---- !u!114 &3472306370635930197
+--- !u!114 &3441756883500648680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3441756881646033953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b5fa39aa9731348bc86b20ebb15575, type: 3}
@@ -74,50 +74,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicManager: {fileID: 0}
   mysteriousVoiceDialogueList:
-  - Alas, I have to do everything myself.
+  - Wake up, Dante.
+  - "Listen. Don\u2019t you hear it? The cries for blood?"
+  - "They\u2019re for yours. For all that you\u2019ve done.  "
+  - Did you really think your past would never catch up to you?
+  - No one can wash away their sins that easily.
+  - "That\u2019s why you\u2019re here. That\u2019s what we\u2019re here to remind
+    you of."
+  - This is our vendetta.
   preFightDialogueSpeakerList:
   - Enemy
   - Enemy
-  - Player
   - Enemy
   - Enemy
   - Enemy
   - Player
   - Enemy
-  - Enemy
-  - Player
-  - Enemy
-  - Enemy
-  - Player
   - Enemy
   - Enemy
   preFightDialogueList:
-  - "Don\u2019t remember me?"
-  - "Has the great Dante D\u2019Angelo grown so vain to forget even his own flesh
-    and blood?"
-  - "\u2026"
-  - "I am your brother, DANIEL D\u2019ANGELO!"
-  - Ten years past, you mortally wounded me in a royal tourney.
-  - You destroyed your own brother, just so you could add another title of champion
-    to your roster.
-  - "\u2026"
-  - You stripped me of my honor, my strength, my youth.
-  - YOU RUINED ME!
-  - "\u2026"
-  - WILL YOU NOT HEED ME, BROTHER?
-  - 'DO YOU HAVE NO REMORSE? '
+  - "DANTE D\u2019ANGELO!"
+  - You have wronged many in your reign of bloodshed. I am one of them.
+  - As a child, I watched my father fall under your blade, murdered for nothing but
+    your own glory in a mere town spar.
+  - I have waited thirteen years to avenge him.
+  - You shall answer for him now.
   - ...
-  - "I see there\u2019s no point talking to you. "
-  - Draw your blade, let us end this.
+  - Hmm. No words, even when facing your judgment?
+  - Very well...
+  - ...then PREPARE TO DIE!
   playerWinDialogueList:
-  - No words of mine can abate what I have done to you.
-  - You had every right to kill me.
-  - But when I put down my blade many years ago I swore to let go of my past.
-  - "May you finally find peace in the afterlife, Daniel D\u2019Angelo."
+  - "Father, I\u2019m sorry\u2026"
+  - "\u2026You may have won, but I am only the first."
+  - "You will be punished for your sins, D\u2019Angelo."
+  - ...
   playerWinDialogueSpeakerList:
-  - Player
-  - Player
-  - Player
+  - Enemy
+  - Enemy
+  - Enemy
   - Player
   enemyWinDialogueList:
   - You lived without honor, and deserve none in death.
@@ -129,14 +123,14 @@ MonoBehaviour:
   mysteroisVoiceDialogue: {fileID: 0}
   mysteriousVoiceDialogueText: {fileID: 0}
   displayDialogueInterval: 0.02
-  gameManager: {fileID: 3472306370896711298}
---- !u!114 &3472306370635930199
+  gameManager: {fileID: 3441756881646033983}
+--- !u!114 &3441756883500648682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3441756881646033953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c309065797f949e4bb2371cb81cab682, type: 3}
@@ -161,15 +155,15 @@ MonoBehaviour:
   showTextDuration: 0.75
   showDamageTextDuration: 0.5
   showExclaimationTextDuration: 0.3
-  gameManager: {fileID: 3472306370896711298}
+  gameManager: {fileID: 3441756881646033983}
   canvas: {fileID: 0}
---- !u!114 &3472306370635930200
+--- !u!114 &3441756883500648677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472306370896711324}
+  m_GameObject: {fileID: 3441756881646033953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1952ac81ed4741c98c44be4eaf0282c, type: 3}

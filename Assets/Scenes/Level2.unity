@@ -374,6 +374,167 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7775932672884712829, guid: c5b52f2aabe855f4697496106941a369, type: 3}
   m_PrefabInstance: {fileID: 7079391959960851292}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1129440217
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3539506281370740450, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_Name
+      value: GameManagerLv2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 6652532465784064523}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1243442846}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: combatVolume
+      value: 
+      objectReference: {fileID: 1501199553}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: getHitVolume
+      value: 
+      objectReference: {fileID: 224290066}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: dialogueVolume
+      value: 
+      objectReference: {fileID: 1406694649}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1374824777}
+    - target: {fileID: 3539506281370740476, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: mysteriousVoiceVolume
+      value: 
+      objectReference: {fileID: 551292648}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 66.9527
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281370740477, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539506281630315046, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 644527999}
+    - target: {fileID: 3539506281630315046, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: controlsMenu
+      value: 
+      objectReference: {fileID: 277016032}
+    - target: {fileID: 3539506281630315046, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: musicManager
+      value: 
+      objectReference: {fileID: 1529170568}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 7079391959960851296}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: enemyUI
+      value: 
+      objectReference: {fileID: 1451035508}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 1318750742}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: enemyWinUI
+      value: 
+      objectReference: {fileID: 224276259}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: fightTextUI
+      value: 
+      objectReference: {fileID: 491070008}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerWinUI
+      value: 
+      objectReference: {fileID: 816303626}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: outOfStaminaTextUI
+      value: 
+      objectReference: {fileID: 828659996}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerHeavyLungeChargeBar
+      value: 
+      objectReference: {fileID: 7079391959960851297}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerHeavyLungeChargeBarUI
+      value: 
+      objectReference: {fileID: 7079391959960851298}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: musicManager
+      value: 
+      objectReference: {fileID: 1529170568}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: enemyDialogue
+      value: 
+      objectReference: {fileID: 1600119703}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerDialogue
+      value: 
+      objectReference: {fileID: 1105556314}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: enemyDialogueText
+      value: 
+      objectReference: {fileID: 7079391959960851295}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: playerDialogueText
+      value: 
+      objectReference: {fileID: 1434600439}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: mysteroisVoiceDialogue
+      value: 
+      objectReference: {fileID: 7079391959960851294}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: mysteriousVoiceDialogueText
+      value: 
+      objectReference: {fileID: 7079391959960851293}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
 --- !u!1 &1243442846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1735666210835693573, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
@@ -398,11 +559,11 @@ PrefabInstance:
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: UIManager
       value: 
-      objectReference: {fileID: 3472306370635930198}
+      objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 1904956625}
+      objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: audioManager
       value: 
@@ -414,7 +575,7 @@ PrefabInstance:
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: dialogueManager
       value: 
-      objectReference: {fileID: 3472306370635930197}
+      objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: playerHealthBar
       value: 
@@ -518,7 +679,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2277395605141545381, guid: 1d185857fcf64174dadcf73654dfb274, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2277395605141545381, guid: 1d185857fcf64174dadcf73654dfb274, type: 3}
       propertyPath: m_LocalPosition.x
@@ -584,7 +745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
       propertyPath: m_LocalPosition.x
@@ -657,17 +818,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98b91431ac7d4cf09b64e6bf91913a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1904956625 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-  m_PrefabInstance: {fileID: 3472306370635930195}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d063770cc90447f45aab015edb7b4401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1952852402
@@ -869,7 +1019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1658098694402344759, guid: e9baada0b00307448b620eb43860dc67, type: 3}
       propertyPath: m_LocalPosition.x
@@ -913,347 +1063,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9baada0b00307448b620eb43860dc67, type: 3}
---- !u!1001 &3472306370635930195
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: musicManager
-      value: 
-      objectReference: {fileID: 1529170568}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: enemyDialogue
-      value: 
-      objectReference: {fileID: 1600119703}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerDialogue
-      value: 
-      objectReference: {fileID: 1105556314}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: enemyDialogueText
-      value: 
-      objectReference: {fileID: 7079391959960851295}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerDialogueText
-      value: 
-      objectReference: {fileID: 1434600439}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: mysteroisVoiceDialogue
-      value: 
-      objectReference: {fileID: 7079391959960851294}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: mysteriousVoiceDialogueText
-      value: 
-      objectReference: {fileID: 7079391959960851293}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[0]
-      value: "Don\u2019t remember me?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[1]
-      value: "Has the great Dante D\u2019Angelo grown so vain to forget even his
-        own flesh and blood?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[2]
-      value: "\u2026"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[3]
-      value: "I am your brother, DANIEL D\u2019ANGELO!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[4]
-      value: Ten years past, you mortally wounded me in a royal tourney.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[5]
-      value: You destroyed your own brother, just so you could add another title
-        of champion to your roster.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[6]
-      value: "\u2026"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[7]
-      value: You stripped me of my honor, my strength, my youth.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[8]
-      value: YOU RUINED ME!
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[9]
-      value: "\u2026"
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueList.Array.data[0]
-      value: No words of mine can abate what I have done to you.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueList.Array.data[1]
-      value: You had every right to kill me.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueList.Array.data[2]
-      value: But when I put down my blade many years ago I swore to let go of my
-        past.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueList.Array.data[3]
-      value: "May you finally find peace in the afterlife, Daniel D\u2019Angelo."
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[10]
-      value: WILL YOU NOT HEED ME, BROTHER?
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[11]
-      value: 'DO YOU HAVE NO REMORSE? '
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[12]
-      value: ...
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[13]
-      value: "I see there\u2019s no point talking to you. "
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueList.Array.data[14]
-      value: Draw your blade, let us end this.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: mysteriousVoiceDialogueList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueSpeakerList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: mysteriousVoiceDialogueList.Array.data[0]
-      value: Alas, I have to do everything myself.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[2]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[5]
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[6]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[9]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueSpeakerList.Array.data[0]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueSpeakerList.Array.data[1]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinDialogueSpeakerList.Array.data[2]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[10]
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[11]
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[12]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[13]
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: preFightDialogueSpeakerList.Array.data[14]
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 7079391959960851296}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: enemyUI
-      value: 
-      objectReference: {fileID: 1451035508}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerUI
-      value: 
-      objectReference: {fileID: 1318750742}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: enemyWinUI
-      value: 
-      objectReference: {fileID: 224276259}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: fightTextUI
-      value: 
-      objectReference: {fileID: 491070008}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerWinUI
-      value: 
-      objectReference: {fileID: 816303626}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: outOfStaminaTextUI
-      value: 
-      objectReference: {fileID: 828659996}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerHeavyLungeChargeBar
-      value: 
-      objectReference: {fileID: 7079391959960851297}
-    - target: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerHeavyLungeChargeBarUI
-      value: 
-      objectReference: {fileID: 7079391959960851298}
-    - target: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: pauseMenu
-      value: 
-      objectReference: {fileID: 644527999}
-    - target: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: controlsMenu
-      value: 
-      objectReference: {fileID: 277016032}
-    - target: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: musicManager
-      value: 
-      objectReference: {fileID: 1529170568}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 6652532465784064523}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1243442846}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: combatVolume
-      value: 
-      objectReference: {fileID: 1501199553}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: getHitVolume
-      value: 
-      objectReference: {fileID: 224290066}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: dialogueVolume
-      value: 
-      objectReference: {fileID: 1406694649}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 1374824777}
-    - target: {fileID: 3472306370896711298, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: mysteriousVoiceVolume
-      value: 
-      objectReference: {fileID: 551292648}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 66.9527
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711299, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3472306370896711324, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
---- !u!114 &3472306370635930197 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3472306370635930197, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-  m_PrefabInstance: {fileID: 3472306370635930195}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b5fa39aa9731348bc86b20ebb15575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3472306370635930198 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3472306370635930199, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-  m_PrefabInstance: {fileID: 3472306370635930195}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c309065797f949e4bb2371cb81cab682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3472306370635930199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3472306370635930200, guid: fc3cf84ca925891489b0661e57f887a1, type: 3}
-  m_PrefabInstance: {fileID: 3472306370635930195}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1952ac81ed4741c98c44be4eaf0282c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6297542155244215767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1263,7 +1072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6297542153924602156, guid: e27627fa9d138fb47bc9ce19fc398f84, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6297542153924602156, guid: e27627fa9d138fb47bc9ce19fc398f84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,7 +1129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6606237153021451456, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6606237153021451456, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1391,11 +1200,11 @@ PrefabInstance:
     - target: {fileID: 4994726706988342436, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3472306370635930199}
+      objectReference: {fileID: 0}
     - target: {fileID: 4994726708535386551, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3472306370635930199}
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1411,7 +1220,7 @@ PrefabInstance:
     - target: {fileID: 7079391960005761757, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3472306370635930199}
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391960193145950, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1507,7 +1316,7 @@ PrefabInstance:
     - target: {fileID: 7079391960584226691, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3472306370635930199}
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391960965363986, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1636,11 +1445,11 @@ PrefabInstance:
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: UIManager
       value: 
-      objectReference: {fileID: 3472306370635930198}
+      objectReference: {fileID: 0}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 1904956625}
+      objectReference: {fileID: 0}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: audioManager
       value: 
@@ -1656,6 +1465,6 @@ PrefabInstance:
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: dialogueManager
       value: 
-      objectReference: {fileID: 3472306370635930197}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
