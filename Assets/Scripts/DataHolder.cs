@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataHolder : MonoBehaviour
 {
-    public bool hasPlayerDied;
+    [HideInInspector] public bool hasPlayerDied;
     private static DataHolder instance;
 
     private void Awake()
