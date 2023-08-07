@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour
     public Transform controllerTransform;
     public AudioManager audioManager;
     private int block;
+    private bool hasPlayed;
 
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
@@ -180,6 +181,7 @@ public class EnemyController : MonoBehaviour
         direction = -1f;
         enemyLightAttackBaseDamage = enemyLightAttackDamage;
         baseHeavyLungeThrustSpeed = heavyLungeThrustSpeed;
+        hasPlayed = false;
 
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
@@ -411,12 +413,17 @@ public class EnemyController : MonoBehaviour
         //TODO: IN AIR MOVEMENT
         //if (rb.velocity.x > 0)
         //{
-           // rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
+        // rb.position += Vector2.right * Time.deltaTime * jumpHorizontalSpeed;
         //}
         //else if (rb.velocity.x < 0)
         //{
-           // rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
+        // rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
         //}
+        if (!hasPlayed)
+        {
+            animator.Play("Jump");
+            hasPlayed = true;
+        }
     }
 
     private void JumpTransitions()
@@ -447,6 +454,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(jumpAttackDuration);
         if (state == EnemyState.jumpAttack)
         {
+            animator.Play("JumpAttack");
             ResetSwordPosition();
             swordRb.isKinematic = true;
             swordPivotRb.isKinematic = true;
@@ -778,6 +786,7 @@ public class EnemyController : MonoBehaviour
             if(state == EnemyState.jump)
             {
                 animator.Play("Land");
+                hasPlayed = false;
             }
             state = EnemyState.idle;
 
@@ -787,6 +796,10 @@ public class EnemyController : MonoBehaviour
             swordCollider.enabled = false;
 
             isGrounded = true;
+            if(state == EnemyState.jump)
+            {
+                animator.Play("Land");
+            }
         }
     }
     #endregion
