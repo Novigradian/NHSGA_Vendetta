@@ -667,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 483007523, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_Size.y
-      value: 4.49
+      value: 6.735
       objectReference: {fileID: 0}
     - target: {fileID: 483007523, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -1601,5 +1601,9 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1129440220}
+    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
