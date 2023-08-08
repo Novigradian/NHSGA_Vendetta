@@ -1154,10 +1154,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostDialogueVolume
       objectReference: {fileID: 0}
-    - target: {fileID: 9103285586041311928, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
 --- !u!1001 &7388930531310832288
