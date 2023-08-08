@@ -281,7 +281,7 @@ MonoBehaviour:
   shuffleSpeed: 1
   canShift: 1
   canMoveTowardsEnemy: 1
-  enemyLightAttackDamage: 15
+  enemyLightAttackDamage: 10
   enemyLightAttackBaseDamage: 0
   enemyHeavyLungeBaseDamage: 20
   enemyHeavyLungeExtraDamageScale: 25
@@ -311,7 +311,7 @@ MonoBehaviour:
   minHeavyLungeWindupDuration: 0.65
   maxHeavyLungeWindupDuration: 2.4
   parryDuration: 0.1
-  riposteDamageBonus: 25
+  riposteDamageBonus: 0
   parryChance: 0
   baseIdleChance: 0.1
   aggressiveness: 1

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject rightBloodParticlePrefab;
 
     [HideInInspector] public bool isSceneTwo;
+    [HideInInspector] public string killChoice;
 
     #endregion
 
@@ -70,10 +71,6 @@ public class GameManager : MonoBehaviour
 
         kb = Keyboard.current;
         #endregion
-
-        
-
-        
     }
 
     // Update is called once per frame
@@ -117,11 +114,15 @@ public class GameManager : MonoBehaviour
             if (kb.pKey.wasPressedThisFrame)
             {
                 uiManager.killChoice.SetActive(false);
+                //killChoice = "KillScene";
+                //gameState = "PlayerWinDialogue";
                 SceneManager.LoadScene("KillScene");
             }
             else if (kb.oKey.wasPressedThisFrame)
             {
                 uiManager.killChoice.SetActive(false);
+                //killChoice = "SpareScene";
+                //gameState = "PlayerWinDialogue";
                 SceneManager.LoadScene("SpareScene");
             }
         }

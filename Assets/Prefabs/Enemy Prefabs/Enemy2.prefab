@@ -151,7 +151,7 @@ MonoBehaviour:
   minHeavyLungeWindupDuration: 0.75
   maxHeavyLungeWindupDuration: 2.4
   parryDuration: 0.4
-  riposteDamageBonus: 20
+  riposteDamageBonus: 10
   parryChance: 1
   baseIdleChance: 0
   aggressiveness: 1.25
