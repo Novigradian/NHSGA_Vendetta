@@ -987,6 +987,8 @@ public class PlayerController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        damage += gameManager.RandomDamageModifier();
+        
         UIManager.HideChargeBar();
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
@@ -1124,12 +1126,14 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(rallyDuration);
         isRallyOn = false;
+        UIManager.rallyTextUI.SetActive(false);
         rallyAnimator.Play("Idle");
     }
 
     private void ActivateRally()
     {
         isRallyOn = true;
+        UIManager.rallyTextUI.SetActive(true);
         StopCoroutine(ResetRally());
         StartCoroutine(ResetRally());
     }
@@ -1137,8 +1141,12 @@ public class PlayerController : MonoBehaviour
     public void AddRallyHealth(float baseHealth)
     {
         rallyAnimator.Play("RallyHeal");
-        Debug.Log("Rally healed: " + baseHealth*rallyScale);
+        Debug.Log("Rally healed: " + baseHealth*rallyScale+ "base heal is:"+baseHealth);
         playerHealth += baseHealth * rallyScale;
+        if (playerHealth >= maxPlayerHealth)
+        {
+            playerHealth = maxPlayerHealth;
+        }
         playerHealthBar.SetHealth(playerHealth);
     }
     #endregion

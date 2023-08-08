@@ -559,6 +559,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 816303626}
     - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: rallyTextUI
+      value: 
+      objectReference: {fileID: 1811666352}
+    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
       propertyPath: outOfStaminaTextUI
       value: 
       objectReference: {fileID: 828659996}
@@ -967,6 +971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98b91431ac7d4cf09b64e6bf91913a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1811666352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4348450871653418157, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+  m_PrefabInstance: {fileID: 7079391959960851292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1952852402
 PrefabInstance:
   m_ObjectHideFlags: 0

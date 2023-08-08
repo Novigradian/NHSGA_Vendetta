@@ -699,6 +699,8 @@ public class EnemyController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        damage += gameManager.RandomDamageModifier();
+
         animator.Play("GetHit");
         gameManager.SpawnRightBloodParticle(transform.position);
         enemyHealth -= damage;

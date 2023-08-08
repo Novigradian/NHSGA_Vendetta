@@ -121,9 +121,9 @@ MonoBehaviour:
   shuffleSpeed: 1
   canShift: 1
   canMoveTowardsEnemy: 1
-  enemyLightAttackDamage: 10
+  enemyLightAttackDamage: 12
   enemyLightAttackBaseDamage: 0
-  enemyHeavyLungeBaseDamage: 20
+  enemyHeavyLungeBaseDamage: 25
   enemyHeavyLungeExtraDamageScale: 25
   enemyHeavyLungeDamage: 0
   enemyJumpAttackDamage: 15

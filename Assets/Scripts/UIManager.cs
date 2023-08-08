@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public GameObject outOfStaminaTextUI;
     public GameObject fientTextUI;
     public GameObject exclaimationTextUI;
+    public GameObject rallyTextUI;
     //private RectTransform parryTextRectTransform;
     //private RectTransform riposteTextRectTransform;
     [SerializeField] private float showTextDuration;
