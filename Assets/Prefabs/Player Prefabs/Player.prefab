@@ -234,17 +234,19 @@ MonoBehaviour:
   isFacingLeft: 0
   animator: {fileID: 483007522}
   sword: {fileID: 1735666212459705732}
+  rallyAnimator: {fileID: 0}
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   UIManager: {fileID: 0}
   musicManager: {fileID: 0}
   controllerTransform: {fileID: 483007521}
+  rallyTransform: {fileID: 0}
   audioManager: {fileID: 0}
   playerHeavyLungeChargeBar: {fileID: 0}
   stepLeftDustParticle: {fileID: 6460912154731873205}
   stepRightDustParticle: {fileID: 8979819738998414823}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 90
+  maxPlayerHealth: 130
   playerHealth: 0
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0

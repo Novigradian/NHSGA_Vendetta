@@ -206,7 +206,7 @@ public class DialogueManager : MonoBehaviour
 
         if (index == 3 && isSceneTwo)
         {
-            enemyDialogue.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Daniel D'Angelo";
+            enemyDialogue.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "Daniel";
         }
 
         string speaker = preFightDialogueSpeakerList[index];

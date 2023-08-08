@@ -344,7 +344,7 @@ public class EnemyController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            animator.Play("StepLeft");
+            //animator.Play("StepLeft");
             rb.position += Vector2.left * Time.deltaTime * stepSpeed;
         }
     }
@@ -364,7 +364,7 @@ public class EnemyController : MonoBehaviour
 
     private void StepRightActions()
     {
-        animator.Play("StepRight");
+        //animator.Play("StepRight");
         rb.position += Vector2.right * Time.deltaTime * stepSpeed;
     }
 
@@ -443,7 +443,7 @@ public class EnemyController : MonoBehaviour
         //}
         if (!hasPlayed)
         {
-            animator.Play("Jump");
+            //animator.Play("Jump");
             hasPlayed = true;
         }
     }
@@ -476,7 +476,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(jumpAttackDuration);
         if (state == EnemyState.jumpAttack)
         {
-            animator.Play("JumpAttack");
+            //animator.Play("JumpAttack");
             ResetSwordPosition();
             swordRb.isKinematic = true;
             swordPivotRb.isKinematic = true;
@@ -1137,6 +1137,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to stepLeft");
             stateToEnter = "";
             stepLeftDustParticle.Play();
+            animator.Play("StepLeft");
         }
         else if (stateToEnter == "shuffleRightChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
@@ -1152,6 +1153,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to stepRight");
             stateToEnter = "";
             stepRightDustParticle.Play();
+            animator.Play("StepRight");
         }
         else if (stateToEnter == "idleChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
@@ -1189,6 +1191,7 @@ public class EnemyController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             stateToEnter = "";
             isGrounded = false;
+            animator.Play("Jump");
         }
         else if (stateToEnter == "jumpAttackChance" && state==EnemyState.jump)
         {
@@ -1199,6 +1202,7 @@ public class EnemyController : MonoBehaviour
             swordRb.isKinematic = false;
             swordPivotRb.isKinematic = false;
             swordCollider.enabled = true;
+            animator.Play("JumpAttack");
         }
         else if (stateToEnter == "parryChance" && isGrounded)
         {

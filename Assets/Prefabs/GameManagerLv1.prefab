@@ -61,6 +61,7 @@ MonoBehaviour:
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   isSceneTwo: 0
+  killChoice: 
 --- !u!114 &3441756883500648680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,8 +81,8 @@ MonoBehaviour:
   - "They\u2019re for yours. For all that you\u2019ve done.  "
   - Did you really think your past would never catch up to you?
   - No one can wash away their sins that easily.
-  - "That\u2019s why you\u2019re here. That\u2019s what we\u2019re here to remind
-    you of."
+  - "That\u2019s why we've brought you here. That\u2019s what we\u2019re here to
+    remind you of."
   - This is our vendetta.
   preFightDialogueSpeakerList:
   - Enemy
@@ -98,7 +99,7 @@ MonoBehaviour:
   - You have wronged many in your reign of bloodshed. I am one of them.
   - As a child, I watched my father fall under your blade, murdered for nothing but
     your own glory in a mere town spar.
-  - I have waited thirteen years to avenge him.
+  - I have waited twelve years to avenge him.
   - You shall answer for him now.
   - ...
   - Hmm. No words, even when facing your judgment?
@@ -106,11 +107,9 @@ MonoBehaviour:
   - ...then PREPARE TO DIE!
   playerWinDialogueList:
   - "Father, I\u2019m sorry\u2026"
-  - "\u2026You may have won, but I am only the first."
-  - "You will be punished for your sins, D\u2019Angelo."
+  - "Don\u2019t expect me to thank you. You\u2019re a fool for letting me live.  "
   - ...
   playerWinDialogueSpeakerList:
-  - Enemy
   - Enemy
   - Enemy
   - Player

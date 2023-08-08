@@ -1001,6 +1001,30 @@ PrefabInstance:
       propertyPath: playerHeavyLungeChargeBarUI
       value: 
       objectReference: {fileID: 941418989}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: preTutorialDialogueList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: preTutorialDialogueList.Array.data[0]
+      value: 'Even in my dreams, this wretched past pursues me. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: preTutorialDialogueList.Array.data[1]
+      value: I remember it all, still.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: preTutorialDialogueList.Array.data[2]
+      value: This is how one kills. Even regret does not allow you to forget.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: preTutorialDialogueList.Array.data[3]
+      value: This is how one kills. Even regret does not allow you to forget.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: preTutorialDialogueList.Array.data[4]
+      value: This is how one kills. Even regret does not allow you to forget.
+      objectReference: {fileID: 0}
     - target: {fileID: 1812213232839424339, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: m_Name
       value: TutorialManager

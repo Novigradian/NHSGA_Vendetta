@@ -61,6 +61,7 @@ MonoBehaviour:
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   isSceneTwo: 0
+  killChoice: 
 --- !u!114 &3539506281630315051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,44 +83,47 @@ MonoBehaviour:
   - Player
   - Enemy
   - Enemy
-  - Enemy
   - Player
   - Enemy
   - Enemy
   - Player
   - Enemy
+  - Enemy
+  - Player
   - Enemy
   - Player
   - Enemy
   - Enemy
   preFightDialogueList:
-  - "Don\u2019t remember me?"
-  - "Has the great Dante D\u2019Angelo grown so vain to forget even his own flesh
-    and blood?"
+  - Don't remember me?
+  - "Has the great Dante D\u2019Angelo grown so vain to forget his own flesh and
+    blood?"
   - "\u2026"
   - "I am your brother, DANIEL D\u2019ANGELO!"
-  - Ten years past, you mortally wounded me in a royal tourney.
-  - You destroyed your own brother, just so you could add another title of champion
-    to your roster.
-  - "\u2026"
-  - You stripped me of my honor, my strength, my youth.
+  - I still remember the day you left me to die at the royal tourney. I lost an arm
+    and an eye that day.
+  - ...
+  - "You thought you killed me, didn\u2019t you?"
+  - "How did it feel, standing upon the champion\u2019s podium, knowing you had your
+    brother\u2019s blood upon your hands? "
+  - ...
+  - 'You stripped me of my honor, my strength, my youth, Dante. '
   - YOU RUINED ME!
-  - "\u2026"
-  - WILL YOU NOT HEED ME, BROTHER?
-  - 'DO YOU HAVE NO REMORSE? '
+  - "\u2026 "
+  - WILL YOU NOT HEED ME, BROTHER? HAVE YOU NO REMORSE?
   - ...
   - "I see there\u2019s no point talking to you. "
   - Draw your blade, let us end this.
   playerWinDialogueList:
-  - No words of mine can abate what I have done to you.
-  - You had every right to kill me.
-  - But when I put down my blade many years ago I swore to let go of my past.
-  - "May you finally find peace in the afterlife, Daniel D\u2019Angelo."
+  - "\u2026Kill me. I have nothing left. I beg of you."
+  - 'It would be the greatest mercy you could show.  '
+  - "\u2026"
+  - DO IT!
   playerWinDialogueSpeakerList:
+  - Enemy
+  - Enemy
   - Player
-  - Player
-  - Player
-  - Player
+  - Enemy
   enemyWinDialogueList:
   - You lived without honor, and deserve none in death.
   - "May you rot in hell for all of the souls you\u2019ve taken from this world. "
