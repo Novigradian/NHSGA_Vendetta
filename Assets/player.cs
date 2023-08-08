@@ -44,7 +44,7 @@ public class player : MonoBehaviour
     bool canJump = true;
     bool isJumping = false;
     bool canMove = true;
-    bool canBlock = false;
+    //bool canBlock = false;
     private float swordDistance;
     private int direction = 1;
     //[HideInInspector] public bool isFacingEnemy = true;
@@ -99,12 +99,12 @@ public class player : MonoBehaviour
     //}
     public void CheckMovement()
     {
-        canBlock = false;
+        //canBlock = false;
         Keyboard kb = Keyboard.current;
         if (kb.aKey.isPressed && canMove)
         {
             rb.position += Vector2.left * Time.deltaTime * playerSpeed;
-            canBlock = true;
+            //canBlock = true;
         }
         //if (!isFacingEnemy)
         //{
