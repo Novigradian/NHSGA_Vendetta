@@ -1124,6 +1124,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(rallyDuration);
         isRallyOn = false;
+        rallyAnimator.Play("Idle");
     }
 
     private void ActivateRally()
