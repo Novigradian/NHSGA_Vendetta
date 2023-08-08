@@ -76,6 +76,7 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator ReturnToMainMenu()
     {
+        crossfadeAnim.gameObject.SetActive(true);
         crossfadeAnim.SetTrigger("StartFade");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
