@@ -1622,6 +1622,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1129440220}
     - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: m_Size.y
+      value: 4.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
