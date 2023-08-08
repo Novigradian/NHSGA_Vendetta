@@ -416,7 +416,9 @@ public class TutorialPlayerController : MonoBehaviour
 
     public void ResetToIdle()
     {
-        state = PlayerState.dead;
+        state = PlayerState.idle;
+        animator.Play("Idle");
+        Debug.Log("Reset");
     }
     #endregion
 

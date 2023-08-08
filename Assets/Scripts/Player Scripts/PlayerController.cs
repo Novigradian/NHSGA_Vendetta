@@ -511,7 +511,7 @@ public class PlayerController : MonoBehaviour
     
     private void ShuffleLeftActions()
     {
-        audioManager.Play("Shuffle");
+        //audioManager.Play("Shuffle");
         animator.Play("ShuffleLeft");
         rb.position += Vector2.left * Time.deltaTime * shuffleSpeed;
     }
@@ -583,7 +583,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canMoveTowardsEnemy)
         {
-            audioManager.Play("Shuffle");
+            //audioManager.Play("Shuffle");
             animator.Play("ShuffleRight");
             rb.position += Vector2.right * Time.deltaTime * shuffleSpeed;
         }

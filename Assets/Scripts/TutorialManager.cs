@@ -19,6 +19,8 @@ public class TutorialManager : MonoBehaviour
 
     public TutorialPlayerController tutorialPlayerController;
 
+    public TutorialPlayerController playerController;
+
     [Header ("GamePlay")]
     public float minimumPlayerDummyDistance;
 
@@ -82,6 +84,8 @@ public class TutorialManager : MonoBehaviour
         tutorialInstructionIndex = -1;
         isNextInstruction = true;
         instructionTasksCompleted = 0;
+
+        playerController = FindObjectOfType<TutorialPlayerController>();
 
         playerDialogue.SetActive(false);
         preTutorialDialogueIndex = 0;
@@ -172,6 +176,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (gameState == "PostTutorialDialogue")
         {
+            playerController.ResetToIdle();
             if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
             {
                 postTutorialDialogueCount++;

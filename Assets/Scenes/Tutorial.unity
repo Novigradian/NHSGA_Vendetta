@@ -962,6 +962,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 18155641}
     - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1243913386}
+    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: outOfStaminaTextUI
       value: 
       objectReference: {fileID: 211364363}
