@@ -2229,6 +2229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 528893720, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1295533853, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2260,6 +2264,14 @@ PrefabInstance:
     - target: {fileID: 4994726708535386551, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511502822975891782, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511502822975891783, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7079391959318562050, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive
