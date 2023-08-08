@@ -1328,6 +1328,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1129440218}
+    - target: {fileID: 6511502822975891783, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1523,7 +1527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2497817921394864103, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 2497817921394864103, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1578,14 +1582,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1529170568}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: parryCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: parryDuration
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: enemyHealthBar
       value: 
       objectReference: {fileID: 302981266}
@@ -1593,21 +1589,5 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1129440220}
-    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: shuffleTransitionDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_Size.x
-      value: 7.355
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_Size.y
-      value: 4.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}

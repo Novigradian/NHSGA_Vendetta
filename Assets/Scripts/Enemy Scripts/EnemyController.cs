@@ -46,6 +46,10 @@ public class EnemyController : MonoBehaviour
     private bool hasPlayed;
     public float shuffleTransitionDistance;
 
+    [Header("Misc Particles")]
+    public ParticleSystem stepLeftDustParticle;
+    public ParticleSystem stepRightDustParticle;
+
     [Header("Health")]
     public EnemyHealthBar enemyHealthBar;
     [SerializeField] private float maxEnemyHealth;
@@ -354,6 +358,7 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.idle;
             //canShift = false;
             StartCoroutine(ResetCanShift());
+            stepLeftDustParticle.Stop();
         }
     }
 
@@ -372,6 +377,7 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.idle;
             //canShift = false;
             StartCoroutine(ResetCanShift());
+            stepRightDustParticle.Stop();
         }
     }
 
@@ -705,6 +711,9 @@ public class EnemyController : MonoBehaviour
         {
             playerController.AddRallyHealth(damage);
         }
+
+        stepLeftDustParticle.Stop();
+        stepRightDustParticle.Stop();
 
         CheckDead();
     }
@@ -1125,6 +1134,7 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.stepLeft;
             Debug.Log("switched to stepLeft");
             stateToEnter = "";
+            stepLeftDustParticle.Play();
         }
         else if (stateToEnter == "shuffleRightChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
@@ -1139,6 +1149,7 @@ public class EnemyController : MonoBehaviour
             state = EnemyState.stepRight;
             Debug.Log("switched to stepRight");
             stateToEnter = "";
+            stepRightDustParticle.Play();
         }
         else if (stateToEnter == "idleChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {

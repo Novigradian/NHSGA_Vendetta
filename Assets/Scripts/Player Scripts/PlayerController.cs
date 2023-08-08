@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
     [Header("Misc UI")]
     public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
 
+    [Header("Misc Particles")]
+    public ParticleSystem stepLeftDustParticle;
+    public ParticleSystem stepRightDustParticle;
+
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
     [SerializeField] private float maxPlayerHealth;
@@ -340,6 +344,7 @@ public class PlayerController : MonoBehaviour
                 //rb.AddForce(Vector2.left * stepDistance);
 
                 stepLeftTimer = 0f;
+                stepLeftDustParticle.Play();
             }
             else
             {
@@ -362,6 +367,7 @@ public class PlayerController : MonoBehaviour
                 //rb.AddForce(Vector2.right * stepDistance);
 
                 stepRightTimer = 0f;
+                stepRightDustParticle.Play();
             }
             else
             {
@@ -448,6 +454,8 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.idle;
             canShift = false;
             StartCoroutine(ResetCanShift());
+
+            stepLeftDustParticle.Stop();
         }
     }
 
@@ -493,6 +501,8 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.idle;
             canShift = false;
             StartCoroutine(ResetCanShift());
+
+            stepRightDustParticle.Stop();
         }
     }
     
@@ -542,6 +552,7 @@ public class PlayerController : MonoBehaviour
                 UseStamina(playerStepStaminaCost);
 
                 stepRightTimer = 0f;
+                stepRightDustParticle.Play();
             }
             else
             {
@@ -561,6 +572,7 @@ public class PlayerController : MonoBehaviour
             UseStamina(playerStepStaminaCost);
 
             stepLeftTimer = 0f;
+            stepLeftDustParticle.Play();
         }
     }
 
@@ -613,6 +625,7 @@ public class PlayerController : MonoBehaviour
                 UseStamina(playerStepStaminaCost);
 
                 stepLeftTimer = 0f;
+                stepLeftDustParticle.Play();
             }
             else
             {
@@ -632,6 +645,7 @@ public class PlayerController : MonoBehaviour
             UseStamina(playerStepStaminaCost);
 
             stepRightTimer = 0f;
+            stepRightDustParticle.Play();
         }
     }
 
@@ -979,8 +993,12 @@ public class PlayerController : MonoBehaviour
         gameManager.getHitVolume.SetActive(true);
         gameManager.ResetGetHitUI();
         state = PlayerState.getHit;
+        stepLeftDustParticle.Stop();
+        stepRightDustParticle.Stop();
+
         ActivateRally();
         CheckDead();
+
         
     }
 

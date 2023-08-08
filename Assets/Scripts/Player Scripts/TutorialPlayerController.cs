@@ -51,6 +51,10 @@ public class TutorialPlayerController : MonoBehaviour
     [Header("Misc UI")]
     public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
 
+    [Header("Misc Particles")]
+    public ParticleSystem stepLeftDustParticle;
+    public ParticleSystem stepRightDustParticle;
+
     [Header("Health")]
     public PlayerHealthBar playerHealthBar;
     [SerializeField] private float maxPlayerHealth;
@@ -345,6 +349,7 @@ public class TutorialPlayerController : MonoBehaviour
                 //rb.AddForce(Vector2.left * stepDistance);
 
                 stepLeftTimer = 0f;
+                stepLeftDustParticle.Play();
             }
             else
             {
@@ -367,6 +372,7 @@ public class TutorialPlayerController : MonoBehaviour
                 //rb.AddForce(Vector2.right * stepDistance);
 
                 stepRightTimer = 0f;
+                stepRightDustParticle.Play();
             }
             else
             {
@@ -459,6 +465,8 @@ public class TutorialPlayerController : MonoBehaviour
             state = PlayerState.idle;
             canShift = false;
             StartCoroutine(ResetCanShift());
+
+            stepLeftDustParticle.Stop();
         }
     }
 
@@ -510,6 +518,7 @@ public class TutorialPlayerController : MonoBehaviour
             state = PlayerState.idle;
             canShift = false;
             StartCoroutine(ResetCanShift());
+            stepRightDustParticle.Stop();
         }
     }
     
@@ -566,6 +575,7 @@ public class TutorialPlayerController : MonoBehaviour
                 UseStamina(playerStepStaminaCost);
 
                 stepRightTimer = 0f;
+                stepRightDustParticle.Play();
             }
             else
             {
@@ -585,6 +595,7 @@ public class TutorialPlayerController : MonoBehaviour
             UseStamina(playerStepStaminaCost);
 
             stepLeftTimer = 0f;
+            stepLeftDustParticle.Play();
         }
     }
 
@@ -643,6 +654,7 @@ public class TutorialPlayerController : MonoBehaviour
                 UseStamina(playerStepStaminaCost);
 
                 stepLeftTimer = 0f;
+                stepLeftDustParticle.Play();
             }
             else
             {
@@ -662,6 +674,7 @@ public class TutorialPlayerController : MonoBehaviour
             UseStamina(playerStepStaminaCost);
 
             stepRightTimer = 0f;
+            stepRightDustParticle.Play();
         }
     }
 
@@ -1034,6 +1047,9 @@ public class TutorialPlayerController : MonoBehaviour
         state = PlayerState.getHit;
         ActivateRally();
         CheckDead();
+
+        stepLeftDustParticle.Stop();
+        stepRightDustParticle.Stop();
     }
 
     #endregion
