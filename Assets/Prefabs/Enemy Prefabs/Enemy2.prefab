@@ -114,7 +114,7 @@ MonoBehaviour:
   stepLeftDustParticle: {fileID: 1438310497102521680}
   stepRightDustParticle: {fileID: 8959199614921548364}
   enemyHealthBar: {fileID: 0}
-  maxEnemyHealth: 200
+  maxEnemyHealth: 300
   stepSpeed: 7
   stepDuration: 0.35
   stepCooldown: 1
@@ -154,19 +154,19 @@ MonoBehaviour:
   riposteDamageBonus: 10
   parryChance: 1
   baseIdleChance: 0
-  aggressiveness: 1.25
+  aggressiveness: 0.86
   difficulty: 2.2
   shuffleLeftDistanceDivideScale: 10
   minimumStepLeftDistance: 7
-  stepLeftDistanceDivideScale: 50
+  stepLeftDistanceDivideScale: 20
   playerLightAttackRetreatChance: 2
   playerJumpAttackRetreatChance: 0.15
   playerHeavyLungeWindupAdvanceChance: 5
-  chaseAfterEnemyDistanceDivideScale: 15
+  chaseAfterEnemyDistanceDivideScale: 5
   unableToChangeDirectionDuration: 0.6
   isAbleToChangeDirection: 0
-  baseLightAttackChance: 0.4
-  baseHeavyLungeChance: 0.2
+  baseLightAttackChance: 0.5
+  baseHeavyLungeChance: 0.3
   lightAttackRange: 5.5
   heavyLungeRange: 8
   heavyLungeDistanceScale: 20
@@ -328,7 +328,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.355, y: 6.735}
+  m_Size: {x: 7.355, y: 4.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
