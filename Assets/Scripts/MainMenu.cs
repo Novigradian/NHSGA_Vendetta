@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     public void SkipTutorial()
     {
-        StartCoroutine(BeginLoadScene(2));
+        StartCoroutine(BeginLoadScene(6));
     }
 
     private IEnumerator BeginLoadScene(int index)

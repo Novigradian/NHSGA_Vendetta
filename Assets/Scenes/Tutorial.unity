@@ -1001,11 +1001,6 @@ PrefabInstance:
       propertyPath: playerHeavyLungeChargeBarUI
       value: 
       objectReference: {fileID: 941418989}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: tutorialInstructionList.Array.data[10]
-      value: For a few seconds after taking damage, attack enemies to regain part
-        of the damage dealt as health.<br>Press [Enter] to continue.
-      objectReference: {fileID: 0}
     - target: {fileID: 1812213232839424339, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: m_Name
       value: TutorialManager
