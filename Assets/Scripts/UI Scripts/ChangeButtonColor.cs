@@ -24,12 +24,12 @@ public class ChangeButtonColor : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         buttonText.color = hoverColor;
-        Debug.Log("enter");
+        //Debug.Log("enter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         buttonText.color = originalColor;
-        Debug.Log("exit");
+        //Debug.Log("exit");
     }
 }

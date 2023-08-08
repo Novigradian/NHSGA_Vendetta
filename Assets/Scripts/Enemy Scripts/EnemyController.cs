@@ -519,17 +519,18 @@ public class EnemyController : MonoBehaviour
 
     private void LightAttackTransitions()
     {
-        StartCoroutine(LightAttack());
+        //StartCoroutine(LightAttack());
     }
 
     private IEnumerator LightAttackWindup()
     {
-        swordRb.isKinematic = false;
+        
         yield return new WaitForSeconds(lightAttackWindupDuration);
         if (state == EnemyState.lightAttackWindup)
         {
             state = EnemyState.lightAttack;
             swordCollider.enabled = true;
+            StartCoroutine(LightAttack());
         }
     }
 
@@ -573,6 +574,7 @@ public class EnemyController : MonoBehaviour
             heavyLungeThrustSpeed = baseHeavyLungeThrustSpeed + heavyLungeWindupTime * heavyLungeWindupThrustScale;
             state = EnemyState.heavyLunge;
             swordCollider.enabled = true;
+            StartCoroutine(HeavyLungeCoroutine());
         }
     }
 
@@ -585,7 +587,7 @@ public class EnemyController : MonoBehaviour
 
     public void HeavyLunge()
     {
-        StartCoroutine(HeavyLungeCoroutine());
+        //StartCoroutine(HeavyLungeCoroutine());
         if (canMoveTowardsEnemy)
         {
             audioManager.Play("HeavyAttack");
@@ -593,7 +595,7 @@ public class EnemyController : MonoBehaviour
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             
         }
-        swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
+        swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed*1.05f;
 
     }
     public IEnumerator HeavyLungeCoroutine()
@@ -1175,6 +1177,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to heavy lunge");
             stateToEnter = "";
             swordRb.isKinematic = false;
+            //sword.transform.localPosition += Vector3.left * 0.27f;
             heavyLungeWindupTime = Random.Range(minHeavyLungeWindupDuration, maxHeavyLungeWindupDuration);
             StartCoroutine(ShowHeavyLungeExclaimationText());
             StartCoroutine(HeavyLungeWindupCoroutine());
