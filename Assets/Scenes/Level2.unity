@@ -1618,9 +1618,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 302981266}
     - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: maxEnemyHealth
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1129440220}
+    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: baseHeavyLungeChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417094424836718361, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
+      propertyPath: baseLightAttackChance
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 9149206876430691157, guid: 5cabe7ddd11e24f0cae32a7c83eea279, type: 3}
       propertyPath: m_Size.y
       value: 4.49
