@@ -183,11 +183,14 @@ public class DialogueManager : MonoBehaviour
 
     private void ShowMysteriousVoiceDialogue(int index)
     {
+        mysteroisVoiceDialogue.SetActive(false);
+        
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
         }
 
+        mysteroisVoiceDialogue.SetActive(true);
         currentCoroutine = StartCoroutine(DisplayMysteriousVoiceText(mysteriousVoiceDialogueList[index]));
     }
 
