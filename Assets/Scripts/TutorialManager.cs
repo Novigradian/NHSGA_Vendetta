@@ -197,7 +197,7 @@ public class TutorialManager : MonoBehaviour
             tutorialInstructionText.text = tutorialInstructionList[tutorialInstructionList.Length - 1];
             if (kb.enterKey.wasPressedThisFrame)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene("LV1Cutscene");
             }
         }
     }

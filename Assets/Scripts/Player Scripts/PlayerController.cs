@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D swordPivotRb;
     private Collider2D swordCollider;
     private bool hasPlayed = false;
+    public Animator rallyAnimator;
 
     public GameManager gameManager;
     public DialogueManager dialogueManager;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public MusicManager musicManager;
     private float minimumPlayerEnemyDistance;
     public Transform controllerTransform;
+    public Transform rallyTransform;
     public AudioManager audioManager;
 
     [Header("Misc UI")]
@@ -191,6 +193,7 @@ public class PlayerController : MonoBehaviour
 
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
+        rallyAnimator = rallyTransform.GetComponent<Animator>();
 
         isFacingLeft = false;
 
@@ -1132,6 +1135,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddRallyHealth(float baseHealth)
     {
+        rallyAnimator.Play("RallyHeal");
         playerHealth += baseHealth * rallyScale;
         playerHealthBar.SetHealth(playerHealth);
     }
