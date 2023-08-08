@@ -2764,6 +2764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2841727387180618085, guid: 00f7b4121c34848e29fc64cd76c884bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f7b4121c34848e29fc64cd76c884bb, type: 3}
 --- !u!224 &7079391959318562051 stripped
@@ -3496,7 +3500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4332311084252559039, guid: b214e5ec0fe49eb43998aea62b9831c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 4332311084252559039, guid: b214e5ec0fe49eb43998aea62b9831c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
