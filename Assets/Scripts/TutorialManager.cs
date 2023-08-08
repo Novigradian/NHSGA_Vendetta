@@ -112,10 +112,10 @@ public class TutorialManager : MonoBehaviour
     {
         if (gameState== "PreTutorialDialogue")
         {
-            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
+            if (kb.enterKey.wasPressedThisFrame)
             {
                 preTutorialDialogueIndex++;
-                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-2)
+                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
                 {
                     anim.SetTrigger("returnToIdle");
                     ShowPreTutorialDialogue(preTutorialDialogueIndex);
@@ -177,24 +177,16 @@ public class TutorialManager : MonoBehaviour
         else if (gameState == "PostTutorialDialogue")
         {
             playerController.ResetToIdle();
-            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
+            if (kb.enterKey.wasPressedThisFrame)
             {
-                postTutorialDialogueCount++;
-                if (postTutorialDialogueCount == 1)
-                {
-                    ShowPreTutorialDialogue(3);
-                }
-                else
-                {
-                    currentCoroutine = null;
-                    gameState = "Practice";
-                    tutorialInstructionUI.SetActive(true);
-                    dialogueVolume.SetActive(false);
-                    playerDialogue.SetActive(false);
-                    postDialogueVolume.SetActive(true);
+                currentCoroutine = null;
+                gameState = "Practice";
+                tutorialInstructionUI.SetActive(true);
+                dialogueVolume.SetActive(false);
+                playerDialogue.SetActive(false);
+                postDialogueVolume.SetActive(true);
 
-                    musicManager.EndMuffle();
-                }
+                musicManager.EndMuffle();
             }
         }
         else if (gameState == "Practice")

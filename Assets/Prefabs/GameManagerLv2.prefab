@@ -62,8 +62,8 @@ MonoBehaviour:
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   isSceneTwo: 0
   killChoice: 
-  maxDamageModifier: 3
-  minDamageModifier: -3
+  maxDamageModifier: 2
+  minDamageModifier: -4
 --- !u!114 &3539506281630315051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,8 @@ MonoBehaviour:
   - 'You stripped me of my honor, my strength, my youth, Dante. '
   - YOU RUINED ME!
   - "\u2026 "
-  - WILL YOU NOT HEED ME, BROTHER? HAVE YOU NO REMORSE?
+  - 'WILL YOU NOT HEED ME, BROTHER? '
+  - HAVE YOU NO REMORSE?
   - ...
   - "I see there\u2019s no point talking to you. "
   - Draw your blade, let us end this.

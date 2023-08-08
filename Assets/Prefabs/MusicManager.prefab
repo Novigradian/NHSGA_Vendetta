@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 7388930531778910787}
   lowPassFilter: {fileID: 610947300}
-  muffledCutOffFrequency: 500
+  muffledCutOffFrequency: 300
   originalCutOffFrequency: 5000
 --- !u!82 &7388930531778910787
 AudioSource:
@@ -60,7 +60,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5073d59a705976440b29f601c6123e91, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d3fa934f285f547bd8d92aae95f4c6a1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
