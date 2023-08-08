@@ -543,6 +543,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1984196195}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: rallyScale
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1984196197}
@@ -558,6 +562,10 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1984196196}
+    - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
+      propertyPath: maxPlayerHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1051260130, guid: dfc9c8c3effd5e3458d89ea8e8a87285, type: 3}
       propertyPath: playerHealthBar
       value: 
