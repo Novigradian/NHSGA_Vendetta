@@ -81,6 +81,7 @@ MonoBehaviour:
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
+  postDialogueVolume: {fileID: 0}
   getHitVolumeShowDuration: 0.75
   displayDialogueInterval: 0.02
   playerDialogue: {fileID: 0}
@@ -106,5 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  controlsMenu: {fileID: 0}
   musicManager: {fileID: 0}
   isPaused: 0
+  crossfadeAnim: {fileID: 0}

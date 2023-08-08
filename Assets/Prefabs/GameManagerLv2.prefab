@@ -50,6 +50,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   enemy: {fileID: 0}
   player: {fileID: 0}
+  uiManager: {fileID: 0}
   minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
@@ -146,6 +147,7 @@ MonoBehaviour:
   enemyUI: {fileID: 0}
   playerWinUI: {fileID: 0}
   enemyWinUI: {fileID: 0}
+  killChoice: {fileID: 0}
   playerHeavyLungeChargeBarUI: {fileID: 0}
   playerHeavyLungeChargeBar: {fileID: 0}
   fightTextUI: {fileID: 0}
@@ -179,3 +181,4 @@ MonoBehaviour:
   controlsMenu: {fileID: 0}
   musicManager: {fileID: 0}
   isPaused: 0
+  crossfadeAnim: {fileID: 0}

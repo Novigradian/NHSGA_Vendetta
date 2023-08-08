@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public MusicManager musicManager;
     [HideInInspector] public bool isPaused;
 
+    public Animator crossfadeAnim;
     private void Start()
     {
         
@@ -68,6 +69,15 @@ public class PauseMenu : MonoBehaviour
     public void Exit()
     {
         Debug.Log("exit");
+        Time.timeScale = 1;
+        isPaused = false;
+        StartCoroutine(ReturnToMainMenu());
+    }
+
+    private IEnumerator ReturnToMainMenu()
+    {
+        crossfadeAnim.SetTrigger("StartFade");
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
     }
 
