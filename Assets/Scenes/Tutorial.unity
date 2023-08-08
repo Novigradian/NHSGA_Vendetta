@@ -756,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FightVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 6606237153021451462, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd4ec1b1c94523e46b3d18e3ba05a49a, type: 3}
 --- !u!1 &1874028105 stripped
@@ -1149,6 +1153,10 @@ PrefabInstance:
     - target: {fileID: 9103285586041311928, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
       propertyPath: m_Name
       value: PostDialogueVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 9103285586041311928, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cb75455e753c47b88b996b8bb8586dd, type: 3}
