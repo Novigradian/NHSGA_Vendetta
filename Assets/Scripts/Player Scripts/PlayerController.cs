@@ -1136,6 +1136,7 @@ public class PlayerController : MonoBehaviour
     public void AddRallyHealth(float baseHealth)
     {
         rallyAnimator.Play("RallyHeal");
+        Debug.Log("Rally healed: " + baseHealth);
         playerHealth += baseHealth * rallyScale;
         playerHealthBar.SetHealth(playerHealth);
     }
