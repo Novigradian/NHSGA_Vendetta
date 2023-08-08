@@ -793,12 +793,12 @@ VideoPlayer:
   m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
+  m_TargetCamera: {fileID: 519420031}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_AspectRatio: 2
   m_DataSource: 0
   m_PlaybackSpeed: 1
@@ -1491,6 +1491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910784, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1974,6 +1978,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1136950198700226093, guid: a3db0b55b68d4d44fa25da0e6f6fb803, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136950198700226093, guid: a3db0b55b68d4d44fa25da0e6f6fb803, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136950198700226093, guid: a3db0b55b68d4d44fa25da0e6f6fb803, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1136950198700226094, guid: a3db0b55b68d4d44fa25da0e6f6fb803, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -2211,6 +2227,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 528893720, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1295533853, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2242,6 +2262,10 @@ PrefabInstance:
     - target: {fileID: 4994726708535386551, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511502822975891782, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7079391959318562050, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive
