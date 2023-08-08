@@ -1053,7 +1053,7 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness);
-                    chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness) * difficulty;
+                    chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness) * difficulty*4f;
                     
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
