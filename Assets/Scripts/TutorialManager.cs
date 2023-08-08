@@ -138,7 +138,7 @@ public class TutorialManager : MonoBehaviour
             tutorialInstructionIndex++;
             isNextInstruction = false;
             //Debug.Log(tutorialInstructionIndex);
-            if (tutorialInstructionIndex < tutorialInstructionList.Length - 4)
+            if (tutorialInstructionIndex < tutorialInstructionList.Length - 5)
             {
                 ShowInstruction(tutorialInstructionIndex);
                 

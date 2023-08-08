@@ -49,6 +49,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   musicManager: {fileID: 0}
   tutorialPlayerController: {fileID: 0}
+  playerController: {fileID: 0}
   minimumPlayerDummyDistance: 5
   tutorialInstructionUI: {fileID: 0}
   tutorialInstructionText: {fileID: 0}
@@ -66,6 +67,8 @@ MonoBehaviour:
     riposte with extra damage.<br>Press [Enter] to continue.
   - You block thrusts automatically when shuffling backwards.<br>Press [Enter] to
     continue.
+  - For a few seconds after taking damage, attack enemies to regain part of the damage
+    dealt as health.<br>Press [Enter] to continue.
   - Practice with the dummy, <br>or press [Enter] to exit.
   tutorialInstructionIndex: 0
   instructionTasksCompletedList: 02000000020000000300000003000000010000000200000002000000
@@ -87,9 +90,8 @@ MonoBehaviour:
   playerDialogue: {fileID: 0}
   playerDialogueText: {fileID: 0}
   preTutorialDialogueList:
-  - 'Alas. Even in my dreams, this wretched past pursues me. '
+  - 'Even in my dreams, this wretched past pursues me. '
   - I remember it all, still.
-  - Good. I've remembered the basics.
   - This is how one kills. Even regret does not allow you to forget.
   preTutorialDialogueIndex: 0
   playerHeavyLungeChargeBarUI: {fileID: 0}
