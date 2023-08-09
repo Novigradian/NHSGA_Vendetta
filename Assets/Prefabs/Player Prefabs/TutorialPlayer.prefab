@@ -341,7 +341,7 @@ MonoBehaviour:
   stepLeftDustParticle: {fileID: 7501227899311516241}
   stepRightDustParticle: {fileID: 7501227898530542104}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 100
+  maxPlayerHealth: 90
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 12
@@ -353,7 +353,7 @@ MonoBehaviour:
   rallyDuration: 3
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
-  maxPlayerStamina: 65
+  maxPlayerStamina: 60
   playerStaminaRecoverySpeed: 0.6
   playerStaminaRecoveryDelay: 1
   outOfStaminaColorTransition: {fileID: 1243913388}
