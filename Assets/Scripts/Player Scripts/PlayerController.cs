@@ -1144,6 +1144,10 @@ public class PlayerController : MonoBehaviour
         rallyAnimator.Play("RallyHeal");
         Debug.Log("Rally healed: " + baseHealth*rallyScale+ "base heal is:"+baseHealth);
         playerHealth += baseHealth * rallyScale;
+        if (playerHealth >= 20f)
+        {
+            gameManager.getHitVolume.SetActive(false);
+        }
         if (playerHealth >= maxPlayerHealth)
         {
             playerHealth = maxPlayerHealth;
