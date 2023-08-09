@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Block
-    clip: {fileID: 8300000, guid: 673ed1f098fc84bcaa42e2872bb9f959, type: 3}
+    clip: {fileID: 8300000, guid: 3df569988a4f04a65afcf9d1ecb0af62, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: Dash
-    clip: {fileID: 8300000, guid: d53dbff6bc2f7479d80878c554a29f1c, type: 3}
+    clip: {fileID: 8300000, guid: 0e7bea3b5a77d4309b65340ca8536282, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -75,13 +75,13 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: HeavyDamageHit
+  - name: HeavyHit
     clip: {fileID: 8300000, guid: 1b8ad7c7edf8b457199912e01f5e7f47, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: LightDamageHit
-    clip: {fileID: 8300000, guid: db4a1ef05817543d8adcc34ce076072d, type: 3}
+  - name: LightHit
+    clip: {fileID: 8300000, guid: 5ab5136c400a74f8585dee1c7f104fd8, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -102,6 +102,71 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Cancel
     clip: {fileID: 8300000, guid: 6a6845e07b45841acaa1e656bf3f050d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossHeavy
+    clip: {fileID: 8300000, guid: 92f2044835bf54b4abf69d39cf440d58, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossLightHit
+    clip: {fileID: 8300000, guid: 3b26fa36a3d83410ab6ced12116972da, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossHeavyHit
+    clip: {fileID: 8300000, guid: df85e0ca9b3ee40279e5e271104b988c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossJumpAttack
+    clip: {fileID: 8300000, guid: 7df03fffac8fe4ebeaf0368d248d9343, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Land
+    clip: {fileID: 8300000, guid: 9ca8ba1599c2a433d8a0af16eaa4f786, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossLightAttack
+    clip: {fileID: 8300000, guid: 92cfb7ab032844a9da8efe2345e08efd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossDash
+    clip: {fileID: 8300000, guid: 0362b06ba6eff446e8aae1c029f59ba5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyHeavy
+    clip: {fileID: 8300000, guid: c9b687dfa9e394efbb42c213fd0333b1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyHeavyHit
+    clip: {fileID: 8300000, guid: 4b995e5f11cc44682877ea2d3a8ffa07, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyLightHit
+    clip: {fileID: 8300000, guid: 2e0953b813f3a4df5a0ff354bb6c3569, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyJumpAttack
+    clip: {fileID: 8300000, guid: b1c0fcf3e1b3b41bc8763f32e6587843, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyLightAttack
+    clip: {fileID: 8300000, guid: 1b6cb3ed1cded4e5b909c2fff5ffe733, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyDash
+    clip: {fileID: 8300000, guid: 754fb9b88d4d241eb95845e4abd17ae4, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
