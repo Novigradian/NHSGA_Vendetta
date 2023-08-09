@@ -50,6 +50,7 @@ public class TutorialPlayerController : MonoBehaviour
 
     [Header("Misc UI")]
     public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
+    public Animator rallyAnimator;
 
     [Header("Misc Particles")]
     public ParticleSystem stepLeftDustParticle;
@@ -1036,7 +1037,7 @@ public class TutorialPlayerController : MonoBehaviour
         }
     }
 
-    private void TakeHitDamage(float damage)
+    public void TakeHitDamage(float damage)
     {
         tutorialManager.HideChargeBar();
         playerHealth -= damage;
@@ -1047,7 +1048,7 @@ public class TutorialPlayerController : MonoBehaviour
         tutorialManager.getHitVolume.SetActive(true);
         tutorialManager.ResetGetHitUI();
         state = PlayerState.getHit;
-        ActivateRally();
+        //ActivateRally();
         CheckDead();
 
         stepLeftDustParticle.Stop();
@@ -1139,7 +1140,7 @@ public class TutorialPlayerController : MonoBehaviour
             playerStamina = 0f;
             isOutOfStamina = true;
             outOfStaminaColorTransition.isOutOfStamina = true;
-            tutorialManager.outOfStaminaTextUI.SetActive(true);
+            tutorialManager.staminaAndRallyText.ShowStaminaText();
         }
     }
     private IEnumerator RecoverStamina()
@@ -1147,7 +1148,7 @@ public class TutorialPlayerController : MonoBehaviour
         yield return new WaitForSeconds(playerStaminaRecoveryDelay);
         isOutOfStamina = false;
         outOfStaminaColorTransition.isOutOfStamina = false;
-        tutorialManager.outOfStaminaTextUI.SetActive(false);
+        tutorialManager.staminaAndRallyText.HideStaminaText();
         while (playerStamina < maxPlayerStamina)
         {
             playerStamina += playerStaminaRecoverySpeed;
@@ -1176,7 +1177,19 @@ public class TutorialPlayerController : MonoBehaviour
 
     public void AddRallyHealth(float baseHealth)
     {
+        //rallyAnimator.Play("RallyHeal");
         playerHealth += baseHealth * rallyScale;
+        if (playerHealth >= maxPlayerHealth)
+        {
+            playerHealth = maxPlayerHealth;
+            isRallyOn = false;
+            if (tutorialManager.tutorialInstructionIndex == 7)
+            {
+                tutorialManager.UpdateInstructionsCompleted();
+                tutorialManager.staminaAndRallyText.HideRallyText();
+                //rallyAnimator.Play("idle");
+            }
+        }
         playerHealthBar.SetHealth(playerHealth);
     }
     #endregion

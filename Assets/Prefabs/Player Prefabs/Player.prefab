@@ -300,7 +300,7 @@ MonoBehaviour:
   stepLeftDustParticle: {fileID: 6460912154731873205}
   stepRightDustParticle: {fileID: 8979819738998414823}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 110
+  maxPlayerHealth: 100
   playerHealth: 0
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
@@ -309,8 +309,8 @@ MonoBehaviour:
   playerHeavyLungeDamage: 0
   playerJumpAttackDamage: 20
   currentDamageValue: 0
-  rallyScale: 1
-  rallyDuration: 6
+  rallyScale: 0.35
+  rallyDuration: 3
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 65
@@ -354,7 +354,7 @@ MonoBehaviour:
   jumpAttackSwordPivotRotation: -40
   jumpAttackThrustSpeed: 12
   parryDuration: 0.2
-  riposteDamageBonus: 25
+  riposteDamageBonus: 20
 --- !u!61 &1051260131
 BoxCollider2D:
   m_ObjectHideFlags: 0

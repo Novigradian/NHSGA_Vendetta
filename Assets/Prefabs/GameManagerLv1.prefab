@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3441756883500648680}
   - component: {fileID: 3441756883500648682}
   - component: {fileID: 3441756883500648677}
+  - component: {fileID: 5842634757496021480}
   m_Layer: 0
   m_Name: GameManagerLv1
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   enemy: {fileID: 0}
   player: {fileID: 0}
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 3441756883500648682}
   minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
@@ -62,6 +63,8 @@ MonoBehaviour:
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
   isSceneTwo: 0
   killChoice: 
+  maxDamageModifier: 2
+  minDamageModifier: -4
 --- !u!114 &3441756883500648680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,8 +84,7 @@ MonoBehaviour:
   - "They\u2019re for yours. For all that you\u2019ve done.  "
   - Did you really think your past would never catch up to you?
   - No one can wash away their sins that easily.
-  - "That\u2019s why we've brought you here. That\u2019s what we\u2019re here to
-    remind you of."
+  - "That\u2019s why we've brought you here. "
   - This is our vendetta.
   preFightDialogueSpeakerList:
   - Enemy
@@ -145,12 +147,12 @@ MonoBehaviour:
   playerHeavyLungeChargeBar: {fileID: 0}
   fightTextUI: {fileID: 0}
   fightTextUIShowDuration: 4
+  staminaAndRallyText: {fileID: 5842634757496021480}
   parryTextUI: {fileID: 8018333474151425822, guid: 7f14291d7cc581141a3d35baf084022a, type: 3}
   riposteTextUI: {fileID: 414134676722091296, guid: 6c091332c4560d94caa8d2bdcc3a131e, type: 3}
   damageTextUI: {fileID: 6058835268198662534, guid: fde00fe4f5f05c746b8df480dc10877b, type: 3}
   blockTextUI: {fileID: 1249155006081439823, guid: 19bdff087aabc274c80f9a33cc2b6498, type: 3}
   critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}
-  outOfStaminaTextUI: {fileID: 0}
   fientTextUI: {fileID: 6078899087307618118, guid: 5604e1b2b591702438d686e7135ca890, type: 3}
   exclaimationTextUI: {fileID: 6648933288502072810, guid: 6d2c2df7e68391648891a74e8e163d8c, type: 3}
   showTextDuration: 0.75
@@ -175,3 +177,19 @@ MonoBehaviour:
   musicManager: {fileID: 0}
   isPaused: 0
   crossfadeAnim: {fileID: 0}
+--- !u!114 &5842634757496021480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441756881646033953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b15fc1f82b63a4ba879b13be6d4c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topTextPos: {x: -278, y: 145, z: 70}
+  bottomTextPos: {x: -278, y: 115, z: 70}
+  staminaText: {fileID: 0}
+  rallyText: {fileID: 0}

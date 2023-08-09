@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isSceneTwo;
     [HideInInspector] public string killChoice;
 
+    [SerializeField] private float maxDamageModifier;
+    [SerializeField] private float minDamageModifier;
+
     #endregion
 
     void Awake()
@@ -159,5 +162,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(15f);
         Destroy(particle);
+    }
+
+    public float RandomDamageModifier()
+    {
+        return Random.Range(minDamageModifier, maxDamageModifier);
     }
 }

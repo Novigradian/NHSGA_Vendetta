@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1812213232839424337}
   - component: {fileID: 1812213232839424338}
   - component: {fileID: 5510313816062045007}
+  - component: {fileID: 1812213232269693034}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   musicManager: {fileID: 0}
   tutorialPlayerController: {fileID: 0}
+  playerController: {fileID: 0}
   minimumPlayerDummyDistance: 5
   tutorialInstructionUI: {fileID: 0}
   tutorialInstructionText: {fileID: 0}
@@ -60,6 +62,8 @@ MonoBehaviour:
   - Hold and release [P] to lunge.<br>You are vulnerable while charging the lunge.
   - Press [Space] to jump.
   - Press [O] while jumping to jump attack.
+  - For a few seconds after taking damage, attack enemies to regain part of the damage
+    dealt as health.<br>Recover your lost health by attacking.
   - All your actions consume stamina, which regenerate over time.<br>Press [Enter]
     to continue.
   - Press [I] while the enemy is thrusting to parry.<br>Follow up with [O] for a
@@ -68,11 +72,11 @@ MonoBehaviour:
     continue.
   - Practice with the dummy, <br>or press [Enter] to exit.
   tutorialInstructionIndex: 0
-  instructionTasksCompletedList: 02000000020000000300000003000000010000000200000002000000
+  instructionTasksCompletedList: 0200000002000000030000000300000001000000020000000200000001000000
+  staminaAndRallyText: {fileID: 1812213232269693034}
   fientTextUI: {fileID: 6078899087307618118, guid: 5604e1b2b591702438d686e7135ca890, type: 3}
   damageTextUI: {fileID: 6058835268198662534, guid: fde00fe4f5f05c746b8df480dc10877b, type: 3}
   blockTextUI: {fileID: 1249155006081439823, guid: 19bdff087aabc274c80f9a33cc2b6498, type: 3}
-  outOfStaminaTextUI: {fileID: 0}
   riposteTextUI: {fileID: 0}
   critTextUI: {fileID: 8531675191559901565, guid: 89533970d7eaf854da9266f3bbbb981e, type: 3}
   showDamageTextDuration: 0.75
@@ -87,9 +91,8 @@ MonoBehaviour:
   playerDialogue: {fileID: 0}
   playerDialogueText: {fileID: 0}
   preTutorialDialogueList:
-  - 'Alas. Even in my dreams, this wretched past pursues me. '
+  - 'Even in my dreams, this wretched past pursues me. '
   - I remember it all, still.
-  - Good. I've remembered the basics.
   - This is how one kills. Even regret does not allow you to forget.
   preTutorialDialogueIndex: 0
   playerHeavyLungeChargeBarUI: {fileID: 0}
@@ -111,3 +114,19 @@ MonoBehaviour:
   musicManager: {fileID: 0}
   isPaused: 0
   crossfadeAnim: {fileID: 0}
+--- !u!114 &1812213232269693034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812213232839424339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b15fc1f82b63a4ba879b13be6d4c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topTextPos: {x: -278, y: 145, z: 70}
+  bottomTextPos: {x: -278, y: 115, z: 70}
+  staminaText: {fileID: 0}
+  rallyText: {fileID: 0}

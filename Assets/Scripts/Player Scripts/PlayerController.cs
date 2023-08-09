@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D swordPivotRb;
     private Collider2D swordCollider;
     private bool hasPlayed = false;
-    public Animator rallyAnimator;
+    
 
     public GameManager gameManager;
     public DialogueManager dialogueManager;
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Misc UI")]
     public PlayerHeavyLungeChargeBar playerHeavyLungeChargeBar;
+    public Animator rallyAnimator;
 
     [Header("Misc Particles")]
     public ParticleSystem stepLeftDustParticle;
@@ -987,6 +988,8 @@ public class PlayerController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        damage += gameManager.RandomDamageModifier();
+        
         UIManager.HideChargeBar();
         playerHealth -= damage;
         playerHealthBar.SetHealth(playerHealth);
@@ -1098,7 +1101,7 @@ public class PlayerController : MonoBehaviour
             playerStamina = 0f;
             isOutOfStamina = true;
             outOfStaminaColorTransition.isOutOfStamina = true;
-            UIManager.outOfStaminaTextUI.SetActive(true);
+            UIManager.staminaAndRallyText.ShowStaminaText();
         }
     }
     private IEnumerator RecoverStamina()
@@ -1106,7 +1109,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(playerStaminaRecoveryDelay);
         isOutOfStamina = false;
         outOfStaminaColorTransition.isOutOfStamina = false;
-        UIManager.outOfStaminaTextUI.SetActive(false);
+        UIManager.staminaAndRallyText.HideStaminaText();
         while (playerStamina < maxPlayerStamina)
         {
             playerStamina += playerStaminaRecoverySpeed;
@@ -1124,12 +1127,14 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(rallyDuration);
         isRallyOn = false;
+        UIManager.staminaAndRallyText.HideRallyText();
         rallyAnimator.Play("Idle");
     }
 
     private void ActivateRally()
     {
         isRallyOn = true;
+        UIManager.staminaAndRallyText.ShowRallyText();
         StopCoroutine(ResetRally());
         StartCoroutine(ResetRally());
     }
@@ -1137,8 +1142,12 @@ public class PlayerController : MonoBehaviour
     public void AddRallyHealth(float baseHealth)
     {
         rallyAnimator.Play("RallyHeal");
-        Debug.Log("Rally healed: " + baseHealth*rallyScale);
+        Debug.Log("Rally healed: " + baseHealth*rallyScale+ "base heal is:"+baseHealth);
         playerHealth += baseHealth * rallyScale;
+        if (playerHealth >= maxPlayerHealth)
+        {
+            playerHealth = maxPlayerHealth;
+        }
         playerHealthBar.SetHealth(playerHealth);
     }
     #endregion

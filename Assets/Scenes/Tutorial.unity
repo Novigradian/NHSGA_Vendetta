@@ -147,10 +147,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1812213232269693032}
-    - target: {fileID: 4062963932920939104, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4332311084366124873, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -300,6 +296,11 @@ GameObject:
 --- !u!1 &211364364 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7079391960193146275, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
+  m_PrefabInstance: {fileID: 211364359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &282392357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8777482455343952245, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
   m_PrefabInstance: {fileID: 211364359}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &391983879 stripped
@@ -550,9 +551,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1809749529}
     - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: rallyScale
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 633634165}
+    - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: rallyDuration
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: playerHealthBar
       value: 
@@ -897,6 +906,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1812213232269693034, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: rallyText
+      value: 
+      objectReference: {fileID: 282392357}
+    - target: {fileID: 1812213232269693034, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 211364363}
     - target: {fileID: 1812213232839424337, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -970,10 +987,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1243913386}
     - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: outOfStaminaTextUI
-      value: 
-      objectReference: {fileID: 211364363}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: playerDialogueText
       value: 
       objectReference: {fileID: 1868475485}
@@ -1001,30 +1014,6 @@ PrefabInstance:
       propertyPath: playerHeavyLungeChargeBarUI
       value: 
       objectReference: {fileID: 941418989}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.data[0]
-      value: 'Even in my dreams, this wretched past pursues me. '
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.data[1]
-      value: I remember it all, still.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.data[2]
-      value: This is how one kills. Even regret does not allow you to forget.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.data[3]
-      value: This is how one kills. Even regret does not allow you to forget.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.data[4]
-      value: This is how one kills. Even regret does not allow you to forget.
-      objectReference: {fileID: 0}
     - target: {fileID: 1812213232839424339, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: m_Name
       value: TutorialManager
@@ -1239,9 +1228,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7388930531778910787, guid: 1471b57113374004ab5f30186b428169, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d3fa934f285f547bd8d92aae95f4c6a1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1471b57113374004ab5f30186b428169, type: 3}

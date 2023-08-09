@@ -19,12 +19,13 @@ public class UIManager : MonoBehaviour
     public GameObject fightTextUI;
     [SerializeField] private float fightTextUIShowDuration;
 
+    public StaminaAndRallyText staminaAndRallyText;
+
     public GameObject parryTextUI;
     public GameObject riposteTextUI;
     public GameObject damageTextUI;
     public GameObject blockTextUI;
     public GameObject critTextUI;
-    public GameObject outOfStaminaTextUI;
     public GameObject fientTextUI;
     public GameObject exclaimationTextUI;
     //private RectTransform parryTextRectTransform;

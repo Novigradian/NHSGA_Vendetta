@@ -36,12 +36,15 @@ public class TutorialManager : MonoBehaviour
     //[SerializeField] private float showNextInstructionWaitDuration;
 
     [Header("Text")]
+    public StaminaAndRallyText staminaAndRallyText;
+
     public GameObject fientTextUI;
     public GameObject damageTextUI;
     public GameObject blockTextUI;
-    public GameObject outOfStaminaTextUI;
+    //public GameObject outOfStaminaTextUI;
     public GameObject riposteTextUI;
     public GameObject critTextUI;
+    //public GameObject rallyTextUI;
     [SerializeField] private float showDamageTextDuration;
     [SerializeField] private float showTextDuration;
     private RectTransform riposteTextRectTransform;
@@ -112,10 +115,10 @@ public class TutorialManager : MonoBehaviour
     {
         if (gameState== "PreTutorialDialogue")
         {
-            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
+            if (kb.enterKey.wasPressedThisFrame)
             {
                 preTutorialDialogueIndex++;
-                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-2)
+                if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
                 {
                     anim.SetTrigger("returnToIdle");
                     ShowPreTutorialDialogue(preTutorialDialogueIndex);
@@ -141,7 +144,12 @@ public class TutorialManager : MonoBehaviour
             if (tutorialInstructionIndex < tutorialInstructionList.Length - 4)
             {
                 ShowInstruction(tutorialInstructionIndex);
-                
+                if (tutorialInstructionIndex == 7)
+                {
+                    playerController.TakeHitDamage(20f);
+                    playerController.isRallyOn = true;
+                    staminaAndRallyText.ShowRallyText();
+                }
             }
             else
             {
@@ -158,6 +166,7 @@ public class TutorialManager : MonoBehaviour
                 if (tutorialInstructionIndex < tutorialInstructionList.Length - 1)
                 {
                     ShowSpecialInstruction(tutorialInstructionIndex);
+                    
                 }
                 else
                 {
@@ -177,24 +186,16 @@ public class TutorialManager : MonoBehaviour
         else if (gameState == "PostTutorialDialogue")
         {
             playerController.ResetToIdle();
-            if (kb.anyKey.wasPressedThisFrame && (!kb.escapeKey.wasPressedThisFrame))
+            if (kb.enterKey.wasPressedThisFrame)
             {
-                postTutorialDialogueCount++;
-                if (postTutorialDialogueCount == 1)
-                {
-                    ShowPreTutorialDialogue(3);
-                }
-                else
-                {
-                    currentCoroutine = null;
-                    gameState = "Practice";
-                    tutorialInstructionUI.SetActive(true);
-                    dialogueVolume.SetActive(false);
-                    playerDialogue.SetActive(false);
-                    postDialogueVolume.SetActive(true);
+                currentCoroutine = null;
+                gameState = "Practice";
+                tutorialInstructionUI.SetActive(true);
+                dialogueVolume.SetActive(false);
+                playerDialogue.SetActive(false);
+                postDialogueVolume.SetActive(true);
 
-                    musicManager.EndMuffle();
-                }
+                musicManager.EndMuffle();
             }
         }
         else if (gameState == "Practice")

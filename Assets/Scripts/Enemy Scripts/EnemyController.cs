@@ -699,6 +699,8 @@ public class EnemyController : MonoBehaviour
 
     private void TakeHitDamage(float damage)
     {
+        damage += gameManager.RandomDamageModifier();
+
         animator.Play("GetHit");
         gameManager.SpawnRightBloodParticle(transform.position);
         enemyHealth -= damage;
@@ -1057,7 +1059,7 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     chanceDict["shuffleRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness);
-                    chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness) * difficulty;
+                    chanceDict["stepRightChance"] += playerLightAttackRetreatChance * (2f - aggressiveness) * difficulty*4f;
                     
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)

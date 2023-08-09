@@ -337,10 +337,11 @@ MonoBehaviour:
   controllerTransform: {fileID: 483007521}
   audioManager: {fileID: 0}
   playerHeavyLungeChargeBar: {fileID: 0}
+  rallyAnimator: {fileID: 0}
   stepLeftDustParticle: {fileID: 7501227899311516241}
   stepRightDustParticle: {fileID: 7501227898530542104}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 90
+  maxPlayerHealth: 100
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
   playerHeavyLungeBaseDamage: 12
@@ -348,8 +349,8 @@ MonoBehaviour:
   playerHeavyLungeDamage: 0
   playerJumpAttackDamage: 20
   currentDamageValue: 0
-  rallyScale: 0.33
-  rallyDuration: 4
+  rallyScale: 0.35
+  rallyDuration: 3
   isRallyOn: 0
   playerStaminaBar: {fileID: 0}
   maxPlayerStamina: 65
