@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
     private RectTransform canvasRectTransform;
 
     public MusicManager musicManager;
+    public AudioManager audioManager;
 
     public TutorialPlayerController tutorialPlayerController;
 
@@ -89,6 +90,7 @@ public class TutorialManager : MonoBehaviour
         instructionTasksCompleted = 0;
 
         playerController = FindObjectOfType<TutorialPlayerController>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         playerDialogue.SetActive(false);
         preTutorialDialogueIndex = 0;
@@ -118,6 +120,7 @@ public class TutorialManager : MonoBehaviour
             if (kb.enterKey.wasPressedThisFrame)
             {
                 preTutorialDialogueIndex++;
+                audioManager.Play("DialogueContinue");
                 if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
                 {
                     anim.SetTrigger("returnToIdle");

@@ -213,7 +213,6 @@ public class PlayerController : MonoBehaviour
 
         //Debug.Log(state);
         CheckCanMoveTowardsEnemy();
-
         string gameState = gameManager.gameState;
         if (gameState == "Fight")
         {
@@ -1004,6 +1003,7 @@ public class PlayerController : MonoBehaviour
         gameManager.getHitVolume.SetActive(true);
         if(playerHealth <= 20)
         {
+            musicManager.StartMuffle();
             audioManager.Play("LowHP");
         }
         gameManager.ResetGetHitUI();
@@ -1160,6 +1160,7 @@ public class PlayerController : MonoBehaviour
         if (playerHealth >= 20f)
         {
             gameManager.getHitVolume.SetActive(false);
+            musicManager.EndMuffle();
         }
         if (playerHealth >= maxPlayerHealth)
         {

@@ -773,7 +773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62093bc49f17c48cdb72a36b33ec79f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoTime: 24.8
+  sceneName: Level1
+  videoTime: 25
 --- !u!1 &1026290459
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject combatVolume;
     public GameObject mysteriousVoiceVolume;
 
+    public MusicManager musicManager;
+
     [SerializeField] private float getHitVolumeShowDuration;
 
     public GameObject leftBloodParticlePrefab;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
         #region Initialize Variables
         uiManager = FindObjectOfType<UIManager>();
         audioManager = FindObjectOfType<AudioManager>();
+        musicManager = FindObjectOfType<MusicManager>();
         hasPlayed = false;
         if (SceneManager.GetActiveScene().name == "Level2")
         {
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
             if (!hasPlayed)
             {
                 audioManager.Play("Victory");
+                musicManager.StartMuffle();
                 hasPlayed = true;
             }
             if (kb.rKey.wasPressedThisFrame)
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
             if (!hasPlayed)
             {
                 audioManager.Play("Defeat");
+                musicManager.StartMuffle();
                 hasPlayed = true;
             }
             
@@ -149,7 +154,7 @@ public class GameManager : MonoBehaviour
         {
             getHitVolume.SetActive(false);
         }
-        
+
     }
 
     public void SpawnLeftBloodParticle(Vector3 WorldPos)

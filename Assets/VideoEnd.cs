@@ -7,6 +7,7 @@ public class VideoEnd : MonoBehaviour
 {
     // Start is called before the first frame update
     private float timer;
+    public string sceneName;
     [SerializeField] private float videoTime;
     void Start()
     {
@@ -19,7 +20,7 @@ public class VideoEnd : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= videoTime)
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

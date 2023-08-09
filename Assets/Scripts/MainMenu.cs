@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject selectTutorialMenu;
     public GameObject creditsMenu;
     public Animator crossfadeAnim;
+    public AudioManager audioManager;
 
     // Update is called once per frame
     void Update()
@@ -21,16 +22,19 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         selectTutorialMenu.SetActive(true);
+        audioManager.Play("UI");
     }
 
     public void StartTutorial()
     {
         StartCoroutine(BeginLoadScene(1));
+        audioManager.Play("UI");
     }
 
     public void SkipTutorial()
     {
         StartCoroutine(BeginLoadScene(6));
+        audioManager.Play("UI");
     }
 
     private IEnumerator BeginLoadScene(int index)
@@ -46,11 +50,13 @@ public class MainMenu : MonoBehaviour
     public void ShowCredits()
     {
         creditsMenu.SetActive(true);
+        audioManager.Play("UI");
     }
 
     public void HideCredits()
     {
         creditsMenu.SetActive(false);
+        audioManager.Play("UI");
     }
 
     #endregion

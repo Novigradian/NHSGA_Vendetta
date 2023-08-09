@@ -51,12 +51,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Dash
-    clip: {fileID: 8300000, guid: 0e7bea3b5a77d4309b65340ca8536282, type: 3}
+    clip: {fileID: 8300000, guid: 0ec301dcd7c9a4cb28c8f5a264bfa71f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: LightAttack
-    clip: {fileID: 8300000, guid: 7b3ac5527f8e94fee8e76b6b1e367fa9, type: 3}
+    clip: {fileID: 8300000, guid: f4687f5fcbc8941869917fa461c38803, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -71,27 +71,27 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Parry
-    clip: {fileID: 8300000, guid: ce1b963d0e980478d8a1e8fb83c1360e, type: 3}
+    clip: {fileID: 8300000, guid: 75a39dea572c3407abc08d38535df549, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: HeavyHit
-    clip: {fileID: 8300000, guid: 1b8ad7c7edf8b457199912e01f5e7f47, type: 3}
+    clip: {fileID: 8300000, guid: 7b1f84f85ec9b4e5cbb9846196f01107, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: LightHit
-    clip: {fileID: 8300000, guid: 5ab5136c400a74f8585dee1c7f104fd8, type: 3}
+    clip: {fileID: 8300000, guid: 06c3e089e9e944225a834213fa3c772f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: JumpAttack
-    clip: {fileID: 8300000, guid: 8f2807b5266ff4d308567e29acc9de4a, type: 3}
+    clip: {fileID: 8300000, guid: 2afed7e281b4c46718f56825c8a3db35, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: HeavyCharge
-    clip: {fileID: 8300000, guid: fa2569aec51d0496c91a167e0ed01523, type: 3}
+    clip: {fileID: 8300000, guid: 525c289a5f55d4ae4a1a5095d54aa75f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -151,12 +151,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: DialogueContinue
-    clip: {fileID: 8300000, guid: 84406fd3c43b84f539878a5f03cc06a7, type: 3}
+    clip: {fileID: 8300000, guid: 7a2326872db6745d4b3995eac4cb0465, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: Rally
-    clip: {fileID: 8300000, guid: da403ccc8025e451b926e5cf4a2bee5f, type: 3}
+    clip: {fileID: 8300000, guid: a579d2b4371dd4f5a889f474702f9a30, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -186,7 +186,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Defeat
-    clip: {fileID: 8300000, guid: cf1a9c5b5a90740f6bd0bc90e45ddbcb, type: 3}
+    clip: {fileID: 8300000, guid: 68856c8e722394271a738411daeebfd2, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

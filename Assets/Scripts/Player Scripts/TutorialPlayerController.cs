@@ -272,7 +272,6 @@ public class TutorialPlayerController : MonoBehaviour
                 #region Heavy Attack Actions and Transitions
                 case PlayerState.heavyLungeWindup:
                     animator.Play("HeavyWindup");
-                    audioManager.Play("HeavyCharge");
                     HeavyLungeWindupActions();
                     HeavyLungeWindupTransitions();
                     break;
@@ -860,6 +859,11 @@ public class TutorialPlayerController : MonoBehaviour
         {
             playerHeavyLungeChargeBar.ChangeColor();
         }
+        if (!hasPlayed)
+        {
+            audioManager.Play("HeavyCharge");
+            hasPlayed = true;
+        }
         swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
     }
 
@@ -869,6 +873,7 @@ public class TutorialPlayerController : MonoBehaviour
         if (kb.pKey.wasReleasedThisFrame)
         {
             tutorialManager.HideChargeBar();
+            hasPlayed = false;
             if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
             {
                 swordCollider.enabled = true;
@@ -1027,7 +1032,7 @@ public class TutorialPlayerController : MonoBehaviour
 
     private IEnumerator GetHit()
     {
-        audioManager.Play("LightDamageHit");
+        audioManager.Play("LightHit");
         animator.Play("GetHit");
         
         yield return new WaitForSeconds(getHitStunDuration);
@@ -1141,6 +1146,7 @@ public class TutorialPlayerController : MonoBehaviour
             isOutOfStamina = true;
             outOfStaminaColorTransition.isOutOfStamina = true;
             tutorialManager.staminaAndRallyText.ShowStaminaText();
+            audioManager.Play("LowStamina");
         }
     }
     private IEnumerator RecoverStamina()
@@ -1177,7 +1183,8 @@ public class TutorialPlayerController : MonoBehaviour
 
     public void AddRallyHealth(float baseHealth)
     {
-        //rallyAnimator.Play("RallyHeal");
+        rallyAnimator.Play("RallyHeal");
+        audioManager.Play("Rally");
         playerHealth += baseHealth * rallyScale;
         if (playerHealth >= maxPlayerHealth)
         {
