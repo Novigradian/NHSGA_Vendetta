@@ -1464,6 +1464,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1983592649878610745, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_text
+      value: '???
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 4994726706988342436, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1483,6 +1489,10 @@ PrefabInstance:
     - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391959402958831, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_text
+      value: Daniel D'Angelo
       objectReference: {fileID: 0}
     - target: {fileID: 7079391960005761757, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
