@@ -8,10 +8,6 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
     void Start()
     {
-        
-    }
-    private void Awake()
-    {
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -21,16 +17,16 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
         }
     }
+    private void Awake()
+    {
+        
+    }
 
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         Debug.Log(name);
-        if (name == "Parry")
-        {
-            s.source.Play();
-        }
-        else if (!s.source.isPlaying)
+        if (!s.source.isPlaying)
         {
             s.source.Play();
         }

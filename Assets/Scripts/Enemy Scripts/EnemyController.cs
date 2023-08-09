@@ -43,7 +43,6 @@ public class EnemyController : MonoBehaviour
     public Transform controllerTransform;
     public AudioManager audioManager;
     private int block;
-    private bool hasPlayed;
     public float shuffleTransitionDistance;
 
     [Header("Misc Particles")]
@@ -186,7 +185,6 @@ public class EnemyController : MonoBehaviour
         direction = -1f;
         enemyLightAttackBaseDamage = enemyLightAttackDamage;
         baseHeavyLungeThrustSpeed = heavyLungeThrustSpeed;
-        hasPlayed = false;
 
         controllerTransform = this.gameObject.transform.GetChild(2);
         animator = controllerTransform.GetComponent<Animator>();
@@ -345,6 +343,7 @@ public class EnemyController : MonoBehaviour
         if (canMoveTowardsEnemy)
         {
             //animator.Play("StepLeft");
+            //audioManager.Play("BossDash");
             rb.position += Vector2.left * Time.deltaTime * stepSpeed;
         }
     }
@@ -365,6 +364,7 @@ public class EnemyController : MonoBehaviour
     private void StepRightActions()
     {
         //animator.Play("StepRight");
+        //audioManager.Play("BossDash");
         rb.position += Vector2.right * Time.deltaTime * stepSpeed;
     }
 
@@ -441,11 +441,11 @@ public class EnemyController : MonoBehaviour
         //{
         // rb.position += Vector2.left * Time.deltaTime * jumpHorizontalSpeed;
         //}
-        if (!hasPlayed)
-        {
-            //animator.Play("Jump");
-            hasPlayed = true;
-        }
+        //if (!hasPlayed)
+        //{
+        //    //animator.Play("Jump");
+        //    hasPlayed = true;
+        //}
     }
 
     private void JumpTransitions()
@@ -492,7 +492,7 @@ public class EnemyController : MonoBehaviour
         if (!isParrying)
         {
             animator.Play("LightAttack");
-            audioManager.Play("LightAttack");
+            audioManager.Play("BossLightAttack");
             rb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.1f;
             swordRb.position += Vector2.right * -direction * Time.deltaTime * lightAttackWindupSpeed * 0.7f;
         }
@@ -590,7 +590,7 @@ public class EnemyController : MonoBehaviour
         //StartCoroutine(HeavyLungeCoroutine());
         if (canMoveTowardsEnemy)
         {
-            audioManager.Play("HeavyAttack");
+            audioManager.Play("BossHeavy");
             animator.Play("HeavyAttack");
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             
@@ -816,7 +816,7 @@ public class EnemyController : MonoBehaviour
             if(state == EnemyState.jump)
             {
                 animator.Play("Land");
-                hasPlayed = false;
+                audioManager.Play("Land");
             }
             state = EnemyState.idle;
 
@@ -826,10 +826,6 @@ public class EnemyController : MonoBehaviour
             swordCollider.enabled = false;
 
             isGrounded = true;
-            if(state == EnemyState.jump)
-            {
-                animator.Play("Land");
-            }
         }
     }
     #endregion
@@ -849,6 +845,7 @@ public class EnemyController : MonoBehaviour
                 if (playerState == PlayerController.PlayerState.lightAttack)
                 {
                     TakeHitDamage(playerController.playerLightAttackDamage);
+                    audioManager.Play("BossLightHit");
                     if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
                     {
                         UIManager.ShowRiposteText(player.transform.position);
@@ -858,10 +855,12 @@ public class EnemyController : MonoBehaviour
                 {
                     UIManager.ShowCritText(transform.position);
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
+                    audioManager.Play("BossHeavyHit");
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
                     TakeHitDamage(playerController.playerJumpAttackDamage);
+                    audioManager.Play("BossLightHit");
                 }
             }
             #endregion
@@ -876,15 +875,18 @@ public class EnemyController : MonoBehaviour
                     {
                         UIManager.ShowRiposteText(player.transform.position);
                         TakeHitDamage(playerController.playerLightAttackDamage);
+                        audioManager.Play("BossHeavyHit");
                     }
                     else
                     {
                         TakeBlockDamage(playerController.playerLightAttackDamage);
+                        audioManager.Play("Block");
                     }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
                     TakeBlockDamage(playerController.playerJumpAttackDamage);
+                    audioManager.Play("Block");
                 }
                 else if (playerState == PlayerController.PlayerState.heavyLunge && !(state == EnemyState.jump))
                 {
@@ -928,6 +930,7 @@ public class EnemyController : MonoBehaviour
                 {
                     TakeHitDamage(playerController.playerHeavyLungeDamage);
                     UIManager.ShowCritText(transform.position);
+                    audioManager.Play("BossHeavyHit");
                 }
             }
             #endregion
@@ -959,12 +962,14 @@ public class EnemyController : MonoBehaviour
                     {
                         UIManager.ShowRiposteText(player.transform.position);
                     }
+                    audioManager.Play("BossLightHit");
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)
                 {
                     enemyHealth -= playerController.playerJumpAttackDamage;
                     enemyHealthBar.SetHealth(enemyHealth);
                     UIManager.ShowDamageText(transform.position, playerController.playerJumpAttackDamage);
+                    audioManager.Play("BossLightHit");
                 }
                 else if (playerState == PlayerController.PlayerState.heavyLunge)
                 {
@@ -972,6 +977,7 @@ public class EnemyController : MonoBehaviour
                     enemyHealthBar.SetHealth(enemyHealth);
                     UIManager.ShowDamageText(transform.position, playerController.playerHeavyLungeDamage);
                     UIManager.ShowCritText(transform.position);
+                    audioManager.Play("BossHeavyHit");
                 }
                 
             }
@@ -1140,6 +1146,7 @@ public class EnemyController : MonoBehaviour
             stateToEnter = "";
             stepLeftDustParticle.Play();
             animator.Play("StepLeft");
+            audioManager.Play("BossDash");
         }
         else if (stateToEnter == "shuffleRightChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
@@ -1156,6 +1163,7 @@ public class EnemyController : MonoBehaviour
             stateToEnter = "";
             stepRightDustParticle.Play();
             animator.Play("StepRight");
+            audioManager.Play("BossDash");
         }
         else if (stateToEnter == "idleChance" && isGrounded && isAbleToChangeDirection && !isParrying)
         {
@@ -1170,6 +1178,7 @@ public class EnemyController : MonoBehaviour
             Debug.Log("switched to light attack");
             stateToEnter = "";
             swordRb.isKinematic = false;
+            audioManager.Play("BossLightAttack");
             if (enemyLightAttackDamage != enemyLightAttackBaseDamage)
             {
                 StartCoroutine(ShowEnemyRiposteText());
@@ -1199,6 +1208,7 @@ public class EnemyController : MonoBehaviour
         {
             state = EnemyState.jumpAttack;
             Debug.Log("switched to jump attack");
+            audioManager.Play("BossJumpAttack");
             stateToEnter = "";
             swordPivot.localEulerAngles = new Vector3(0f, 0f, jumpAttackSwordPivotRotation);
             swordRb.isKinematic = false;

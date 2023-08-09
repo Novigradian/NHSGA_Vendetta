@@ -976,7 +976,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator GetHit()
     {
-        audioManager.Play("LightDamageHit");
+        audioManager.Play("LightHit");
         animator.Play("GetHit");
         
         yield return new WaitForSeconds(getHitStunDuration);
@@ -1189,7 +1189,6 @@ public class PlayerController : MonoBehaviour
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
                     TakeHitDamage(enemyController.enemyLightAttackDamage);
-                    
                 }
                 else if(enemyState == EnemyController.EnemyState.heavyLunge && !(state == PlayerState.jump))
                 {
@@ -1209,14 +1208,17 @@ public class PlayerController : MonoBehaviour
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
                     TakeBlockDamage(enemyController.enemyLightAttackDamage);
+                    audioManager.Play("Block");
                 }
                 else if(enemyState == EnemyController.EnemyState.jumpAttack)
                 {
                     TakeBlockDamage(enemyController.enemyJumpAttackDamage);
+                    audioManager.Play("Block");
                 }
                 else if (enemyState == EnemyController.EnemyState.heavyLunge)
                 {
                     TakeHitDamage(enemyController.enemyHeavyLungeDamage);
+                    audioManager.Play("HeavyHit");
                 }
             }
             #endregion
@@ -1286,21 +1288,21 @@ public class PlayerController : MonoBehaviour
             {
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
-                    audioManager.Play("LightDamageHit");
+                    audioManager.Play("LightHit");
                     playerHealth -= enemyController.enemyLightAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyLightAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
-                    audioManager.Play("LightDamageHit");
+                    audioManager.Play("LightHit");
                     playerHealth -= enemyController.enemyJumpAttackDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyJumpAttackDamage);
                 }
                 else if (enemyState == EnemyController.EnemyState.heavyLunge)
                 {
-                    audioManager.Play("HeavyDamageHit");
+                    audioManager.Play("HeavyHit");
                     playerHealth -= enemyController.enemyHeavyLungeDamage;
                     playerHealthBar.SetHealth(playerHealth);
                     UIManager.ShowDamageText(transform.position, enemyController.enemyHeavyLungeDamage);
