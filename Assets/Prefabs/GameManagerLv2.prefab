@@ -52,12 +52,14 @@ MonoBehaviour:
   enemy: {fileID: 0}
   player: {fileID: 0}
   uiManager: {fileID: 3539506281630315049}
+  audioManager: {fileID: 0}
   minimumPlayerEnemyDistance: 5
   gameState: 
   dialogueVolume: {fileID: 0}
   getHitVolume: {fileID: 0}
   combatVolume: {fileID: 0}
   mysteriousVoiceVolume: {fileID: 0}
+  musicManager: {fileID: 0}
   getHitVolumeShowDuration: 0.5
   leftBloodParticlePrefab: {fileID: 6695513537136403623, guid: 0b3661dbae981e54690fa61b17810d04, type: 3}
   rightBloodParticlePrefab: {fileID: 3200831116821055159, guid: 4522086381d68a1419b35af15ff31fd3, type: 3}
@@ -78,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicManager: {fileID: 0}
+  audioManager: {fileID: 0}
   mysteriousVoiceDialogueList:
   - Alas, I must do everything myself.
   preFightDialogueSpeakerList:
@@ -130,8 +133,7 @@ MonoBehaviour:
   - Player
   - Enemy
   enemyWinDialogueList:
-  - You lived without honor, and deserve none in death.
-  - "May you rot in hell for all of the souls you\u2019ve taken from this world. "
+  - Farewell, brother.
   playerDialogue: {fileID: 0}
   playerDialogueText: {fileID: 0}
   enemyDialogue: {fileID: 0}
@@ -189,6 +191,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   controlsMenu: {fileID: 0}
   musicManager: {fileID: 0}
+  audioManager: {fileID: 0}
   isPaused: 0
   crossfadeAnim: {fileID: 0}
 --- !u!114 &1129440223
