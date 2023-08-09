@@ -565,7 +565,7 @@ public class EnemyController : MonoBehaviour
     public IEnumerator HeavyLungeWindupCoroutine()
     {
         animator.Play("HeavyWindup");
-        
+        audioManager.Play("BossHeavyCharge");
         yield return new WaitForSeconds(heavyLungeWindupTime);
         
         if (state == EnemyState.heavyLungeWindup)
@@ -789,6 +789,7 @@ public class EnemyController : MonoBehaviour
         {
             playerController.ResetToIdle();
             animator.Play("Death");
+            audioManager.Play("BossDeath");
             enemyHealth = 0f;
             state = EnemyState.dead;
             playerController.ResetToIdle();
@@ -849,6 +850,7 @@ public class EnemyController : MonoBehaviour
                     if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
                     {
                         UIManager.ShowRiposteText(player.transform.position);
+                        audioManager.Play("Riposte");
                     }
                 }
                 else if (playerState == PlayerController.PlayerState.heavyLunge && !(state == EnemyState.jump))
@@ -876,6 +878,7 @@ public class EnemyController : MonoBehaviour
                         UIManager.ShowRiposteText(player.transform.position);
                         TakeHitDamage(playerController.playerLightAttackDamage);
                         audioManager.Play("BossHeavyHit");
+                        audioManager.Play("Riposte");
                     }
                     else
                     {
@@ -904,6 +907,7 @@ public class EnemyController : MonoBehaviour
                     if (playerController.playerLightAttackDamage != playerController.playerLightAttackBaseDamage)
                     {
                         UIManager.ShowRiposteText(player.transform.position);
+                        audioManager.Play("Riposte");
                     }
                 }
                 else if (playerState == PlayerController.PlayerState.jumpAttack)

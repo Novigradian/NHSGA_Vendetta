@@ -270,7 +270,6 @@ public class PlayerController : MonoBehaviour
                 #region Heavy Attack Actions and Transitions
                 case PlayerState.heavyLungeWindup:
                     animator.Play("HeavyWindup");
-                    audioManager.Play("HeavyCharge");
                     HeavyLungeWindupActions();
                     HeavyLungeWindupTransitions();
                     break;
@@ -335,6 +334,7 @@ public class PlayerController : MonoBehaviour
         animator.Play("Idle");
         ResetSwordPosition();
         swordRb.isKinematic = true;
+        hasPlayed = false;
     }
 
     private void IdleTransitions()
@@ -814,6 +814,11 @@ public class PlayerController : MonoBehaviour
             playerHeavyLungeChargeBar.ChangeColor();
         }
         swordRb.position += Vector2.right * -direction * Time.deltaTime * heavyLungeWindupSpeed;
+        if (!hasPlayed)
+        {
+            audioManager.Play("HeavyCharge");
+            hasPlayed = true;
+        }
     }
 
     private void HeavyLungeWindupTransitions()
@@ -821,6 +826,7 @@ public class PlayerController : MonoBehaviour
         
         if (kb.pKey.wasReleasedThisFrame)
         {
+            hasPlayed = true;
             UIManager.HideChargeBar();
             if (heavyLungeWindupTime >= heavyLungeMinimumWindupTime)
             {
@@ -976,7 +982,6 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator GetHit()
     {
-        audioManager.Play("LightHit");
         animator.Play("GetHit");
         
         yield return new WaitForSeconds(getHitStunDuration);
@@ -997,10 +1002,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("hit, remaining health: "+playerHealth+" damage dealt was: "+damage);
         UIManager.ShowDamageText(transform.position, damage);
         gameManager.getHitVolume.SetActive(true);
+        if(playerHealth <= 20)
+        {
+            audioManager.Play("LowHP");
+        }
         gameManager.ResetGetHitUI();
         state = PlayerState.getHit;
         stepLeftDustParticle.Stop();
         stepRightDustParticle.Stop();
+        StartCoroutine(getHitAudioStop());
 
         ActivateRally();
         CheckDead();
@@ -1100,6 +1110,7 @@ public class PlayerController : MonoBehaviour
         {
             playerStamina = 0f;
             isOutOfStamina = true;
+            audioManager.Play("LowStamina");
             outOfStaminaColorTransition.isOutOfStamina = true;
             UIManager.staminaAndRallyText.ShowStaminaText();
         }
@@ -1142,6 +1153,8 @@ public class PlayerController : MonoBehaviour
     public void AddRallyHealth(float baseHealth)
     {
         rallyAnimator.Play("RallyHeal");
+        audioManager.Play("Rally");
+        audioManager.Stop("LowHP");
         Debug.Log("Rally healed: " + baseHealth*rallyScale+ "base heal is:"+baseHealth);
         playerHealth += baseHealth * rallyScale;
         if (playerHealth >= maxPlayerHealth)
@@ -1189,15 +1202,18 @@ public class PlayerController : MonoBehaviour
                 if (enemyState == EnemyController.EnemyState.lightAttack)
                 {
                     TakeHitDamage(enemyController.enemyLightAttackDamage);
+                    audioManager.Play("LightHit");
                 }
                 else if(enemyState == EnemyController.EnemyState.heavyLunge && !(state == PlayerState.jump))
                 {
                     TakeHitDamage(enemyController.enemyHeavyLungeDamage);
+                    audioManager.Play("HeavyHit");
                     UIManager.ShowCritText(transform.position);
                 }
                 else if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
                     TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                    audioManager.Play("LightHit");
                 }
             }
             #endregion
@@ -1229,10 +1245,12 @@ public class PlayerController : MonoBehaviour
                 if(enemyState == EnemyController.EnemyState.lightAttack)
                 {
                     TakeHitDamage(enemyController.enemyLightAttackDamage);
+                    audioManager.Play("LightHit");
                 }
                 else if (enemyState == EnemyController.EnemyState.jumpAttack)
                 {
                     TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                    audioManager.Play("LightHit");
                 }
             }
             #endregion
@@ -1256,11 +1274,13 @@ public class PlayerController : MonoBehaviour
                 else if(enemyState == EnemyController.EnemyState.jumpAttack)
                 {
                     TakeHitDamage(enemyController.enemyJumpAttackDamage);
+                    audioManager.Play("LightHit");
                 }
                 else if (enemyState == EnemyController.EnemyState.heavyLunge)
                 {
                     TakeHitDamage(enemyController.enemyHeavyLungeDamage);
                     UIManager.ShowCritText(transform.position);
+                    audioManager.Play("HeavyHit");
                 }
             }
             #endregion
@@ -1376,5 +1396,12 @@ public class PlayerController : MonoBehaviour
                 bufferState = "Parry";
             }
         
+    }
+
+    private IEnumerator getHitAudioStop()
+    {
+        yield return new WaitForSeconds(1);
+        audioManager.Stop("LightHit");
+        audioManager.Stop("HeavyHit");
     }
 }

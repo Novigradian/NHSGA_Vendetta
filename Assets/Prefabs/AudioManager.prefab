@@ -91,7 +91,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: HeavyCharge
-    clip: {fileID: 8300000, guid: 90bfeaf5240794d8094e5bdab6d42775, type: 3}
+    clip: {fileID: 8300000, guid: fa2569aec51d0496c91a167e0ed01523, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -101,72 +101,92 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Cancel
-    clip: {fileID: 8300000, guid: 6a6845e07b45841acaa1e656bf3f050d, type: 3}
+    clip: {fileID: 8300000, guid: 17e15c166567b43fa9176fd9f52b485f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - name: BossHeavy
-    clip: {fileID: 8300000, guid: 92f2044835bf54b4abf69d39cf440d58, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: BossLightHit
-    clip: {fileID: 8300000, guid: 3b26fa36a3d83410ab6ced12116972da, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: BossHeavyHit
-    clip: {fileID: 8300000, guid: df85e0ca9b3ee40279e5e271104b988c, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: BossJumpAttack
-    clip: {fileID: 8300000, guid: 7df03fffac8fe4ebeaf0368d248d9343, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: Land
-    clip: {fileID: 8300000, guid: 9ca8ba1599c2a433d8a0af16eaa4f786, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: BossLightAttack
-    clip: {fileID: 8300000, guid: 92cfb7ab032844a9da8efe2345e08efd, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: BossDash
-    clip: {fileID: 8300000, guid: 0362b06ba6eff446e8aae1c029f59ba5, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: EnemyHeavy
     clip: {fileID: 8300000, guid: c9b687dfa9e394efbb42c213fd0333b1, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: EnemyHeavyHit
-    clip: {fileID: 8300000, guid: 4b995e5f11cc44682877ea2d3a8ffa07, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: EnemyLightHit
+  - name: BossLightHit
     clip: {fileID: 8300000, guid: 2e0953b813f3a4df5a0ff354bb6c3569, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: EnemyJumpAttack
+  - name: BossHeavyHit
+    clip: {fileID: 8300000, guid: 4b995e5f11cc44682877ea2d3a8ffa07, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossJumpAttack
     clip: {fileID: 8300000, guid: b1c0fcf3e1b3b41bc8763f32e6587843, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: EnemyLightAttack
+  - name: Land
+    clip: {fileID: 8300000, guid: 7da547239abcb4d138c7435d531d3261, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossLightAttack
     clip: {fileID: 8300000, guid: 1b6cb3ed1cded4e5b909c2fff5ffe733, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: EnemyDash
+  - name: BossDash
     clip: {fileID: 8300000, guid: 754fb9b88d4d241eb95845e4abd17ae4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossHeavyCharge
+    clip: {fileID: 8300000, guid: a2971b5088764432daad9000c71b5f41, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: c56e29b2ca34d47d4a802a9af00c4fd5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: DialogueContinue
+    clip: {fileID: 8300000, guid: 84406fd3c43b84f539878a5f03cc06a7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Rally
+    clip: {fileID: 8300000, guid: da403ccc8025e451b926e5cf4a2bee5f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Riposte
+    clip: {fileID: 8300000, guid: 424fef2c526d8427d88f7605f9879922, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: ffff3d582156841f097927b47bceb2a7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: LowHP
+    clip: {fileID: 8300000, guid: 5456c5a41301b4718baf0416c52684ce, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: LowStamina
+    clip: {fileID: 8300000, guid: 2bf3ff5dbd4034045b0ac4cee8b2f812, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: UI
+    clip: {fileID: 8300000, guid: cf1a9c5b5a90740f6bd0bc90e45ddbcb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Defeat
+    clip: {fileID: 8300000, guid: cf1a9c5b5a90740f6bd0bc90e45ddbcb, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

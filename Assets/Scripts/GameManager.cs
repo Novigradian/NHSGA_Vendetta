@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
 
     public UIManager uiManager;
+    public AudioManager audioManager;
 
     public float minimumPlayerEnemyDistance;
 
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public bool isSceneTwo;
     [HideInInspector] public string killChoice;
-
+    private bool hasPlayed;
     [SerializeField] private float maxDamageModifier;
     [SerializeField] private float minDamageModifier;
 
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
     {
         #region Initialize Variables
         uiManager = FindObjectOfType<UIManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+        hasPlayed = false;
         if (SceneManager.GetActiveScene().name == "Level2")
         {
             isSceneTwo = true;
@@ -71,7 +74,6 @@ public class GameManager : MonoBehaviour
             
         }
         
-        
 
         kb = Keyboard.current;
         #endregion
@@ -82,6 +84,11 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == "PlayerWin")
         {
+            if (!hasPlayed)
+            {
+                audioManager.Play("Victory");
+                hasPlayed = true;
+            }
             if (kb.rKey.wasPressedThisFrame)
             {
                 if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
@@ -100,6 +107,12 @@ public class GameManager : MonoBehaviour
         }
         else if (gameState == "EnemyWin")
         {
+            if (!hasPlayed)
+            {
+                audioManager.Play("Defeat");
+                hasPlayed = true;
+            }
+            
             if (kb.rKey.wasPressedThisFrame)
             {
                 SceneManager.LoadScene("Level1");

@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     private Animator anim;
 
     public MusicManager musicManager;
+    public AudioManager audioManager;
 
     public string[] mysteriousVoiceDialogueList;
     private int mysteriousVoiceDialogueIndex;
@@ -54,6 +55,8 @@ public class DialogueManager : MonoBehaviour
         enemyWinDialogueIndex = 0;
         mysteriousVoiceDialogueIndex = 0;
 
+        audioManager = FindObjectOfType<AudioManager>();
+
         isSceneTwo = gameManager.isSceneTwo;
         #endregion
         
@@ -79,6 +82,7 @@ public class DialogueManager : MonoBehaviour
             if (kb.enterKey.wasPressedThisFrame)
             {
                 mysteriousVoiceDialogueIndex++;
+                audioManager.Play("DialogueContinue");
                 if (mysteriousVoiceDialogueIndex < mysteriousVoiceDialogueList.Length)
                 {
                     anim.SetTrigger("returnToIdle");
@@ -102,6 +106,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (kb.enterKey.wasPressedThisFrame)
             {
+                audioManager.Play("DialogueContinue");
                 preFightDialogueIndex++;
                 if (preFightDialogueIndex < preFightDialogueList.Length)
                 {
@@ -139,6 +144,7 @@ public class DialogueManager : MonoBehaviour
             if (kb.enterKey.wasPressedThisFrame)
             {
                 playerWinDialogueIndex++;
+                audioManager.Play("DialogueContinue");
                 if (playerWinDialogueIndex >= playerWinDialogueList.Length)
                 {
                     currentCoroutine = null;
@@ -172,6 +178,7 @@ public class DialogueManager : MonoBehaviour
             if (kb.enterKey.wasPressedThisFrame)
             {
                 enemyWinDialogueIndex++;
+                audioManager.Play("DialogueContinue");
                 if (enemyWinDialogueIndex >= enemyWinDialogueList.Length)
                 {
                     gameManager.gameState = "EnemyWin";

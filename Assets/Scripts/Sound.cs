@@ -7,7 +7,7 @@ public class Sound
     public string name;
     public AudioClip clip;
 
-    [Range(0, 1)]
+    [Range(0, 3)]
     public float volume;
 
     [Range(.1f, 3)]
