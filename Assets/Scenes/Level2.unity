@@ -438,6 +438,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129440223, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: rallyText
+      value: 
+      objectReference: {fileID: 1811666352}
+    - target: {fileID: 1129440223, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 828659996}
     - target: {fileID: 3539506281370740450, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
       propertyPath: m_Name
       value: GameManagerLv2
@@ -558,14 +566,6 @@ PrefabInstance:
       propertyPath: playerWinUI
       value: 
       objectReference: {fileID: 816303626}
-    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
-      propertyPath: rallyTextUI
-      value: 
-      objectReference: {fileID: 1811666352}
-    - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
-      propertyPath: outOfStaminaTextUI
-      value: 
-      objectReference: {fileID: 828659996}
     - target: {fileID: 3539506281630315049, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
       propertyPath: playerHeavyLungeChargeBar
       value: 

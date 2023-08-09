@@ -36,12 +36,15 @@ public class TutorialManager : MonoBehaviour
     //[SerializeField] private float showNextInstructionWaitDuration;
 
     [Header("Text")]
+    public StaminaAndRallyText staminaAndRallyText;
+
     public GameObject fientTextUI;
     public GameObject damageTextUI;
     public GameObject blockTextUI;
-    public GameObject outOfStaminaTextUI;
+    //public GameObject outOfStaminaTextUI;
     public GameObject riposteTextUI;
     public GameObject critTextUI;
+    //public GameObject rallyTextUI;
     [SerializeField] private float showDamageTextDuration;
     [SerializeField] private float showTextDuration;
     private RectTransform riposteTextRectTransform;
@@ -138,10 +141,15 @@ public class TutorialManager : MonoBehaviour
             tutorialInstructionIndex++;
             isNextInstruction = false;
             //Debug.Log(tutorialInstructionIndex);
-            if (tutorialInstructionIndex < tutorialInstructionList.Length - 5)
+            if (tutorialInstructionIndex < tutorialInstructionList.Length - 4)
             {
                 ShowInstruction(tutorialInstructionIndex);
-                
+                if (tutorialInstructionIndex == 7)
+                {
+                    playerController.TakeHitDamage(20f);
+                    playerController.isRallyOn = true;
+                    staminaAndRallyText.ShowRallyText();
+                }
             }
             else
             {
@@ -158,6 +166,7 @@ public class TutorialManager : MonoBehaviour
                 if (tutorialInstructionIndex < tutorialInstructionList.Length - 1)
                 {
                     ShowSpecialInstruction(tutorialInstructionIndex);
+                    
                 }
                 else
                 {

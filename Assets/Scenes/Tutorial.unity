@@ -147,22 +147,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1812213232269693032}
-    - target: {fileID: 4062963932920939104, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4332311084366124873, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1812213232269693032}
-    - target: {fileID: 4332311084787009686, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4332311084787009687, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -13
-      objectReference: {fileID: 0}
     - target: {fileID: 7079391959326716189, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -308,6 +296,11 @@ GameObject:
 --- !u!1 &211364364 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7079391960193146275, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
+  m_PrefabInstance: {fileID: 211364359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &282392357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8777482455343952245, guid: 679d9d2d92a1a2841a03ed786b94f465, type: 3}
   m_PrefabInstance: {fileID: 211364359}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &391983879 stripped
@@ -558,9 +551,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1809749529}
     - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: rallyScale
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 633634165}
+    - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
+      propertyPath: rallyDuration
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7076661199221992852, guid: fec8508fcf1eab9499587e51fdc5a5e8, type: 3}
       propertyPath: playerHealthBar
       value: 
@@ -905,6 +906,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1812213232269693034, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: rallyText
+      value: 
+      objectReference: {fileID: 282392357}
+    - target: {fileID: 1812213232269693034, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 211364363}
     - target: {fileID: 1812213232839424337, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -978,10 +987,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1243913386}
     - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: outOfStaminaTextUI
-      value: 
-      objectReference: {fileID: 211364363}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: playerDialogueText
       value: 
       objectReference: {fileID: 1868475485}
@@ -1009,14 +1014,6 @@ PrefabInstance:
       propertyPath: playerHeavyLungeChargeBarUI
       value: 
       objectReference: {fileID: 941418989}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1812213232839424338, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
-      propertyPath: preTutorialDialogueList.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1812213232839424339, guid: 3f587e78b3e04b3459d21fcc2bc79395, type: 3}
       propertyPath: m_Name
       value: TutorialManager

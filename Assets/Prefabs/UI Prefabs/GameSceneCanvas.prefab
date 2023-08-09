@@ -2882,6 +2882,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -7656034239515100060, guid: f8f91b78296c28b47bae61008a0f7ea3, type: 2}
+    - target: {fileID: 8825765650572385558, guid: 60c1da978cfddf74ca12b0e18a0b7548, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c1da978cfddf74ca12b0e18a0b7548, type: 3}
 --- !u!224 &4348450871653418156 stripped
@@ -3203,6 +3207,10 @@ PrefabInstance:
     - target: {fileID: 6802617408796600189, guid: 511a323f475656e48807234ce9748d82, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802617408796600191, guid: 511a323f475656e48807234ce9748d82, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 511a323f475656e48807234ce9748d82, type: 3}

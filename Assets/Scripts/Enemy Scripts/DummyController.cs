@@ -24,6 +24,11 @@ public class DummyController : MonoBehaviour
     {
         tutorialManager.SpawnRightBloodParticle(transform.position+new Vector3(0f,0.5f,0f));
         tutorialManager.ShowDamageText(transform.position, damage);
+
+        if (playerController.isRallyOn)
+        {
+            playerController.AddRallyHealth(damage);
+        }
         //Debug.Log(transform.position);
         //gameManager.getHitVolume.SetActive(true);
         //gameManager.ResetGetHitUI();
