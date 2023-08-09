@@ -1157,6 +1157,10 @@ public class PlayerController : MonoBehaviour
         audioManager.Stop("LowHP");
         Debug.Log("Rally healed: " + baseHealth*rallyScale+ "base heal is:"+baseHealth);
         playerHealth += baseHealth * rallyScale;
+        if (playerHealth >= 20f)
+        {
+            gameManager.getHitVolume.SetActive(false);
+        }
         if (playerHealth >= maxPlayerHealth)
         {
             playerHealth = maxPlayerHealth;

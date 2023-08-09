@@ -19,38 +19,16 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        //AudioSource[] audios = FindObjectsOfType<AudioSource>();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {
                 Resume();
-                foreach (AudioSource a in audios)
-                {
-                    if (a.clip.name != "TutorialMusic")
-                    {
-                        a.UnPause();
-                    }
-                    else
-                    {
-                        musicManager.EndMuffle();
-                    }
-                }
             }
             else
             {
                 Pause();
-                foreach (AudioSource a in audios)
-                {
-                    if (a.clip.name != "TutorialMusic")
-                    {
-                        a.Pause();
-                    }
-                    else
-                    {
-                        musicManager.StartMuffle();
-                    }
-                }
             }
         }
     }
@@ -59,6 +37,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
+
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios)
+        {
+            a.Pause();
+        }
     }
 
     public void Resume()
@@ -68,6 +52,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
+
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios)
+        {
+            a.UnPause();
+        }
     }
     public void Exit()
     {
