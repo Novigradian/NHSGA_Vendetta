@@ -458,14 +458,6 @@ PrefabInstance:
       propertyPath: mysteriousVoiceDialogueText
       value: 
       objectReference: {fileID: 7079391959960851294}
-    - target: {fileID: 3441756883500648680, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
-      propertyPath: mysteriousVoiceDialogueList.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3441756883500648680, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
-      propertyPath: mysteriousVoiceDialogueList.Array.data[6]
-      value: This is our vendetta.
-      objectReference: {fileID: 0}
     - target: {fileID: 3441756883500648682, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
       propertyPath: canvas
       value: 
