@@ -118,6 +118,14 @@ public class DialogueManager : MonoBehaviour
                     gameManager.combatVolume.SetActive(true);
 
                     musicManager.EndMuffle();
+                    if (gameManager.isSceneTwo)
+                    {
+                        DataHolder.hasLevelTwoDialogueShown = true;
+                    }
+                    else
+                    {
+                        DataHolder.hasLevelOneDialogueShown = true;
+                    }
                 }
             }
         }

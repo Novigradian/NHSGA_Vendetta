@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region GameManager Components and Variables
-    private DataHolder dataHolder;
 
     Keyboard kb;
     public PlayerController playerController;
@@ -30,7 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject leftBloodParticlePrefab;
     public GameObject rightBloodParticlePrefab;
 
-    [HideInInspector] public bool isSceneTwo;
+    public bool isSceneTwo;
     [HideInInspector] public string killChoice;
 
     [SerializeField] private float maxDamageModifier;
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
     {
         #region Initialize Variables
         uiManager = FindObjectOfType<UIManager>();
-        dataHolder= FindObjectOfType<DataHolder>();
         if (SceneManager.GetActiveScene().name == "Level2")
         {
             isSceneTwo = true;
@@ -51,7 +49,10 @@ public class GameManager : MonoBehaviour
         {
             isSceneTwo = false;
         }
-        if ((dataHolder.hasPlayerDiedLevelOne && !isSceneTwo) || (dataHolder.hasPlayerDiedLevelTwo && isSceneTwo)) 
+        Debug.Log("has level one dialogue shown: " + DataHolder.hasLevelOneDialogueShown);
+        Debug.Log("has level two dialogue shown: " + DataHolder.hasLevelTwoDialogueShown);
+        Debug.Log("isSceneTwo: " + isSceneTwo);
+        if ((DataHolder.hasLevelOneDialogueShown && !isSceneTwo) || (DataHolder.hasLevelTwoDialogueShown && isSceneTwo)) 
         {
             gameState = "FightText";
             enemy.SetActive(true);
@@ -91,8 +92,8 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("GAME OVER");
-                    dataHolder.hasPlayerDiedLevelOne = false;
-                    dataHolder.hasPlayerDiedLevelTwo = false;
+                    DataHolder.hasLevelOneDialogueShown = false;
+                    DataHolder.hasLevelTwoDialogueShown = false;
                     SceneManager.LoadScene(0);
                 }
             }
@@ -101,14 +102,6 @@ public class GameManager : MonoBehaviour
         {
             if (kb.rKey.wasPressedThisFrame)
             {
-                if (!isSceneTwo)
-                {
-                    dataHolder.hasPlayerDiedLevelOne = true;
-                }
-                else
-                {
-                    dataHolder.hasPlayerDiedLevelTwo = true;
-                }
                 SceneManager.LoadScene("Level1");
             }
         }
