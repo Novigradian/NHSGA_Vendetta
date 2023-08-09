@@ -18,9 +18,10 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        //AudioSource[] audios = FindObjectsOfType<AudioSource>();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
             if (isPaused)
             {
                 Resume();
