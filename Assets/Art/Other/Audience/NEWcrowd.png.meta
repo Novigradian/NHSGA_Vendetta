@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2932f12e748419d43b341bc3769c4a07
+guid: 4849ddd35c0c66c44a125366218e471a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -139,91 +139,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: CROWD_SPRITESHEET_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2400
-        height: 2700
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9092ef2e9e35e04aabcd744abb7a5bb
-      internalID: -1672462489
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CROWD_SPRITESHEET_1
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 0
-        width: 2400
-        height: 2700
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: feed212369655ae4590a6b5704d144da
-      internalID: -804766956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CROWD_SPRITESHEET_2
-      rect:
-        serializedVersion: 2
-        x: 4800
-        y: 0
-        width: 2400
-        height: 2700
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a52fd908ff3553240aff1d745174fda9
-      internalID: 143436032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CROWD_SPRITESHEET_3
-      rect:
-        serializedVersion: 2
-        x: 7200
-        y: 0
-        width: 2400
-        height: 2700
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d00cb954807b30c47985d09362352829
-      internalID: -951924396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -234,11 +150,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      CROWD_SPRITESHEET_0: -1672462489
-      CROWD_SPRITESHEET_1: -804766956
-      CROWD_SPRITESHEET_2: 143436032
-      CROWD_SPRITESHEET_3: -951924396
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

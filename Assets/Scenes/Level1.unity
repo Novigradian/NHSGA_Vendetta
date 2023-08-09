@@ -458,6 +458,14 @@ PrefabInstance:
       propertyPath: mysteriousVoiceDialogueText
       value: 
       objectReference: {fileID: 7079391959960851294}
+    - target: {fileID: 3441756883500648680, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
+      propertyPath: mysteriousVoiceDialogueList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441756883500648680, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
+      propertyPath: mysteriousVoiceDialogueList.Array.data[6]
+      value: This is our vendetta.
+      objectReference: {fileID: 0}
     - target: {fileID: 3441756883500648682, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
       propertyPath: canvas
       value: 
@@ -762,6 +770,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1532008818, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532008818, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6462676467325051485, guid: 87e6191e225a5b84189667189c974b39, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -809,6 +825,14 @@ PrefabInstance:
     - target: {fileID: 6462676467325051486, guid: 87e6191e225a5b84189667189c974b39, type: 3}
       propertyPath: m_Name
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312519394082096110, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312519394082096110, guid: 87e6191e225a5b84189667189c974b39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87e6191e225a5b84189667189c974b39, type: 3}
@@ -1305,6 +1329,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1984196194}
+    - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391959326716189, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7079391960005761757, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1405,6 +1437,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1984196194}
+    - target: {fileID: 7079391960965363986, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391960965363986, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391961036040699, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079391961036040699, guid: c5b52f2aabe855f4697496106941a369, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b52f2aabe855f4697496106941a369, type: 3}
 --- !u!95 &7079391959960851293 stripped
