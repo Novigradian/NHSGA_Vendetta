@@ -120,7 +120,7 @@ public class TutorialManager : MonoBehaviour
             if (kb.enterKey.wasPressedThisFrame)
             {
                 preTutorialDialogueIndex++;
-                audioManager.Play("DialogueContinue");
+                //audioManager.Play("DialogueContinue");
                 if (preTutorialDialogueIndex < preTutorialDialogueList.Length-1)
                 {
                     anim.SetTrigger("returnToIdle");

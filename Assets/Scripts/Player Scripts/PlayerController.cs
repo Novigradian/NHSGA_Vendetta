@@ -1110,7 +1110,7 @@ public class PlayerController : MonoBehaviour
         {
             playerStamina = 0f;
             isOutOfStamina = true;
-            audioManager.Play("LowStamina");
+            //audioManager.Play("LowStamina");
             outOfStaminaColorTransition.isOutOfStamina = true;
             UIManager.staminaAndRallyText.ShowStaminaText();
         }

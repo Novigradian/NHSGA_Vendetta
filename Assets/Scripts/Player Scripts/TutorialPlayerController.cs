@@ -1146,7 +1146,7 @@ public class TutorialPlayerController : MonoBehaviour
             isOutOfStamina = true;
             outOfStaminaColorTransition.isOutOfStamina = true;
             tutorialManager.staminaAndRallyText.ShowStaminaText();
-            audioManager.Play("LowStamina");
+            //audioManager.Play("LowStamina");
         }
     }
     private IEnumerator RecoverStamina()
