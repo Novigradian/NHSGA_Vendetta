@@ -462,6 +462,11 @@ PrefabInstance:
       propertyPath: mysteriousVoiceDialogueText
       value: 
       objectReference: {fileID: 7079391959960851294}
+    - target: {fileID: 3441756883500648680, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
+      propertyPath: playerWinDialogueList.Array.data[1]
+      value: "Don\u2019t expect me to thank you. You\u2019re a fool for letting me
+        live."
+      objectReference: {fileID: 0}
     - target: {fileID: 3441756883500648682, guid: 84fc3ce96b88b8342879e1f22fc185fa, type: 3}
       propertyPath: canvas
       value: 

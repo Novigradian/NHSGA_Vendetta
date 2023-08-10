@@ -557,6 +557,11 @@ PrefabInstance:
       propertyPath: mysteriousVoiceDialogueText
       value: 
       objectReference: {fileID: 7079391959960851293}
+    - target: {fileID: 3539506281630315051, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
+      propertyPath: preFightDialogueList.Array.data[4]
+      value: 'I remember you leaving me to die at the royal tourney as if it were
+        yesterday. I lost an arm and an eye that day. '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cc292fc7f678ea47824d61fc9bb067f, type: 3}
 --- !u!114 &1129440218 stripped
