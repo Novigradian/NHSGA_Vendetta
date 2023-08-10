@@ -775,6 +775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969949178}
   - component: {fileID: 969949177}
+  - component: {fileID: 969949179}
   m_Layer: 0
   m_Name: Video Player
   m_TagString: Untagged
@@ -790,7 +791,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969949176}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: 53b70d61c1fc042c4bb0996d717fd2b3, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 519420031}
@@ -832,6 +833,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969949179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969949176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62093bc49f17c48cdb72a36b33ec79f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: EndScene
+  videoTime: 31
 --- !u!1 &1026290459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,7 +2244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 528893720, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1295533853, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive
@@ -2265,7 +2280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511502822975891782, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7079391959318562050, guid: c5b52f2aabe855f4697496106941a369, type: 3}
       propertyPath: m_IsActive
