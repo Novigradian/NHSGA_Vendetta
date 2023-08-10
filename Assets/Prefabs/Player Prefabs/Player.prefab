@@ -247,7 +247,7 @@ MonoBehaviour:
   stepLeftDustParticle: {fileID: 6460912154731873205}
   stepRightDustParticle: {fileID: 8979819738998414823}
   playerHealthBar: {fileID: 0}
-  maxPlayerHealth: 100
+  maxPlayerHealth: 120
   playerHealth: 0
   playerLightAttackDamage: 10
   playerLightAttackBaseDamage: 0
