@@ -668,7 +668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2068230209
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1257,6 +1257,14 @@ PrefabInstance:
     - target: {fileID: 6849289252433833235, guid: e76335e5dcb3ec347a04b70091a902b8, type: 3}
       propertyPath: m_Name
       value: TutorialSelectMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849289253582122899, guid: e76335e5dcb3ec347a04b70091a902b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674575314055121337, guid: e76335e5dcb3ec347a04b70091a902b8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e76335e5dcb3ec347a04b70091a902b8, type: 3}

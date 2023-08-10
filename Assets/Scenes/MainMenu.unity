@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &269489492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7388930531778910784, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9400504
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1158061
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 71.6494
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910785, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388930531778910787, guid: 1471b57113374004ab5f30186b428169, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c6a2b194dfc5d3e448bd4a4b4b81161d, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1471b57113374004ab5f30186b428169, type: 3}
 --- !u!114 &532232936 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 552338697762719804, guid: 6ba46f66afa7e4471bd52830f01b0b3b, type: 3}
@@ -451,33 +512,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 452156208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 452156208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 452156208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3400536915219923683}
-    - target: {fileID: 452156208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 452156208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MainMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 674289894, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3400536915219923683}
-    - target: {fileID: 2068230208, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1735365318679379292, guid: a8b2fd054fc48a84692c645f9b5d39a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
