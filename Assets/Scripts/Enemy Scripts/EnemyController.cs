@@ -595,7 +595,15 @@ public class EnemyController : MonoBehaviour
             rb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed;
             
         }
-        swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed*1.05f;
+        if (gameManager.isSceneTwo)
+        {
+            swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed * 1.05f;
+        }
+        else
+        {
+            swordRb.position += Vector2.right * direction * Time.deltaTime * heavyLungeThrustSpeed * 1.35f;
+        }
+        
 
     }
     public IEnumerator HeavyLungeCoroutine()
