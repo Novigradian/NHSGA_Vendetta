@@ -138,7 +138,7 @@ MonoBehaviour:
   lightAttackDuration: 0.125
   lightAttackThrustSpeed: 40
   blockDuration: 0.25
-  blockDamageNegationScale: 0.85
+  blockDamageNegationScale: 0.55
   blockPushback: 0
   jumpAttackDuration: 0.15
   jumpAttackSwordPivotRotation: -40
